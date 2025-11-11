@@ -35,7 +35,7 @@
 		grid-column: 7 / span 2;
 		height: stretch;
 		width: stretch;
-		min-width: 300px;
+		min-width: 250px;
 		z-index: 2;
 		pointer-events: none;
 
