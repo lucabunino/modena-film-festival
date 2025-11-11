@@ -37,12 +37,14 @@
 		width: stretch;
 		min-width: 300px;
 		z-index: 2;
+		pointer-events: none;
 
 		div {
 			padding: var(--margin);
 			position: sticky;
 			top: var(--margin);
 			margin: var(--margin) 0;
+			pointer-events: all;
 
 			h1 {
 				margin-bottom: 2rem;

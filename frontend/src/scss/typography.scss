@@ -74,6 +74,7 @@
 /* Typography */
 .wb {
 	&,
+	&-10,
 	&-12,
 	&-14,
 	&-18,
@@ -87,6 +88,7 @@
 		font-style: normal;
 	}
 
+	&-10 { font-size: .714rem; font-weight: 700; letter-spacing: .03em; line-height: 1.2; }
 	&-12 { font-size: .857rem; font-weight: 700; letter-spacing: .03em; line-height: 1.2; }
 	&-14 { font-size: 1rem; letter-spacing: .01em; line-height: 1.2; }
 	&-18 { font-size: 1.286rem; letter-spacing: 0em; line-height: 1.15; }

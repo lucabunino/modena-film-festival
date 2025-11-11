@@ -216,3 +216,17 @@ section {
 .max-w-600 {max-width: 600px;}
 .max-w-500 {max-width: 500px;}
 .max-w-400 {max-width: 400px;}
+
+.locked {
+	cursor: not-allowed !important;
+}
+.locked.shaking {
+	animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+	10%, 90% { rotate: (1deg); }
+	20%, 80% { rotate: (-2deg); }
+	30%, 50%, 70% { rotate: (-4deg); }
+	40%, 60% { rotate: (4deg); }
+}

@@ -5,7 +5,6 @@
 	let activeSectionEl = $state(undefined);
 	let mouse = $state({ x: undefined, y: undefined });
 	let sectionEls = $state([]);
-	let visibleSectionsEls = $state(Array(sections.length).fill(false));
 	let visibleSections = $state(false);
 	let rotations =  $state(Array(sections.length).fill({ x: 0, y: 0 }));
 	let translations =  $state(Array(sections.length).fill({ x: 0, y: 0 }));
@@ -32,6 +31,15 @@
 		const ty = (dy / cy) * multipliers[index] * 500;
 		translations[index] = { x: tx, y: ty };
 	}
+
+	let shaking = $state([]);
+	$inspect(shaking)
+	function handleLockedclick(e, i) {
+		e.preventDefault()
+		if (shaking[i]) return;
+		shaking[i] = true;
+		setTimeout(() => (shaking[i] = false), 600);
+	}
 </script>
 
 <svelte:window
@@ -41,12 +49,12 @@ onmousemove={(e) => {mouse = {x: e.clientX, y: e.clientY}; sectionEls.forEach((_
 <div class="sections" use:viewport onenterViewport={() => visibleSections = true}>
 	{#each sections as section, i}
 		<a href={`/sezioni/${section.slug}`}
-		class="section {activeSectionEl !== i ? `scattered${activeSectionEl}` : ``} {activeSectionEl === i ? `active` : ``} {visibleSections ? `visible` : ``}"
+		class="section {activeSectionEl !== i ? `scattered${activeSectionEl}` : ``} {activeSectionEl === i ? `active` : ``} {visibleSections ? `visible` : ``} locked {shaking[i] ? `shaking` : ``}"
 		onmouseenter={() => {activeSectionEl = i}}
 		onmouseleave={() => {activeSectionEl = undefined}}
 		onfocusin={() => {activeSectionEl = i}}
 		onfocusout={() => {activeSectionEl = undefined}}
-		bind:this={sectionEls[i]}
+		onclick={(e) => {handleLockedclick(e, i)}}
 		style="
 			--rotateX: {rotations[i].x}deg;
 			--rotateY: {rotations[i].y}deg;
@@ -57,7 +65,7 @@ onmousemove={(e) => {mouse = {x: e.clientX, y: e.clientY}; sectionEls.forEach((_
 			<div class="outer">
 				<div class="inner">
 					<div class="front rounded-m">
-						<h4 class="wb-12 uppercase">{section.name}</h4>
+						<h4 class="wb-10 uppercase">{section.name}</h4>
 						<div class={section.gradient}></div>
 						<h5 class="wb-cd-24 uppercase white bg-black">Maggiori info a breve</h5>
 					</div>
