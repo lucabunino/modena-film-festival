@@ -1,0 +1,133 @@
+@font-face {
+  font-family: "Waldenburg";
+  src: url("/fonts/KMRWaldenburg-Regular.woff2") format("woff2"),
+       url("/fonts/KMRWaldenburg-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Waldenburg";
+  src: url("/fonts/KMRWaldenburg-Italic.woff2") format("woff2"),
+       url("/fonts/KMRWaldenburg-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Waldenburg";
+  src: url("/fonts/KMRWaldenburg-Medium.woff2") format("woff2"),
+       url("/fonts/KMRWaldenburg-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Waldenburg";
+  src: url("/fonts/KMRWaldenburg-MediumItalic.woff2") format("woff2"),
+       url("/fonts/KMRWaldenburg-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Waldenburg";
+  src: url("/fonts/KMRWaldenburg-Bold.woff2") format("woff2"),
+       url("/fonts/KMRWaldenburg-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Waldenburg";
+  src: url("/fonts/KMRWaldenburg-BoldItalic.woff2") format("woff2"),
+       url("/fonts/KMRWaldenburg-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Waldenburg Condensed";
+  src: url("/fonts/KMRWaldenburg-CondensedHeavy.woff2") format("woff2"),
+       url("/fonts/KMRWaldenburg-CondensedHeavy.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SuisseWorks";
+  src: url("/fonts/SuisseWorks.woff2") format("woff2"),
+       url("/fonts/SuisseWorks.woff") format("woff");
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Typography */
+.wb {
+	&,
+	&-12,
+	&-14,
+	&-18,
+	&-21,
+	&-24,
+	&-28,
+	&-100 {
+		font-family: "Waldenburg", Helvetica, Arial, sans-serif;
+		font-optical-sizing: auto;
+		font-weight: 500;
+		font-style: normal;
+	}
+
+	&-12 { font-size: .857rem; font-weight: 700; letter-spacing: .03em; line-height: 1.2; }
+	&-14 { font-size: 1rem; letter-spacing: .01em; line-height: 1.2; }
+	&-18 { font-size: 1.286rem; letter-spacing: 0em; line-height: 1.15; }
+	&-21 { font-size: 1.5rem; letter-spacing: -0.01em; line-height: 1.1; }
+	&-24 { font-size: 1.714rem; letter-spacing: -0.01em; line-height: 1.1; }
+	&-28 { font-size: 2rem; letter-spacing: -0.01em; line-height: 1.1; }
+	&-100 { font-size: 7.15rem;   letter-spacing: -0.03em; line-height: .9; }
+}
+.wb-cd {
+	&,
+	&-24,
+	&-30,
+	&-45,
+	&-60,
+	&-120,
+	&-170,
+	&-370 {
+		font-family: "Waldenburg Condensed", Helvetica, Arial, sans-serif;
+		font-optical-sizing: auto;
+		font-weight: 800;
+		font-style: normal;
+	}
+	&-24  { font-size: 1.714rem; letter-spacing: -0.01em; line-height: .9; }
+	&-30  { font-size: 2.143rem; letter-spacing: -0.01em; line-height: .9; }
+	&-45  { font-size: 3.214rem; letter-spacing: -0.01em; line-height: .9; }
+	&-60  { font-size: 4.286rem; letter-spacing: -0.02em; line-height: .85; }
+	&-120 { font-size: 8.571rem;   letter-spacing: -0.03em; line-height: .85; }
+	&-170 { font-size: 12.143rem;   letter-spacing: -0.04em; line-height: .8; }
+	&-370 { font-size: 26.429rem;   letter-spacing: -0.04em; line-height: 1; }
+}
+.sw {
+	&,
+	&-26 {
+		font-family: "Swisse Works", 'Times New Roman', Times, serif;
+		font-optical-sizing: auto;
+		font-weight: 450;
+		font-style: normal;
+	}
+	&-26 { font-size: 2rem; letter-spacing: -0.01em; line-height: 1.1; }
+}
+.bold			{ font-weight: 700; }
+.uppercase		{ text-transform: uppercase; }
+.titlecase		{ text-transform: capitalize; }
+.leading-1		{ line-height: 1; }
+.leading-1_15	{ line-height: 1.15; }
+.leading-1_2	{ line-height: 1.2; }
+.leading-1_3	{ line-height: 1.3; }
+
+
+@media screen and (max-width: 800px) {
+	
+}
