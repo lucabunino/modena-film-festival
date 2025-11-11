@@ -23,7 +23,6 @@
 	#pre-footer {
 		height: 80vh;
 		min-height: 650px;
-		max-height: 850px;
 		display: flex;
 	}
 	img {
