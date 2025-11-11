@@ -21,31 +21,34 @@
 
 <style lang="scss">
 	#pre-footer {
-		height: 80vh;
 		min-height: 650px;
 		display: flex;
-	}
-	img {
-		width: 38%;
-		height: 100%;
-		object-fit: cover;
-	}
-	#pre-footer>div {
-		padding:  calc(var(--margin)*1.5) var(--margin);
-		width: 62%;
-		display: flex;
-		flex-direction: column;
-		gap: 3rem;
-		justify-content: space-between;
-		
-	}
-	h3 {
-		margin-top: 1rem;
-	}
-	.content {
-		margin-top: 3rem;
-	}
-	.annotation {
-		margin-top: 2rem;
+		margin-left: var(--sidebarWidth);
+		width: calc(100% - var(--sidebarWidth));
+		position: relative;
+
+		>div {
+			padding:  calc(var(--margin)*1.5) var(--margin);
+			width: 62%;
+			display: flex;
+			flex-direction: column;
+			gap: 3rem;
+			justify-content: space-between;
+		}
+
+		img {
+			width: 38%;
+			height: stretch;
+			object-fit: cover;
+		}
+		h3 {
+			margin-top: 1rem;
+		}
+		.content {
+			margin-top: 3rem;
+		}
+		.annotation {
+			margin-top: 2rem;
+		}
 	}
 </style>
