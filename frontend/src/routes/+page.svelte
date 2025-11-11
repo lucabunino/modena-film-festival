@@ -51,6 +51,7 @@
 <style>
 	main {
 		padding: 0;
+		row-gap: 0;
 	}
 	section {
 		grid-column: 1 / span 8;
@@ -85,7 +86,7 @@
 			z-index: 1;
 		}
 		div:nth-child(1) {
-			padding: calc(var(--margin)*1.5) var(--margin);
+			padding: var(--margin);
 			position: relative;
 			z-index: 0;
 		}
@@ -112,7 +113,7 @@
 		padding: var(--spacing-l) var(--spacing-m);
 		position: relative;
 		overflow: hidden;
-		
+
 		>div:nth-child(1) {
 			max-width: 500px;
 			position: relative;
