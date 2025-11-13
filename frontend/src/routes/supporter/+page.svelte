@@ -6,37 +6,24 @@
 
 	let sections = $state([])
 	let tiers = $derived([
-		{title: 'Amico', price: 10, isCustomPrice: false, abstract: 'Il tuo nome comparirà come  Amico del Festival qui sul sito.'},
+		{title: 'Amico', price: 10, isCustomPrice: false, abstract: 'Il tuo nome comparirà come Amico del Festival qui sul sito.'},
 		{title: 'Sostenitore', price: 50, isCustomPrice: false, abstract: 'Oltre alla visibilità come Amico, riceverai l’accredito del festival, che ti garantirà l’accesso a tutte  le proiezioni.'},
 		{title: 'Promotore', price: 100, isCustomPrice: true, abstract: 'Avrai tutto ciò che spetta ad Amici e Sostenitori. In più il catalogo ufficiale, la t-shirt e la totebag del festival.'},
 	])
 	const promoters = [
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
-		{name: 'Mario', surname: 'Rossi'},
 		{name: 'Mario', surname: 'Rossi'},
 	]
 	const supporters = [
 		{name: 'Mario', surname: 'Rossi'},
 	]
 	const friends = [
-		{name: 'Mario', surname: 'Rossi'},
+		{name: 'Anna', surname: 'Giovani'},
+		{name: 'Alessandro', surname: 'Romagnoli'},
+		{name: 'Giulietta', surname: 'Malagoli'},
+		{name: 'Irene', surname: 'Malagoli'},
+		{name: 'Laura', surname: 'Malagoli'},
+		{name: 'Teresa', surname: 'Tinti'},
+		{name: 'Vanna', surname: 'Bortolamasi'},
 	]
 	const prefooter = {
 		subtitle: "Acquista gli abbonamenti",
@@ -48,6 +35,13 @@
 		bg: 'bg-yellow',
 		img: '/img/pre-footer-1.png',
 	}
+
+	let visible = $state(false)
+
+	// Lifecycle
+	$effect(() => {
+		visible = true
+	})
 </script>
 
 <main class="bg-white">
@@ -65,25 +59,29 @@
 		IT50Y0538766890000004422054</p>
 	</section>
 	<section id="tiers" title="Tiers">
-		<swiper-container
+		<swiper-container class="{visible ? 'visible' : ''}"
+		mousewheel={{
+			forceToAxis: true,
+		}}
+		grabCursor={true}
+		direction='horizontal'
 		slides-per-view='auto'
 		space-between={18}
 		slides-offset-before={36}
 		slides-offset-after={36}
 		free-mode={true}
-		scroll
 		>
 			{#each tiers as tier, i}
 				<swiper-slide class="tier bg-yellow rounded-l">
 					<div>
 						<h3 class="wb-28 bold">{tier.title}</h3>
-						<h4 class="sw-26">{#if tier.isCustomPrice}{@html 'A partire da '}{/if}{tier.price}€</h4>
+						<h4 class="nr-26">{#if tier.isCustomPrice}{@html 'A partire da '}{/if}{tier.price}€</h4>
 						<p class="wb-18 max-w-400">{tier.abstract}</p>
 					</div>
 					<div class="btns">
-					<a class="btn-l" href={tier.price} target="_blank" rel="noopener noreferrer">Dona {tier.price}€</a>
+					<a class="btn-l" href="https://paypal.me/CrispyCinemaClubAPS/{tier.price}" target="_blank" rel="noopener noreferrer">Dona {tier.price}€</a>
 						{#if tier.isCustomPrice}
-							<button class="wb-21 btn-s">Scegli importo</button>
+							<a class="btn-s" href="https://paypal.me/CrispyCinemaClubAPS/" target="_blank" rel="noopener noreferrer">Scegli importo</a>
 						{/if}
 					</div>
 				</swiper-slide>
@@ -129,25 +127,34 @@
 	grid-column: 1 / span 8;
 	margin: calc(var(--margin)*-1);
 
-	.tier {
-		padding: 3rem var(--gutter) var(--gutter);
+	swiper-container {
+		opacity: 0;
 		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		width: calc(100%/4);
-		min-width: 500px;
-		min-height: 360px;
 
-		p {
-			margin-top: 2rem;
+		&.visible {
+			opacity: 1;
 		}
-		.btns {
-			display: flex;
-			align-items: baseline;
-			gap: var(--spacing-xs);
 
-			a {
-				width: fit-content;
+		.tier {
+			padding: 3rem var(--gutter) var(--gutter);
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			width: calc(100%/4);
+			min-width: 500px;
+			min-height: 360px;
+
+			p {
+				margin-top: 2rem;
+			}
+			.btns {
+				display: flex;
+				align-items: baseline;
+				gap: var(--spacing-xs);
+
+				a {
+					width: fit-content;
+				}
 			}
 		}
 	}

@@ -13,8 +13,8 @@
 		{name: 'Massimo', surname: 'Bondioli', role: 'Direzione organizzativa'},
 		{name: 'Alice', surname: 'Morelli', role: 'Direzione marketing e partnership'},
 		{name: 'Martina', surname: 'Dell’Utri', role: 'Produzione'},
-		{name: 'Giulia', surname: 'Benedetti', role: 'Direzione artistica e graphic design'},
-		{name: 'Luca', surname: 'Bunino', role: 'Direzione artistica e graphic design'},
+		{name: 'Giulia', surname: 'Benedetti', role: 'Direzione creativa e graphic design'},
+		{name: 'Luca', surname: 'Bunino', role: 'Direzione creativa e graphic design'},
 		{name: 'Andrea', surname: 'Chimento', role: 'Ideazione'},
 	]
 </script>

@@ -1,3 +1,4 @@
+// @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz@6..72&display=swap');
 @font-face {
   font-family: "Waldenburg";
   src: url("/fonts/KMRWaldenburg-Regular.woff2") format("woff2"),
@@ -54,22 +55,22 @@
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: "Suisse Works";
-  src: url("/fonts/SuisseWorks-Book-WebTrial.woff2") format("woff2"),
-       url("/fonts/SuisseWorks-Book-WebTrial.woff") format("woff");
-  font-weight: 350;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Suisse Works";
-  src: url("/fonts/SuisseWorks-BookItalic-WebTrial.woff2") format("woff2"),
-       url("/fonts/SuisseWorks-BookItalic-WebTrial.woff") format("woff");
-  font-weight: 350;
-  font-style: italic;
-  font-display: swap;
-}
+// @font-face {
+//   font-family: "Suisse Works";
+//   src: url("/fonts/SuisseWorks-Book-WebTrial.woff2") format("woff2"),
+//        url("/fonts/SuisseWorks-Book-WebTrial.woff") format("woff");
+//   font-weight: 350;
+//   font-style: normal;
+//   font-display: swap;
+// }
+// @font-face {
+//   font-family: "Suisse Works";
+//   src: url("/fonts/SuisseWorks-BookItalic-WebTrial.woff2") format("woff2"),
+//        url("/fonts/SuisseWorks-BookItalic-WebTrial.woff") format("woff");
+//   font-weight: 350;
+//   font-style: italic;
+//   font-display: swap;
+// }
 
 /* Typography */
 .wb {
@@ -122,9 +123,29 @@
 .sw {
 	&,
 	&-26 {
-		font-family: "Suisse Works", 'Times New Roman', Times, serif;
+		font-family: 'Times New Roman', Times, serif;
 		font-optical-sizing: auto;
 		font-weight: 450;
+		font-style: normal;
+	}
+	&-26 { font-size: 2rem; letter-spacing: 0em; line-height: 1.1; }
+}
+.lo {
+	&,
+	&-26 {
+		font-family: "Lora", serif;
+		font-optical-sizing: auto;
+		font-weight: 400;
+		font-style: normal;
+	}
+	&-26 { font-size: 2rem; letter-spacing: 0em; line-height: 1.1; }
+}
+.nr {
+  	&,
+	&-26 {
+		font-family: "Newsreader", serif;
+		font-optical-sizing: auto;
+		font-weight: 400;
 		font-style: normal;
 	}
 	&-26 { font-size: 2rem; letter-spacing: 0em; line-height: 1.1; }

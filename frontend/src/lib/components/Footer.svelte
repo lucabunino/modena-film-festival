@@ -64,15 +64,15 @@
 	</section>
 	<section id="credits" aria-label="Crediti" class="wb-12">
 		<div>
-			<p>Progettazione e sviluppo: <a class="hover-underline" href="https://giuliabenedetti.eu/" target="_blank" rel="noopener noreferrer">Giulia Benedetti</a> e <a class="hover-underline" href="https://www.lucabunino.com/" target="_blank" rel="noopener noreferrer">Luca Bunino</a></p>
-			<p>Media partner: <a class="hover-underline" href="https://www.heroestudio.it/" target="_blank" rel="noopener noreferrer">Heroestudio</a></p>
+			<p>Progettazione e sviluppo: <a class="btn-xs" href="https://giuliabenedetti.eu/" target="_blank" rel="noopener noreferrer">Giulia Benedetti</a> e <a class="hover-underline" href="https://www.lucabunino.com/" target="_blank" rel="noopener noreferrer">Luca Bunino</a></p>
+			<p>Media partner: <a class="btn-xs" href="https://www.heroestudio.it/" target="_blank" rel="noopener noreferrer">Heroestudio</a></p>
 		</div>
 		<div>
 			<div>
-				<a href="/privacy" class="hover-underline">Privacy policy</a>
-				<a href="/cookies" class="hover-underline">Cookie policy</a>
+				<a href="/privacy" class="btn-xs">Privacy policy</a>
+				<a href="/cookies" class="btn-xs">Cookie policy</a>
 			</div>
-			<button class="hover-underline" onclick={() => {scrollY = 0}}>Scroll to top ↑</button>
+			<button class="btn-xs" onclick={() => {scrollY = 0}}>Scroll to top ↑</button>
 		</div>
 	</section>
 </footer>
@@ -166,6 +166,10 @@
 					display: flex;
 					column-gap: var(--gutter);
 				}
+			}
+
+			p+p {
+				margin-top: .2em;
 			}
 		}
 	}

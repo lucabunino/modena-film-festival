@@ -2,7 +2,7 @@
 	let {prefooter} = $props()
 </script>
 
-<section id="pre-footer" class={[prefooter.bg]}>
+<section id="pre-footer" class={prefooter.bg}>
 	{#if prefooter.img}<img src={prefooter.img} alt="">{/if}
 	<div>
 		<div>

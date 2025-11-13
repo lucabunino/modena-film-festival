@@ -99,7 +99,7 @@ onmousemove={(e) => {mouse = {x: e.clientX, y: e.clientY}; sectionEls.forEach((_
 			height: 15vw;
 			transform-style: preserve-3d;
 			transform-style: preserve-3d;
-			transition: var(--transition);
+			transition: var(--transition-s);
 			transition-duration: 1000ms;
 			transition-delay: var(--delay);
 			z-index: 0;
@@ -158,7 +158,7 @@ onmousemove={(e) => {mouse = {x: e.clientX, y: e.clientY}; sectionEls.forEach((_
 					height: 100%;
 					perspective: 10000px;
 					transform-style: preserve-3d;
-					transition: var(--transition);
+					transition: var(--transition-s);
 					transform: rotateY(180deg);
 					will-change: transform;
 					.front,
@@ -166,7 +166,7 @@ onmousemove={(e) => {mouse = {x: e.clientX, y: e.clientY}; sectionEls.forEach((_
 						position: absolute;
 						inset: 0;
 						backface-visibility: hidden;
-						box-shadow: 0 0 0 1px rgba(0, 0, 0, 1);
+						box-shadow: 0 0 0 1px var(--linen);
 						display: flex;
 						flex-direction: column;
 						justify-content: center;

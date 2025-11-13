@@ -2,6 +2,7 @@
 	import Marquee from 'svelte-fast-marquee';
     import SectionsDesktop from '$lib/components/SectionsDesktop.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
+    import NewsWidget from '$lib/components/NewsWidget.svelte';
 
 	const sections = [
 		{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan' },
@@ -21,9 +22,26 @@
 		bg: 'bg-iris',
 		img: '/img/pre-footer-1.png',
 	}
+	const news = [
+		{
+			title: 'Open Call<br>Modena Film Festival 2026', subtitle: '',
+			abstract: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.',
+			ctaLabel: 'Candida il tuo film', ctaHref: 'https://www.google.com/', ctaBlank: true,
+		},
+		{
+			title: 'Open Call<br>Modena Film Festival 2025', subtitle: '',
+			ctaLabel: 'Candida il tuo film', ctaHref: 'https://www.google.com/', ctaBlank: true,
+		},
+		{
+			title: 'Open Call<br>Modena Film Festival 2024', subtitle: '',
+			abstract: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.',
+			ctaLabel: 'Candida il tuo film', ctaHref: 'https://www.google.com/', ctaBlank: true,
+		},
+	]
 </script>
 
 <main>
+	<NewsWidget {news}/>
 	<section id="hero" class="bg-pink">
 		<div>
 			<h2 class="wb-12 uppercase">Iscrizioni aperte</h2>
@@ -33,7 +51,7 @@
 		<Marquee speed=200 spac>
 			<p class="wb-cd-370">{@html 'Open Call Open Call Open Call&nbsp;'}</p>
 		</Marquee>
-		<a class="btn-l hover-shadow hover-black hover-bg-pink" href="http://" target="_blank" rel="noopener noreferrer">Candida il tuo film</a>
+		<a class="btn-l hover-black hover-bg-linen" href="https://www.google.com/" target="_blank" rel="noopener noreferrer">Candida il tuo film</a>
 	</section>
 	<section id="sections" class="bg-white">
 		<div>
@@ -88,7 +106,7 @@
 		div:nth-child(1) {
 			padding: var(--margin);
 			position: relative;
-			z-index: 0;
+			z-index: 2;
 		}
 		div:nth-child(1) h1 {
 			margin-top: 1rem;

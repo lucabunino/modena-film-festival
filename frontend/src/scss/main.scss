@@ -1,15 +1,15 @@
 /* Setup */
 $colors: (
-	"white":  #FFFFFF,
-	"black":  #000000,
-	"gray":   #AAAAAA,
-	"linen":  #E9E8E3,
-	"brown":  #977D2D,
-	"pink":   #FFBEE6,
-	"yellow": #FFF473,
-	"iris":   #85A4F7,
-	"red":    #F7604F,
-	"cyan": #1FCBFB,
+	"white":	#FFFFFF,
+	"black":	#000000,
+	"gray":		#AAAAAA,
+	"linen":	#E9E8E3,
+	"brown":	#977D2D,
+	"pink":		#FFBEE6,
+	"yellow":	#FFF473,
+	"iris":		#85A4F7,
+	"red":		#F7604F,
+	"cyan":		#1FCBFB,
 );
 :root{
 	@each $name, $value in $colors {
@@ -17,7 +17,9 @@ $colors: (
 	}
 	--gutter: 1rem;
 	--margin: 2rem;
-	--transition: cubic-bezier(.77,0,.175,1) 400ms;
+	--transition-s: cubic-bezier(.77,0,.175,1) 400ms;
+	--transition-m: cubic-bezier(.77,0,.175,1) 800ms;
+	--transition-l: cubic-bezier(.77,0,.175,1) 1200ms;
 	--sidebarWidth: 16rem;
 	--spacing-xl: 16rem;
 	--spacing-l: 12rem;
@@ -42,9 +44,13 @@ main {
 	grid-template-columns: repeat(8, 1fr);
 	padding: var(--margin) var(--margin) calc(var(--margin)*1.5);
 	column-gap: var(--margin);
-	row-gap: var(--spacing-m);
+	row-gap: var(--spacing-s);
+	height: fit-content;
 	>section {
 		grid-column: 1 / span 6;
+		&:not(:first-of-type) {
+			padding-top: var(--margin);
+		}
 		&:last-of-type {
 			padding-bottom: var(--spacing-l);
 		}
@@ -72,6 +78,7 @@ main {
 /* Buttons */
 .btn {
 	&,
+	&-xs,
 	&-s,
 	&-m,
 	&-l {
@@ -93,6 +100,40 @@ main {
 		}
 	}
 
+	&-xs {
+		font-size: .857rem;
+		font-weight: 700;
+		letter-spacing: .03em;
+		line-height: 1.2;
+		background-color: transparent;
+		border-radius: unset;
+		display: inline-block;
+    	position: relative;
+
+		&:hover {
+			color: inherit;
+			background-color: inherit;
+
+			&:after {
+				transform: scaleX(1);
+			}
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			bottom: -.02em;
+			left: 0;
+			height: 1px;
+			width: 100%;
+			background-color: var(--black);
+			transform: scaleX(0);
+			transform-origin: left;
+			transition: var(--transition-s);
+			transition-property: transform;
+		}
+	}
+
 	&-s {
 		font-weight: 500;
 		font-size: 1.5rem;
@@ -103,23 +144,25 @@ main {
 		display: inline-block;
     	position: relative;
 		
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: -0.1em;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background-color: var(--black);
+			transform: scaleX(1);
+			transform-origin: left;
+		}
+
 		&:hover {
 			color: inherit;
 			background-color: inherit;
-		}
 
-		&:after {
-			content: "";
-			position: absolute;
-			bottom: -.1em;
-			left: 0;
-			height: 1px;
-			width: 100%;
-			background-color: var(--black);
-			transform: scaleX(1);
-			transform-origin: right;
-			transition: var(--transition);
-			transition-property: transform;
+			&::after {
+				animation: line-wipe 1s ease forwards;
+			}
 		}
 	}
 
@@ -140,6 +183,24 @@ main {
 		padding: 1.15em 2em 1.2em;
 	}
 }
+@keyframes line-wipe {
+	0% {
+		transform: scaleX(1);
+		transform-origin: right;
+	}
+	40% {
+		transform: scaleX(0);
+		transform-origin: right;
+	}
+	60% {
+		transform: scaleX(0);
+		transform-origin: left;
+	}
+	100% {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+}
 @media screen and (max-width: 800px) {
 
 }
@@ -150,11 +211,13 @@ main {
 	.bg-#{$name}    { background-color: $value !important; }
 	.fill-#{$name}  { fill: $value !important; }
 	.stroke-#{$name}{ stroke: $value !important; }
+	.border-#{$name}{ border: solid 1px $value !important; }
 	
 	.hover-#{$name}:hover { color: $value !important; }
 	.hover-bg-#{$name}:hover { background-color: $value !important; }
 	.hover-fill-#{$name}:hover { fill: $value !important; }
 	.hover-stroke-#{$name}:hover { stroke: $value !important; }
+	.hover-border-#{$name}:hover { border: solid 1px $value !important; }
 }
 @each $from-name, $from-value in $colors {
   @each $to-name, $to-value in $colors {
@@ -171,9 +234,6 @@ main {
 }
 
 // General
-section {
-	grid-column: 1 / span 8;
-}
 .rounded-m {
 	overflow: hidden;
 	border-radius: 1rem;
@@ -187,6 +247,9 @@ section {
 	border-top: solid 1px var(--black);
 	padding-top: 1rem;
 	margin-bottom: 4rem;
+}
+.shadow {
+	box-shadow: 10px 5px 15px rgba(0, 0, 0, .1);
 }
 .hover-shadow:hover {
 	box-shadow: 10px 5px 15px rgba(0, 0, 0, .1);
@@ -205,7 +268,7 @@ section {
     background-color: var(--black);
     transform: scaleX(0);
     transform-origin: left;
-    transition: var(--transition);
+    transition: var(--transition-s);
     transition-property: transform;
 }
 .hover-underline:hover:after {

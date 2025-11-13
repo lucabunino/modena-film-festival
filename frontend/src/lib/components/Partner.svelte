@@ -10,7 +10,7 @@
 <style>
 	.partner {
 		position: relative;
-		transition: var(--transition);
+		transition: var(--transition-s);
 
 		.bg {
 			aspect-ratio: 4/3;
