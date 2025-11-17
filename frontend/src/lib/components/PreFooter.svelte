@@ -1,18 +1,27 @@
 <script>
 	let {prefooter} = $props()
+	let shaking = $state(false);
+	function handleLockedclick(e) {
+		e.preventDefault()
+		if (shaking) return;
+		shaking = true;
+		setTimeout(() => (shaking = false), 600);
+	}
 </script>
 
 <section id="pre-footer" class={prefooter.bg}>
 	{#if prefooter.img}<img src={prefooter.img} alt="">{/if}
 	<div>
 		<div>
-			{#if prefooter.subtitle}<h2 class="wb-12 uppercase">{prefooter.subtitle}</h2>{/if}
-			{#if prefooter.title}<h3 class="wb-cd-120 uppercase max-w-800">{prefooter.title}</h3>{/if}
-			{#if prefooter.content}<p class="content wb-21 max-w-600">{prefooter.content}</p>{/if}
+			{#if prefooter.subtitle}<h2 class="wb-12 wb-10-mb uppercase">{prefooter.subtitle}</h2>{/if}
+			{#if prefooter.title}<h3 class="wb-cd-120 wb-cd-60-mb uppercase max-w-800">{prefooter.title}</h3>{/if}
+			{#if prefooter.content}<p class="content wb-21 max-w-600">{@html prefooter.content}</p>{/if}
 		</div>
 		<div>
-			{#if prefooter.ctaLabel && prefooter.ctaLink}
-				<a class="btn-l" href={prefooter.ctaLink}>{prefooter.ctaLabel}</a>
+			{#if prefooter.cta.label && prefooter.cta.href}
+				<a class="btn-l {prefooter.cta.locked ? 'locked' : ''} {shaking ? 'shaking' : ''}" href={prefooter.cta.href}
+				onclick={(e) => {prefooter.cta.locked ? handleLockedclick(e) : ''}}
+				>{prefooter.cta.label}</a>
 			{/if}
 			{#if prefooter.annotation}<p class="annotation wb-21 max-w-600">{prefooter.annotation}</p>{/if}
 		</div>

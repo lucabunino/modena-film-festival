@@ -2,9 +2,13 @@
     let { juror } = $props()
 </script>
 
-<div class="juror wb-12">
-	<img src={juror.portrait} alt="">
-	<h3 class="wb-28">{juror.name} {juror.surname}</h3>
+<div class="juror wb-12 wb-10-mb" title="{juror.name} {juror.surname}">
+	{#if juror.portrait}
+		<img class="portrait _1_1 rounded-m" src={juror.portrait} alt="">
+	{:else}
+		<div class="placeholder _1_1 rounded-m gradient-xy-linen-white"></div>
+	{/if}
+	<h3 class="wb-28 wb-18-mb">{juror.name} {juror.surname}</h3>
 	{#if juror.role || juror.profession || juror.country}
 		<ul class="info">
 			{#if juror.role}
@@ -22,9 +26,6 @@
 
 <style>
 	.juror {
-		img {
-			aspect-ratio: 2/3;
-		}
 		h3 {
 			margin-top: 1rem;
 		}

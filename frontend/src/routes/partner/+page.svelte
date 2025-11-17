@@ -30,29 +30,34 @@
 					title: 'Heroestudio',
 					role: 'Media partner',
 					href: 'https://www.fondazionedimodena.it/',
-					abstract: 'Lorem ipsum',
 					logo: '/partners/heroestudio.png'
+				},
+				{
+					title: 'Giorgia Sandoni Bellucci',
+					role: 'Brand strategy',
+					href: 'https://www.instagram.com/giorgiasandonibellucci',
+					logo: '/partners/giorgia-sandoni-bellucci.png'
 				}
 			]
-		}
+		},
 	]
 </script>
 
 <main class="bg-white">
-	<Navigator title="Festival" {sections} cta={{label: 'Diventa sponsor', href: '/partner/sponsor'}}/>
+	<Navigator title="Festival" {sections} cta={{label: 'Diventa sponsor', href: '/partner/sponsor', locked: true}}/>
 	<Title subtitle='A ogni sua edizione, il Locarno Film Festival può contare sul solido appoggio dei Partner pubblici e privati. Sono loro, infatti, a permettere alla macchina organizzativa della manifestazione di compiere di anno in anno la sua impresa, portando a Locarno la magia del cinema.' size={'m'}/>
 	{#each clusters as cluster, i}
 		<section id={cluster.slug} title={cluster.title} bind:this={sections[i]} class="cluster">
-			<h2 class="section-title wb-12 uppercase">{cluster.title}</h2>
+			<h2 class="section-title wb-12 wb-10-mb uppercase">{cluster.title}</h2>
 			<div class="partners">
 				{#each cluster.partners as partner, j}
 					<div class="partner">
 						<a class="bg-linen" href={partner.href} target="_blank" rel="noopener noreferrer">
 							<img src={partner.logo} alt="Logo di {partner.title}">
 						</a>
-						<h3 class="wb-24">{partner.title}</h3>
-						{#if partner.role}<h4 class="wb-12">{partner.role}</h4>{/if}
-						{#if partner.abstract}<p>{partner.abstract}</p>{/if}
+						<h3 class="wb-24 wb-21-mb">{partner.title}</h3>
+						{#if partner.role}<h4 class="wb-12 wb-10-mb">{partner.role}</h4>{/if}
+						{#if partner.abstract}<p class="wb-14 wb-15-mb">{partner.abstract}</p>{/if}
 					</div>
 				{/each}
 			</div>
@@ -61,16 +66,19 @@
 </main>
 
 <style>
-main {
-	display: grid;
-	grid-template-columns: repeat(8, 1fr);
-	min-height: 80vh;
-}
 .partners {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	column-gap: var(--gutter);
 	row-gap: var(--spacing-s);
+
+	@media screen and (max-width: 1512px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media screen and (max-width: 768px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 
 	.partner {
 		display: flex;

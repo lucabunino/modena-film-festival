@@ -57,5 +57,26 @@
 		opacity: 1;
 		transform: translateX(0);
 	}
+
+	@media screen and (max-width: 1080px) {
+		top: unset;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border-radius: 0;
+		border: unset;
+		border-top: solid 1px var(--black);
+		width: 100%;
+		min-height: unset;
+		transform: translateY(150%);
+
+		&.visible {
+			transform: translateY(0);
+		}
+
+		button {
+			margin-top: var(--spacing-xs);
+		}
+	}
 }
 </style>

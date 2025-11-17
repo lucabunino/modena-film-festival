@@ -32,12 +32,12 @@
 		{/each}
 	</section>
 	<section id="who-we-are" title="Chi siamo" bind:this={sections[0]}>
-		<h2 class="section-title wb-12 uppercase">Chi siamo</h2>
-		<p class="wb-21 max-w-800">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-		<p class="wb-21 max-w-800">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+		<h2 class="section-title wb-12 wb-10-mb uppercase">Chi siamo</h2>
+		<p class="wb-21 wb-18-mb max-w-800">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+		<p class="wb-21 wb-18-mb max-w-800">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
 	</section>
 	<section id="chart" title="Organigramma" bind:this={sections[1]}>
-		<h2 class="section-title wb-12 uppercase">Organigramma</h2>
+		<h2 class="section-title wb-12 wb-10-mb uppercase">Organigramma</h2>
 		<div class="chart">
 			{#each people as person}
 				<Person {person}/>
@@ -52,6 +52,11 @@
 	grid-template-columns: repeat(2, 1fr);
 	gap: var(--gutter);
 	margin-top: -4rem;
+
+	@media screen and (max-width: 516px) {
+		grid-template-columns: repeat(1, 1fr);
+		margin-top: -2rem;
+	}
 }
 #who-we-are {
 	p + p {
@@ -64,6 +69,16 @@
 		grid-template-columns: repeat(4, 1fr);
 		row-gap: var(--spacing-s);
 		column-gap: var(--gutter);
+
+		@media screen and (max-width: 1512px) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		@media screen and (max-width: 516px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media screen and (max-width: 392px) {
+			grid-template-columns: repeat(1, 1fr);
+		}
 	}
 }
 </style>

@@ -8,7 +8,7 @@
 		setTimeout(() => (shaking = false), 600);
 	}
 </script>
-<aside>
+<aside class="desktop-only">
 	<header>
 		<a href="/" class="logo" aria-label="Modena Film Festival">
 			<svg width="67" height="47" viewBox="0 0 67 47" xmlns="http://www.w3.org/2000/svg">
@@ -19,11 +19,11 @@
 			<h1 class="wb-28 leading-1">Modena Film <br>Festival</h1>
 		</a>
 		<a href="/tickets" class="tickets btn-m locked {shaking ? 'shaking' : ''}" onclick={(e) => {handleLockedclick(e)}}>Tickets</a>
-		<nav class="wb-28 leading-1_3" aria-label="Main navigation" menubar aria-orientation="vertical">
+		<nav class="menu wb-28 leading-1_3" aria-label="Main navigation" menubar aria-orientation="vertical">
 			<ul>
 				<li><a aria-current={page.url.pathname.startsWith('/festival') ? 'page' : undefined} href="/festival">Festival</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/about') ? 'page' : undefined} href="/about">About</a></li>
-				<li><a aria-current={page.url.pathname.startsWith('/supporter') ? 'page' : undefined} href="/supporter">Supporter</a></li>
+				<li><a aria-current={page.url.pathname.startsWith('/sostienici') ? 'page' : undefined} href="/sostienici">Sostienici</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/partner') ? 'page' : undefined} href="/partner">Partner</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/contatti') ? 'page' : undefined} href="/contatti">Contatti</a></li>
 			</ul>
@@ -39,7 +39,7 @@
 			</li>
 			<li>
 				<a href="https://facebook.com/modenafilmfestival" target="_blank" rel="noopener" aria-label="Facebook">
-				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg> Facebook
+					<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg> Facebook
 				</a>
 			</li>
 			</ul>
@@ -68,39 +68,39 @@ aside {
 	justify-content: space-between;
 	gap: 4rem;
 	overflow: scroll;
-}
-/* Header */
-header {
-	h1 {
-		margin-top: 1rem;
-	}
-	.tickets {
-		margin-top: 1rem;
-	}
-	nav {
-		margin-top: 4rem;
-		[aria-current] {
-			color: var(--white);
+
+	header {
+		h1 {
+			margin-top: 1rem;
+		}
+		.tickets {
+			margin-top: 1rem;
+		}
+		.menu {
+			margin-top: 4rem;
+			[aria-current] {
+				color: var(--white);
+			}
 		}
 	}
 }
-/* Meta */
 .meta {
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
+
+	.social {
+		ul {
+			display: flex;
+			flex-direction: column;
+			gap: .3em;
+		}
+		a {
+			display: flex;
+			gap: .3em;
+		}
+	}
 }
-.social {
-	ul {
-		display: flex;
-		flex-direction: column;
-		gap: .3em;
-	}
-	a {
-		display: flex;
-		gap: .3em;
-	}
-} 
 svg {
 	fill: var(--black);
 }

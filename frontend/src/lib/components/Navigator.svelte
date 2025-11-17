@@ -5,19 +5,25 @@
 	import { getBanner } from '$lib/stores/banner.svelte';
 	let banner = getBanner()
 	let visible = $state(false)
-
+	let shaking = $state(false);
 	$effect(() => {
 		visible = true
 	})
+	function handleLockedclick(e) {
+		e.preventDefault()
+		if (shaking) return;
+		shaking = true;
+		setTimeout(() => (shaking = false), 600);
+	}
 </script>
 
 <svelte:window bind:scrollY></svelte:window>
 
 {#if sections}
 	<nav>
-		<div class="rounded-m wb-21 {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}">
+		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}">
 			{#if title}
-				<h1 class="wb-12 uppercase" onclick={() => {scrollY = 0}}>{title}</h1>
+				<h1 class="wb-12 uppercase desktop-only" onclick={() => {scrollY = 0}}>{title}</h1>
 			{/if}
 			<ol>
 				{#each sections as section, i}
@@ -27,7 +33,9 @@
 				{/each}
 				{#if cta}
 					<li>
-						<a class="cta btn-m {cta.bg ? cta.bg : ''}" href={cta.href} target={cta.blank ? '_blank' : ''} rel={cta.blank ? 'noopener noreferrer' : ''}>{cta.label}</a>
+						<a class="cta wb-10-mb btn-m {cta.bg ? cta.bg : ''} {cta.locked ? 'locked' : ''} {shaking ? 'shaking' : ''}" href={cta.href} target={cta.blank ? '_blank' : ''} rel={cta.blank ? 'noopener noreferrer' : ''}
+						onclick={(e) => {cta.locked ? handleLockedclick(e) : ''}}
+						>{cta.label}</a>
 					</li>
 				{/if}
 			</ol>
@@ -42,7 +50,6 @@
 		grid-column: 7 / span 2;
 		height: 100%;
 		width: stretch;
-		min-width: 250px;
 		z-index: 4;
 		pointer-events: none;
 
@@ -68,11 +75,54 @@
 				margin-bottom: 2rem;
 				cursor: pointer;
 			}
+			ol {
+				.cta {
+					width: 100%;
+					text-align: center;
+					margin-top: 2rem;
+				}
+			}
+		}
 
-			.cta {
-				width: 100%;
-				text-align: center;
-				margin-top: 2rem;
+		@media screen and (max-width: 1080px) {
+			height: stretch;
+
+			div {
+				margin: 0;
+				top: calc(100% - 2.833rem + 1px);
+				border-radius: 0;
+				padding: 0;
+				overflow-x: scroll;
+				transform: unset;
+				-ms-overflow-style: none;
+    			scrollbar-width: none;
+				
+				&::-webkit-scrollbar {
+					width: 0;
+					height: 0;
+				}
+
+				ol {
+					display: flex;
+					align-items: baseline;
+
+					li {
+						a {
+							padding: 1rem var(--margin);
+							background-color: var(--linen);
+							font-size: .833rem;
+							text-transform: uppercase;
+							display: block;
+							white-space: pre;
+						}
+					}
+					
+					.cta {
+						margin: 0;
+						background-color: var(--white);
+						border-radius: 0;
+					}
+				}
 			}
 		}
 	}

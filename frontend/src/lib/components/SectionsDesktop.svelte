@@ -33,7 +33,6 @@
 	}
 
 	let shaking = $state([]);
-	$inspect(shaking)
 	function handleLockedclick(e, i) {
 		e.preventDefault()
 		if (shaking[i]) return;
@@ -46,7 +45,7 @@
 onmousemove={(e) => {mouse = {x: e.clientX, y: e.clientY}; sectionEls.forEach((_, i) => updateTilt(i))}}
 ></svelte:window>
 
-<div class="sections" use:viewport onenterViewport={() => visibleSections = true}>
+<div class="sections desktop-only" use:viewport onenterViewport={() => visibleSections = true}>
 	{#each sections as section, i}
 		<a href={`/sezioni/${section.slug}`}
 		class="section {activeSectionEl !== i ? `scattered${activeSectionEl}` : ``} {activeSectionEl === i ? `active` : ``} {visibleSections ? `visible` : ``} locked {shaking[i] ? `shaking` : ``}"

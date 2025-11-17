@@ -1,8 +1,10 @@
 <script>
 	import Marquee from 'svelte-fast-marquee';
     import SectionsDesktop from '$lib/components/SectionsDesktop.svelte';
+    import SectionsMobile from '$lib/components/SectionsMobile.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import NewsWidget from '$lib/components/NewsWidget.svelte';
+    import { innerWidth } from 'svelte/reactivity/window';
 
 	const sections = [
 		{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan' },
@@ -41,41 +43,51 @@
 </script>
 
 <main>
-	<NewsWidget {news}/>
 	<section id="hero" class="bg-pink">
 		<div>
 			<h2 class="wb-12 uppercase">Iscrizioni aperte</h2>
-			<h1 class="wb-100">15—19.4.2026</h1>
-			<p class="wb-28">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+			<div class="mobile-only">
+				<Marquee speed=100>
+					<p class="wb-cd-110-mb marquee">{@html 'Open Call Open Call Open Call&nbsp;'}</p>
+				</Marquee>
+			</div>
+			<h1 class="wb-100 wb-28-mb">15—19.4.2026</h1>
+			<p class="wb-28 wb-15-mb">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
 		</div>
-		<Marquee speed=200 spac>
-			<p class="wb-cd-370">{@html 'Open Call Open Call Open Call&nbsp;'}</p>
-		</Marquee>
+		<div class="desktop-only">
+			<Marquee speed=200>
+				<p class="wb-cd-370 marquee">{@html 'Open Call Open Call Open Call&nbsp;'}</p>
+			</Marquee>
+		</div>
 		<a class="btn-l hover-black hover-bg-linen" href="https://www.google.com/" target="_blank" rel="noopener noreferrer">Candida il tuo film</a>
 	</section>
+	<NewsWidget {news}/>
 	<section id="sections" class="bg-white">
 		<div>
-			<h2 class="wb-12 uppercase">Titoletto di sezione</h2>
-			<h3 class="wb-cd-60 uppercase">Un festival<br>dedicato<br>ai cinque sensi</h3>
-			<p class="wb-18">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint.</p>
-			<a class="btn-m white bg-black hover-black hover-bg-linen" href="/about">Leggi di più</a>
+			<h2 class="wb-12 wb-10-mb uppercase">Titoletto di sezione</h2>
+			<h3 class="wb-cd-60 wb-cd-40-mb uppercase">Un festival <br>dedicato <br>ai cinque sensi</h3>
+			<SectionsMobile {sections}/>
+			<p class="wb-18 wb-15-mb">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint.</p>
+			<a class="btn-m white bg-black hover-black hover-bg-linen" href="/festival">Leggi di più</a>
 		</div>
 		<SectionsDesktop {sections}/>
 	</section>
 </main>
-<PreFooter {prefooter}/>
+<!-- <PreFooter {prefooter}/> -->
 
 
 <style>
 	main {
 		padding: 0;
 		row-gap: 0;
-	}
-	section {
-		grid-column: 1 / span 8;
-	}
-	section:last-of-type {
-		padding-bottom: unset;
+
+		section {
+			grid-column: 1 / span 8;
+		}
+
+		@media screen and (max-width: 1080px) {
+			margin-top: calc(var(--menuHeight) + var(--spacing-xs));
+		}
 	}
 	#hero {
 		height: 100vh;
@@ -107,17 +119,22 @@
 			padding: var(--margin);
 			position: relative;
 			z-index: 2;
+			overflow: hidden;
+
+			h1 {
+				margin-top: 1rem;
+			}
+
+			p {
+				margin-top: 1rem;
+				width: 100%;
+				max-width: 600px;
+			}
 		}
-		div:nth-child(1) h1 {
-			margin-top: 1rem;
-		}
-		div:nth-child(1) p {
-			margin-top: 1rem;
-			max-width: 600px;
-		}
-		p {
+		.marquee {
 			overflow: hidden;
 			z-index: 0;
+			user-select: none;
 		}
 		a {
 			position: absolute;
@@ -125,6 +142,43 @@
 			bottom: var(--margin);
 			transform: translateX(-50%);
 			z-index: 2;
+		}
+
+		@media screen and (max-width: 1080px) {
+			height: auto;
+			width: calc(100vw - var(--margin)*2);
+			border-radius: 3rem;
+			margin: var(--spacing-xs) var(--margin);
+			display: grid;
+
+			div:nth-child(1) {
+				padding: 3rem 0 var(--margin);
+
+				h2 {
+					margin: 0 var(--margin);
+				}
+
+				h1 {
+					margin: var(--spacing-xs) var(--margin) 0;
+				}
+
+				p {
+					margin: var(--spacing-m) var(--margin) 0;
+					width: stretch;
+				}
+				.marquee {
+					margin: 1rem 0 0;
+					max-width: unset;
+				}
+			}
+			a {
+				position: relative;
+				left: unset;
+				margin: 0 var(--margin) var(--margin);
+				bottom: unset;
+				transform: unset;
+				text-align: center;
+			}
 		}
 	}
 	#sections {
@@ -137,16 +191,49 @@
 			position: relative;
 			z-index: 2;
 			pointer-events: none;
+
+			h3 {
+				margin-top: 1rem;
+			}
+
+			p {
+				margin-top: 6rem;
+			}
+
+			a {
+				margin-top: 2rem;
+				pointer-events: all;
+			}
 		}
-		>div:nth-child(1) h3 {
-			margin-top: 1rem;
-		}
-		>div:nth-child(1) p {
-			margin-top: 6rem;
-		}
-		>div:nth-child(1) a {
-			margin-top: 2rem;
-			pointer-events: all;
+
+		@media screen and (max-width: 1080px) {
+			padding: var(--spacing-m) 0;
+			width: 100%;
+			
+			>div:nth-child(1) {
+				max-width: unset;
+				pointer-events: all;
+
+				h2 {
+					padding: 0 var(--margin);
+				}
+				h3 {
+					padding: 0 var(--margin);
+
+					br {
+						display: none;
+					}
+				}
+
+				p {
+					padding: 0 var(--margin);
+					margin-top: var(--spacing-s);
+				}
+
+				a {
+					margin: 2rem var(--margin) 0;
+				}
+			}
 		}
 	}
 </style>

@@ -10,9 +10,9 @@
 	<Title title='Regolamento<br>Modena Film Festival<br>Edizione 2026' size={'m'}/>
 	{#each rules as rule, i}
 		<section id={i} title={rule.title} bind:this={sections[i]} class="rule">
-			<h2 class="section-title wb-12 uppercase">{rule.title}</h2>
+			<h2 class="section-title wb-12 wb-10-mb uppercase">{rule.title}</h2>
 			{#each rule.content as p, j}
-				<div class="content wb-18 max-w-800">{@html p}</div>
+				<div class="content wb-18 wb-15-mb max-w-800">{@html p}</div>
 			{/each}
 		</section>
 	{/each}
@@ -38,6 +38,10 @@ main {
 		:global(h3) {
 			margin-top: 1.2em;
 		}
+	}
+	@media screen and (max-width: 1080px) {
+		display: flex;
+		flex-direction: column;
 	}
 }
 </style>

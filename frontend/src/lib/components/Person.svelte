@@ -4,18 +4,19 @@
 </script>
 
 <div class="person">
-	<div class="portrait rounded-m gradient-xy-pink-brown"></div>
-	<h3 class="wb-24">{person.name} {person.surname}</h3>
+	{#if person.portrait}
+		<img class="_2_3 rounded-m" src={person.portrait} alt="Ritratto di {person.portrait}">
+	{:else}
+		<div class="placeholder _1_1 rounded-m gradient-xy-linen-white"></div>
+	{/if}
+	<h3 class="wb-24 wb-18-mb">{person.name} {person.surname}</h3>
 	{#if person.role}
-		<p class="role wb-12">{person.role}</p>
+		<p class="role wb-12 wb-10-mb">{person.role}</p>
 	{/if}
 </div>
 
 <style>
 	.person {
-		.portrait {
-			aspect-ratio: 1;
-		}
 		h3 {
 			margin-top: .7rem;
 		}

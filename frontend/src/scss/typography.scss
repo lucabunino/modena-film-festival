@@ -82,21 +82,43 @@
 	&-21,
 	&-24,
 	&-28,
-	&-100 {
+	&-100,
+	&-10-mb,
+	&-12-mb,
+	&-15-mb,
+	&-18-mb,
+	&-21-mb,
+	&-28-mb,
+	&-36-mb,
+	&-10-mb-s {
 		font-family: "Waldenburg", Helvetica, Arial, sans-serif;
 		font-optical-sizing: auto;
 		font-weight: 500;
 		font-style: normal;
 	}
 
-	&-10 { font-size: .714rem; font-weight: 700; letter-spacing: .03em; line-height: 1.2; }
-	&-12 { font-size: .857rem; font-weight: 700; letter-spacing: .03em; line-height: 1.2; }
-	&-14 { font-size: 1rem; letter-spacing: .01em; line-height: 1.2; }
-	&-18 { font-size: 1.286rem; letter-spacing: 0em; line-height: 1.15; }
-	&-21 { font-size: 1.5rem; letter-spacing: -0.01em; line-height: 1.1; }
-	&-24 { font-size: 1.714rem; letter-spacing: -0.01em; line-height: 1.1; }
-	&-28 { font-size: 2rem; letter-spacing: -0.01em; line-height: 1.1; }
-	&-100 { font-size: 7.15rem;   letter-spacing: -0.03em; line-height: .9; }
+	&-10		{ font-size: .714rem; font-weight: 700; letter-spacing: .03em; line-height: 1.2; }
+	&-12		{ font-size: .857rem; font-weight: 700; letter-spacing: .03em; line-height: 1.2; }
+	&-14		{ font-size: 1rem; letter-spacing: .01em; line-height: 1.2; }
+	&-18		{ font-size: 1.286rem; letter-spacing: 0em; line-height: 1.15; }
+	&-21		{ font-size: 1.5rem; letter-spacing: -0.01em; line-height: 1.1; }
+	&-24		{ font-size: 1.714rem; letter-spacing: -0.01em; line-height: 1.1; }
+	&-28		{ font-size: 2rem; letter-spacing: -0.01em; line-height: 1.1; }
+	&-100		{ font-size: 7.15rem;   letter-spacing: -0.03em; line-height: .9; }
+
+	@media screen and (max-width: 1080px) {
+		&-10-mb	{ font-size: .833rem; font-weight: 700; letter-spacing: .03em; line-height: 1.2; }
+		&-12-mb	{ font-size: 1rem; letter-spacing: .01em; line-height: 1.2; }
+		&-15-mb	{ font-size: 1.25rem; letter-spacing: 0em; line-height: 1.2; }
+		&-18-mb	{ font-size: 1.5rem; letter-spacing: 0em; line-height: 1.15; }
+		&-21-mb	{ font-size: 1.75rem; letter-spacing: -0.01em; line-height: 1.1; }
+		&-28-mb	{ font-size: 2.333rem; letter-spacing: -0.01em; line-height: 1.1; }
+		&-36-mb	{ font-size: 3rem; letter-spacing: -0.01em; line-height: 1; }	
+	}
+
+	@media screen and (max-width: 768px) {
+		&-10-mb-s	{ font-size: .833rem; font-weight: 700; letter-spacing: .03em; line-height: 1.2; }
+	}
 }
 .wb-cd {
 	&,
@@ -106,19 +128,32 @@
 	&-60,
 	&-120,
 	&-170,
-	&-370 {
+	&-370,
+	&-24-mb,
+	&-40-mb,
+	&-60-mb,
+	&-110-mb {
 		font-family: "Waldenburg Condensed", Helvetica, Arial, sans-serif;
 		font-optical-sizing: auto;
 		font-weight: 800;
 		font-style: normal;
 	}
-	&-24  { font-size: 1.714rem; letter-spacing: -0.01em; line-height: .9; }
-	&-30  { font-size: 2.143rem; letter-spacing: -0.01em; line-height: .9; }
-	&-45  { font-size: 3.214rem; letter-spacing: -0.01em; line-height: .9; }
-	&-60  { font-size: 4.286rem; letter-spacing: -0.02em; line-height: .85; }
-	&-120 { font-size: 8.571rem;   letter-spacing: -0.03em; line-height: .85; }
-	&-170 { font-size: 12.143rem;   letter-spacing: -0.04em; line-height: .8; }
-	&-370 { font-size: 26.429rem;   letter-spacing: -0.04em; line-height: 1; }
+	&-24		{ font-size: 1.714rem; letter-spacing: -0.01em; line-height: .9; }
+	&-30		{ font-size: 2.143rem; letter-spacing: -0.01em; line-height: .9; }
+	&-45		{ font-size: 3.214rem; letter-spacing: -0.01em; line-height: .9; }
+	&-60		{ font-size: 4.286rem; letter-spacing: -0.02em; line-height: .85; }
+	&-120		{ font-size: 8.571rem;   letter-spacing: -0.03em; line-height: .85; }
+	&-170		{ font-size: 12.143rem;   letter-spacing: -0.04em; line-height: .8; }
+	&-370		{ font-size: 26.429rem;   letter-spacing: -0.04em; line-height: 1; }
+
+	@media screen and (max-width: 1080px) {
+		&-24-mb		{ font-size: 2rem; letter-spacing: -0.01em; line-height: .9; }
+		&-30-mb		{ font-size: 2.5rem; letter-spacing: -0.02em; line-height: .85; }
+		&-40-mb		{ font-size: 3.333rem; letter-spacing: -0.02em; line-height: .85; }
+		&-50-mb		{ font-size: 4.167rem; letter-spacing: -0.02em; line-height: .85; }
+		&-60-mb		{ font-size: 5rem; letter-spacing: -0.02em; line-height: .85; }
+		&-110-mb	{ font-size: 9.167rem;   letter-spacing: -0.03em; line-height: .85; }
+	}
 }
 .sw {
 	&,
@@ -142,13 +177,20 @@
 }
 .nr {
   	&,
-	&-26 {
+	&-21,
+	&-26,
+	&-21-mb {
 		font-family: "Newsreader", serif;
 		font-optical-sizing: auto;
 		font-weight: 400;
 		font-style: normal;
 	}
+	&-21 { font-size: 1.5rem; letter-spacing: 0em; line-height: 1.1; }
 	&-26 { font-size: 2rem; letter-spacing: 0em; line-height: 1.1; }
+
+	@media screen and (max-width: 1080px) {
+		&-21-mb { font-size: 1.75rem; letter-spacing: 0em; line-height: 1.1; }
+	}
 }
 .bold			{ font-weight: 700; }
 .uppercase		{ text-transform: uppercase; }

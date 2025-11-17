@@ -7,16 +7,14 @@
 
 <footer aria-label="Footer">
 	<section id="contacts" aria-labelledby="contact-title">
-		<h3 id="contact-title" class="title wb-12 uppercase">Contattaci</h3>
-		<p class="wb-14">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-		</p>
+		<h3 id="contact-title" class="title wb-12 wb-10-mb uppercase">Contattaci</h3>
+		<p class="wb-14 wb-15-mb">Per informazioni sul festival, accreditamenti, partnership o proposte</p>
 		<ul class="contact-list" aria-label="Indirizzi email di contatto">
-			<li>
+			<!-- <li>
 				<a class="email btn-m bg-linen hover-bg-black" href="mailto:press@modenafilmfestival.it">
 					press@modenafilmfestival.it
 				</a>
-			</li>
+			</li> -->
 			<li>
 				<a class="email btn-m bg-linen hover-bg-black" href="mailto:info@modenafilmfestival.it">
 					info@modenafilmfestival.it
@@ -24,16 +22,16 @@
 			</li>
 		</ul>
 	</section>
-	<section id="newsletter" aria-labelledby="newsletter-title">
-		<h3 id="newsletter-title" class="title wb-12 uppercase">Newsletter</h3>
-		<p class="wb-cd-60 uppercase">Vuoi rimanere aggiornato?</p>
-		<p class="wb-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	<!-- <section id="newsletter" aria-labelledby="newsletter-title">
+		<h3 id="newsletter-title" class="title wb-12 wb-10-mb uppercase">Newsletter</h3>
+		<p class="wb-cd-60 wb-cd-40-mb uppercase">Vuoi rimanere aggiornato?</p>
+		<p class="wb-14 wb-15-mb">Iscriviti per ricevere aggioramentii su programma, ospiti, eventi e iniziative del Modena Film Festival.</p>
 		<form action="/newsletter" method="post" aria-label="Iscriviti alla newsletter">
-			<input class="wb-21 bg-linen" type="email" name="email" id="email" placeholder="Inserisci la tua email" required bind:value={email}>
+			<input class="wb-21 wb-10-mb-s bg-linen" type="email" name="email" id="email" placeholder="Inserisci la tua email" required bind:value={email}>
 			<button class="btn-m" type="submit" class:email>Iscriviti</button>
 		</form>
-	</section>
-	<section id="project" aria-labelledby="project-title" class="wb-12">
+	</section> -->
+	<section id="project" aria-labelledby="project-title" class="wb-12 wb-10-mb">
 		<div>
 			<h3 id="project-title">Un progetto a cura di</h3>
 			<div class="logos">
@@ -62,7 +60,7 @@
 			</div>
 		</div>
 	</section>
-	<section id="credits" aria-label="Crediti" class="wb-12">
+	<section id="credits" aria-label="Crediti" class="wb-12 wb-10-mb">
 		<div>
 			<p>Progettazione e sviluppo: <a class="btn-xs" href="https://giuliabenedetti.eu/" target="_blank" rel="noopener noreferrer">Giulia Benedetti</a> e <a class="hover-underline" href="https://www.lucabunino.com/" target="_blank" rel="noopener noreferrer">Luca Bunino</a></p>
 			<p>Media partner: <a class="btn-xs" href="https://www.heroestudio.it/" target="_blank" rel="noopener noreferrer">Heroestudio</a></p>
@@ -72,9 +70,14 @@
 				<a href="/privacy" class="btn-xs">Privacy policy</a>
 				<a href="/cookies" class="btn-xs">Cookie policy</a>
 			</div>
-			<button class="btn-xs" onclick={() => {scrollY = 0}}>Scroll to top ↑</button>
+			<button class="btn-xs desktop-s-only" onclick={() => {scrollY = 0}}>Scroll to top ↑</button>
 		</div>
 	</section>
+	<p class="mobile-s-only wb-12 wb-10-mb">© {new Date().getFullYear()}<br>
+	Modena Film Festival<br>
+	All rights reserved<br>
+	P.IVA 13457550963
+	</p>
 </footer>
 
 <style>
@@ -85,7 +88,7 @@
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
 		column-gap: var(--gutter);
-		row-gap: 4rem;
+		row-gap: var(--spacing-s);
 
 		#contacts {
 			grid-column: 1 / span 5;
@@ -143,7 +146,7 @@
 			.logos {
 				display: flex;
 				column-gap: var(--margin);
-				margin-top: 2rem;
+				margin-top: var(--spacing-xs);
 
 				img {
 					height: 5vw;
@@ -170,6 +173,48 @@
 
 			p+p {
 				margin-top: .2em;
+			}
+		}
+
+		@media screen and (max-width: 1080px) {
+			background-color: var(--brown);
+		}
+
+		@media screen and (max-width: 768px) {
+			grid-template-columns: repeat(1, 1fr);
+
+			#contacts {
+				grid-column: 1 / span 1;
+			}
+
+			#newsletter {
+				grid-column: 1 / span 1;
+
+				form {
+					input[type="email"] {
+						text-transform: uppercase;
+					}
+				}
+			}
+
+			#project {
+				grid-column: 1 / span 1;
+				flex-direction: column;
+				row-gap: var(--spacing-xs);
+
+				.logos {
+					margin-top: 1rem;
+
+					img {
+						height: 15vw;
+						width: auto;
+					}
+				}
+			}
+
+			#credits {
+				grid-column: 1 / span 1;
+				row-gap: var(--spacing-xs);
 			}
 		}
 	}

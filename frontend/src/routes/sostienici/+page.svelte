@@ -26,57 +26,72 @@
 		{name: 'Vanna', surname: 'Bortolamasi'},
 	]
 	const prefooter = {
-		subtitle: "Acquista gli abbonamenti",
-		title: "Lorem ipsum eiusque belli 100€",
-		content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-		ctaLabel: "Compra ora*",
-		ctaLink: "/tickets",
-		annotation: '*Lorem ipsum adisciplit esset',
+		subtitle: "Abbonamenti",
+		title: "Acquista gli abbonamenti",
+		content: "Stiamo preparando diverse formule di abbonamento per permetterti di vivere il Modena Film Festival come preferisci: un giorno, più giorni o l’intera esperienza. <br>A breve troverai qui tutte le opzioni, i prezzi e le modalità di acquisto.",
+		cta: {href: '/tickets', label: 'Acquista*', locked: true},
+		annotation: '*Gli abbonamenti saranno disponibili online prima dell’inizio del festival.',
 		bg: 'bg-yellow',
-		img: '/img/pre-footer-1.png',
 	}
 
+	let swiperEl = $state(undefined)
+	let swiperIndex = $state(0)
 	let visible = $state(false)
-
-	// Lifecycle
+	const swiperParams = {
+		spaceBetween: 10,
+		slidesOffsetBefore: 15,
+		slidesOffsetAfter: 15,
+		freeMode: false,
+		breakpoints: {
+			1080: {
+				spaceBetween: 14,
+				slidesOffsetBefore: 28,
+				slidesOffsetAfter: 28,
+				freeMode: true,
+			}
+		}
+	};
 	$effect(() => {
-		visible = true
+		Object.assign(swiperEl, swiperParams);
+		swiperEl.initialize();
+	
+		setTimeout(() => {
+			visible = true
+		}, 50);
 	})
 </script>
 
 <main class="bg-white">
 	<Navigator title="Supporter" {sections}/>
 	<Title
-	title='Make it <br>happen!'
+	title='Sostieni <br>il festival!'
 	subtitle='Scegli la tua fascia di sostegno <br>e aiutaci a realizzare il festival!'
 	size={'l'}
 	/>
-	<section id="become-supporter" title="Diventa supporter" bind:this={sections[0]}>
-		<h2 class="section-title wb-12 uppercase">Diventa supporter</h2>
-		<p class="wb-24 max-w-600">Puoi donare con boniﬁco o PayPal.* Ti chiediamo soltanto di indicare nella causale il tuo nome e cognome (a meno che tu non preferisca restare anonimo/a). Se non puoi donare, non preoccuparti: puoi aiutarci lo stesso semplicemente  spargendo la voce tra amici e conoscenti!</p>
-		<p class="bank-info wb-14">Boniﬁco Bancario:<br>
+	<section id="become-supporter" title="Diventa sostenitore" bind:this={sections[0]}>
+		<h2 class="section-title wb-12 wb-10-mb uppercase">Diventa sostenitore</h2>
+		<p class="wb-24 wb-18-mb max-w-600">Puoi donare con boniﬁco o PayPal.* Ti chiediamo soltanto di indicare nella causale il tuo nome e cognome (a meno che tu non preferisca restare anonimo/a). Se non puoi donare, non preoccuparti: puoi aiutarci lo stesso semplicemente  spargendo la voce tra amici e conoscenti!</p>
+		<p class="bank-info wb-14 wb-12-mb">Boniﬁco Bancario:<br>
 		Crispy Cinema Club APS<br>
 		IT50Y0538766890000004422054</p>
 	</section>
 	<section id="tiers" title="Tiers">
 		<swiper-container class="{visible ? 'visible' : ''}"
+		init="false"
 		mousewheel={{
 			forceToAxis: true,
 		}}
 		grabCursor={true}
 		direction='horizontal'
 		slides-per-view='auto'
-		space-between={18}
-		slides-offset-before={36}
-		slides-offset-after={36}
-		free-mode={true}
+		bind:this={swiperEl}
 		>
 			{#each tiers as tier, i}
 				<swiper-slide class="tier bg-yellow rounded-l">
 					<div>
-						<h3 class="wb-28 bold">{tier.title}</h3>
-						<h4 class="nr-26">{#if tier.isCustomPrice}{@html 'A partire da '}{/if}{tier.price}€</h4>
-						<p class="wb-18 max-w-400">{tier.abstract}</p>
+						<h3 class="wb-28 wb-21-mb bold">{tier.title}</h3>
+						<h4 class="nr-26 nr-21-mb">{#if tier.isCustomPrice}{@html 'A partire da '}{/if}{tier.price}€</h4>
+						<p class="wb-18 wb-15-mb max-w-400">{tier.abstract}</p>
 					</div>
 					<div class="btns">
 					<a class="btn-l" href="https://paypal.me/CrispyCinemaClubAPS/{tier.price}" target="_blank" rel="noopener noreferrer">Dona {tier.price}€</a>
@@ -88,7 +103,7 @@
 			{/each}
 		</swiper-container>
 	</section>
-	<section id="promoters" title="Promotori" bind:this={sections[1]}>
+	<!-- <section id="promoters" title="Promotori" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 uppercase">Promotori</h2>
 		<div class="promoters">
 			{#each promoters as promoter, i}
@@ -103,8 +118,8 @@
 				<h3 class="supporter wb-28">{supporter.name} {supporter.surname}</h3>
 			{/each}
 		</div>
-	</section>
-	<section id="friends" title="Amici" bind:this={sections[3]}>
+	</section> -->
+	<section id="friends" title="Amici" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 uppercase">Amici</h2>
 		<div class="friends">
 			{#each friends as friend, i}
@@ -164,6 +179,14 @@
 .friends {
 	column-count: 3;
 	column-gap: 2rem;
+
+	@media screen and (max-width: 1512px) {
+		column-count: 2;
+	}
+
+	@media screen and (max-width: 768px) {
+		column-count: 1;
+	}
 }
 .promoter,
 .supporter,
