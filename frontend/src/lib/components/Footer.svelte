@@ -178,6 +178,7 @@
 
 		@media screen and (max-width: 1080px) {
 			background-color: var(--brown);
+			padding-bottom: 5rem;
 		}
 
 		@media screen and (max-width: 768px) {

@@ -48,8 +48,7 @@
 
 {#if sections}
 	<nav>
-		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}"
-		style="{innerWidth.current < 1080 ? 'top:' + innerHeight.current + 'px' : undefined}">
+		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}">
 			{#if title}
 				<h1 class="wb-12 uppercase desktop-only" onclick={() => {scrollY = 0}}>{title}</h1>
 			{/if}
@@ -145,12 +144,9 @@
 
 			div {
 				margin: 0;
-				top: 100dvh;
-				transform: translateY(calc(-2.833rem + 1px)) !important;
-				margin-bottom: calc(-2.833rem);
-				/* position: fixed;
+				position: fixed;
 				bottom: 0;
-				top: unset; */
+				top: unset;
 				width: 100%;
 				border-radius: 0;
 				padding: 0;
