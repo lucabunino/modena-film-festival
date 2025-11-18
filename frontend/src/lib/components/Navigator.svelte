@@ -6,8 +6,10 @@
 	let banner = getBanner()
 	let visible = $state(false)
 	let shaking = $state(false);
+	let activeSection = $state(false)
 	$effect(() => {
-		visible = true
+		observeSections();
+		visible = true;
 	})
 	function handleLockedclick(e) {
 		e.preventDefault()
@@ -15,9 +17,33 @@
 		shaking = true;
 		setTimeout(() => (shaking = false), 600);
 	}
+	function handleScroll() {
+		console.log(scrollY);
+	}
+	function observeSections() {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				const visible = entries
+					.filter(e => e.isIntersecting)
+					.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+				if (visible.length > 0) {
+					const index = sections.indexOf(visible[0].target);
+					if (index !== -1) activeSection = index;
+				}
+			},
+			{
+				root: null,
+				threshold: 0,
+				rootMargin: "-20% 0px -80% 0px"
+			}
+		);
+
+		sections.forEach(el => observer.observe(el));
+	}
 </script>
 
-<svelte:window bind:scrollY></svelte:window>
+<svelte:window bind:scrollY onscroll={handleScroll}></svelte:window>
 
 {#if sections}
 	<nav>
@@ -27,13 +53,13 @@
 			{/if}
 			<ol>
 				{#each sections as section, i}
-					<li>
+					<li aria-current={activeSection == i ? 'section' : undefined}>
 						<a href="#{section.id}">{section.title}</a>
 					</li>
 				{/each}
 				{#if cta}
 					<li>
-						<a class="cta wb-10-mb btn-m {cta.bg ? cta.bg : ''} {cta.locked ? 'locked' : ''} {shaking ? 'shaking' : ''}" href={cta.href} target={cta.blank ? '_blank' : ''} rel={cta.blank ? 'noopener noreferrer' : ''}
+						<a class="cta wb-10-mb btn-m {cta.bg ? cta.bg : undefined} {cta.locked ? 'locked' : undefined} {shaking ? 'shaking' : undefined}" href={cta.href} target={cta.blank ? '_blank' : ''} rel={cta.blank ? 'noopener noreferrer' : ''}
 						onclick={(e) => {cta.locked ? handleLockedclick(e) : ''}}
 						>{cta.label}</a>
 					</li>
@@ -76,6 +102,34 @@
 				cursor: pointer;
 			}
 			ol {
+				li {
+					transition: var(--transition-s);
+					transition-property: padding;
+
+					a {
+						line-height: 1;
+					}
+
+					@media screen and (min-width: 1081px) {
+						&:hover {
+							padding-left: 1rem;
+						}
+						&[aria-current="section"] {
+							color: var(--brown);
+						}
+					}
+					@media screen and (max-width: 1080px) {
+						&:hover {
+							background-color: var(--white);
+						}
+						&[aria-current="section"] {
+							color: var(--white);
+							a {
+								background-color: var(--black) !important;
+							}
+						}
+					}
+				}
 				.cta {
 					width: 100%;
 					text-align: center;
@@ -89,7 +143,7 @@
 
 			div {
 				margin: 0;
-				top: calc(100svh - 2.833rem + 1px);
+				top: calc(100dvh - 2.833rem + 1px);
 				border-radius: 0;
 				padding: 0;
 				overflow-x: scroll;
