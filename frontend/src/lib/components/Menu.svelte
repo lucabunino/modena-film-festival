@@ -69,7 +69,7 @@ header {
 		transition: var(--transition-xs);
 
 		&.open {
-			height: 100vh;
+			height: 100svh;
 
 			.main {
 				.switch {

@@ -89,7 +89,7 @@
 
 			div {
 				margin: 0;
-				top: calc(100% - 2.833rem + 1px);
+				top: calc(100svh - 2.833rem + 1px);
 				border-radius: 0;
 				padding: 0;
 				overflow-x: scroll;
