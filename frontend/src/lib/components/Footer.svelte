@@ -178,7 +178,7 @@
 
 		@media screen and (max-width: 1080px) {
 			background-color: var(--brown);
-			z-index: 1;
+			z-index: 4;
 			position: relative;
 		}
 

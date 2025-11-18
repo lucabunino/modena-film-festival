@@ -159,6 +159,12 @@
 			min-width: 500px;
 			min-height: 360px;
 
+			@media screen and (max-width: 1080px) {
+				min-width: unset;
+				width: 75vw;
+				padding: 3rem var(--margin) var(--margin);
+			}
+
 			p {
 				margin-top: 2rem;
 			}

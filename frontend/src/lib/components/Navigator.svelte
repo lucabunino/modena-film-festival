@@ -54,8 +54,8 @@
 			{/if}
 			<ol>
 				{#each sections as section, i}
-					<li aria-current={activeSection == i ? 'section' : undefined}>
-						<a href="#{section.id}">{section.title}</a>
+					<li>
+						<a aria-current={activeSection == i ? 'section' : undefined} href="#{section.id}">{section.title}</a>
 					</li>
 				{/each}
 				{#if cta}
@@ -104,28 +104,28 @@
 			}
 			ol {
 				li {
-					transition: var(--transition-s);
-					transition-property: padding;
-
 					a {
 						line-height: 1;
-					}
+						transition: var(--transition-s);
+						transition-property: padding;
 
-					@media screen and (min-width: 1081px) {
-						&:hover {
-							padding-left: 1rem;
+						@media screen and (min-width: 1081px) {
+							&:hover:not(.cta) {
+								padding-left: 1rem;
+							}
+							&[aria-current="section"]:not(.cta) {
+								color: var(--brown);
+							}
 						}
-						&[aria-current="section"] {
-							color: var(--brown);
-						}
-					}
-					@media screen and (max-width: 1080px) {
-						&:hover {
-							background-color: var(--white);
-						}
-						&[aria-current="section"] {
-							color: var(--white);
-							a {
+						@media screen and (max-width: 1080px) {
+							&:hover:not(.cta) {
+								background-color: var(--white) !important;
+							}
+							&:hover.cta {
+								background-color: var(--black) !important;
+							}
+							&[aria-current="section"]:not(.cta) {
+								color: var(--white) !important;
 								background-color: var(--black) !important;
 							}
 						}

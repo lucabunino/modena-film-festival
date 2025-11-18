@@ -12,11 +12,15 @@
 
 <style>
 	.contact-card {
-		padding: var(--spacing-xs) var(--margin) var(--margin);
+		padding: 3rem var(--gutter) var(--gutter);
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		min-height: 250px;
+
+		@media screen and (max-width: 1080px) {
+			padding: 3rem var(--margin) var(--margin);
+		}
 
 		h3 {
 			margin-top: 1rem;

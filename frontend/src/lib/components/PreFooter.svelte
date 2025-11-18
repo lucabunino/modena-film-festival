@@ -36,8 +36,19 @@
 		width: calc(100% - var(--sidebarWidth));
 		position: relative;
 
+		@media screen and (max-width: 1080px) {
+			min-height: 50vh;
+			border-radius: var(--radius-l);
+			margin: var(--margin);
+			width: stretch;
+		}
+
 		>div {
 			padding:  calc(var(--margin)*1.5) var(--margin);
+			@media screen and (max-width: 1080px) {
+				padding: 3rem var(--margin) 3rem;
+			}
+
 			display: flex;
 			flex-direction: column;
 			gap: 3rem;
@@ -45,21 +56,32 @@
 
 			&.wide {width: 100%;}
 			&.half {width: 62%;}
-		}
 
-		img {
-			width: 38%;
-			height: stretch;
-			object-fit: cover;
-		}
-		h3 {
-			margin-top: 1rem;
-		}
-		.content {
-			margin-top: 3rem;
-		}
-		.annotation {
-			margin-top: 2rem;
+			img {
+				width: 38%;
+				height: stretch;
+				object-fit: cover;
+			}
+			h3 {
+				margin-top: 1rem;
+			}
+			.content {
+				margin-top: 3rem;
+				@media screen and (max-width: 1080px) {
+					margin-top: var(--spacing-s);
+				}
+			}
+			.annotation {
+				margin-top: 2rem;
+			}
+
+			a {
+				margin-top: var(--spacing-s);
+				@media screen and (max-width: 1080px) {
+					width: 100%;
+					text-align: center;
+				}
+			}
 		}
 	}
 </style>

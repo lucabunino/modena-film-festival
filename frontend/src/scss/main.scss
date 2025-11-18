@@ -28,6 +28,8 @@ $colors: (
 	--spacing-m: 8rem;
 	--spacing-s: 4rem;
 	--spacing-xs: 2rem;
+	--radius-m: 1rem;
+	--radius-l: 3rem;
 
 	@media screen and (max-width: 1080px) {
 		--margin: 1.25rem;
@@ -308,11 +310,11 @@ main {
 
 .rounded-m {
 	overflow: hidden;
-	border-radius: 1rem;
+	border-radius: var(--radius-m);
 }
 .rounded-l {
 	overflow: hidden;
-	border-radius: 3rem;
+	border-radius: var(--radius-l);
 }
 .section-title {
 	width: 100%;

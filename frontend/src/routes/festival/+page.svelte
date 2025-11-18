@@ -71,7 +71,7 @@
 {/snippet}
 
 <main class="bg-pink">
-	<Navigator title="Festival" {sections} cta={{label: 'Diventa sponsor', href: '/partner/sponsor'}}/>
+	<Navigator title="Festival" {sections} cta={{label: 'Diventa sponsor', href: '/partner/sponsor', locked: true}}/>
 	<Title title='Modena<br>Film Festival<br>2026' size={'l'}/>
 	<section id="event" title="Evento" bind:this={sections[0]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Evento</h2>
