@@ -145,7 +145,7 @@
 				margin: 0;
 				position: fixed;
 				bottom: 0;
-				top: unset;
+				top: unset !important;
 				width: 100%;
 				border-radius: 0;
 				padding: 0;

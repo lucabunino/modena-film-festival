@@ -77,7 +77,7 @@
 		@media screen and (max-width: 516px) {
 			grid-template-columns: repeat(2, 1fr);
 		}
-		@media screen and (max-width: 392px) {
+		@media screen and (max-width: 374px) {
 			grid-template-columns: repeat(1, 1fr);
 		}
 	}

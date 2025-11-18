@@ -1,13 +1,17 @@
 <script>
-    let { contact } = $props()
+    let { contact, bg } = $props()
 </script>
 
-<div class="contact-card bg-white rounded-l" id={contact.slug} title={contact.title}>
+<div class="contact-card {bg ? bg : 'bg-white'} rounded-l" id={contact.slug} title={contact.title}>
 	<div>
 		<h2 class="wb-12 wb-10-mb uppercase">{contact.title}</h2>
 		<h3 class="wb-21 wb-18-mb">{contact.abstract}</h3>
 	</div>
-	<a class="btn-l bg-linen hover-black" href="mailto:{contact.email}">{contact.email}</a>
+	{#if contact.email}
+		<a class="btn-l {bg ? 'bg-white' : 'bg-linen'} hover-white hover-bg-black" href="mailto:{contact.email}">{contact.email}</a>
+	{:else if contact.cta}
+		<a href={contact.cta.href} class="btn-l {bg ? 'bg-white' : 'bg-linen'} hover-white hover-bg-black" target="_blank" rel="noopener noreferrer">{contact.cta.label}</a>
+	{/if}
 </div>
 
 <style>

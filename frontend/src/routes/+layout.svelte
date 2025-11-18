@@ -11,7 +11,7 @@
     import { innerHeight, innerWidth } from "svelte/reactivity/window";
 	let { children } = $props();
 	const transitionOut = (node, params) => {
-		return innerWidth.current > 1080 ? slide(node, { ...params, duration: 500 }) : '';
+		return innerWidth.current > 1080 ? slide(node, { ...params, duration: 800 }) : '';
 	};
 	const seo = {
 		SEOTitle: 'Modena Film Festival',

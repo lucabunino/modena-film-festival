@@ -1,20 +1,20 @@
 // @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz@6..72&display=swap');
-@font-face {
-  font-family: "Waldenburg";
-  src: url("/fonts/KMRWaldenburg-Regular.woff2") format("woff2"),
-       url("/fonts/KMRWaldenburg-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Waldenburg";
-  src: url("/fonts/KMRWaldenburg-Italic.woff2") format("woff2"),
-       url("/fonts/KMRWaldenburg-Italic.woff") format("woff");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
+// @font-face {
+//   font-family: "Waldenburg";
+//   src: url("/fonts/KMRWaldenburg-Regular.woff2") format("woff2"),
+//        url("/fonts/KMRWaldenburg-Regular.woff") format("woff");
+//   font-weight: 400;
+//   font-style: normal;
+//   font-display: swap;
+// }
+// @font-face {
+//   font-family: "Waldenburg";
+//   src: url("/fonts/KMRWaldenburg-Italic.woff2") format("woff2"),
+//        url("/fonts/KMRWaldenburg-Italic.woff") format("woff");
+//   font-weight: 400;
+//   font-style: italic;
+//   font-display: swap;
+// }
 @font-face {
   font-family: "Waldenburg";
   src: url("/fonts/KMRWaldenburg-Medium.woff2") format("woff2"),
@@ -31,22 +31,22 @@
   font-style: italic;
   font-display: swap;
 }
-@font-face {
-  font-family: "Waldenburg";
-  src: url("/fonts/KMRWaldenburg-Bold.woff2") format("woff2"),
-       url("/fonts/KMRWaldenburg-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Waldenburg";
-  src: url("/fonts/KMRWaldenburg-BoldItalic.woff2") format("woff2"),
-       url("/fonts/KMRWaldenburg-BoldItalic.woff") format("woff");
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
+// @font-face {
+//   font-family: "Waldenburg";
+//   src: url("/fonts/KMRWaldenburg-Bold.woff2") format("woff2"),
+//        url("/fonts/KMRWaldenburg-Bold.woff") format("woff");
+//   font-weight: 700;
+//   font-style: normal;
+//   font-display: swap;
+// }
+// @font-face {
+//   font-family: "Waldenburg";
+//   src: url("/fonts/KMRWaldenburg-BoldItalic.woff2") format("woff2"),
+//        url("/fonts/KMRWaldenburg-BoldItalic.woff") format("woff");
+//   font-weight: 700;
+//   font-style: italic;
+//   font-display: swap;
+// }
 @font-face {
   font-family: "Waldenburg Condensed";
   src: url("/fonts/KMRWaldenburg-CondensedHeavy.woff2") format("woff2"),
@@ -161,30 +161,10 @@
 		&-110-mb	{ font-size: 9.167rem;   letter-spacing: -0.03em; line-height: .85; }
 	}
 }
-.sw {
-	&,
-	&-26 {
-		font-family: 'Times New Roman', Times, serif;
-		font-optical-sizing: auto;
-		font-weight: 450;
-		font-style: normal;
-	}
-	&-26 { font-size: 2rem; letter-spacing: 0em; line-height: 1.1; }
-}
-.lo {
-	&,
-	&-26 {
-		font-family: "Lora", serif;
-		font-optical-sizing: auto;
-		font-weight: 400;
-		font-style: normal;
-	}
-	&-26 { font-size: 2rem; letter-spacing: 0em; line-height: 1.1; }
-}
 .nr {
   	&,
 	&-21,
-	&-26,
+	&-28,
 	&-21-mb {
 		font-family: "Newsreader", serif;
 		font-optical-sizing: auto;
@@ -192,7 +172,7 @@
 		font-style: normal;
 	}
 	&-21 { font-size: 1.5rem; letter-spacing: 0em; line-height: 1.1; }
-	&-26 { font-size: 2rem; letter-spacing: 0em; line-height: 1.1; }
+	&-28 { font-size: 2rem; letter-spacing: 0em; line-height: 1.1; }
 
 	@media screen and (max-width: 1080px) {
 		&-21-mb { font-size: 1.75rem; letter-spacing: 0em; line-height: 1.1; }

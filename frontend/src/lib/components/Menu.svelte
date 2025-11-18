@@ -48,7 +48,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="/tickets" class="tickets btn-m locked {shaking ? 'shaking' : ''}" onclick={(e) => {handleLockedclick(e)}}>Tickets</a>
+					<a href="/biglietti" class="tickets btn-m locked {shaking ? 'shaking' : ''}" onclick={(e) => {handleLockedclick(e)}}>Biglietti</a>
 				</li>
 			</ul>
 		</section>

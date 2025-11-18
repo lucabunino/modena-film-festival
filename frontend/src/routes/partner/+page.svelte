@@ -52,7 +52,8 @@
 	subtitles={[
 		'Il Modena Film Festival cresce grazie al sostegno di realtà culturali, istituzioni, aziende, associazioni e professionisti che condividono la nostra visione: un cinema più aperto, accessibile e capace di parlare a pubblici diversi.',
 		'Collaboriamo con chi crede nel valore delle storie, nella forza dei territori e nell’importanza di rendere la cultura un’esperienza condivisa. Una rete viva che dà forma al festival, lo arricchisce e lo porta oltre lo schermo.'
-	]}/>
+	]}
+	cta={{href:'/partner/sponsor', label: 'Diventa sponsor'}}/>
 	{#each clusters as cluster, i}
 		<section id={cluster.slug} title={cluster.title} bind:this={sections[i]} class="cluster">
 			<h2 class="section-title wb-12 wb-10-mb uppercase">{cluster.title}</h2>

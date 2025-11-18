@@ -1,6 +1,6 @@
 <script>
     import Breadcrumbs from "./Breadcrumbs.svelte";
-    let { title, subtitles, size } = $props()
+    let { title, subtitles, size, cta } = $props()
 </script>
 
 <section id="title">
@@ -13,17 +13,23 @@
 			<h2 class="wb-24 wb-18-mb max-w-700">{@html subtitle}</h2>
 		{/each}
 	{/if}
+	{#if cta}<a class="cta btn-l bg-black white hover-black hover-bg-linen" href={cta.href}>{cta.label}</a>{/if}
 </section>
 
 <style>
 section {
 	grid-column: 1 / span 6;
-}
-h2 {
-	margin-top: 2rem;
 
-	&+h2 {
-		margin-top: 1.2em;
+	h2 {
+		margin-top: 2rem;
+
+		&+h2 {
+			margin-top: 1.2em;
+		}
+	}
+
+	.cta {
+		margin-top: 2rem;
 	}
 }
 </style>

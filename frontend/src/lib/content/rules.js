@@ -2,15 +2,15 @@ export const rules = [
 	{
 		title: 'Art. 1',
 		content: [
-			"<p>Crispy Cinema Club APS e LongTake organizzano la 1° edizione del Modena Film Festival che si terrà a Modena dal 15 al 19 aprile 2026.</p>",
-			"<p>Il Modena Film Festival nasce dalla riflessione sul cinema come arte della percezione. I cinque sensi rappresentano il nostro primo e più immediato contatto con la realtà: attraverso di essi costruiamo conoscenza, memoria ed emozione. Il Modena Film Festival vuole essere il luogo di riflessione sulle possibilità di evocare l’intera dimensione sensoriale, creando esperienze che trascendono lo schermo. Il festival si propone di esplorare nuove forme di fruizione cinematografica, valorizzando la diversità e l’inclusione come elementi distintivi, in un contesto che celebra Modena Città Creativa UNESCO per le Media Arts.</p>",
+			"<p>La prima edizione del Modena Film Festival è organizzata da Crispy Cinema Club APS e longtake e si terrà a Modena dal 15 al 19 aprile 2026.</p>",
+			"<p>Il Modena Film Festival nasce dalla riflessione sul cinema come arte della percezione. I cinque sensi rappresentano il nostro primo e più immediato contatto con la realtà: attraverso di essi sperimentiamo conoscenza, memoria ed emozione. Il Modena Film Festival vuole essere il luogo di pensiero sulle possibilità di evocare l'intera dimensione sensoriale, creando esperienze che trascendono lo schermo. Il festival si propone di esplorare nuove forme di fruizione cinematografica, valorizzando la diversità e l'inclusione come elementi distintivi, in un contesto che celebra Modena Città Creativa UNESCO per le Media Arts.</p>",
 		]
 	},
 	{
 		title: 'Art. 2',
 		content: [
 			"<p>Il festival accoglie lungometraggi di ogni genere (fiction, documentario, animazione, cinema sperimentale) della durata minima di 60’ che esplorino il tema dei cinque sensi attraverso il linguaggio cinematografico.</p>",
-			"<p>I film ammessi dovranno sviluppare una riflessione artistica, narrativa o estetica su almeno uno dei cinque sensi – vista, udito, gusto, olfatto, tatto – intesi come:</p>",
+			"<p>I film ammessi dovranno sviluppare una riflessione artistica, narrativa o estetica su almeno uno dei cinque sensi - vista, udito, gusto, olfatto, tatto - intesi come:</p>",
 			"<ul><li>strumenti di percezione e conoscenza della realtà;</li><li>elementi di costruzione narrativa e stilistica;</li><li>dimensioni di accessibilità e inclusione;</li><li>chiavi di lettura del rapporto tra corpo, mente e mondo circostante.</li></ul>",
 			"<p>Sono benvenute opere che coinvolgono lo spettatore in esperienze sensoriali innovative, che riflettano sul cinema stesso come arte visiva e sonora, o che utilizzino i sensi come metafora per esplorare tematiche contemporanee. Particolare attenzione sarà riservata a opere che propongono approcci originali alla fruizione cinematografica e che valorizzano la dimensione inclusiva e accessibile del linguaggio audiovisivo.</p>",
 		]
@@ -36,7 +36,7 @@ export const rules = [
 	{
 		title: 'Art. 5',
 		content: [
-			"<p>Il bando della 1a edizione del Modena Film Festival si apre il 20/11/2025 e si chiude il 28/02/2026.</p>",
+			"<p>Il bando della 1<sup>a</sup> edizione del Modena Film Festival si apre il 20/11/2025 e si chiude il 28/02/2026.</p>",
 			"<p>Tutti i partecipanti dovranno compilare online una scheda di iscrizione per ciascun film che intendono candidare. L’iscrizione dovrà essere registrata sul sito <a class='hover-brown' href='https://filmfreeway.com/' target='_blank' rel='noopener noreferrer'>www.filmfreeway.com</a> a cura dell’autore dell’opera stessa o da chi ne detiene i diritti (di seguito anche solamente “Autore”).</p>",
 			"<p>Colui che iscrive l’opera si assume infatti la responsabilità di essere il legittimo rappresentante autorizzato da tutti gli aventi diritto sull’opera stessa. La dichiarazione resa dal soggetto che ha sottoscritto la scheda di iscrizione esonera quindi il Modena Film Festival dalla verifica della legittimazione dello stesso a iscrivere l’opera che si intenderà quindi come accertata, esimendo il Festival da ogni relativa responsabilità.</p>",
 			"<p>Sono ammessi film di ogni genere e lingua, realizzati su qualunque supporto e senza alcuna divisione per categorie.</p>",
@@ -55,15 +55,15 @@ export const rules = [
 	{
 		title: 'Art. 6',
 		content: [
-			"<p>L'ammissione al Concorso Internazionale come alle altre sezioni indicate nell’articolo 3 del presente Regolamento, è deliberata insindacabilmente dalla Direzione del Festival che si avvale della collaborazione di una Commissione di Selezione.</p>",
+			"<p>L’ammissione al Concorso Internazionale come alle altre sezioni indicate nell’articolo 3 del presente Regolamento è deliberata insindacabilmente dalla Direzione del Festival che si avvale della collaborazione di una Commissione di Selezione.</p>",
 		]
 	},
 	{
 		title: 'Art. 7',
 		content: [
-			"<p>Le opere ammesse in Concorso saranno valutate da una Giuria internazionale che potrà assegnare i seguenti Premi ufficiali:</p>",
+			"<p>Le opere ammesse in Concorso saranno valutate da una Giuria internazionale che assegnerà i seguenti Premi ufficiali:</p>",
 			"<ul><li>Premio Miglior Film: al miglior film che in assoluto, possedendo elevate qualità artistiche, corrisponda agli obiettivi culturali cui il Festival si ispira;</li><li>Premio della Giuria: all'opera che si distingua per il contributo nella rappresentazione e nella riflessione sulla percezione sensoriale attraverso il linguaggio cinematografico.</li></ul>",
-			"<p>Le opere ammesse al Concorso o alle altre sezioni del programma, potranno concorrere all’assegnazione del Premio del Pubblico. Le opere potranno inoltre concorrere all'assegnazione di riconoscimenti speciali offerti da associazioni o enti partner del festival, attribuiti da giurie indipendenti. Tali riconoscimenti possono essere cumulabili con i Premi ufficiali.</p>",
+			"<p>Le opere ammesse al Concorso o alle altre sezioni del programma potranno concorrere all’assegnazione del Premio del Pubblico. Le opere potranno inoltre concorrere all'assegnazione di riconoscimenti speciali offerti da associazioni o enti partner del festival attribuiti da giurie indipendenti. Tali riconoscimenti possono essere cumulabili con i Premi ufficiali.</p>",
 		]
 	},
 	{

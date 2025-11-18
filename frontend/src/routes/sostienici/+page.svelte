@@ -87,10 +87,10 @@
 		bind:this={swiperEl}
 		>
 			{#each tiers as tier, i}
-				<swiper-slide class="tier bg-yellow rounded-l">
+				<swiper-slide class="tier bg-yellow rounded-l" title={tier.title}>
 					<div>
-						<h3 class="wb-28 wb-21-mb bold">{tier.title}</h3>
-						<h4 class="nr-26 nr-21-mb">{#if tier.isCustomPrice}{@html 'A partire da '}{/if}{tier.price}€</h4>
+						<h3 class="wb-28 wb-21-mb">{tier.title}</h3>
+						<h4 class="nr-28 nr-21-mb">{#if tier.isCustomPrice}{@html 'A partire da '}{/if}{tier.price}€</h4>
 						<p class="wb-18 wb-15-mb max-w-400">{tier.abstract}</p>
 					</div>
 					<div class="btns">

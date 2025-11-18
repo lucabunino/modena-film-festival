@@ -5,17 +5,25 @@
 
 	const contacts = [
 		{
-			title: "Press",
-			slug: "press",
-			abstract: "Per comunicazione, stampa e media",
-			email: "press@modenafilmfestival.it"
-		},
-		{
 			title: "Info",
 			slug: "info",
-			abstract: "Per tutte le altre richieste",
+			abstract: "Per informazioni sul festival, accreditamenti, partnership o proposte",
 			email: "info@modenafilmfestival.it"
 		},
+		{
+			title: "Sponsor",
+			slug: "sponsor",
+			abstract: "Per proporre una collaborazione",
+			email: "alice@modenafilmfestival.it"
+		},
+		{
+			title: "Social media",
+			slug: "social",
+			abstract: "Seguici su instagram per rimanere aggiornato/a",
+			cta: {
+				label: '@modenafilmfestival', href: 'https://www.instagram.com/modenafilmfestival'
+			}
+		}
 	]
 </script>
 

@@ -18,7 +18,7 @@
 			</svg>
 			<h1 class="wb-28 leading-1">Modena Film <br>Festival</h1>
 		</a>
-		<a href="/tickets" class="tickets btn-m locked {shaking ? 'shaking' : ''}" onclick={(e) => {handleLockedclick(e)}}>Tickets</a>
+		<a href="/biglietti" class="tickets btn-m locked {shaking ? 'shaking' : ''}" onclick={(e) => {handleLockedclick(e)}}>Biglietti</a>
 		<nav class="menu wb-28 leading-1_3" aria-label="Main navigation" menubar aria-orientation="vertical">
 			<ul>
 				<li><a aria-current={page.url.pathname.startsWith('/festival') ? 'page' : undefined} href="/festival">Festival</a></li>

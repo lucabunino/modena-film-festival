@@ -27,7 +27,7 @@
 </script>
 
 {#if banner.show}
-	<div id="cookie-banner" class="wb-14 rounded-m bg-white {visible ? 'visible' : ''}">
+	<div id="cookie-banner" class="wb-14 rounded-m bg-white  {visible ? 'visible' : ''}">
 		<p>Questo sito utilizza esclusivamente cookie tecnici, necessari al suo corretto funzionamento. Non vengono utilizzati cookie di profilazione o di terze parti. Per maggiori dettagli, consulta la nostra <a href="/cookies" class="underline">cookie policy</a>.</p>
 		<div id="cookie-btns">
 			<button id="accept-cookies" onclick={acceptCookies} class="btn-xs uppercase">Ok, ho capito ✓</button>
