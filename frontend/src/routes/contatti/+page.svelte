@@ -19,7 +19,7 @@
 		{
 			title: "Social media",
 			slug: "social",
-			abstract: "Seguici su instagram per rimanere aggiornato/a",
+			abstract: "Per rimanere aggiornato/a seguici su Instagram",
 			cta: {
 				label: '@modenafilmfestival', href: 'https://www.instagram.com/modenafilmfestival'
 			}

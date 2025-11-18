@@ -1,4 +1,4 @@
-// @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz@6..72&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz@6..72&display=swap');
 // @font-face {
 //   font-family: "Waldenburg";
 //   src: url("/fonts/KMRWaldenburg-Regular.woff2") format("woff2"),
@@ -48,6 +48,22 @@
 //   font-display: swap;
 // }
 @font-face {
+  font-family: "Waldenburg";
+  src: url("/fonts/TeXGyreHeros-Bold.woff2") format("woff2"),
+       url("/fonts/TeXGyreHeros-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Waldenburg";
+  src: url("/fonts/TeXGyreHeros-BoldItalic.woff2") format("woff2"),
+       url("/fonts/TeXGyreHeros-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
   font-family: "Waldenburg Condensed";
   src: url("/fonts/KMRWaldenburg-CondensedHeavy.woff2") format("woff2"),
        url("/fonts/KMRWaldenburg-CondensedHeavy.woff") format("woff");
@@ -77,6 +93,8 @@
 	&,
 	&-10,
 	&-12,
+	&-10-mb,
+	&-12-mb,
 	&-14,
 	&-18,
 	&-21,
@@ -85,13 +103,18 @@
 	&-40,
 	&-60,
 	&-100,
-	&-10-mb,
-	&-12-mb,
 	&-15-mb,
 	&-18-mb,
 	&-21-mb,
 	&-28-mb,
 	&-36-mb,
+	&-10-mb-s {
+		font-family: "Waldenburg", Helvetica, Arial, sans-serif;
+		font-optical-sizing: auto;
+		font-weight: 500;
+		font-style: normal;
+	}
+
 	&-10-mb-s {
 		font-family: "Waldenburg", Helvetica, Arial, sans-serif;
 		font-optical-sizing: auto;
