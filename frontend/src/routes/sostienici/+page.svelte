@@ -28,7 +28,7 @@
 	const prefooter = {
 		subtitle: "Abbonamenti",
 		title: "Acquista gli abbonamenti",
-		content: "Stiamo preparando diverse formule di abbonamento per permetterti di vivere il Modena Film Festival come preferisci: un giorno, più giorni o l’intera esperienza. <br>A breve troverai qui tutte le opzioni, i prezzi e le modalità di acquisto.",
+		content: "Stiamo preparando biglietti singoli e abbonamento per permetterti di vivere il Modena Film Festival come preferisci: un singolo evento o l’intera esperienza. <br>A breve troverai qui tutte le opzioni, i prezzi e le modalità di acquisto.",
 		cta: {href: '/tickets', label: 'Acquista*', locked: true},
 		annotation: '*Gli abbonamenti saranno disponibili online prima dell’inizio del festival.',
 		bg: 'bg-yellow',
@@ -65,13 +65,13 @@
 	<Navigator title="Supporter" {sections}/>
 	<Title
 	title='Sostieni <br>il festival!'
-	subtitle='Scegli la tua fascia di sostegno <br>e aiutaci a realizzare il festival!'
+	subtitles={['Scegli la tua fascia di sostegno e aiutaci a realizzare il festival!']}
 	size={'l'}
 	/>
 	<section id="become-supporter" title="Diventa sostenitore" bind:this={sections[0]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Diventa sostenitore</h2>
-		<p class="wb-24 wb-18-mb max-w-600">Puoi donare con boniﬁco o PayPal.* Ti chiediamo soltanto di indicare nella causale il tuo nome e cognome (a meno che tu non preferisca restare anonimo/a). Se non puoi donare, non preoccuparti: puoi aiutarci lo stesso semplicemente  spargendo la voce tra amici e conoscenti!</p>
-		<p class="bank-info wb-14 wb-12-mb">Boniﬁco Bancario:<br>
+		<p class="wb-24 wb-18-mb max-w-700">Puoi donare con bonifico o PayPal.* Ti chiediamo soltanto di indicare nella causale il tuo nome e cognome (a meno che tu non preferisca restare anonimo/a). Se non puoi donare, non preoccuparti: puoi aiutarci lo stesso semplicemente  spargendo la voce tra amici e conoscenti!</p>
+		<p class="bank-info wb-14 wb-12-mb">Bonifico Bancario:<br>
 		Crispy Cinema Club APS<br>
 		IT50Y0538766890000004422054</p>
 	</section>

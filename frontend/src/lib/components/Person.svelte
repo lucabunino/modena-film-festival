@@ -7,7 +7,9 @@
 	{#if person.portrait}
 		<img class="_2_3 rounded-m" src={person.portrait} alt="Ritratto di {person.portrait}">
 	{:else}
-		<div class="placeholder _1_1 rounded-m gradient-xy-linen-white"></div>
+		<div class="placeholder _1_1 rounded-m gradient-xy-linen-white">
+			<span class="initials wb-40">{person.initials}</span>
+		</div>
 	{/if}
 	<h3 class="wb-24 wb-18-mb">{person.name} {person.surname}</h3>
 	{#if person.role}
@@ -17,6 +19,15 @@
 
 <style>
 	.person {
+		.placeholder {
+			position: relative;
+			.initials {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translateX(-50%) translateY(-50%);
+			}
+		}
 		h3 {
 			margin-top: .7rem;
 		}

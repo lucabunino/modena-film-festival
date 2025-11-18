@@ -30,8 +30,8 @@
 			<ul>
 				<li><a aria-current={page.url.pathname.startsWith('/festival') ? 'page' : undefined} href="/festival" onclick={() => {open = false}}>Festival</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/about') ? 'page' : undefined} href="/about" onclick={() => {open = false}}>About</a></li>
-				<li><a aria-current={page.url.pathname.startsWith('/sostienici') ? 'page' : undefined} href="/sostienici" onclick={() => {open = false}}>Sostienici</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/partner') ? 'page' : undefined} href="/partner" onclick={() => {open = false}}>Partner</a></li>
+				<li><a aria-current={page.url.pathname.startsWith('/sostienici') ? 'page' : undefined} href="/sostienici" onclick={() => {open = false}}>Sostienici</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/contatti') ? 'page' : undefined} href="/contatti" onclick={() => {open = false}}>Contatti</a></li>
 			</ul>
 		</nav>

@@ -11,13 +11,13 @@
 				{
 					title: 'Fondazione di Modena',
 					href: 'https://www.fondazionedimodena.it/',
-					abstract: 'Attraverso i suoi interventi la Fondazione di Modena stimola la partecipazione e il protagonismo della società civile e dei cittadini, contribuisce alla crescita di una comunità solidale e favorisce la democrazia. Lo fa attraverso il sostegno a iniziative ideate dai tanti soggetti che animano il Terzo settore e dagli Enti pubblici, o ideando e realizzando autonomamente progetti a beneficio della comunità. La logica che ispira questi interventi è quella dell’1+1=3. Infatti la Fondazione non si limita a sostenere economicamente i progetti ma punta a coinvolgere e rendere protagonisti i cittadini e le organizzazioni della società civile. Grazie a queste pratiche di cooperazione, i soggetti che compongono le comunità generano più valore – e più senso – di quello che avrebbero generato da soli. Dunque la Fondazione di Modena attiva relazioni e genera comunità.',
+					// abstract: 'Attraverso i suoi interventi la Fondazione di Modena stimola la partecipazione e il protagonismo della società civile e dei cittadini, contribuisce alla crescita di una comunità solidale e favorisce la democrazia. Lo fa attraverso il sostegno a iniziative ideate dai tanti soggetti che animano il Terzo settore e dagli Enti pubblici, o ideando e realizzando autonomamente progetti a beneficio della comunità. La logica che ispira questi interventi è quella dell’1+1=3. Infatti la Fondazione non si limita a sostenere economicamente i progetti ma punta a coinvolgere e rendere protagonisti i cittadini e le organizzazioni della società civile. Grazie a queste pratiche di cooperazione, i soggetti che compongono le comunità generano più valore – e più senso – di quello che avrebbero generato da soli. Dunque la Fondazione di Modena attiva relazioni e genera comunità.',
 					logo: '/partners/fondazione-di-modena.png'
 				},
 				{
 					title: 'Comune di Modena',
 					href: 'https://www.comune.modena.it/',
-					abstract: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+					// abstract: 'Il Comune di Modena sostiene il festival promuovendo una visione della cultura come spazio aperto, condiviso e accessibile.  Una collaborazione che valorizza la città, i suoi luoghi e la sua comunità, rendendo possibile un progetto che mette al centro persone, talenti e creatività contemporanea.',
 					logo: '/partners/comune-di modena.png'
 				},
 			]
@@ -29,13 +29,15 @@
 				{
 					title: 'Heroestudio',
 					role: 'Media partner',
-					href: 'https://www.fondazionedimodena.it/',
+					href: 'https://www.heroestudio.it/',
+					// abstract: 'Heroestudio affianca il Modena Film Festival come partner creativo. Con un approccio che unisce comunicazione, immagine e produzione audiovisiva, contribuisce a dare forma all’estetica del festival, creando un immaginario visivo potente, riconoscibile e in dialogo con la città e il pubblico.',
 					logo: '/partners/heroestudio.png'
 				},
 				{
 					title: 'Giorgia Sandoni Bellucci',
-					role: 'Brand strategy',
+					role: 'Creative strategy',
 					href: 'https://www.instagram.com/giorgiasandonibellucci',
+					// abstract: 'Creative Director e Brand Strategist, collabora con il Modena Film Festival nella definizione dell’identità creativa e del racconto del progetto. Lavora insieme al team per costruire un festival che unisca visione, esperienza sensoriale e accessibilità.',
 					logo: '/partners/giorgia-sandoni-bellucci.png'
 				}
 			]
@@ -45,7 +47,12 @@
 
 <main class="bg-white">
 	<Navigator title="Festival" {sections} cta={{label: 'Diventa sponsor', href: '/partner/sponsor', locked: true}}/>
-	<Title subtitle='A ogni sua edizione, il Locarno Film Festival può contare sul solido appoggio dei Partner pubblici e privati. Sono loro, infatti, a permettere alla macchina organizzativa della manifestazione di compiere di anno in anno la sua impresa, portando a Locarno la magia del cinema.' size={'m'}/>
+	<Title
+	size={'m'}
+	subtitles={[
+		'Il Modena Film Festival cresce grazie al sostegno di realtà culturali, istituzioni, aziende, associazioni e professionisti che condividono la nostra visione: un cinema più aperto, accessibile e capace di parlare a pubblici diversi.',
+		'Collaboriamo con chi crede nel valore delle storie, nella forza dei territori e nell’importanza di rendere la cultura un’esperienza condivisa. Una rete viva che dà forma al festival, lo arricchisce e lo porta oltre lo schermo.'
+	]}/>
 	{#each clusters as cluster, i}
 		<section id={cluster.slug} title={cluster.title} bind:this={sections[i]} class="cluster">
 			<h2 class="section-title wb-12 wb-10-mb uppercase">{cluster.title}</h2>

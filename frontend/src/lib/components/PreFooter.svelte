@@ -11,7 +11,7 @@
 
 <section id="pre-footer" class={prefooter.bg}>
 	{#if prefooter.img}<img src={prefooter.img} alt="">{/if}
-	<div>
+	<div class={prefooter.img ? 'half' : 'wide'}>
 		<div>
 			{#if prefooter.subtitle}<h2 class="wb-12 wb-10-mb uppercase">{prefooter.subtitle}</h2>{/if}
 			{#if prefooter.title}<h3 class="wb-cd-120 wb-cd-60-mb uppercase max-w-800">{prefooter.title}</h3>{/if}
@@ -38,11 +38,13 @@
 
 		>div {
 			padding:  calc(var(--margin)*1.5) var(--margin);
-			width: 62%;
 			display: flex;
 			flex-direction: column;
 			gap: 3rem;
 			justify-content: space-between;
+
+			&.wide {width: 100%;}
+			&.half {width: 62%;}
 		}
 
 		img {

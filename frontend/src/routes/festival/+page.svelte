@@ -73,14 +73,17 @@
 <main class="bg-pink">
 	<Navigator title="Festival" {sections} cta={{label: 'Diventa sponsor', href: '/partner/sponsor'}}/>
 	<Title title='Modena<br>Film Festival<br>2026' size={'l'}/>
-	<section id="adiscplit" title="Adisciplit" bind:this={sections[0]}>
-		<h2 class="section-title wb-12 wb-10-mb uppercase">Adisciplit</h2>
-		<p class="wb-28 wb-18-mb max-w-800">Da quasi ottant’anni, Locarno è sinonimo di cinema d’autore e di grandi protagonisti del panorama internazionale. Con un programma che unisce il meglio della produzione svizzera e mondiale, il Festival parla a tutti gli amanti del cinema, dal grande pubblico ai cinefili più esigenti. Nel cuore del Festival si trova la Piazza Grande, il più grande cinema all’aperto d’Europa, che accoglie ogni sera migliaia di spettatori.</p>
+	<section id="event" title="Evento" bind:this={sections[0]}>
+		<h2 class="section-title wb-12 wb-10-mb uppercase">Evento</h2>
+		<p class="wb-28 wb-18-mb max-w-800">Il Modena Film Festival è il nuovo spazio in cui Modena vive il cinema con tutti i sensi.</p>
+		<p class="wb-28 wb-18-mb max-w-800">Tre giorni di film, incontri, performance, suoni, luci, profumi, conversazioni e luoghi che si trasformano: un’esperienza pensata per chi ama il cinema d’autore, per chi cerca nuove visioni e per chi vuole semplicemente lasciarsi sorprendere.</p>
+		<p class="wb-28 wb-18-mb max-w-800">Tra sale, musei e spazi della città, il festival diventa un punto di incontro aperto e accessibile a tutti, con particolare attenzione a chi vive il cinema attraverso altri sensi e ha esigenze sensoriali specifiche. Un invito a guardare meglio. E a sentire di più.</p>
 	</section>
 	<section id="festival-sections" title="Sezioni" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Sezioni</h2>
+		<p class="wb-28 wb-18-mb max-w-800">Tutto all’insegna della qualità e della varietà: 11 sezioni, 3 concorsi e 20 premi. Questa l’architettura di un Festival che esplora il cinema a 360°. Per scoprire nel presente gli autori e i film destinati ad avere futuro.</p>
+		<!-- DETTAGLIO DELLE 5 SEZIONI
 		<p class="wb-18 wb-15-mb max-w-500">Tutto all’insegna della qualità e della varietà: 11 sezioni, 3 concorsi e 20 premi. Questa l’architettura di un Festival che esplora il cinema a 360°. Per scoprire nel presente gli autori e i film destinati ad avere futuro.</p>
-
 		{#if innerWidth.current > 1080}
 			<div class="festival-sections">
 				{#each festivalSections as festivalSection, i}
@@ -110,24 +113,32 @@
 					</swiper-slide>
 				{/each}
 			</swiper-container>
-		{/if}
+		{/if} -->
 	</section>
 	<section id="jury" title="Giuria" bind:this={sections[2]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Giuria</h2>
+		<p class="wb-28 wb-18-mb max-w-800">La giuria ufficiale del Modena Film Festival sarà annunciata nelle prossime settimane.</p>
+		<!-- GIURIA DA INSERIRE, QUI O PER SINGOLA SEZIONE
+		<p class="wb-18 wb-15-mb max-w-500">Lorem ipsum</p>
 		<div class="jury">
 			{#each jury as juror, i}
 				<Juror {juror}/>
 			{/each}
-		</div>
+		</div> -->
 	</section>
 	<section id="regulations" title="Regolamento" bind:this={sections[3]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Regolamento</h2>
-		<p class="wb-28 wb-18-mb max-w-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
-		<a class="btn-l" href="/festival/regolamento">Regolamento completo</a>
+		<p class="wb-28 wb-18-mb max-w-800">Leggi il regolamento completo del Modena Film Festival, con tutte le modalità di partecipazione alle sezioni, i requisiti tecnici e i criteri di selezione.</p>
+		<a class="btn-l" href="/festival/regolamento">Leggi il regolamento</a>
 	</section>
 </main>
 
 <style>
+#event {
+	p + p {
+		margin-top: .6em;
+	}
+}
 #festival-sections {
 	.festival-sections {
 		display: grid;

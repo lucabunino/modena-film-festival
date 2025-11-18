@@ -9,22 +9,22 @@
 		{title: 'Longtake', href: 'https://www.longtake.it/', cover: '/img/longtake.webp', logo: '/logos/longtake-white.svg'},
 	]
 	const people = [
-		{name: 'Gabriele', surname: 'Malagoli', role: 'Direzione artistica'},
-		{name: 'Massimo', surname: 'Bondioli', role: 'Direzione organizzativa'},
-		{name: 'Alice', surname: 'Morelli', role: 'Direzione marketing e partnership'},
-		{name: 'Martina', surname: 'Dell’Utri', role: 'Produzione'},
-		{name: 'Giulia', surname: 'Benedetti', role: 'Direzione creativa e graphic design'},
-		{name: 'Luca', surname: 'Bunino', role: 'Direzione creativa e graphic design'},
-		{name: 'Andrea', surname: 'Chimento', role: 'Ideazione'},
+		{name: 'Gabriele', surname: 'Malagoli', initials: 'GM', role: 'Direzione artistica'},
+		{name: 'Massimo', surname: 'Bondioli', initials: 'MB', role: 'Direzione organizzativa'},
+		{name: 'Alice', surname: 'Morelli', initials: 'AM', role: 'Direzione marketing e partnership'},
+		{name: 'Martina', surname: 'Dell’Utri', initials: 'MDU', role: 'Produzione'},
+		{name: 'Giulia', surname: 'Benedetti', initials: 'GB', role: 'Direzione creativa e graphic design'},
+		{name: 'Luca', surname: 'Bunino', initials: 'LB', role: 'Direzione creativa e graphic design'},
+		{name: 'Andrea', surname: 'Chimento', initials: 'AC', role: 'Ideazione'},
 	]
 </script>
 
 <main class="bg-white">
 	<Navigator title="About" {sections}/>
 	<Title
-	title='Lorem ipsum dolor sit amet, consectetur adipiscing elit incididunt ut labore.'
-	subtitle='Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.'
+	title='Siamo quelli <br>che il cinema lo vivono'
 	size={'m'}
+	subtitles={['Lo studiano, lo discutono, lo amano senza misura. E che da questo amore hanno creato un progetto vicino, inclusivo, fatto per tutti.']}
 	/>
 	<section id="partners">
 		{#each partners as partner, i}
@@ -33,8 +33,9 @@
 	</section>
 	<section id="who-we-are" title="Chi siamo" bind:this={sections[0]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Chi siamo</h2>
-		<p class="wb-21 wb-18-mb max-w-800">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-		<p class="wb-21 wb-18-mb max-w-800">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+		<p class="wb-21 wb-18-mb max-w-700">Il Modena Film Festival è un progetto ideato da Crispy Cinema Club e realizzato in collaborazione con Longtake, due realtà diverse ma complementari, unite dalla stessa visione: rendere il cinema un luogo vivo, accessibile e condiviso.</p>
+		<p class="wb-21 wb-18-mb max-w-700">Da un lato Crispy Cinema Club, che porta energia, comunità e un modo diretto e contemporaneo di avvicinarsi ai film.<br>Dall’altro Longtake, che da anni coltiva un approccio critico, approfondito e curioso verso il cinema d’autore.</p>
+		<p class="wb-21 wb-18-mb max-w-700">Insieme abbiamo immaginato un festival che unisce queste due anime: pop e curata, sensibile e rigorosa, attenta allo sguardo del pubblico e al lavoro degli autori. Un progetto costruito da persone che il cinema lo vivono ogni giorno, per farlo vivere anche a chi lo incontra qui, a Modena.</p>
 	</section>
 	<section id="chart" title="Organigramma" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Organigramma</h2>
