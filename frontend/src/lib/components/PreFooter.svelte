@@ -14,8 +14,8 @@
 	<div class={prefooter.img ? 'half' : 'wide'}>
 		<div>
 			{#if prefooter.subtitle}<h2 class="wb-12 wb-10-mb uppercase">{prefooter.subtitle}</h2>{/if}
-			{#if prefooter.title}<h3 class="wb-cd-120 wb-cd-60-mb uppercase max-w-800">{prefooter.title}</h3>{/if}
-			{#if prefooter.content}<p class="content wb-21 max-w-600">{@html prefooter.content}</p>{/if}
+			{#if prefooter.title}<h3 class="wb-cd-120 wb-cd-50-mb uppercase max-w-800">{prefooter.title}</h3>{/if}
+			{#if prefooter.content}<p class="content wb-21 wb-15-mb max-w-600">{@html prefooter.content}</p>{/if}
 		</div>
 		<div>
 			{#if prefooter.cta.label && prefooter.cta.href}
@@ -23,7 +23,7 @@
 				onclick={(e) => {prefooter.cta.locked ? handleLockedclick(e) : ''}}
 				>{prefooter.cta.label}</a>
 			{/if}
-			{#if prefooter.annotation}<p class="annotation wb-21 max-w-600">{prefooter.annotation}</p>{/if}
+			{#if prefooter.annotation}<p class="annotation wb-21 wb-15-mb max-w-600">{prefooter.annotation}</p>{/if}
 		</div>
 	</div>
 </section>
