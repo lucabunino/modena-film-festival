@@ -3,6 +3,7 @@
     let { title, sections, cta, bg } = $props()
 	let scrollY = $state()
 	import { getBanner } from '$lib/stores/banner.svelte';
+    import { innerHeight, innerWidth } from "svelte/reactivity/window";
 	let banner = getBanner()
 	let visible = $state(false)
 	let shaking = $state(false);
@@ -47,7 +48,8 @@
 
 {#if sections}
 	<nav>
-		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}">
+		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}"
+		style="{innerWidth.current < 1080 ? 'top:' + innerHeight.current + 'px' : undefined}">
 			{#if title}
 				<h1 class="wb-12 uppercase desktop-only" onclick={() => {scrollY = 0}}>{title}</h1>
 			{/if}
@@ -143,7 +145,13 @@
 
 			div {
 				margin: 0;
-				top: calc(100dvh - 2.833rem + 1px);
+				top: 100dvh;
+				transform: translateY(calc(-2.833rem + 1px)) !important;
+				margin-bottom: calc(-2.833rem);
+				/* position: fixed;
+				bottom: 0;
+				top: unset; */
+				width: 100%;
 				border-radius: 0;
 				padding: 0;
 				overflow-x: scroll;

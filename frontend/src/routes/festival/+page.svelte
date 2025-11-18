@@ -128,7 +128,7 @@
 	</section>
 	<section id="regulations" title="Regolamento" bind:this={sections[3]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Regolamento</h2>
-		<p class="wb-28 wb-18-mb max-w-800">Leggi il regolamento completo del Modena Film Festival, con tutte le modalità di partecipazione alle sezioni, i requisiti tecnici e i criteri di selezione.</p>
+		<p class="wb-28 wb-18-mb max-w-800">Il regolamento completo del Modena Film Festival, con tutte le modalità di partecipazione alle sezioni, i requisiti tecnici e i criteri di selezione.</p>
 		<a class="btn-l" href="/festival/regolamento">Leggi il regolamento</a>
 	</section>
 </main>
