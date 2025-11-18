@@ -3,7 +3,6 @@
     let { title, sections, cta, bg } = $props()
 	let scrollY = $state()
 	import { getBanner } from '$lib/stores/banner.svelte';
-    import { innerHeight, innerWidth } from "svelte/reactivity/window";
 	let banner = getBanner()
 	let visible = $state(false)
 	let shaking = $state(false);
@@ -122,7 +121,7 @@
 								background-color: var(--white) !important;
 							}
 							&:hover.cta {
-								background-color: var(--black) !important;
+								background-color: var(--brown) !important;
 							}
 							&[aria-current="section"]:not(.cta) {
 								color: var(--white) !important;
