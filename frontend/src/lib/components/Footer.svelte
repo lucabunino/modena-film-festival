@@ -5,7 +5,7 @@
 <footer aria-label="Footer">
 	<section id="contacts" aria-labelledby="contact-title">
 		<h3 id="contact-title" class="title wb-12 wb-10-mb uppercase">Contattaci</h3>
-		<p class="wb-14 wb-15-mb">Per informazioni sul festival, accreditamenti, partnership o proposte</p>
+		<p class="wb-14 wb-15-mb">Per informazioni sul festival, accreditamenti o altro</p>
 		<ul class="contact-list" aria-label="Indirizzi email di contatto">
 			<!-- <li>
 				<a class="email btn-m bg-linen hover-bg-black" href="mailto:press@modenafilmfestival.it">

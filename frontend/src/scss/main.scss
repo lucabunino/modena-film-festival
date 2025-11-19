@@ -387,7 +387,17 @@ main {
 		}
 	}
 }
+.contacts-grid {
+	grid-column: 1 / span 6;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: var(--margin);
+	row-gap: var(--margin);
 
+	@media screen and (max-width: 768px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
 @keyframes shake {
 	10%, 90% { rotate: (1deg); }
 	20%, 80% { rotate: (-2deg); }
