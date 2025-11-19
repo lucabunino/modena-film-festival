@@ -1,9 +1,6 @@
 <script>
 	let email = $state()
-	let scrollY = $state()
 </script>
-
-<svelte:window bind:scrollY></svelte:window>
 
 <footer aria-label="Footer">
 	<section id="contacts" aria-labelledby="contact-title">
@@ -70,7 +67,7 @@
 				<a href="/privacy" class="btn-xs">Privacy policy</a>
 				<a href="/cookies" class="btn-xs">Cookie policy</a>
 			</div>
-			<button class="btn-xs desktop-s-only" onclick={() => {scrollY = 0}}>Scroll to top ↑</button>
+			<button class="btn-xs desktop-s-only" onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Torna su ↑</button>
 		</div>
 	</section>
 	<p class="mobile-s-only wb-12 wb-10-mb">© {new Date().getFullYear()}<br>

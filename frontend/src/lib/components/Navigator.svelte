@@ -1,7 +1,6 @@
 <script>
     import { page } from "$app/state";
     let { title, sections, cta, bg } = $props()
-	let scrollY = $state()
 	import { getBanner } from '$lib/stores/banner.svelte';
     import { onMount } from "svelte";
 	let banner = getBanner()
@@ -43,13 +42,11 @@
 	}
 </script>
 
-<svelte:window bind:scrollY></svelte:window>
-
 {#if sections}
 	<nav>
 		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}">
 			{#if title}
-				<button class="title wb-12 uppercase desktop-only" onclick={() => {scrollY = 0}}>{title}</button>
+				<button class="title wb-12 uppercase desktop-only" onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>{title}</button>
 			{/if}
 			<ol>
 				{#each sections as section, i}

@@ -27,7 +27,7 @@
 	const news = [
 		{
 			title: 'Open Call<br>Modena Film Festival 2026', subtitle: '',
-			abstract: 'Una visione diversa: è in arrivo un nuovo Festival! Vuoi candidare il tuo film? Invia la tua submission tramite FilmFreeway cliccando qui sotto.',
+			abstract: 'Avviata la call ufficiale per le candidature al Modena Film Festival 2026.',
 			cta: {
 				label: 'Candida il tuo film',
 				href: 'https://filmfreeway.com/festivals/93026?utm_campaign=Modena+Film+Festival&utm_medium=External&utm_source=Submission+Button',
