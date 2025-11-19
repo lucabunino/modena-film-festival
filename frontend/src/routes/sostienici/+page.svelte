@@ -76,7 +76,7 @@
 		IT50Y0538766890000004422054</p>
 	</section>
 	<section id="tiers" title="Tiers">
-		<swiper-container class="{visible ? 'visible' : ''}"
+		<swiper-container class={visible ? 'visible' : undefined}
 		init="false"
 		mousewheel={{
 			forceToAxis: true,

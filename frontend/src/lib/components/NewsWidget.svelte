@@ -87,7 +87,7 @@
 				{#if news.length > 1}
 					<div class="pagination">
 						{#each news as singleNews, i}
-							<button class="circle {swiperIndex == i ? 'active' : ''}" onclick={() => {handleClick(i)}}></button>
+							<button aria-label="bullet" class="circle {swiperIndex == i ? 'active' : ''}" onclick={() => {handleClick(i)}}></button>
 						{/each}
 					</div>
 				{/if}

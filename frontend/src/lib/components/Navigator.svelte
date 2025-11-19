@@ -49,7 +49,7 @@
 	<nav>
 		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}">
 			{#if title}
-				<h1 class="wb-12 uppercase desktop-only" onclick={() => {scrollY = 0}}>{title}</h1>
+				<button class="title wb-12 uppercase desktop-only" onclick={() => {scrollY = 0}}>{title}</button>
 			{/if}
 			<ol>
 				{#each sections as section, i}
@@ -97,7 +97,7 @@
 				top: calc(var(--margin) + 200px + .3rem);
 			}
 
-			h1 {
+			.title {
 				margin-bottom: 2rem;
 				cursor: pointer;
 			}
