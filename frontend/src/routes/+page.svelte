@@ -52,7 +52,7 @@
 				</Marquee>
 			</div>
 			<h1 class="wb-100 wb-28-mb">15—19.4.2026</h1>
-			<p class="wb-28 wb-15-mb">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+			<p class="wb-28 wb-15-mb">Una visione diversa: è in arrivo un nuovo Festival! Vuoi candidare il tuo film? Invia la tua submission tramite FilmFreeway cliccando qui sotto.</p>
 		</div>
 		<div class="desktop-only">
 			<Marquee speed=200>
@@ -64,10 +64,10 @@
 	<NewsWidget {news}/>
 	<section id="sections" class="bg-white">
 		<div>
-			<h2 class="wb-12 wb-10-mb uppercase">Titoletto di sezione</h2>
-			<h3 class="wb-cd-60 wb-cd-40-mb uppercase">Un festival <br>dedicato <br>ai cinque sensi</h3>
+			<h2 class="wb-12 wb-10-mb uppercase">Il Festival</h2>
+			<h3 class="wb-cd-60 wb-cd-40-mb uppercase">Un Festival <br>dedicato <br>ai cinque sensi</h3>
 			<SectionsMobile {sections}/>
-			<p class="wb-18 wb-15-mb">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint.</p>
+			<p class="wb-18 wb-15-mb">Opere che coinvolgono lo spettatore in esperienze sensoriali innovative, che riflettono sul cinema stesso come arte visiva e sonora, o che utilizzano i sensi come metafora per esplorare tematiche contemporanee.</p>
 			<a class="btn-m white bg-black hover-black hover-bg-linen" href="/festival">Leggi di più</a>
 		</div>
 		<SectionsDesktop {sections}/>

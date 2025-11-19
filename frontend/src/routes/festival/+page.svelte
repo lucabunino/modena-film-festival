@@ -79,10 +79,10 @@
 		<p class="wb-28 wb-18-mb max-w-800">Tre giorni di film, incontri, performance, suoni, luci, profumi, conversazioni e luoghi che si trasformano: un’esperienza pensata per chi ama il cinema d’autore, per chi cerca nuove visioni e per chi vuole semplicemente lasciarsi sorprendere.</p>
 		<p class="wb-28 wb-18-mb max-w-800">Tra sale, musei e spazi della città, il festival diventa un punto di incontro aperto e accessibile a tutti, con particolare attenzione a chi vive il cinema attraverso altri sensi e ha esigenze sensoriali specifiche. Un invito a guardare meglio. E a sentire di più.</p>
 	</section>
+	<!-- SEZIONI
 	<section id="festival-sections" title="Sezioni" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Sezioni</h2>
 		<p class="wb-28 wb-18-mb max-w-800">Tutto all’insegna della qualità e della varietà: 11 sezioni, 3 concorsi e 20 premi. Questa l’architettura di un Festival che esplora il cinema a 360°. Per scoprire nel presente gli autori e i film destinati ad avere futuro.</p>
-		<!-- DETTAGLIO DELLE 5 SEZIONI
 		<p class="wb-18 wb-15-mb max-w-500">Tutto all’insegna della qualità e della varietà: 11 sezioni, 3 concorsi e 20 premi. Questa l’architettura di un Festival che esplora il cinema a 360°. Per scoprire nel presente gli autori e i film destinati ad avere futuro.</p>
 		{#if innerWidth.current > 1080}
 			<div class="festival-sections">
@@ -113,9 +113,9 @@
 					</swiper-slide>
 				{/each}
 			</swiper-container>
-		{/if} -->
-	</section>
-	<section id="jury" title="Giuria" bind:this={sections[2]}>
+		{/if}
+	</section> -->
+	<section id="jury" title="Giuria" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Giuria</h2>
 		<p class="wb-28 wb-18-mb max-w-800">La giuria ufficiale del Modena Film Festival sarà annunciata nelle prossime settimane.</p>
 		<!-- GIURIA DA INSERIRE, QUI O PER SINGOLA SEZIONE
@@ -126,7 +126,7 @@
 			{/each}
 		</div> -->
 	</section>
-	<section id="regulations" title="Regolamento" bind:this={sections[3]}>
+	<section id="regulations" title="Regolamento" bind:this={sections[2]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Regolamento</h2>
 		<p class="wb-28 wb-18-mb max-w-800">Il regolamento completo del Modena Film Festival, con tutte le modalità di partecipazione alle sezioni, i requisiti tecnici e i criteri di selezione.</p>
 		<a class="btn-l" href="/festival/regolamento">Leggi il regolamento</a>

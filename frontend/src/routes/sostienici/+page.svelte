@@ -28,7 +28,7 @@
 	const prefooter = {
 		subtitle: "Abbonamenti",
 		title: "Acquista gli abbonamenti",
-		content: "Stiamo preparando biglietti singoli e abbonamento per permetterti di vivere il Modena Film Festival come preferisci: un singolo evento o l’intera esperienza. <br>A breve troverai qui tutte le opzioni, i prezzi e le modalità di acquisto.",
+		content: "Stiamo preparando biglietti singoli e abbonamento per permetterti di vivere il Modena Film Festival come preferisci: una proiezione per volta o l’intera esperienza. <br>A breve troverai qui tutte le opzioni, i prezzi e le modalità di acquisto.",
 		cta: {href: '/tickets', label: 'Acquista*', locked: true},
 		annotation: '*Gli abbonamenti saranno disponibili online prima dell’inizio del festival.',
 		bg: 'bg-yellow',
@@ -62,7 +62,7 @@
 </script>
 
 <main class="bg-white">
-	<Navigator title="Supporter" {sections}/>
+	<Navigator title="Sostienici" {sections}/>
 	<Title
 	title='Sostieni <br>il festival!'
 	subtitles={['Scegli la tua fascia di sostegno e aiutaci a realizzare il festival!']}

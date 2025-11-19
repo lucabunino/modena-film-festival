@@ -3,6 +3,7 @@
     let { title, sections, cta, bg } = $props()
 	let scrollY = $state()
 	import { getBanner } from '$lib/stores/banner.svelte';
+    import { onMount } from "svelte";
 	let banner = getBanner()
 	let visible = $state(false)
 	let shaking = $state(false);
@@ -16,9 +17,6 @@
 		if (shaking) return;
 		shaking = true;
 		setTimeout(() => (shaking = false), 600);
-	}
-	function handleScroll() {
-		console.log(scrollY);
 	}
 	function observeSections() {
 		const observer = new IntersectionObserver(
@@ -41,9 +39,16 @@
 
 		sections.forEach(el => observer.observe(el));
 	}
+	function scrollIntoView(e, i) {
+		e.preventDefault()
+		sections[i].scrollIntoView({
+			behavior: "smooth",
+			block: "start"
+		});
+	}
 </script>
 
-<svelte:window bind:scrollY onscroll={handleScroll}></svelte:window>
+<svelte:window bind:scrollY></svelte:window>
 
 {#if sections}
 	<nav>
@@ -54,7 +59,7 @@
 			<ol>
 				{#each sections as section, i}
 					<li>
-						<a aria-current={activeSection == i ? 'section' : undefined} href="#{section.id}">{section.title}</a>
+						<a aria-current={activeSection == i ? 'section' : undefined} href="#{section.id}" onclick={(e) => {scrollIntoView(e, i)}}>{section.title}</a>
 					</li>
 				{/each}
 				{#if cta}

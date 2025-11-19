@@ -89,6 +89,8 @@
 		grid-template-columns: repeat(8, 1fr);
 		column-gap: var(--gutter);
 		row-gap: var(--spacing-s);
+		position: relative;
+		background-color: var(--white);
 
 		#contacts {
 			grid-column: 1 / span 5;

@@ -12,7 +12,7 @@
 	]
 </script>
 
-<main>
+<main class="bg-white">
 	<Title
 	size={'m'}
 	subtitles={[

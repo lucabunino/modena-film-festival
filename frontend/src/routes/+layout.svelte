@@ -9,16 +9,24 @@
     import { fade, fly, slide } from "svelte/transition";
     import { page } from "$app/state";
     import { innerHeight, innerWidth } from "svelte/reactivity/window";
+    import { pageIn, pageOut } from "$lib/utils/transitions";
 	let { children } = $props();
-	const transitionOut = (node, params) => {
-		return innerWidth.current > 1080 ? slide(node, { ...params, duration: 800 }) : '';
-	};
+	let scrollY = $state(undefined)
 	const seo = {
 		SEOTitle: 'Modena Film Festival',
 		SEODescription: 'TBD',
 		SEOImage: '/img/placeholder.png',
 	}
+
+	const transitionIn = (node, params) => {
+		return innerWidth.current > 1080 ? pageIn(node, { ...params, duration: 750, delay: 0, pageHeight: innerHeight.current }) : '';
+	};
+	const transitionOut = (node, params) => {
+		return innerWidth.current > 1080 ? pageOut(node, { ...params, duration: 750, delay: 0, scrollY: scrollY }) : '';
+	};
 </script>
+
+<svelte:window bind:scrollY></svelte:window>
 
 <svelte:head>
 	{#if seo.SEOTitle}<title>{seo.SEOTitle}</title>{/if}
@@ -37,19 +45,15 @@
 <Sidebar/>
 <Menu/>
 {#key page.url.pathname}
-	<div out:transitionOut>
+	<div id="wrapper" in:transitionIn out:transitionOut>
 		{@render children()}
+		<Footer/>
 	</div>
 {/key}
-<Footer/>
 <CookieBanner/>
 
 <style>
-	main {
-		margin-left: var(--sidebarWidth);
-		width: calc(100% - var(--sidebarWidth));
-		position: relative;
-		display: grid;
-		grid-template-columns: repeat(8, 1fr);
-	}
+#wrapper {
+	width: stretch
+}
 </style>
