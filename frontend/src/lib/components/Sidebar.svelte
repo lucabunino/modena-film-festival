@@ -1,12 +1,7 @@
 <script>
     import { page } from "$app/state";
 	let shaking = $state(false);
-	function handleLockedclick(e) {
-		e.preventDefault()
-		if (shaking) return;
-		shaking = true;
-		setTimeout(() => (shaking = false), 600);
-	}
+	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
 </script>
 <aside class="desktop-only">
 	<header>

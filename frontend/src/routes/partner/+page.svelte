@@ -46,7 +46,7 @@
 </script>
 
 <main class="bg-white">
-	<Navigator title="Festival" {sections} cta={{label: 'Diventa sponsor', href: '/partner/sponsor', locked: true}}/>
+	<Navigator title="Festival" {sections} cta={{label: 'Diventa sponsor', href: '/partner/sponsor'}}/>
 	<Title
 	size={'m'}
 	subtitles={[

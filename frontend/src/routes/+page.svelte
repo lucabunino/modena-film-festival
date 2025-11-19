@@ -27,19 +27,16 @@
 	const news = [
 		{
 			title: 'Open Call<br>Modena Film Festival 2026', subtitle: '',
-			abstract: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.',
-			ctaLabel: 'Candida il tuo film', ctaHref: 'https://www.google.com/', ctaBlank: true,
-		},
-		{
-			title: 'Open Call<br>Modena Film Festival 2025', subtitle: '',
-			ctaLabel: 'Candida il tuo film', ctaHref: 'https://www.google.com/', ctaBlank: true,
-		},
-		{
-			title: 'Open Call<br>Modena Film Festival 2024', subtitle: '',
-			abstract: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.',
-			ctaLabel: 'Candida il tuo film', ctaHref: 'https://www.google.com/', ctaBlank: true,
+			abstract: 'Una visione diversa: è in arrivo un nuovo Festival! Vuoi candidare il tuo film? Invia la tua submission tramite FilmFreeway cliccando qui sotto.',
+			cta: {
+				label: 'Candida il tuo film',
+				href: 'https://filmfreeway.com/festivals/93026?utm_campaign=Modena+Film+Festival&utm_medium=External&utm_source=Submission+Button',
+				blank: true
+			}
 		},
 	]
+	let shaking = $state(false);
+	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
 </script>
 
 <main>
@@ -59,7 +56,7 @@
 				<p class="wb-cd-370 marquee">{@html 'Open Call Open Call Open Call&nbsp;'}</p>
 			</Marquee>
 		</div>
-		<a class="btn-l hover-black hover-bg-linen" href="https://www.google.com/" target="_blank" rel="noopener noreferrer">Candida il tuo film</a>
+		<a class="btn-l hover-black hover-bg-linen" href="https://filmfreeway.com/festivals/93026?utm_campaign=Modena+Film+Festival&utm_medium=External&utm_source=Submission+Button" target="_blank" rel="noopener noreferrer">Candida il tuo film</a>
 	</section>
 	<NewsWidget {news}/>
 	<section id="sections" class="bg-white">
@@ -140,6 +137,7 @@
 			position: absolute;
 			left: 50%;
 			bottom: var(--margin);
+			transform-origin: right;
 			transform: translateX(-50%);
 			z-index: 2;
 		}

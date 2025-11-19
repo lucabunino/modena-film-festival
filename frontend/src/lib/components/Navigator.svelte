@@ -7,17 +7,12 @@
 	let banner = getBanner()
 	let visible = $state(false)
 	let shaking = $state(false);
+	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
 	let activeSection = $state(false)
 	$effect(() => {
 		observeSections();
 		visible = true;
 	})
-	function handleLockedclick(e) {
-		e.preventDefault()
-		if (shaking) return;
-		shaking = true;
-		setTimeout(() => (shaking = false), 600);
-	}
 	function observeSections() {
 		const observer = new IntersectionObserver(
 			(entries) => {

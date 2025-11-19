@@ -26,14 +26,8 @@
 			visible = true
 		}, 50);
 	})
-
-	let shaking = $state([]);
-	function handleLockedclick(e, i) {
-		e.preventDefault()
-		if (shaking[i]) return;
-		shaking[i] = true;
-		setTimeout(() => (shaking[i] = false), 600);
-	}
+	let shaking = $state(false);
+	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
 	function onSwiperRealIndexChange() {
 		swiperIndex = swiperEl.swiper?.realIndex
 	}

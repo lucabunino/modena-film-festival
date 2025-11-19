@@ -81,8 +81,8 @@
 					{#if singleNews.title}<h1 class="wb-21 wb-15-mb">{@html singleNews.title}</h1>{/if}
 					{#if singleNews.abstract}<p class="wb-14 wb-12-mb">{singleNews.abstract}</p>{/if}
 				</div>
-				{#if singleNews.ctaLabel && singleNews.ctaHref}
-					<a class="btn-xs uppercase" href={singleNews.ctaHref} target={singleNews.ctaBlank ? '_blank' : '_self'} rel={singleNews.ctaBlank ? 'noopener noreferrer' : ''}>{singleNews.ctaLabel}{singleNews.ctaBlank ? ' ↗' : ''}</a>
+				{#if singleNews.cta}
+					<a class="btn-xs uppercase" href={singleNews.cta.href} target={singleNews.cta.blank ? '_blank' : '_self'} rel={singleNews.cta.blank ? 'noopener noreferrer' : ''}>{singleNews.cta.label}{singleNews.cta.blank ? ' ↗' : ''}</a>
 				{/if}
 				{#if news.length > 1}
 					<div class="pagination">
