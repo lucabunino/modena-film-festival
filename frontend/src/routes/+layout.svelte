@@ -10,6 +10,7 @@
     import { page } from "$app/state";
     import { innerHeight, innerWidth } from "svelte/reactivity/window";
     import { pageIn, pageOut } from "$lib/utils/transitions";
+    import { browser, dev } from "$app/environment";
 	let { children } = $props();
 	let scrollY = $state(undefined)
 	const seo = {
@@ -29,6 +30,9 @@
 <svelte:window bind:scrollY></svelte:window>
 
 <svelte:head>
+	{#if browser}
+		<script defer src="https://cloud.umami.is/script.js" data-website-id="3e32a832-2bf2-438c-bbc1-f295f745e1d3"></script>
+	{/if}
 	{#if seo.SEOTitle}<title>{seo.SEOTitle}</title>{/if}
 	{#if seo.SEODescription}<meta name="description" content={seo.SEODescription}>{/if}
 	<link rel="canonical" href={page.url}>
