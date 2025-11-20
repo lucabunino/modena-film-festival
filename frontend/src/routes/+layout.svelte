@@ -17,7 +17,7 @@
 	const seo = {
 		SEOTitle: 'Modena Film Festival',
 		SEODescription: 'Il Modena Film Festival nasce da una riflessione sul cinema come arte della percezione. I cinque sensi rappresentano il nostro primo e più immediato contatto con la realtà: attraverso di essi viviamo conoscenza, memoria ed emozione.',
-		SEOImage: '/img/seo.png',
+		SEOImage: 'https://www.modenafilmfestival.it/img/seo.png',
 	}
 
 	const transitionIn = (node, params) => {
