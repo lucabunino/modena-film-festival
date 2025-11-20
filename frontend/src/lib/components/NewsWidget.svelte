@@ -62,6 +62,7 @@
 	<swiper-container
 	init="false"
 	autoplay={{
+		active: news.length > 1 ? true : false,
 		delay: 3000,
 		disableOnInteraction: true,
 	}}
