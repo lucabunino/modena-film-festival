@@ -1,7 +1,7 @@
 <script>
     import { page } from "$app/state";
 	let shaking = $state(false);
-	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
+	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600);}
 </script>
 <aside class="desktop-only">
 	<header>
@@ -14,7 +14,7 @@
 			<h1 class="wb-28 leading-1">Modena Film <br>Festival</h1>
 		</a>
 		<a href="/biglietti" class="tickets btn-m locked {shaking ? 'shaking' : ''}" onclick={(e) => {handleLockedclick(e)}}>Biglietti</a>
-		<nav class="menu wb-28 leading-1_3" aria-label="Main navigation" menubar aria-orientation="vertical">
+		<nav class="menu wb-28 leading-1_3" aria-label="Main navigation" menubar>
 			<ul>
 				<li><a aria-current={page.url.pathname.startsWith('/festival') ? 'page' : undefined} href="/festival">Festival</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/about') ? 'page' : undefined} href="/about">About</a></li>
