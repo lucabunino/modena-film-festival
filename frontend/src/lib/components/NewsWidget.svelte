@@ -15,6 +15,12 @@
 		slidesOffsetBefore: 15,
 		slidesOffsetAfter: 15,
 		loop: false,
+		...(news.length > 1 && {
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: true
+			}
+		}),
 		breakpoints: {
 			576: {
 				slidesPerView: news.length > 1 ? 1.75 : 1,
@@ -61,11 +67,6 @@
 <section id="news-widget">
 	<swiper-container
 	init="false"
-	autoplay={{
-		active: news.length > 1 ? true : false,
-		delay: 3000,
-		disableOnInteraction: true,
-	}}
 	mousewheel={{
 		forceToAxis: true,
 	}}
