@@ -76,7 +76,7 @@
 	<section id="event" title="Evento" bind:this={sections[0]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Evento</h2>
 		<p class="wb-28 wb-18-mb max-w-800">Il Modena Film Festival è il nuovo spazio in cui Modena vive il cinema con tutti i sensi.</p>
-		<p class="wb-28 wb-18-mb max-w-800">Tre giorni di film, incontri, performance, suoni, luci, profumi, conversazioni e luoghi che si trasformano: un’esperienza pensata per chi ama il cinema d’autore, per chi cerca nuove visioni e per chi vuole semplicemente lasciarsi sorprendere.</p>
+		<p class="wb-28 wb-18-mb max-w-800">Cinque giorni di film, incontri, performance, suoni, luci, profumi, conversazioni e luoghi che si trasformano: un’esperienza pensata per chi ama il cinema d’autore, per chi cerca nuove visioni e per chi vuole semplicemente lasciarsi sorprendere.</p>
 		<p class="wb-28 wb-18-mb max-w-800">Tra sale, musei e spazi della città, il festival diventa un punto di incontro aperto e accessibile a tutti, con particolare attenzione a chi vive il cinema attraverso altri sensi e ha esigenze sensoriali specifiche. Un invito a guardare meglio. E a sentire di più.</p>
 	</section>
 	<!-- SEZIONI
