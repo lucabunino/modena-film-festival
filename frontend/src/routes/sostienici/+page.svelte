@@ -23,6 +23,7 @@
 		{name: 'Irene', surname: 'Malagoli'},
 		{name: 'Laura', surname: 'Malagoli'},
 		{name: 'Marino', surname: 'Linguiti'},
+		{name: 'Nicholas', surname: 'Sighinolfi'},
 		{name: 'Teresa', surname: 'Tinti'},
 		{name: 'Vanna', surname: 'Bortolamasi'},
 	]
