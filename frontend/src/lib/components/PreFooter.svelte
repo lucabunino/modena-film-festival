@@ -42,7 +42,11 @@
 			margin: var(--margin);
 			width: stretch;
 		}
-
+		img {
+			width: 38%;
+			height: stretch;
+			object-fit: cover;
+		}
 		>div {
 			padding:  calc(var(--margin)*1.5) var(--margin);
 			@media screen and (max-width: 1080px) {
@@ -57,11 +61,6 @@
 			&.wide {width: 100%;}
 			&.half {width: 62%;}
 
-			img {
-				width: 38%;
-				height: stretch;
-				object-fit: cover;
-			}
 			h3 {
 				margin-top: 1rem;
 			}
