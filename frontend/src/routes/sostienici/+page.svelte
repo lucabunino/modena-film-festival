@@ -27,15 +27,25 @@
 		{name: 'Teresa', surname: 'Tinti'},
 		{name: 'Vanna', surname: 'Bortolamasi'},
 	]
+	// const prefooter = {
+	// 	subtitle: "Abbonamenti",
+	// 	title: "Acquista gli abbonamenti",
+	// 	content: "Stiamo preparando biglietti singoli e abbonamento per permetterti di vivere il Modena Film Festival come preferisci: una proiezione per volta o l’intera esperienza. <br>A breve troverai qui tutte le opzioni, i prezzi e le modalità di acquisto.",
+	// 	cta: {href: '/tickets', label: 'Acquista*', locked: true},
+	// 	annotation: '*Gli abbonamenti saranno disponibili online prima dell’inizio del festival.',
+	// 	bg: 'bg-yellow',
+	// }
 	const prefooter = {
-		subtitle: "Abbonamenti",
-		title: "Acquista gli abbonamenti",
-		content: "Stiamo preparando biglietti singoli e abbonamento per permetterti di vivere il Modena Film Festival come preferisci: una proiezione per volta o l’intera esperienza. <br>A breve troverai qui tutte le opzioni, i prezzi e le modalità di acquisto.",
-		cta: {href: '/tickets', label: 'Acquista*', locked: true},
-		annotation: '*Gli abbonamenti saranno disponibili online prima dell’inizio del festival.',
-		bg: 'bg-yellow',
+		subtitle: "Diventa volontaria o volontario",
+		title: "Entra nello staff MFF",
+		content: "Dal 15 al 19 aprile 2026 abbiamo bisogno di te per realizzare il nuovo imperdibile festival in cui Modena vive il cinema con tutti i sensi.",
+		cta: {
+			label: 'Scopri di più',
+			href: '/staff',
+		},
+		bg: 'bg-iris',
+		img: '/img/pre-footer-1.png',
 	}
-
 	let swiperEl = $state(undefined)
 	let swiperIndex = $state(0)
 	let visible = $state(false)
