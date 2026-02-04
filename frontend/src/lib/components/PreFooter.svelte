@@ -10,7 +10,11 @@
 </script>
 
 <section id="pre-footer" class={prefooter.bg}>
-	{#if prefooter.img}<img src={prefooter.img} alt="">{/if}
+	{#if prefooter.img}
+		<img class="media" src={prefooter.img} alt="">
+	{:else if prefooter.video}
+		<video class="media" src={prefooter.video} poster={prefooter.poster ? prefooter.poster : undefined} muted loop autoplay playsinline></video>
+	{/if}
 	<div class={prefooter.img ? 'half' : 'wide'}>
 		<div>
 			{#if prefooter.subtitle}<h2 class="wb-12 wb-10-mb uppercase">{prefooter.subtitle}</h2>{/if}
@@ -42,10 +46,11 @@
 			margin: var(--margin);
 			width: stretch;
 		}
-		img {
+		.media {
 			width: 38%;
 			height: stretch;
 			object-fit: cover;
+			max-height: 700px;
 		}
 		>div {
 			padding:  calc(var(--margin)*1.5) var(--margin);

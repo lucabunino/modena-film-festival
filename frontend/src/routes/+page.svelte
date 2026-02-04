@@ -23,8 +23,10 @@
 			href: '/staff',
 		},
 		// annotation: '*Lorem ipsum adisciplit esset',
-		bg: 'bg-iris',
-		img: '/img/pre-footer-1.png',
+		bg: 'bg-cyan',
+		// img: '/img/pre-footer-1.png',
+		// video: '/img/staff.mp4',
+		// poster: '/img/staff.webp',
 	}
 	const news = [
 		{
