@@ -43,8 +43,11 @@
 			label: 'Scopri di più',
 			href: '/staff',
 		},
-		bg: 'bg-iris',
-		img: '/img/pre-footer-1.png',
+		// annotation: '*Lorem ipsum adisciplit esset',
+		bg: 'bg-cyan',
+		// img: '/img/pre-footer-1.png',
+		// video: '/img/staff.mp4',
+		// poster: '/img/staff.webp',
 	}
 	let swiperEl = $state(undefined)
 	let swiperIndex = $state(0)
