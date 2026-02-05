@@ -23,6 +23,11 @@
 				<li><a aria-current={page.url.pathname.startsWith('/contatti') ? 'page' : undefined} href="/contatti">Contatti</a></li>
 			</ul>
 		</nav>
+		<nav class="submenu wb-18 leading-1_3" aria-label="Secondary navigation" menubar>
+			<ul>
+				<li><a aria-current={page.url.pathname.startsWith('/staff') ? 'page' : undefined} href="/staff">Entra nello staff</a></li>
+			</ul>
+		</nav>
 	</header>
 	<section class="meta">
 		<section class="social wb-18" aria-label="Social media">
@@ -76,6 +81,9 @@ aside {
 			[aria-current] {
 				color: var(--white);
 			}
+		}
+		.submenu {
+			margin-top: .5rem;
 		}
 	}
 }

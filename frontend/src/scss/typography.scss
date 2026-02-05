@@ -177,7 +177,8 @@
   	&,
 	&-21,
 	&-28,
-	&-21-mb {
+	&-21-mb,
+	&-35 {
 		font-family: "Newsreader", serif;
 		font-optical-sizing: auto;
 		font-weight: 400;
@@ -185,6 +186,7 @@
 	}
 	&-21 { font-size: 1.5rem; letter-spacing: 0em; line-height: 1.1; }
 	&-28 { font-size: 2rem; letter-spacing: 0em; line-height: 1.1; }
+	&-35 { font-size: 2.5rem; letter-spacing: -0.01em; line-height: 1.1; }
 
 	@media screen and (max-width: 1080px) {
 		&-21-mb { font-size: 1.75rem; letter-spacing: 0em; line-height: 1.1; }

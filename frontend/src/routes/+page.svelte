@@ -15,14 +15,18 @@
 	];
 
 	const prefooter = {
-		subtitle: "Acquista gli abbonamenti",
-		title: "Lorem ipsum eiusque belli 100€",
-		content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-		ctaLabel: "Compra ora*",
-		ctaLink: "/tickets",
-		annotation: '*Lorem ipsum adisciplit esset',
-		bg: 'bg-iris',
-		img: '/img/pre-footer-1.png',
+		subtitle: "Diventa volontaria o volontario",
+		title: "Entra nello staff MFF",
+		content: "Dal 15 al 19 aprile 2026 abbiamo bisogno di te per realizzare il nuovo imperdibile festival in cui Modena vive il cinema con tutti i sensi.",
+		cta: {
+			label: 'Scopri di più',
+			href: '/staff',
+		},
+		// annotation: '*Lorem ipsum adisciplit esset',
+		bg: 'bg-cyan',
+		// img: '/img/pre-footer-1.png',
+		// video: '/img/staff.mp4',
+		// poster: '/img/staff.webp',
 	}
 	const news = [
 		{
@@ -70,7 +74,7 @@
 		<SectionsDesktop {sections}/>
 	</section>
 </main>
-<!-- <PreFooter {prefooter}/> -->
+<PreFooter {prefooter}/>
 
 
 <style>
