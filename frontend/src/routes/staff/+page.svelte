@@ -2,7 +2,7 @@
     import Navigator from "$lib/components/Navigator.svelte";
     import Title from "$lib/components/Title.svelte";
 	let sections = $state([])
-	const formLink = "https://docs.google.com/forms/d/1vwlSM1NMOSquqefwjy16pltiMU_ikxOn_p5apsslk8c/preview"
+	const formLink = "https://forms.gle/zfY5EMbdBwVQwhG67"
 </script>
 
 <main class="bg-white">
@@ -15,7 +15,7 @@
 		'Tra sale, musei e spazi della città, il festival diventa un punto di incontro aperto e accessibile a tutti, con particolare attenzione a chi vive il cinema attraverso altri sensi e ha esigenze sensoriali specifiche. Un invito a guardare meglio. E a sentire di più.'
 	]}
 	cta={{href: formLink, label: 'Unisciti a noi', blank: true}}/>
-	<section id="contribution" title="Contributo" bind:this={sections[0]}>
+	<section id="contribution" title="Mansioni" bind:this={sections[0]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">In cosa consisterà il tuo contributo?</h2>
 		<div class="text wb-21 wb-18-mb max-w-700">
 			<p>Nei giorni che precedono il festival potremmo aver bisogno di un aiuto logistico, sicuramente ci saranno da preparare i luoghi e i materiali in modo che tutto sia pronto in tempo. Una vera immersione nel backstage. Se sai le lingue potremmo anche avere bisogno di un aiuto per realizzare i sottotitoli dei film.</p>

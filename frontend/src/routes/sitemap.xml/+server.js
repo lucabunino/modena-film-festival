@@ -8,6 +8,7 @@ export async function GET() {
 		{ path: 'partner/sponsor', priority: 0.6 },
 		{ path: 'sostienici', priority: 0.8 },
 		{ path: 'contatti', priority: 0.8 },
+		{ path: 'staff', priority: 0.8 },
 		{ path: 'privacy', priority: 0.5 },
 		{ path: 'cookies', priority: 0.5 }
 	];
