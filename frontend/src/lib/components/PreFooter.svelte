@@ -55,7 +55,10 @@
 		>div {
 			padding:  calc(var(--margin)*1.5) var(--margin);
 			@media screen and (max-width: 1080px) {
-				padding: 3rem var(--margin) 3rem;
+				padding: 3rem var(--margin) var(--margin);
+			}
+			@media screen and (max-width: 768px) {
+				text-align: center;
 			}
 
 			display: flex;
@@ -81,7 +84,7 @@
 
 			a {
 				margin-top: var(--spacing-s);
-				@media screen and (max-width: 1080px) {
+				@media screen and (max-width: 768px) {
 					width: 100%;
 					text-align: center;
 				}

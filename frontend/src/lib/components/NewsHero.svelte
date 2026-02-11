@@ -34,7 +34,7 @@
 			@media screen and (max-width: 768px) {
 				padding: 5rem var(--margin);
 				min-height: 300px;
-				height: 35vh;
+				height: 50vh;
 			}
 		}
 
@@ -49,7 +49,7 @@
 			@media screen and (max-width: 768px) {
 				padding: 5rem var(--margin);
 				min-height: 300px;
-				height: 35vh;
+				height: 50vh;
 			}
 		}
 

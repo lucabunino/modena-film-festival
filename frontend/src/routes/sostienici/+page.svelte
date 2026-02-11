@@ -139,7 +139,7 @@
 		<h2 class="section-title wb-12 uppercase">Amici</h2>
 		<div class="friends">
 			{#each friends as friend, i}
-				<h3 class="friend wb-28">{friend.name} {friend.surname}</h3>
+				<h3 class="friend wb-28 wb-18-mb">{friend.name} {friend.surname}</h3>
 			{/each}
 		</div>
 	</section>
