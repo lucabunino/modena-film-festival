@@ -4,6 +4,7 @@ import event from './event'
 import location from './location'
 import person from './person'
 import section from './section'
+import seo from './seo'
 
 export const schemaTypes = [
 	landing,
@@ -11,5 +12,6 @@ export const schemaTypes = [
 	event,
 	location,
 	person,
-	section
+	section,
+	seo
 ]

@@ -1,4 +1,5 @@
 <script>
+    import HeadSingle from '$lib/components/HeadSingle.svelte';
     import NewsHero from '$lib/components/NewsHero.svelte';
     import PortableTextStyleProject from '$lib/components/portableTextStyles/portableTextStyleProject.svelte';
     import { formatDateNumber, formatISO } from '$lib/utils/datetime.js';
@@ -8,12 +9,11 @@
 	let news = $derived(data.news[0])
 	let cta = $derived(news.cta)
 	let seoSingle = $derived(news.seo)
-	$inspect(data)
 </script>
 
-<!-- {#if seoSingle}
-	<HeadSingle seo={data.seo[0]} {seoSingle} hidden={project.hidden} />
-{/if} -->
+{#if seoSingle}
+	<HeadSingle seo={data.seo} {seoSingle} hidden={news.status == 'hidden'} />
+{/if}
 
 <main class="bg-white">
 	<NewsHero {news} />

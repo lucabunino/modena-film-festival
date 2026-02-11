@@ -1,7 +1,6 @@
 <script>
 	let { data } = $props()
-	$inspect(data)
-	
+
 	import Marquee from 'svelte-fast-marquee';
     import SectionsDesktop from '$lib/components/SectionsDesktop.svelte';
     import SectionsMobile from '$lib/components/SectionsMobile.svelte';

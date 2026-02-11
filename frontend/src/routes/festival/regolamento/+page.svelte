@@ -2,8 +2,13 @@
     import Navigator from "$lib/components/Navigator.svelte";
     import Title from "$lib/components/Title.svelte";
     import { rules } from "$lib/content/rules";
+	import HeadSingle from "$lib/components/HeadSingle.svelte";
+	let { data } = $props()
 	let sections = $state([])
+	const seoSingle = { seoTitle: 'Regolamento'}
 </script>
+
+{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Navigator title="Regolamento" {sections} cta={{label: 'Candida il tuo film', href: '/sponsor', blank: true}}/>

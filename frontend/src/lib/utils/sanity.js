@@ -97,11 +97,11 @@ export async function getEvent(slug) {
 }
 export async function getSeo() {
 	return await client.fetch(
-		`*[_type == "seo" && !(_id in path('drafts.**'))] {
+		`*[_type == "seo" && !(_id in path('drafts.**'))][0] {
 			seoTitle,
 			seoDescription,
 			seoImage,
-		}|order(year desc)`
+		}`
 	);
 }
 

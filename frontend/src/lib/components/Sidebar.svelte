@@ -77,11 +77,11 @@ aside {
 		.tickets {
 			margin-top: 1rem;
 		}
+		[aria-current] {
+			color: var(--white);
+		}
 		.menu {
 			margin-top: 4rem;
-			[aria-current] {
-				color: var(--white);
-			}
 		}
 		.submenu {
 			margin-top: .5rem;

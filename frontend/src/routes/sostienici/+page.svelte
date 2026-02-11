@@ -3,6 +3,8 @@
     import Navigator from "$lib/components/Navigator.svelte";
     import PreFooter from "$lib/components/PreFooter.svelte";
 	import { register } from 'swiper/element/bundle';register();
+	import HeadSingle from "$lib/components/HeadSingle.svelte";
+	let { data } = $props()
 
 	let sections = $state([])
 	let tiers = $derived([
@@ -74,7 +76,10 @@
 			visible = true
 		}, 50);
 	})
+	const seoSingle = { seoTitle: 'Sostienici'}
 </script>
+
+{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Navigator title="Sostienici" {sections}/>
