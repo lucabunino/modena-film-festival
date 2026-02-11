@@ -18,7 +18,7 @@
 	</div>
 	<div class="bottom">
 		{#if landing.abstract}
-			<p class="wb-18 max-w-600">{landing.abstract}</p>
+			<p class="wb-18 wb-15-mb max-w-600">{landing.abstract}</p>
 		{/if}
 		{#if cta.label}
 			<a class="cta btn-l {landing.typeColor ? '' : 'bg-linen'} black hover-white hover-bg-black" style="{landing.typeColor ? `background-color: ${landing.typeColor.hex};` : undefined}" href={cta.href} target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}>{cta.label}</a>
