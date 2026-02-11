@@ -9,6 +9,7 @@
     import { innerWidth } from 'svelte/reactivity/window';
     import Landing1 from '$lib/components/Landing1.svelte';
     import Landing2 from '$lib/components/Landing2.svelte';
+    import HeadSingle from '$lib/components/HeadSingle.svelte';
 
 	const sections = [
 		{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan' },
@@ -46,6 +47,8 @@
 	let shaking = $state(false);
 	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
 </script>
+
+<HeadSingle seo={data.seo} seoSingle={false}/>
 
 <main>
 	{#if data.landing?.layout == '1'}
