@@ -12,12 +12,14 @@
 	<div class="top">
 		<h3 class="wb-12 uppercase">{landing.runningHead}</h3>
 		{#if landing.title}
-			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-50-mb' : size == 'm' ? 'wb-cd-80 wb-cd-30-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-600 uppercase">{landing.title}</h1>
+			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-50-mb' : size == 'm' ? 'wb-cd-80 wb-cd-50-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-600 uppercase">{landing.title}</h1>
 		{/if}
-		<h2 class="nr-35">{landing.subtitle}</h2>
+		{#if landing.subtitle}<h2 class="nr-35 nr-21-mb">{landing.subtitle}</h2>{/if}
 	</div>
 	<div class="bottom">
-		<p class="wb-18">{landing.abstract}</p>
+		{#if landing.abstract}
+			<p class="wb-18 max-w-600">{landing.abstract}</p>
+		{/if}
 		{#if cta.label}
 			<a class="cta btn-l {landing.typeColor ? '' : 'bg-linen'} black hover-white hover-bg-black" style="{landing.typeColor ? `background-color: ${landing.typeColor.hex};` : undefined}" href={cta.href} target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}>{cta.label}</a>
 		{/if}
@@ -47,6 +49,7 @@
 			object-position: center;
 		}
 		.top {
+			width: stretch;
 			z-index: 2;
 
 			h3 {
@@ -58,8 +61,9 @@
 			}
 		}
 		.bottom {
+			width: stretch;
 			z-index: 2;
-			max-width: 600px;
+
 			margin-bottom: var(--margin);
 			
 			p {
@@ -77,33 +81,36 @@
 			margin: var(--spacing-xs) var(--margin);
 			display: grid;
 
-			div:nth-child(1) {
+			.top {
+				padding: 3rem 0 var(--margin);
+			}
+			.bottom {
 				padding: 3rem 0 var(--margin);
 
-				h2 {
-					margin: 0 var(--margin);
-				}
-
-				h1 {
-					margin: var(--spacing-xs) var(--margin) 0;
-				}
-
 				p {
-					margin: var(--spacing-m) var(--margin) 0;
-					width: stretch;
+					margin-top: var(--spacing-m);
 				}
-				.marquee {
-					margin: 1rem 0 0;
+			}
+		}
+
+		@media screen and (max-width: 768px) {
+			text-align: center;
+
+			.top {
+				h1 {
 					max-width: unset;
 				}
 			}
-			a {
-				position: relative;
-				left: unset;
-				margin: 0 var(--margin) var(--margin);
-				bottom: unset;
-				transform: unset;
-				text-align: center;
+
+			.bottom {
+				p {
+					max-width: unset;
+				}
+
+				.cta {
+					width: 100%;
+					text-align: center;
+				}
 			}
 		}
 	}

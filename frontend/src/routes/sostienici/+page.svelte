@@ -109,9 +109,10 @@
 						<p class="wb-18 wb-15-mb max-w-400">{tier.abstract}</p>
 					</div>
 					<div class="btns">
-					<a class="btn-l" href="https://paypal.me/CrispyCinemaClubAPS/{tier.price}" target="_blank" rel="noopener noreferrer">Dona {tier.price}€</a>
+					<a class="btn-l {tier.isCustomPrice ? 'desktop-only' : undefined}" href="https://paypal.me/CrispyCinemaClubAPS/{tier.price}" target="_blank" rel="noopener noreferrer">Dona {tier.price}€</a>
 						{#if tier.isCustomPrice}
-							<a class="btn-s" href="https://paypal.me/CrispyCinemaClubAPS/" target="_blank" rel="noopener noreferrer">Scegli importo</a>
+							<a class="btn-s desktop-only" href="https://paypal.me/CrispyCinemaClubAPS/" target="_blank" rel="noopener noreferrer">Scegli importo</a>
+							<a class="btn-l mobile-only" href="https://paypal.me/CrispyCinemaClubAPS/" target="_blank" rel="noopener noreferrer">Scegli importo</a>
 						{/if}
 					</div>
 				</swiper-slide>
@@ -185,8 +186,9 @@
 			}
 			.btns {
 				display: flex;
+				flex-wrap: wrap;
 				align-items: baseline;
-				gap: var(--spacing-xs);
+				column-gap: var(--spacing-xs);
 
 				a {
 					width: fit-content;

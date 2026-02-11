@@ -10,10 +10,10 @@
 	<section id="hero" class={news.layout} style="{news.cover ? `background-image: url(${urlFor(news.cover).width(2560)});` : undefined} {news.typeColor ? `color: ${news.typeColor.hex}` : undefined}">
 		<Breadcrumbs showSingle={false} typeColor={news.typeColor ? news.typeColor : undefined}/>
 		{#if news.title}
-			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-50-mb' : size == 'm' ? 'wb-cd-80 wb-cd-30-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-800 uppercase">{news.title}</h1>
+			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-50-mb' : size == 'm' ? 'wb-cd-80 wb-cd-50-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-800 uppercase">{news.title}</h1>
 		{/if}
 		{#if news.subtitle}
-			<h2 class="{size == 'l' ? 'nr-35' : size == 'm' ? 'nr-35' : size == 's' ? 'nr-38': undefined} max-w-700">{news.subtitle}</h2>
+			<h2 class="{size == 'l' ? 'nr-35 nr-21-mb' : size == 'm' ? 'nr-35 nr-21-mb' : size == 's' ? 'nr-28 nr-21-mb': undefined} max-w-700">{news.subtitle}</h2>
 		{/if}
 	</section>
 {/if}
@@ -30,6 +30,12 @@
 			height: 80vh;
 			background-size: cover;
 			background-position: center;
+
+			@media screen and (max-width: 768px) {
+				padding: 5rem var(--margin);
+				min-height: 300px;
+				height: 35vh;
+			}
 		}
 
 		&.imgShort {
@@ -39,6 +45,12 @@
 			height: 50vh;
 			background-size: cover;
 			background-position: center;
+
+			@media screen and (max-width: 768px) {
+				padding: 5rem var(--margin);
+				min-height: 300px;
+				height: 35vh;
+			}
 		}
 
 		h1 {
