@@ -94,7 +94,7 @@
 		}
 
 		@media screen and (max-width: 768px) {
-			text-align: center;
+			/* text-align: center; */
 
 			.top {
 				h1 {
