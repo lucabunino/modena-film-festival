@@ -38,7 +38,7 @@ $colors: (
 }
 html {
 	-webkit-font-smoothing: antialiased;
-	font-size: clamp(12px, calc(10px + 0.2646vw), 16px);
+	font-size: clamp(12px, calc(9px + 0.2646vw), 16px);
 	line-height: 1.2;
 	color: var(--black);
 	background-color: var(--lightGray);
@@ -348,6 +348,9 @@ main {
     transform-origin: left;
     transition: var(--transition-s);
     transition-property: transform;
+}
+.hover-underline.typeColor::after {
+	background-color: var(--bgColor);
 }
 .hover-underline:hover:after {
 	transform: scaleX(1);

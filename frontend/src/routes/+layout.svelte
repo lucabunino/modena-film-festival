@@ -12,13 +12,8 @@
     import { innerHeight, innerWidth } from "svelte/reactivity/window";
     import { pageIn, pageOut } from "$lib/utils/transitions";
     import { browser, dev } from "$app/environment";
-	let { children } = $props();
+	let { data, children } = $props();
 	let scrollY = $state(undefined)
-	const seo = {
-		SEOTitle: 'Modena Film Festival',
-		SEODescription: 'Il Modena Film Festival nasce da una riflessione sul cinema come arte della percezione. I cinque sensi rappresentano il nostro primo e più immediato contatto con la realtà: attraverso di essi viviamo conoscenza, memoria ed emozione.',
-		SEOImage: 'https://www.modenafilmfestival.it/img/seo.png',
-	}
 
 	const transitionIn = (node, params) => {
 		return innerWidth.current > 1080 ? pageIn(node, { ...params, duration: 750, delay: 0, pageHeight: innerHeight.current }) : '';
@@ -29,8 +24,7 @@
 </script>
 
 <svelte:window bind:scrollY></svelte:window>
-<Head {seo}/>
-
+<Head seo={data.seo}/>
 <Sidebar/>
 <Menu/>
 {#key page.url.pathname}

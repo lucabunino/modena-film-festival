@@ -48,7 +48,13 @@
 				<li><a aria-current={page.url.pathname.startsWith('/about') ? 'page' : undefined} href="/about" onclick={() => {closeMenu()}}>About</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/partner') ? 'page' : undefined} href="/partner" onclick={() => {closeMenu()}}>Partner</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/sostienici') ? 'page' : undefined} href="/sostienici" onclick={() => {closeMenu()}}>Sostienici</a></li>
+				<li><a aria-current={page.url.pathname.startsWith('/news') ? 'page' : undefined} href="/news" onclick={() => {closeMenu()}}>News</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/contatti') ? 'page' : undefined} href="/contatti" onclick={() => {closeMenu()}}>Contatti</a></li>
+				<nav class="submenu wb-21-mb" aria-label="Secondary navigation" submenubar>
+					<ul>
+						<li><a aria-current={page.url.pathname.startsWith('/staff') ? 'page' : undefined} href="/staff" onclick={() => {closeMenu()}}>Entra nello staff</a></li>
+					</ul>
+				</nav>
 			</ul>
 		</nav>
 		<section in:fade={{duration: 200, delay: 200}} class="social" aria-label="Social media">
@@ -183,10 +189,14 @@ header {
 				align-items: center;
 				width: 100%;
 				height: 100%;
+
+				.submenu {
+					margin-top: 1em;
+				}
 			}
-			
+
 			[aria-current] {
-				opacity: .2;
+				font-style: italic;
 			}
 		}
 
