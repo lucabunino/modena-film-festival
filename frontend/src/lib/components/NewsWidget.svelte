@@ -86,7 +86,7 @@
 				{#if news.widgetCta.label}
 					<a class="btn-xs uppercase" href={news.widgetCta.href} target={news.widgetCta.blank ? '_blank' : '_self'} rel={news.widgetCta.blank ? 'noopener noreferrer' : ''}>{news.widgetCta.label}{news.widgetCta.blank ? ' ↗' : ''}</a>
 				{:else}
-					<a class="btn-xs uppercase" href="/news/{news.slug.current}">Scopri di più</a>
+					<a class="btn-xs uppercase" href="/news/{news.slug.current}">Leggi di più</a>
 				{/if}
 				{#if newses.length > 1}
 					<div class="pagination">

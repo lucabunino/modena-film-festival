@@ -12,7 +12,7 @@
 	<div class="top">
 		<h3 class="wb-12 uppercase">{landing.runningHead}</h3>
 		{#if landing.title}
-			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-50-mb' : size == 'm' ? 'wb-cd-80 wb-cd-50-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-600 uppercase">{landing.title}</h1>
+			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-40-mb' : size == 'm' ? 'wb-cd-80 wb-cd-40-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-600 uppercase">{landing.title}</h1>
 		{/if}
 		{#if landing.subtitle}<h2 class="nr-35 nr-21-mb">{landing.subtitle}</h2>{/if}
 	</div>
