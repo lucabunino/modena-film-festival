@@ -193,7 +193,12 @@
 	}
 }
 .bold			{ font-weight: 700; }
-.uppercase		{ text-transform: uppercase; }
+.uppercase		{
+	text-transform: uppercase;
+	-moz-font-feature-settings: "lnum";
+	-webkit-font-feature-settings: "lnum";
+	font-feature-settings: "lnum";
+}
 .titlecase		{ text-transform: capitalize; }
 .leading-1		{ line-height: 1; }
 .leading-1_15	{ line-height: 1.15; }

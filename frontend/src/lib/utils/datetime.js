@@ -6,6 +6,17 @@ export function formatISO(start, end) {
     return `${startISO}/${endISO}`;
 }
 
+export function formatDateNumber(dateString) {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear().toString().slice(-2);
+
+    return `${day}.${month}.${year}`;
+}
+
 export function formatLabel(start, end) {
     if (!start) return '';
     const startDate = new Date(start);

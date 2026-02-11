@@ -1,5 +1,5 @@
 <script>
-    let { news } = $props()
+    let { newses } = $props()
 	import { register } from 'swiper/element/bundle';register();
 	let visible = $state(false)
 	let swiperEl = $state(undefined)
@@ -10,12 +10,12 @@
 
 	// Lifecycle
 	const swiperParams = {
-		slidesPerView: news.length > 1 ? 1.25 : 1,
+		slidesPerView: newses.length > 1 ? 1.25 : 1,
 		spaceBetween: 10,
 		slidesOffsetBefore: 15,
 		slidesOffsetAfter: 15,
 		loop: false,
-		...(news.length > 1 && {
+		...(newses.length > 1 && {
 			autoplay: {
 				delay: 3000,
 				disableOnInteraction: true
@@ -23,14 +23,14 @@
 		}),
 		breakpoints: {
 			576: {
-				slidesPerView: news.length > 1 ? 1.75 : 1,
+				slidesPerView: newses.length > 1 ? 1.75 : 1,
 				spaceBetween: 10,
 				slidesOffsetBefore: 15,
 				slidesOffsetAfter: 15,
 				loop: false,
 			},
 			768: {
-				slidesPerView: news.length > 1 ? 2.25 : 1,
+				slidesPerView: newses.length > 1 ? 2.25 : 1,
 				spaceBetween: 10,
 				slidesOffsetBefore: 15,
 				slidesOffsetAfter: 15,
@@ -77,18 +77,20 @@
 	onswiperrealindexchange={() => {onSwiperRealIndexChange()}}
 	bind:this={swiperEl}
 	>
-		{#each news as singleNews, i}
+		{#each newses as news, i}
 			<swiper-slide class="{innerWidth.current > 1080 ? 'bg-white' : 'bg-linen'} rounded-m border-linen">
 				<div>
-					{#if singleNews.title}<h1 class="wb-21 wb-15-mb">{@html singleNews.title}</h1>{/if}
-					{#if singleNews.abstract}<p class="wb-14 wb-12-mb">{singleNews.abstract}</p>{/if}
+					{#if news.title}<h1 class="wb-21 wb-15-mb">{@html news.title}</h1>{/if}
+					{#if news.widgetAbstract}<p class="wb-14 wb-12-mb">{news.widgetAbstract}</p>{/if}
 				</div>
-				{#if singleNews.cta}
-					<a class="btn-xs uppercase" href={singleNews.cta.href} target={singleNews.cta.blank ? '_blank' : '_self'} rel={singleNews.cta.blank ? 'noopener noreferrer' : ''}>{singleNews.cta.label}{singleNews.cta.blank ? ' ↗' : ''}</a>
+				{#if news.widgetCta.label}
+					<a class="btn-xs uppercase" href={news.widgetCta.href} target={news.widgetCta.blank ? '_blank' : '_self'} rel={news.widgetCta.blank ? 'noopener noreferrer' : ''}>{news.widgetCta.label}{news.widgetCta.blank ? ' ↗' : ''}</a>
+				{:else}
+					<a class="btn-xs uppercase" href="/news/{news.slug.current}">Scopri di più</a>
 				{/if}
-				{#if news.length > 1}
+				{#if newses.length > 1}
 					<div class="pagination">
-						{#each news as singleNews, i}
+						{#each newses as news, i}
 							<button aria-label="bullet" class="circle {swiperIndex == i ? 'active' : ''}" onclick={() => {handleClick(i)}}></button>
 						{/each}
 					</div>

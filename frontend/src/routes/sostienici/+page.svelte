@@ -44,7 +44,7 @@
 			href: '/staff',
 		},
 		// annotation: '*Lorem ipsum adisciplit esset',
-		bg: 'bg-cyan',
+		bg: 'bg-iris',
 		// img: '/img/pre-footer-1.png',
 		// video: '/img/staff.mp4',
 		// poster: '/img/staff.webp',
