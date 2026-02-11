@@ -79,13 +79,15 @@
 			width: calc(100vw - var(--margin)*2);
 			border-radius: 3rem;
 			margin: var(--spacing-xs) var(--margin);
+			padding-top: 0;
 			display: grid;
 
 			.top {
 				padding: 3rem 0 var(--margin);
 			}
 			.bottom {
-				padding: 3rem 0 var(--margin);
+				margin-bottom: 0;
+				padding: 0;
 
 				p {
 					margin-top: var(--spacing-m);
@@ -94,7 +96,7 @@
 		}
 
 		@media screen and (max-width: 768px) {
-			/* text-align: center; */
+			text-align: center;
 
 			.top {
 				h1 {
