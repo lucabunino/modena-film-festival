@@ -12,9 +12,9 @@
 	]
 	const people = [
 		{name: 'Gabriele', surname: 'Malagoli', initials: 'GM', role: 'Direttore artistico'},
-		{name: 'Massimo', surname: 'Bondioli', initials: 'MB', role: 'Direzione organizzativa'},
+		{name: 'Massimo', surname: 'Bondioli', initials: 'MB', role: 'Direttore organizzativo'},
 		{name: 'Alice', surname: 'Morelli', initials: 'AM', role: 'Direzione marketing e partnership'},
-		{name: 'Martina', surname: 'Dell’Utri', initials: 'MD', role: 'Produzione'},
+		{name: 'Martina', surname: 'Dell’Utri', initials: 'MD', role: 'Organizzatrice di Produzione e Print Traffic'},
 		{name: 'Giulia', surname: 'Benedetti', initials: 'GB', role: 'Direttore creativo e designer grafico'},
 		{name: 'Luca', surname: 'Bunino', initials: 'LB', role: 'Direttore creativo e designer grafico'},
 		{name: 'Andrea', surname: 'Chimento', initials: 'AC', role: 'Ideatore'},
