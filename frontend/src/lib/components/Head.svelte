@@ -4,10 +4,10 @@
     import { urlFor } from "$lib/utils/image";
 
     let { seo } = $props();
-	
+    
     const globalImageUrl = $derived(
         seo?.seoImage 
-            ? urlFor(seo.seoImage).width(1200).height(630).fit('crop').auto('format').url() 
+            ? urlFor(seo.seoImage).width(1200).height(630).fit('crop').quality(80).auto('format').url() 
             : undefined
     );
 </script>
@@ -40,6 +40,11 @@
     {#if globalImageUrl}
         <meta property="og:image" content={globalImageUrl} />
         <meta name="twitter:image" content={globalImageUrl} />
+        
+        <meta property="og:image:secure_url" content={globalImageUrl} />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
     {/if}
 
     <meta property="og:type" content="website" />

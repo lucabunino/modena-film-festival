@@ -20,7 +20,7 @@
     // We add .quality(80) to ensure the file size stays under WhatsApp's 300KB limit
     const socialImageUrl = $derived(
         seoImgObj 
-            ? urlFor(seoImgObj).width(1200).height(630).fit('crop').quality(80).auto('format').url() 
+            ? urlFor(seoImgObj).width(1200).height(630).fit('crop').format('jpg').quality(70).auto('format').url() 
             : undefined
     );
 </script>
