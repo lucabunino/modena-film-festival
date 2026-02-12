@@ -1,14 +1,10 @@
 <script>
-    import HeadSingle from '$lib/components/HeadSingle.svelte';
     import Title from '$lib/components/Title.svelte';
     import { formatDateNumber, formatISO } from '$lib/utils/datetime.js';
     import { urlFor } from '$lib/utils/image.js';
 
 	let { data } = $props()
-	const seoSingle = { seoTitle: 'News'}
 </script>
-
-{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Title

@@ -1,8 +1,6 @@
 <script>
-    import HeadSingle from "$lib/components/HeadSingle.svelte";
     import Navigator from "$lib/components/Navigator.svelte";
     import Title from "$lib/components/Title.svelte";
-	let { data } = $props()
 	let sections = $state([])
 
 	const clusters = [
@@ -45,10 +43,7 @@
 			]
 		},
 	]
-	const seoSingle = { seoTitle: 'Partner'}
 </script>
-
-{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Navigator title="Festival" {sections} cta={{label: 'Diventa sponsor', href: '/partner/sponsor'}}/>

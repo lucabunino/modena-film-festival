@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz@6..72&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz@6..72&display=block');
 // @font-face {
 //   font-family: "Waldenburg";
 //   src: url("/fonts/KMRWaldenburg-Regular.woff2") format("woff2"),
@@ -19,6 +19,7 @@
        url("/fonts/kmrwaldenburg-medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
+  font-display: block;
 }
 @font-face {
   font-family: "Waldenburg";
@@ -26,6 +27,7 @@
        url("/fonts/kmrwaldenburg-mediumitalic.woff") format("woff");
   font-weight: 500;
   font-style: italic;
+  font-display: block;
 }
 // @font-face {
 //   font-family: "Waldenburg";
@@ -47,6 +49,7 @@
        url("/fonts/TeXGyreHeros-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
+  font-display: block;
 }
 @font-face {
   font-family: "Waldenburg";
@@ -54,6 +57,7 @@
        url("/fonts/TeXGyreHeros-BoldItalic.woff") format("woff");
   font-weight: 700;
   font-style: italic;
+  font-display: block;
 }
 @font-face {
   font-family: "Waldenburg Condensed";
@@ -61,21 +65,8 @@
        url("/fonts/kmrwaldenburg-condensedheavy.woff") format("woff");
   font-weight: 800;
   font-style: normal;
+  font-display: block;
 }
-// @font-face {
-//   font-family: "Suisse Works";
-//   src: url("/fonts/SuisseWorks-Book-WebTrial.woff2") format("woff2"),
-//        url("/fonts/SuisseWorks-Book-WebTrial.woff") format("woff");
-//   font-weight: 350;
-//   font-style: normal;
-// }
-// @font-face {
-//   font-family: "Suisse Works";
-//   src: url("/fonts/SuisseWorks-BookItalic-WebTrial.woff2") format("woff2"),
-//        url("/fonts/SuisseWorks-BookItalic-WebTrial.woff") format("woff");
-//   font-weight: 350;
-//   font-style: italic;
-// }
 
 /* Typography */
 .wb {

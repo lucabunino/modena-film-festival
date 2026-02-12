@@ -7,7 +7,7 @@ export async function load() {
 	if (landing, widgetNewses) {
 		return {
 			landing,
-			widgetNewses
+			widgetNewses,
 		};
 	}
   throw error(404, 'Not found');

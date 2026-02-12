@@ -24,7 +24,7 @@
 </script>
 
 <svelte:window bind:scrollY></svelte:window>
-<Head seo={data.seo}/>
+<Head seo={data.seo} />
 <Sidebar/>
 <Menu/>
 {#key page.url.pathname}

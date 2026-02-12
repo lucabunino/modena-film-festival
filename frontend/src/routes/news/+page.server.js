@@ -5,8 +5,12 @@ export async function load() {
 	const newses = await getNewses();
 	if (newses) {
 		return {
-			newses
+			newses,
+			seoSingle: {
+				seoTitle: "News",
+			}
 		};
 	}
   throw error(404, 'Not found');
 }
+

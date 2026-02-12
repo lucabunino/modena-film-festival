@@ -1,5 +1,4 @@
 <script>
-    import HeadSingle from '$lib/components/HeadSingle.svelte';
     import NewsHero from '$lib/components/NewsHero.svelte';
     import PortableTextStyleProject from '$lib/components/portableTextStyles/portableTextStyleProject.svelte';
     import { formatDateNumber, formatISO } from '$lib/utils/datetime.js';
@@ -8,12 +7,7 @@
 	let { data } = $props()
 	let news = $derived(data.news[0])
 	let cta = $derived(news.cta)
-	let seoSingle = $derived(news.seo)
 </script>
-
-{#if seoSingle}
-	<HeadSingle seo={data.seo} {seoSingle} hidden={news.status == 'hidden'} />
-{/if}
 
 <main class="bg-white">
 	<NewsHero {news} />

@@ -5,9 +5,22 @@
 
     let { seo } = $props();
     
-    const globalImageUrl = $derived(
-        seo?.seoImage 
-            ? urlFor(seo.seoImage).width(1200).height(630).fit('crop').quality(80).auto('format').url() 
+    const seoSingle = $derived(page.data?.seoSingle);
+    const canonicalUrl = $derived(page.url.origin + page.url.pathname);
+
+    const displayTitle = $derived(
+        seoSingle?.seoTitle && seo?.seoTitle 
+            ? `${seoSingle.seoTitle} | ${seo.seoTitle}` 
+            : (seoSingle?.seoTitle || seo?.seoTitle)
+    );
+
+    const rawDesc = $derived(seoSingle?.seoDescription || seo?.seoDescription || "");
+    const displayDesc = $derived(rawDesc.length > 157 ? rawDesc.slice(0, 157) + "..." : rawDesc);
+
+    const seoImgObj = $derived(seoSingle?.seoImage || seo?.seoImage);
+    const socialImageUrl = $derived(
+        seoImgObj 
+            ? urlFor(seoImgObj).width(1200).height(630).fit('crop').quality(70).format('jpg').url() 
             : undefined
     );
 </script>
@@ -23,36 +36,39 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
-    {#if seo?.seoTitle}
-        <title>{seo.seoTitle}</title>
-        <meta name="title" content={seo.seoTitle} />
-        <meta property="og:title" content={seo.seoTitle} />
-        <meta name="twitter:title" content={seo.seoTitle} />
-        <meta property="og:site_name" content={seo.seoTitle} />
+    {#if displayTitle}
+        <title>{displayTitle}</title>
+        <meta name="title" content={displayTitle} />
+        <meta property="og:title" content={displayTitle} />
+        <meta name="twitter:title" content={displayTitle} />
+        <meta property="og:site_name" content={seo?.seoTitle || "Modena Film Festival"} />
     {/if}
 
-    {#if seo?.seoDescription}
-        <meta name="description" content={seo.seoDescription} />
-        <meta property="og:description" content={seo.seoDescription} />
-        <meta name="twitter:description" content={seo.seoDescription} />
+    {#if displayDesc}
+        <meta name="description" content={displayDesc} />
+        <meta property="og:description" content={displayDesc} />
+        <meta name="twitter:description" content={displayDesc} />
     {/if}
 
-    {#if globalImageUrl}
-        <meta property="og:image" content={globalImageUrl} />
-        <meta name="twitter:image" content={globalImageUrl} />
-        
-        <meta property="og:image:secure_url" content={globalImageUrl} />
+    {#if socialImageUrl}
+        <meta property="og:image" content={socialImageUrl} />
+        <meta property="og:image:secure_url" content={socialImageUrl} />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta name="twitter:image" content={socialImageUrl} />
     {/if}
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={page.url.href} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={page.url.href} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="it_IT" /> <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
 
-    <link rel="canonical" href={page.url.href} />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    {#if page.data?.hidden}
+        <meta name="robots" content="noindex, nofollow" />
+    {:else}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    {/if}
 </svelte:head>

@@ -3,8 +3,7 @@
     import Navigator from "$lib/components/Navigator.svelte";
     import Partner from "$lib/components/Partner.svelte";
     import Person from "$lib/components/Person.svelte";
-	import HeadSingle from "$lib/components/HeadSingle.svelte";
-	let { data } = $props()
+
 	let sections = $state([])
 	const partners = [
 		{title: 'Crispy', href: 'https://www.instagram.com/crispycinemaclub/', cover: '/img/crispy.webp', logo: '/logos/crispy-white.svg'},
@@ -19,10 +18,7 @@
 		{name: 'Luca', surname: 'Bunino', initials: 'LB', role: 'Direttore creativo e designer grafico'},
 		{name: 'Andrea', surname: 'Chimento', initials: 'AC', role: 'Ideatore'},
 	]
-	const seoSingle = { seoTitle: 'About'}
 </script>
-
-{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Navigator title="About" {sections}/>
