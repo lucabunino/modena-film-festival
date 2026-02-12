@@ -12,15 +12,18 @@
     import { innerHeight, innerWidth } from "svelte/reactivity/window";
     import { pageIn, pageOut } from "$lib/utils/transitions";
     import { browser, dev } from "$app/environment";
+    import { onMount } from "svelte";
 	let { data, children } = $props();
 	let scrollY = $state(undefined)
 
-	const transitionIn = (node, params) => {
-		return innerWidth.current > 1080 ? pageIn(node, { ...params, duration: 750, delay: 0, pageHeight: innerHeight.current }) : '';
-	};
-	const transitionOut = (node, params) => {
-		return innerWidth.current > 1080 ? pageOut(node, { ...params, duration: 750, delay: 0, scrollY: scrollY }) : '';
-	};
+    const transitionIn = (node, params) => {
+        if (!browser || innerWidth.current <= 1080) return;
+        return pageIn(node, { ...params, duration: 1000, pageHeight: innerHeight.current });
+    };
+    const transitionOut = (node, params) => {
+        if (!browser || innerWidth.current <= 1080) return;
+        return pageOut(node, { ...params, duration: 1000, scrollY });
+    };
 </script>
 
 <svelte:window bind:scrollY></svelte:window>
