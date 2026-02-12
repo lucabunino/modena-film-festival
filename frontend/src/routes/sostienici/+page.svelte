@@ -3,6 +3,8 @@
     import Navigator from "$lib/components/Navigator.svelte";
     import PreFooter from "$lib/components/PreFooter.svelte";
 	import { register } from 'swiper/element/bundle';register();
+	import HeadSingle from "$lib/components/HeadSingle.svelte";
+	let { data } = $props()
 
 	let sections = $state([])
 	let tiers = $derived([
@@ -44,7 +46,7 @@
 			href: '/staff',
 		},
 		// annotation: '*Lorem ipsum adisciplit esset',
-		bg: 'bg-cyan',
+		bg: 'bg-iris',
 		// img: '/img/pre-footer-1.png',
 		// video: '/img/staff.mp4',
 		// poster: '/img/staff.webp',
@@ -74,7 +76,10 @@
 			visible = true
 		}, 50);
 	})
+	const seoSingle = { seoTitle: 'Sostienici'}
 </script>
+
+{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Navigator title="Sostienici" {sections}/>
@@ -109,9 +114,10 @@
 						<p class="wb-18 wb-15-mb max-w-400">{tier.abstract}</p>
 					</div>
 					<div class="btns">
-					<a class="btn-l" href="https://paypal.me/CrispyCinemaClubAPS/{tier.price}" target="_blank" rel="noopener noreferrer">Dona {tier.price}€</a>
+					<a class="btn-l {tier.isCustomPrice ? 'desktop-only' : undefined}" href="https://paypal.me/CrispyCinemaClubAPS/{tier.price}" target="_blank" rel="noopener noreferrer">Dona {tier.price}€</a>
 						{#if tier.isCustomPrice}
-							<a class="btn-s" href="https://paypal.me/CrispyCinemaClubAPS/" target="_blank" rel="noopener noreferrer">Scegli importo</a>
+							<a class="btn-s desktop-only" href="https://paypal.me/CrispyCinemaClubAPS/" target="_blank" rel="noopener noreferrer">Scegli importo</a>
+							<a class="btn-l mobile-only" href="https://paypal.me/CrispyCinemaClubAPS/" target="_blank" rel="noopener noreferrer">Scegli importo</a>
 						{/if}
 					</div>
 				</swiper-slide>
@@ -138,7 +144,7 @@
 		<h2 class="section-title wb-12 uppercase">Amici</h2>
 		<div class="friends">
 			{#each friends as friend, i}
-				<h3 class="friend wb-28">{friend.name} {friend.surname}</h3>
+				<h3 class="friend wb-28 wb-18-mb">{friend.name} {friend.surname}</h3>
 			{/each}
 		</div>
 	</section>
@@ -185,8 +191,9 @@
 			}
 			.btns {
 				display: flex;
+				flex-wrap: wrap;
 				align-items: baseline;
-				gap: var(--spacing-xs);
+				column-gap: var(--spacing-xs);
 
 				a {
 					width: fit-content;

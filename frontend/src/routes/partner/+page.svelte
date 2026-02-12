@@ -1,6 +1,8 @@
 <script>
+    import HeadSingle from "$lib/components/HeadSingle.svelte";
     import Navigator from "$lib/components/Navigator.svelte";
     import Title from "$lib/components/Title.svelte";
+	let { data } = $props()
 	let sections = $state([])
 
 	const clusters = [
@@ -28,14 +30,14 @@
 			partners: [
 				{
 					title: 'Heroestudio',
-					// role: 'Media partner',
+					role: 'Social e media partner',
 					href: 'https://www.heroestudio.it/',
 					// abstract: 'Heroestudio affianca il Modena Film Festival come partner creativo. Con un approccio che unisce comunicazione, immagine e produzione audiovisiva, contribuisce a dare forma all’estetica del festival, creando un immaginario visivo potente, riconoscibile e in dialogo con la città e il pubblico.',
 					logo: '/partners/heroestudio.png'
 				},
 				{
 					title: 'Giorgia Sandoni Bellucci',
-					// role: 'Creative strategy',
+					role: 'Partner per la strategia e la direzione creativa social',
 					href: 'https://www.instagram.com/giorgiasandonibellucci',
 					// abstract: 'Creative Director e Brand Strategist, collabora con il Modena Film Festival nella definizione dell’identità creativa e del racconto del progetto. Lavora insieme al team per costruire un festival che unisca visione, esperienza sensoriale e accessibilità.',
 					logo: '/partners/giorgia-sandoni-bellucci.png'
@@ -43,7 +45,10 @@
 			]
 		},
 	]
+	const seoSingle = { seoTitle: 'Partner'}
 </script>
+
+{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Navigator title="Festival" {sections} cta={{label: 'Diventa sponsor', href: '/partner/sponsor'}}/>

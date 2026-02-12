@@ -1,6 +1,8 @@
 <script>
     import ContactCard from "$lib/components/ContactCard.svelte";
     import Title from "$lib/components/Title.svelte";
+	import HeadSingle from "$lib/components/HeadSingle.svelte";
+	let { data } = $props()
 	let sections = $state([]);
 	const contacts = [
 		{
@@ -10,7 +12,10 @@
 			email: "alice@modenafilmfestival.it"
 		}
 	]
+	const seoSingle = { seoTitle: 'Sponsor'}
 </script>
+
+{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Title

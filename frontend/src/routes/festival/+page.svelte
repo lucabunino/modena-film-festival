@@ -5,6 +5,8 @@
     import PreFooter from "$lib/components/PreFooter.svelte";
 	import { register } from 'swiper/element/bundle';register();
     import { innerWidth } from "svelte/reactivity/window";
+	import HeadSingle from "$lib/components/HeadSingle.svelte";
+	let { data } = $props()
 	let sections = $state([])
 	let visible = $state(false)
 	let swiperEl = $state(undefined)	
@@ -54,7 +56,10 @@
 			visible = true
 		}, 50);
 	})
+	const seoSingle = { seoTitle: 'Festival'}
 </script>
+
+{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 {#snippet section(festivalSection, i)}
 	<div class="festival-section" title={festivalSection.title}>

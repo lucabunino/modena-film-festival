@@ -18,7 +18,7 @@
 	<div class={prefooter.img ? 'half' : 'wide'}>
 		<div>
 			{#if prefooter.subtitle}<h2 class="wb-12 wb-10-mb uppercase">{prefooter.subtitle}</h2>{/if}
-			{#if prefooter.title}<h3 class="wb-cd-120 wb-cd-50-mb uppercase max-w-800">{prefooter.title}</h3>{/if}
+			{#if prefooter.title}<h3 class="wb-cd-120 wb-cd-40-mb uppercase max-w-800">{prefooter.title}</h3>{/if}
 			{#if prefooter.content}<p class="content wb-21 wb-15-mb max-w-600">{@html prefooter.content}</p>{/if}
 		</div>
 		<div>
@@ -55,7 +55,10 @@
 		>div {
 			padding:  calc(var(--margin)*1.5) var(--margin);
 			@media screen and (max-width: 1080px) {
-				padding: 3rem var(--margin) 3rem;
+				padding: 3rem var(--margin) var(--margin);
+			}
+			@media screen and (max-width: 768px) {
+				text-align: center;
 			}
 
 			display: flex;
@@ -81,7 +84,7 @@
 
 			a {
 				margin-top: var(--spacing-s);
-				@media screen and (max-width: 1080px) {
+				@media screen and (max-width: 768px) {
 					width: 100%;
 					text-align: center;
 				}

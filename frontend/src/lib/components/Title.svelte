@@ -7,7 +7,7 @@
 <section id="title">
 	<Breadcrumbs/>
 	{#if title}
-		<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-50-mb' : size == 'm' ? 'wb-cd-80 wb-cd-30-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': ''} uppercase">{@html title}</h1>
+		<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-40-mb' : size == 'm' ? 'wb-cd-80 wb-cd-40-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': ''} uppercase">{@html title}</h1>
 	{/if}
 	{#if subtitles}
 		{#each subtitles as subtitle, i}

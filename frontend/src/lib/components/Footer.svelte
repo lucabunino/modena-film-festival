@@ -30,7 +30,7 @@
 	</section> -->
 	<section id="project" aria-labelledby="project-title" class="wb-12 wb-10-mb">
 		<div>
-			<h3 id="project-title">Un progetto a cura di</h3>
+			<h3 id="project-title">Un progetto organizzato da</h3>
 			<div class="logos">
 				<a href="https://www.instagram.com/crispycinemaclub/" target="_blank" rel="noopener noreferrer">
 					<img src="/logos/crispy.svg" alt="Logo di Crispy Cinema Club APS">
@@ -60,7 +60,7 @@
 	<section id="credits" aria-label="Crediti" class="wb-12 wb-10-mb">
 		<div>
 			<p>Progettazione e sviluppo: <a class="btn-xs" href="https://giuliabenedetti.eu/" target="_blank" rel="noopener noreferrer">Giulia Benedetti</a> e <a class="hover-underline" href="https://www.lucabunino.com/" target="_blank" rel="noopener noreferrer">Luca Bunino</a></p>
-			<p>Media partner: <a class="btn-xs" href="https://www.heroestudio.it/" target="_blank" rel="noopener noreferrer">Heroestudio</a></p>
+			<p>Social e media partner: <a class="btn-xs" href="https://www.heroestudio.it/" target="_blank" rel="noopener noreferrer">Heroestudio</a> e <a class="btn-xs" href="https://www.instagram.com/giorgiasandonibellucci" target="_blank" rel="noopener noreferrer">Giorgia Sandoni Bellucci</a></p>
 		</div>
 		<div>
 			<div>

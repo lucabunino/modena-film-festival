@@ -12,7 +12,7 @@
 	<section id="hero" class={event.layout} style="{event.cover ? `background-image: url(${urlFor(event.cover).width(2560)});` : undefined} {event.typeColor ? `color: ${event.typeColor.hex}` : undefined}">
 		<Breadcrumbs/>
 		{#if event.title}
-			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-50-mb' : size == 'm' ? 'wb-cd-80 wb-cd-30-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-800 uppercase">{event.title}</h1>
+			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-40-mb' : size == 'm' ? 'wb-cd-80 wb-cd-40-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-800 uppercase">{event.title}</h1>
 		{/if}
 		{#if event.subtitle}
 			<h2 class="{size == 'l' ? 'nr-35' : size == 'm' ? 'nr-28' : size == 's' ? 'nr-21': undefined} max-w-700">{event.subtitle}</h2>
@@ -25,7 +25,7 @@
 	<section id="hero" class={event.layout}>
 		<Breadcrumbs/>
 		{#if event.title}
-			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-50-mb' : size == 'm' ? 'wb-cd-80 wb-cd-30-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-800 uppercase">{event.title}</h1>
+			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-40-mb' : size == 'm' ? 'wb-cd-80 wb-cd-40-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-800 uppercase">{event.title}</h1>
 		{/if}
 		{#if event.subtitle}
 			<h2 class="{size == 'l' ? 'nr-35' : size == 'm' ? 'nr-28' : size == 's' ? 'nr-21': undefined} max-w-700">{event.subtitle}</h2>
