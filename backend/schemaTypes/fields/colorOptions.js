@@ -5,6 +5,7 @@ export default {
 		{ hex: '#F7604F' },
 		{ hex: '#00AEEF' },
 		{ hex: '#85A4F7' },
+		{ hex: '#6BE4C0' },
 		{ hex: '#FFBEE6' },
 		{ hex: '#E9E8E3' },
 		{ hex: '#FFF473' },

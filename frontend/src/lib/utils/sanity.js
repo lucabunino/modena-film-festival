@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 import { createClient } from '@sanity/client';
 import { PUBLIC_SANITY_DATASET, PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
@@ -8,7 +9,7 @@ if (!PUBLIC_SANITY_PROJECT_ID || !PUBLIC_SANITY_DATASET) {
 export const client = createClient({
 	projectId: PUBLIC_SANITY_PROJECT_ID,
 	dataset: PUBLIC_SANITY_DATASET,
-	useCdn: false, // `false` if you want to ensure fresh data
+	useCdn: !dev, // `false` if you want to ensure fresh data
 	apiVersion: '2026-01-29', // date of setup
 });
 
