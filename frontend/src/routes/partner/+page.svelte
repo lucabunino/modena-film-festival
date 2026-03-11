@@ -35,7 +35,7 @@
 				},
 				{
 					title: 'Giorgia Sandoni Bellucci',
-					role: 'Partner per la strategia e la direzione creativa',
+					role: 'Partner per la strategia e la direzione creativa social',
 					href: 'https://www.instagram.com/giorgiasandonibellucci',
 					// abstract: 'Creative Director e Brand Strategist, collabora con il Modena Film Festival nella definizione dell’identità creativa e del racconto del progetto. Lavora insieme al team per costruire un festival che unisca visione, esperienza sensoriale e accessibilità.',
 					logo: '/partners/giorgia-sandoni-bellucci.png'

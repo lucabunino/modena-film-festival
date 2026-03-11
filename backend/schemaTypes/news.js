@@ -1,6 +1,7 @@
 import seoFields from './fields/seoFields.js'
 import colorOptions from './fields/colorOptions.js'
 import { EnvelopeIcon } from '@sanity/icons'
+const relativeOrAbsoluteRegex = /^(https?:\/\/|mailto:|tel:|\/|#)/;
 
 export default {
 	name: 'news',
@@ -65,12 +66,18 @@ export default {
 			fieldset: 'Cta',
 		},
 		{
-			name: 'ctaHref',
-			title: 'Href',
-			type: 'url',
-			group: 'News',
-			fieldset: 'Cta',
-		},
+            name: 'ctaHref',
+            title: 'Href',
+            type: 'string',
+            group: 'News',
+            fieldset: 'Cta',
+            validation: Rule => Rule.custom(href => {
+                if (!href) return true;
+                return relativeOrAbsoluteRegex.test(href)
+                    ? true
+                    : 'Inserisci un URL valido (http://...), un percorso relativo (/...) o mailto:';
+            }),
+        },
 		{
 			name: 'ctaBlank',
 			title: 'Blank',
@@ -102,12 +109,18 @@ export default {
 			fieldset: 'Widget',
 		},
 		{
-			name: 'widgetCtaHref',
-			title: 'Href',
-			type: 'url',
-			group: 'Widget',
-			fieldset: 'Widget',
-		},
+            name: 'widgetCtaHref',
+            title: 'Href',
+            type: 'string',
+            group: 'Widget',
+            fieldset: 'Widget',
+            validation: Rule => Rule.custom(href => {
+                if (!href) return true;
+                return relativeOrAbsoluteRegex.test(href)
+                    ? true
+                    : 'Inserisci un URL valido (http://...), un percorso relativo (/...) o mailto:';
+            }),
+        },
 		{
 			name: 'widgetCtaBlank',
 			title: 'Blank',
