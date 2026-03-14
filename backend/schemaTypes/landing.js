@@ -1,7 +1,5 @@
 import colorOptions from './fields/colorOptions.js'
 import { HeartIcon } from '@sanity/icons'
-
-// Regex per permettere URL assoluti (http/https), mailto, tel e URL relativi (/, #)
 const relativeOrAbsoluteRegex = /^(https?:\/\/|mailto:|tel:|\/|#)/;
 
 export default {
