@@ -1,28 +1,46 @@
 <script>
     import Marquee from "svelte-fast-marquee";
+
+    let { landing } = $props();
+    // Providing fallbacks for nested objects to prevent errors
+    let cta = $derived(landing.cta || {});
 </script>
 
 <section id="hero" class="bg-pink">
-	<div>
-		<h2 class="wb-12 uppercase">Iscrizioni aperte</h2>
-		<div class="mobile-only">
-			<Marquee speed=100>
-				<p class="wb-cd-110-mb marquee">{@html 'Open Call Open Call Open Call&nbsp;'}</p>
-			</Marquee>
-		</div>
-		<h1 class="wb-100 wb-28-mb">15—19.4.2026</h1>
-		<p class="wb-28 wb-15-mb">Una visione diversa: è in arrivo un nuovo Festival! Vuoi candidare il tuo film? Invia la tua submission tramite FilmFreeway cliccando qui sotto.</p>
-	</div>
-	<div class="desktop-only">
-		<Marquee speed=200>
-			<p class="wb-cd-370 marquee">{@html 'Open Call Open Call Open Call&nbsp;'}</p>
-		</Marquee>
-	</div>
-	<a class="btn-l hover-black hover-bg-linen" href="https://filmfreeway.com/festivals/93026?utm_campaign=Modena+Film+Festival&utm_medium=External&utm_source=Submission+Button" target="_blank" rel="noopener noreferrer">Candida il tuo film</a>
+    <div>
+        <h2 class="wb-12 uppercase">{landing.runningHead}</h2>
+        <div class="mobile-only">
+            <Marquee speed={100}>
+                <p class="wb-cd-110-mb marquee">
+                    {@html `${landing.title}&nbsp;${landing.title}&nbsp;${landing.title}&nbsp;`}
+                </p>
+            </Marquee>
+        </div>
+        <h1 class="wb-100 wb-28-mb max-w-700">{landing.subtitle}</h1>
+        <p class="wb-28 wb-15-mb max-w-600">{landing.abstract}</p>
+    </div>
+    <div class="desktop-only">
+        <Marquee speed={200}>
+            <p class="wb-cd-370 marquee">
+                {@html `${landing.title}&nbsp;${landing.title}&nbsp;${landing.title}&nbsp;`}
+            </p>
+        </Marquee>
+    </div>
+    {#if cta.label}
+        <a 
+            class="btn-l hover-black hover-bg-linen" 
+            href={cta.href} 
+            target={cta.blank ? "_blank" : undefined} 
+            rel={cta.blank ? "noopener noreferrer" : undefined}
+        >
+            {cta.label}
+        </a>
+    {/if}
 </section>
 
 <style>
 	#hero {
+		grid-column: 1 / span 8;
 		height: 100vh;
 		display: flex;
 		flex-direction: column;

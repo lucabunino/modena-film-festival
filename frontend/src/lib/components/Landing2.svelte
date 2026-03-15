@@ -8,20 +8,22 @@
 	let size = $derived(landing.size)
 </script>
 
-<section id="hero" class="bg-linen white" style={landing.thumbnail ? `background-image: url(${urlFor(landing.thumbnail).width(1920)})` : undefined}>
+<section id="hero" class="bg-linen white" style={landing.thumbnail ? `background-image: url(/tickets/abbonamento.webp)` : undefined}>
 	<div class="top">
-		<h3 class="wb-12 uppercase">{landing.runningHead}</h3>
-		{#if landing.title}
+		<!-- <h3 class="wb-12 uppercase">{landing.runningHead}</h3> -->
+		<h3 class="wb-12 uppercase">Abbonamenti disponibili</h3>
+		<!-- {#if landing.title}
 			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-40-mb' : size == 'm' ? 'wb-cd-80 wb-cd-40-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-600 uppercase">{landing.title}</h1>
-		{/if}
-		{#if landing.subtitle}<h2 class="nr-35 nr-21-mb">{landing.subtitle}</h2>{/if}
+		{/if} -->
+		<h1 class="wb-cd-120 wb-cd-40-mb max-w-600 uppercase">Abbonati al festival</h1>
+		<!-- {#if landing.subtitle}<h2 class="nr-35 nr-21-mb">{landing.subtitle}</h2>{/if} -->
 	</div>
 	<div class="bottom">
-		{#if landing.abstract}
+		<!-- {#if landing.abstract}
 			<p class="wb-18 wb-15-mb max-w-600">{landing.abstract}</p>
-		{/if}
+		{/if} -->
 		{#if cta.label}
-			<a class="cta btn-l {landing.typeColor ? '' : 'bg-linen'} black hover-white hover-bg-black" style="{landing.typeColor ? `background-color: ${landing.typeColor.hex};` : undefined}" href={cta.href} target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}>{cta.label}</a>
+			<a class="cta btn-l {landing.typeColor ? '' : 'bg-linen'} black hover-black hover-bg-linen" style="{landing.typeColor ? `background-color: ${landing.typeColor.hex};` : undefined}" href={cta.href} target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}>{cta.label}</a>
 		{/if}
 	</div>
 </section>
