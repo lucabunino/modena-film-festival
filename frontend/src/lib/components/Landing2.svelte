@@ -22,9 +22,10 @@
 		<!-- {#if landing.abstract}
 			<p class="wb-18 wb-15-mb max-w-600">{landing.abstract}</p>
 		{/if} -->
-		{#if cta.label}
+		<!-- {#if cta.label}
 			<a class="cta btn-l {landing.typeColor ? '' : 'bg-linen'} black hover-black hover-bg-linen" style="{landing.typeColor ? `background-color: ${landing.typeColor.hex};` : undefined}" href={cta.href} target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}>{cta.label}</a>
-		{/if}
+		{/if} -->
+		<a class="cta btn-l black hover-black hover-bg-linen" style="{landing.typeColor ? `background-color: ${landing.typeColor.hex};` : undefined}" href="/biglietti" target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}>Vai a: Biglietti</a>
 	</div>
 </section>
 
