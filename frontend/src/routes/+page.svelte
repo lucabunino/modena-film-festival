@@ -19,17 +19,31 @@
 		{ name: 'Olfatto', slug: 'olfatto', gradient: 'gradient-y-brown-iris' }
 	];
 
+	// const prefooter = {
+	// 	subtitle: "Diventa volontaria o volontario",
+	// 	title: "Entra nello staff MFF",
+	// 	content: "Dal 15 al 19 aprile 2026 abbiamo bisogno di te per realizzare il nuovo imperdibile festival in cui Modena vive il cinema con tutti i sensi.",
+	// 	cta: {
+	// 		label: 'Scopri di più',
+	// 		href: '/staff',
+	// 	},
+	// 	// annotation: '*Lorem ipsum adisciplit esset',
+	// 	bg: 'bg-iris',
+	// 	// img: '/img/pre-footer-1.png',
+	// 	// video: '/img/staff.mp4',
+	// 	// poster: '/img/staff.webp',
+	// }
 	const prefooter = {
-		subtitle: "Diventa volontaria o volontario",
-		title: "Entra nello staff MFF",
-		content: "Dal 15 al 19 aprile 2026 abbiamo bisogno di te per realizzare il nuovo imperdibile festival in cui Modena vive il cinema con tutti i sensi.",
+		subtitle: "Abbonati al mff",
+		title: "Abbonati al festival",
+		content: "Accrediti gratuiti a tutte le proiezioni in concorso, accesso agli eventi fuori concorso e agli eventi speciali*, sconto per l'evento speciale udito <em>Cineconcerto Sherlock Jr.</em>, con Samuel.",
 		cta: {
-			label: 'Scopri di più',
-			href: '/staff',
+			label: 'Acquista ora',
+			href: '/biglietti',
 		},
-		// annotation: '*Lorem ipsum adisciplit esset',
-		bg: 'bg-iris',
-		// img: '/img/pre-footer-1.png',
+		annotation: "Non comprende l'evento di pre-apertura <em>Cineconcerto Grand Tour</em>, lo speciale udito <em>Cineconcerto Sherlock Jr.</em> e lo speciale olfatto, che vanno acquistati separatamente.",
+		bg: 'bg-red',
+		img: '/tickets/abbonamento.webp',
 		// video: '/img/staff.mp4',
 		// poster: '/img/staff.webp',
 	}

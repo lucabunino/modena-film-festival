@@ -15,9 +15,13 @@
 		{/each}
 	{/if}
 	{#if cta}
-		<a class="cta btn-l bg-black white hover-black hover-bg-linen {cta.bg ? cta.bg : undefined} {cta.locked ? 'locked' : undefined} {shaking ? 'shaking' : undefined}" href={cta.href} target={cta.blank ? '_blank' : ''} rel={cta.blank ? 'noopener noreferrer' : ''}
+		<a class="cta btn-l {cta.webtic ? 'bg-linen black' : 'bg-black white hover-black hover-bg-linen'} {cta.bg ? cta.bg : undefined} {cta.locked ? 'locked' : undefined} {shaking ? 'shaking' : undefined}" href={cta.href} target={cta.blank ? '_blank' : ''} rel={cta.blank ? 'noopener noreferrer' : ''}
 		onclick={(e) => {cta.locked ? handleLockedclick(e) : ''}}
-		>{cta.label}</a>
+		>{cta.label}
+		{#if cta.webtic}
+			<img class="webtic" src="/logos/webtic.webp" alt="">
+		{/if}
+		</a>
 	{/if}
 </section>
 
@@ -35,6 +39,15 @@ section {
 
 	.cta {
 		margin-top: 2rem;
+
+		.webtic {
+			display: inline-block;
+			position: relative;
+			top: .25em;
+			height: 1.25em;
+			margin-top: -.5em;
+			width: auto;
+		}
 	}
 }
 </style>

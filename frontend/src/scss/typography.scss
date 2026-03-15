@@ -193,6 +193,7 @@
 	}
 }
 .bold			{ font-weight: 700; }
+.bolder			{ text-shadow: -.003em 0, 0 .003em, .003em 0, 0 -.003em, -.003em -.003em, .003em .003em, -.003em .003em, .003em -.003em; }
 .uppercase		{
 	text-transform: uppercase;
 	-moz-font-feature-settings: "lnum";

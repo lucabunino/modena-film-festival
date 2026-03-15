@@ -59,8 +59,10 @@
 	</section>
 	<section id="credits" aria-label="Crediti" class="wb-12 wb-10-mb">
 		<div>
-			<p>Progettazione e sviluppo: <a class="btn-xs" href="https://giuliabenedetti.eu/" target="_blank" rel="noopener noreferrer">Giulia Benedetti</a> e <a class="hover-underline" href="https://www.lucabunino.com/" target="_blank" rel="noopener noreferrer">Luca Bunino</a></p>
-			<p>Social e media partner: <a class="btn-xs" href="https://www.heroestudio.it/" target="_blank" rel="noopener noreferrer">Heroestudio</a> e <a class="btn-xs" href="https://www.instagram.com/giorgiasandonibellucci" target="_blank" rel="noopener noreferrer">Giorgia Sandoni Bellucci</a></p>
+			<p>Progettazione grafica e sviluppo: <a class="btn-xs" href="https://giuliabenedetti.eu/" target="_blank" rel="noopener noreferrer">Giulia Benedetti</a> e <a class="hover-underline" href="https://www.lucabunino.com/" target="_blank" rel="noopener noreferrer">Luca Bunino</a></p>
+			<!-- <p>Social e media partner: <a class="btn-xs" href="https://www.heroestudio.it/" target="_blank" rel="noopener noreferrer">Heroestudio</a> e <a class="btn-xs" href="https://www.instagram.com/giorgiasandonibellucci" target="_blank" rel="noopener noreferrer">Giorgia Sandoni Bellucci</a></p>
+			<p>Ufficio stampa: <a class="btn-xs" href="https://nevent.it/" target="_blank" rel="noopener noreferrer">Nevent</a></p>
+			<p>Media partner: <a class="btn-xs" href="https://www.instagram.com/spotmodena" target="_blank" rel="noopener noreferrer">SPOT Modena</a></p> -->
 		</div>
 		<div>
 			<div>

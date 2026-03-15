@@ -52,7 +52,7 @@
 				<li><a aria-current={page.url.pathname.startsWith('/contatti') ? 'page' : undefined} href="/contatti" onclick={() => {closeMenu()}}>Contatti</a></li>
 				<nav class="submenu wb-21-mb" aria-label="Secondary navigation" submenubar>
 					<ul>
-						<li><a aria-current={page.url.pathname.startsWith('/staff') ? 'page' : undefined} href="/staff" onclick={() => {closeMenu()}}>Entra nello staff</a></li>
+						<li><a aria-current={page.url.pathname.startsWith('/staff') ? 'page' : undefined} href="/staff" onclick={() => {closeMenu()}}>Staff</a></li>
 					</ul>
 				</nav>
 			</ul>
@@ -70,7 +70,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="/biglietti" class="tickets btn-m locked {shaking ? 'shaking' : ''}" onclick={(e) => {handleLockedclick(e)}}>Biglietti</a>
+					<a href="/biglietti" class="tickets btn-m" onclick={() => {closeMenu()}}>Biglietti</a>
 				</li>
 			</ul>
 		</section>

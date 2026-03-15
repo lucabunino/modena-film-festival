@@ -114,7 +114,7 @@
 						<p class="wb-18 wb-15-mb max-w-400">{tier.abstract}</p>
 					</div>
 					<div class="btns">
-					<a class="btn-l {tier.isCustomPrice ? 'desktop-only' : undefined}" href="https://paypal.me/CrispyCinemaClubAPS/{tier.price}" target="_blank" rel="noopener noreferrer">Dona {tier.price}€</a>
+						<a class="btn-l {tier.isCustomPrice ? 'desktop-only' : undefined}" href="https://paypal.me/CrispyCinemaClubAPS/{tier.price}" target="_blank" rel="noopener noreferrer">Dona {tier.price}€</a>
 						{#if tier.isCustomPrice}
 							<a class="btn-s desktop-only" href="https://paypal.me/CrispyCinemaClubAPS/" target="_blank" rel="noopener noreferrer">Scegli importo</a>
 							<a class="btn-l mobile-only" href="https://paypal.me/CrispyCinemaClubAPS/" target="_blank" rel="noopener noreferrer">Scegli importo</a>
@@ -152,6 +152,14 @@
 <PreFooter {prefooter}/>
 
 <style>
+.mobile-only {
+	display: none;
+}
+@media screen and (max-width: 1080px) {
+	.mobile-only {
+		display: inherit;
+	}
+}
 #become-supporter {
 	margin-top: -4rem;
 

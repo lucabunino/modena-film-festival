@@ -27,7 +27,7 @@
 				onclick={(e) => {prefooter.cta.locked ? handleLockedclick(e) : ''}}
 				>{prefooter.cta.label}</a>
 			{/if}
-			{#if prefooter.annotation}<p class="annotation wb-21 wb-15-mb max-w-600">{prefooter.annotation}</p>{/if}
+			{#if prefooter.annotation}<p class="annotation wb-15 wb-15-mb max-w-600">{@html prefooter.annotation}</p>{/if}
 		</div>
 	</div>
 </section>

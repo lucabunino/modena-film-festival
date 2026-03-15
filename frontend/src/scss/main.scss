@@ -28,6 +28,7 @@ $colors: (
 	--spacing-m: 8rem;
 	--spacing-s: 4rem;
 	--spacing-xs: 2rem;
+	--spacing-xxs: 1rem;
 	--radius-m: 1rem;
 	--radius-l: 3rem;
 
@@ -249,8 +250,18 @@ main {
 		transform-origin: left;
 	}
 }
-@media screen and (max-width: 800px) {
 
+// Tags
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: .3em;
+	row-gap: .5em;
+}
+.tag {
+	padding: .3em 1em;
+	border-radius: .2em;
+	display: inline-block;
 }
 
 // Colors
@@ -323,7 +334,7 @@ main {
 	margin-bottom: var(--spacing-s);
 
 	@media screen and (max-width: 1080px) {
-		padding-top: var(--spacing-xs);
+		padding-top: var(--spacing-xxs);
 	}
 }
 .shadow {
