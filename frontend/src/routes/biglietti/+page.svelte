@@ -18,8 +18,10 @@
 	let sections = $state([])
 	let mousePos = $state({ x: 0, y: 0 });
     let isHovering = $state(false);
+	let side = $state(undefined);
     function handleMouseMove(e) {
         mousePos = { x: e.clientX, y: e.clientY };
+		side = e.clientX > (window.innerWidth / 2) ? 'left' : 'right';
     }
 	const seoSingle = { seoTitle: 'Biglietti'}
 </script>
@@ -29,7 +31,7 @@
 <main class="bg-white">
 	<Navigator title="Biglietti" {sections}/>
 	<Title
-	subtitles={['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.']}
+	subtitles={["L'abbonamento MFF2026 è acquistabile online sulla piattaforma Webtic."]}
 	size={'l'}
 	cta={{href:'https://www.webtic.it/app/main/home', label: 'Compra su', blank: true, webtic: true}}
 	/>
@@ -49,8 +51,7 @@
 				<h4 class="date bolder wb-18 wb-15-mb">15–19 aprile 2026</h4>
 			</div>
 			<div class="wb-18 wb-15-mb max-w-600">
-				<p>Vedi tutti i film in concorso e partecipa a 3 eventi speciali.</p>
-				<p>Non comprende l'evento di pre-apertura <em>Cineconcerto Grand Tour</em>, lo speciale udito <em>Cineconcerto Sherlock Jr.</em> e lo speciale olfatto, che vanno acquistati separatamente.</p>
+				<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour</em>, il <em>Cineconcerto Sherlock Jr.</em> musicato da Samuel, l'evento speciale Olfatto.</p>
 			</div>
 		</a>
 		<a class="ticket x1 rounded-l white locked {shakingItems['sherlock'] ? 'shaking' : undefined}" target="_blank" rel="noopener noreferrer"
@@ -64,9 +65,9 @@
 					<!-- <label class="tag black bg-white">20€</label>
 					<label class="tag black bg-white">Codice sconto 5€ con abbonamento</label> -->
 				</div>
-				<h4 class="date bolder wb-18 wb-15-mb">Con Samuel Umberto Romano<br>17 aprile alle 21:30</h4>
+				<h4 class="date bolder wb-18 wb-15-mb">Con Samuel Umberto Romano<br>16 aprile alle 21:00</h4>
 			</div>
-			<p class="wb-18 wb-15-mb max-w-600">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+			<p class="wb-18 wb-15-mb max-w-600">Nella giornata dedicata all’udito, cinema muto e musica contemporanea si incontrano: Samuel sonorizza dal vivo Sherlock Jr. (1924) di Buster Keaton. Un dialogo potente tra immagini e suono.</p>
 		</a>
 		<a class="ticket x1 rounded-l white blurred locked {shakingItems['odorama'] ? 'shaking' : undefined}" target="_blank" rel="noopener noreferrer"
 		onclick={(e) => handleLockedclick(e, 'odorama')}
@@ -82,16 +83,18 @@
 				<!-- <h4 class="date bolder wb-18 wb-15-mb">TBD</h4> -->
 			</div>
 		</a>
-		{#if isHovering}
+		{#if isHovering && mousePos.x}
 			<p class="cursor desktop-only btn-l bg-linen black" transition:slide={{duration: 200, axis: 'x'}}
-			style="left: {mousePos.x}px; top: {mousePos.y}px; display: {isHovering ? 'inline-block' : 'none'};"
+			style="left: {mousePos.x}px; top: {mousePos.y}px; display: {isHovering ? 'inline-block' : 'none'}; transform: translate({side === 'left' ? '-100%' : '0%'}, -50%);"
 			>Compra su <img class="webtic" src="/logos/webtic.webp" alt=""></p>
 		{/if}
 	</section>
 	<section id="become-supporter" title="Come funziona" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Come funziona</h2>
-		<p class="wb-24 wb-18-mb max-w-700">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-		<p class="wb-24 wb-18-mb max-w-700">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+		<p class="wb-24 wb-18-mb max-w-700">L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura Cineconcerto Grand Tour, il Cineconcerto Sherlock Jr. musicato da Samuel, l'evento speciale Olfatto. Vanno acquistati separatamente.</p>
+		<p class="wb-24 wb-18-mb max-w-700">Per ogni film che vuoi vedere dovrai redimere il biglietto in anticipo, direttamente dalla tua area personale Webtic. Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di redimerlo per tempo!</p>
+		<p class="wb-24 wb-18-mb max-w-700">L'abbonamento è strettamente personale e non cedibile. All'ingresso potranno essere effettuati controlli per verificare la titolarità dell'accredito.</p>
+		<p class="wb-24 wb-18-mb max-w-700">Il tuo badge personale potrà essere ritirato durante il festival presso l'ufficio accrediti al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena. Tienilo sempre con te: ti darà diritto a sconti esclusivi presso tutti i locali convenzionati con Modena Film Festival.</p>
 	</section>
 </main>
 <!-- <PreFooter {prefooter}/> -->
@@ -138,7 +141,7 @@
 
 		&:not(.locked):hover {
 			.bg {
-				transform: scale(1.05);
+				transform: scale(1.03);
 			}
 		}
 
@@ -163,11 +166,13 @@
 	position: fixed;
 	pointer-events: none;
 	z-index: 999;
-	transform: translate(-50%, -50%);
 	display: block;
 	overflow: hidden;
 	width: max-content;
 	white-space: nowrap;
+	transition: var(--transition-s);
+	transition-property: transform;
+	margin-top: 4rem;
 
 	.webtic {
 		display: inline-block;
@@ -176,6 +181,11 @@
 		height: 1.25em;
 		margin-top: -.5em;
 		width: auto;
+	}
+}
+#become-supporter {
+	p + p {
+		margin-top: .6em;
 	}
 }
 </style>
