@@ -19,12 +19,12 @@ export const partners = [
 			{
 				title: 'Comune di Modena',
 				href: 'https://www.comune.modena.it/',
-				logo: '/partners/comune-di modena.png'
+				logo: '/partners/comune-di-modena.png'
 			},
 			{
 				title: 'Modena Media Arts',
 				href: 'https://modenafuturacreativa.it/',
-				logo: '/partners/comune-di modena.png'
+				logo: '/partners/modena-media-arts.png'
 			},
 		]
 	},
@@ -36,27 +36,27 @@ export const partners = [
 			{
 				title: 'Acetaia Giusti',
 				href: 'https://giusti.com/',
-				logo: '/partners/heroestudio.png'
+				logo: '/partners/giusti.png'
 			},
 			{
 				title: 'Coop Alleanza',
-				href: 'https://www.instagram.com/giorgiasandonibellucci',
-				logo: '/partners/heroestudio.png'
+				href: 'https://www.coopalleanza3-0.it/',
+				logo: '/partners/coop.png'
 			},
 			{
 				title: 'Fini',
-				href: 'https://www.instagram.com/giorgiasandonibellucci',
-				logo: '/partners/heroestudio.png'
+				href: 'https://gruppofini.it/',
+				logo: '/partners/fini.png'
 			},
 			{
 				title: 'Manitou',
-				href: 'https://www.instagram.com/giorgiasandonibellucci',
-				logo: '/partners/heroestudio.png'
+				href: 'https://www.manitou.com/',
+				logo: '/partners/manitou.png'
 			},
 			{
 				title: 'Ti Ascolto',
-				href: 'https://www.instagram.com/giorgiasandonibellucci',
-				logo: '/partners/heroestudio.png'
+				href: 'https://tiascolto.eu/',
+				logo: '/partners/ti-ascolto.png'
 			}
 		]
 	},
@@ -80,15 +80,15 @@ export const partners = [
 		]
 	},
 	{
-		title: 'Communication partner',
-		menuTitle: 'Communication',
-		slug: 'Communication-partners',
+		title: 'Ufficio stampa',
+		menuTitle: 'Ufficio stampa',
+		slug: 'press',
 		partners: [
 			{
 				title: 'Nevent',
 				role: 'Ufficio stampa',
 				href: 'https://nevent.it/',
-				logo: '/partners/heroestudio.png'
+				logo: '/partners/nevent.png'
 			},
 		]
 	},
@@ -99,8 +99,8 @@ export const partners = [
 		partners: [
 			{
 				title: 'SPOT Modena',
-				href: 'https://nevent.it/',
-				logo: '/partners/heroestudio.png'
+				href: 'https://www.instagram.com/spotmodena/',
+				logo: '/partners/spot.png'
 			},
 		]
 	}
