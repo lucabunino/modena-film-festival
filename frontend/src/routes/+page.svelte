@@ -10,6 +10,7 @@
     import Landing1 from '$lib/components/Landing1.svelte';
     import Landing2 from '$lib/components/Landing2.svelte';
     import HeadSingle from '$lib/components/HeadSingle.svelte';
+    import LandingTickets from '$lib/components/LandingTickets.svelte';
 
 	const sections = [
 		{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan' },
@@ -43,9 +44,9 @@
 		},
 		annotation: "* Gli abbonati hanno diritto a uno sconto di 5€ su questo evento.",
 		bg: 'bg-red',
-		img: '/tickets/abbonamento.webp',
-		// video: '/img/staff.mp4',
-		// poster: '/img/staff.webp',
+		// img: '/tickets/abbonamento.webp',
+		video: '/tickets/abbonamento-verticale-min.mp4',
+		poster: '/tickets/abbonamento-verticale-min.webp',
 	}
 	const news = [
 		{
@@ -65,11 +66,12 @@
 <HeadSingle seo={data.seo} seoSingle={false}/>
 
 <main>
-	{#if data.landing?.layout == '1'}
+	<!-- {#if data.landing?.layout == '1'}
 		<Landing1 landing={data.landing} />
 	{:else if data.landing?.layout == '2'}
 		<Landing2 landing={data.landing} />
-	{/if}
+	{/if} -->
+	<LandingTickets />
 	<NewsWidget newses={data.widgetNewses}/>
 	<section id="sections" class="bg-white">
 		<div>

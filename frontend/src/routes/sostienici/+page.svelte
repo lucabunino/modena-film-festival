@@ -38,18 +38,17 @@
 	// 	bg: 'bg-yellow',
 	// }
 	const prefooter = {
-		subtitle: "Diventa volontaria o volontario",
-		title: "Entra nello staff MFF",
-		content: "Dal 15 al 19 aprile 2026 abbiamo bisogno di te per realizzare il nuovo imperdibile festival in cui Modena vive il cinema con tutti i sensi.",
+		subtitle: "Abbonamenti disponibili",
+		title: "Abbonati al festival",
+		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour</em>, il <em>Cineconcerto Sherlock Jr.</em>* musicato da Samuel, l'evento speciale Olfatto.",
 		cta: {
-			label: 'Scopri di più',
-			href: '/staff',
+			label: 'Vai a: Biglietti',
+			href: '/biglietti',
 		},
-		// annotation: '*Lorem ipsum adisciplit esset',
-		bg: 'bg-iris',
-		// img: '/img/pre-footer-1.png',
-		// video: '/img/staff.mp4',
-		// poster: '/img/staff.webp',
+		annotation: "* Gli abbonati hanno diritto a uno sconto di 5€ su questo evento.",
+		bg: 'bg-yellow',
+		video: '/tickets/abbonamento-verticale-min.mp4',
+		poster: '/tickets/abbonamento-verticale-min.webp',
 	}
 	let swiperEl = $state(undefined)
 	let swiperIndex = $state(0)

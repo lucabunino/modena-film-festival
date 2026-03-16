@@ -1,7 +1,7 @@
 export const partners = [
 	{
 		title: 'Sostenuto da',
-		menuTitle: 'Sostenitore',
+		menuTitle: 'Sostenuto da',
 		slug: 'institutions',
 		partners: [
 			{
@@ -61,13 +61,13 @@ export const partners = [
 		]
 	},
 	{
-		title: 'Social e media partner',
-		menuTitle: 'Social e media',
-		slug: 'social-media-partners',
+		title: 'Social e multimedia partner',
+		menuTitle: 'Social e multimedia',
+		slug: 'social-multimedia-partners',
 		partners: [
 			{
 				title: 'Heroestudio',
-				role: 'Social e media partner',
+				role: 'Social e multimedia partner',
 				href: 'https://www.heroestudio.it/',
 				logo: '/partners/heroestudio.png'
 			},
