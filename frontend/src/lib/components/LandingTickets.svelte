@@ -4,7 +4,7 @@
 </script>
 
 <section id="hero" class="bg-linen white">
-	<video class="bg" src="/tickets/abbonamento-min.mp4" poster="abbonamento-min.webp" muted loop autoplay playsinline></video>
+	<video class="bg" src="/tickets/abbonamento-min.mp4" poster="/tickets/abbonamento-min.webp" muted loop autoplay playsinline></video>
 	<div class="top">
 		<h3 class="wb-12 uppercase">Abbonamenti disponibili</h3>
 		<h1 class="wb-cd-120 wb-cd-40-mb max-w-600 uppercase">Abbonati al festival</h1>
@@ -26,6 +26,7 @@
 		padding: var(--margin);
 		background-position: center;
 		background-size: cover;
+		overflow: hidden;
 
 		.bg {
 			position: absolute;
