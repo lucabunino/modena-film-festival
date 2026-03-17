@@ -52,7 +52,7 @@
 				<h4 class="date bolder wb-18 wb-15-mb">15–19 aprile 2026</h4>
 			</div>
 			<div class="wb-18 wb-15-mb max-w-600">
-				<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour</em>, il <em>Cineconcerto Sherlock Jr.</em> musicato da Samuel, l'evento speciale Olfatto.</p>
+				<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em> musicato da Samuel, l'evento speciale olfatto.</p>
 			</div>
 		</a>
 		<a class="ticket x1 rounded-l white locked {shakingItems['sherlock'] ? 'shaking' : undefined}" target="_blank" rel="noopener noreferrer"
