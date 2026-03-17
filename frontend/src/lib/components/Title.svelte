@@ -33,7 +33,7 @@ section {
 		margin-top: 2rem;
 
 		&+h2 {
-			margin-top: 1.2em;
+			margin-top: .6em;
 		}
 	}
 

@@ -37,13 +37,13 @@
 	const prefooter = {
 		subtitle: "Abbonamenti disponibili",
 		title: "Abbonati al festival",
-		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour</em>, il <em>Cineconcerto Sherlock Jr.</em>* musicato da Samuel, l'evento speciale Olfatto.",
+		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em>* musicato da Samuel, l'evento speciale olfatto.",
 		cta: {
 			label: 'Vai a: Biglietti',
 			href: '/biglietti',
 		},
 		annotation: "* Gli abbonati hanno diritto a uno sconto di 5€ su questo evento.",
-		bg: 'bg-red',
+		bg: 'bg-yellow',
 		// img: '/tickets/abbonamento.webp',
 		video: '/tickets/abbonamento-verticale-min.mp4',
 		poster: '/tickets/abbonamento-verticale-min.webp',

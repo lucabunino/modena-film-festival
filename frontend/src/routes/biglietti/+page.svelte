@@ -24,6 +24,7 @@
 		side = e.clientX > (window.innerWidth / 2) ? 'left' : 'right';
     }
 	const seoSingle = { seoTitle: 'Biglietti'}
+	const WebticHref = "https://www.webtic.it/app/shopping/loadLocal/MO/7348"
 </script>
 
 {#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
@@ -31,12 +32,12 @@
 <main class="bg-white">
 	<Navigator title="Biglietti" {sections}/>
 	<Title
-	subtitles={["L'abbonamento MFF2026 è acquistabile online sulla piattaforma Webtic."]}
+	subtitles={["L'abbonamento MFF2026 è acquistabile online sulla piattaforma Webtic, nella sezione abbonamenti.", "Dal 24 marzo potrai prenotare il tuo posto agli eventi in programma e acquistare l'ingresso agli eventi esclusi dall'abbonamento."]}
 	size={'l'}
-	cta={{href:'https://www.webtic.it/app/main/home', label: 'Compra su', blank: true, webtic: true}}
+	cta={{href: WebticHref, label: 'Compra su', blank: true, webtic: true}}
 	/>
 	<section id="buy" title="Compra" bind:this={sections[0]}>
-		<a class="ticket x2 rounded-l white" href="https://www.webtic.it/app/main/home" target="_blank" rel="noopener noreferrer"
+		<a class="ticket x2 rounded-l white" href={WebticHref} target="_blank" rel="noopener noreferrer"
 		onmousemove={handleMouseMove}
 		onmouseenter={() => isHovering = true}
 		onmouseleave={() => isHovering = false}
