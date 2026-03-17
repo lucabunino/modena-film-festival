@@ -23,7 +23,7 @@
 		</div>
 		<div>
 			{#if prefooter.cta.label && prefooter.cta.href}
-				<a class="btn-l {prefooter.cta.locked ? 'locked' : ''} {shaking ? 'shaking' : ''}" href={prefooter.cta.href}
+				<a class="btn-l hover-black hover-bg-linen {prefooter.cta.locked ? 'locked' : ''} {shaking ? 'shaking' : ''}" href={prefooter.cta.href}
 				onclick={(e) => {prefooter.cta.locked ? handleLockedclick(e) : ''}}
 				>{prefooter.cta.label}</a>
 			{/if}
@@ -119,8 +119,12 @@
 			a {
 				margin-top: var(--spacing-s);
 				@media screen and (max-width: 768px) {
-					width: 100%;
 					text-align: center;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					margin: var(--gutter);
+					width: calc(100% - var(--gutter) * 2);
 				}
 			}
 		}

@@ -122,9 +122,10 @@
 		min-height: 450px;
 		z-index: 1;
 
-		@media screen and (max-width: 1080px) {
+		@media screen and (max-width: 768px) {
 			min-height: 400px;
 			text-align: center;
+			align-items: center;
 
 			.tags {
 				justify-content: center;
