@@ -46,7 +46,7 @@
 			<div>
 				<h3 class="wb-cd-80 wb-cd-40-mb uppercase">Abbonamento</h3>
 				<div class="tags wb-12 uppercase">
-					<label class="tag black bg-white">30€</label>
+					<label class="tag black bg-white">33€</label>
 					<label class="tag black bg-white">Richiesta prenotazione singoli eventi</label>
 				</div>
 				<h4 class="date bolder wb-18 wb-15-mb">15–19 aprile 2026</h4>
