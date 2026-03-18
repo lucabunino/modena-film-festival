@@ -11,7 +11,7 @@
 		<div class="max-w-600">
 			<p>Ultimo aggiornamento 19.11.2026</p>
 			<p>Siamo Modena Film Festival. Questa Cookie Policy descrive come raccogliamo, utilizziamo e gestiamo i cookie, oltre a fornirti informazioni sui tuoi diritti e sulle tue scelte riguardo l'uso dei cookie.</p>
-			<p>Puoi contattarci all'indirizzo email: <a href="mailto:info@modenafilmfestival.it">info@modenafilmfestival.it</a>.</p>
+			<p>Puoi contattarci all'indirizzo email: <a class="underline" href="mailto:info@modenafilmfestival.it">info@modenafilmfestival.it</a>.</p>
 		</div>
 	</section>
 
@@ -37,7 +37,7 @@
 		<div class="max-w-600">
 			<p>Il titolare del trattamento dei dati personali è:</p>
 			<p>Modena Film Festival<br>
-			Email: <a href="mailto:info@modenafilmfestival.it">info@modenafilmfestival.it</a></p>
+			Email: <a class="underline" href="mailto:info@modenafilmfestival.it">info@modenafilmfestival.it</a></p>
 		</div>
 	</section>
 
@@ -100,7 +100,7 @@
 				<li>Richiedere la portabilità dei dati.</li>
 				<li>Revocare il consenso in qualsiasi momento, senza pregiudicare la liceità del trattamento basato sul consenso prima della revoca.</li>
 			</ul>
-			<p>Puoi esercitare i tuoi diritti inviando una richiesta all'indirizzo email: <a href="mailto:info@modenafilmfestival.it">info@modenafilmfestival.it</a>.</p>
+			<p>Puoi esercitare i tuoi diritti inviando una richiesta all'indirizzo email: <a class="underline" href="mailto:info@modenafilmfestival.it">info@modenafilmfestival.it</a>.</p>
 		</div>
 	</section>
 		

@@ -80,7 +80,8 @@
 			border-radius: 3rem;
 			margin: var(--spacing-xs) var(--margin);
 			padding-top: 0;
-			display: grid;
+			display: flex;
+			min-height: 450px;
 
 			.top {
 				padding: 3rem 0 var(--margin);

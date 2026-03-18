@@ -23,34 +23,51 @@
 		</div>
 		<div>
 			{#if prefooter.cta.label && prefooter.cta.href}
-				<a class="btn-l {prefooter.cta.locked ? 'locked' : ''} {shaking ? 'shaking' : ''}" href={prefooter.cta.href}
+				<a class="btn-l hover-black hover-bg-linen {prefooter.cta.locked ? 'locked' : ''} {shaking ? 'shaking' : ''}" href={prefooter.cta.href}
 				onclick={(e) => {prefooter.cta.locked ? handleLockedclick(e) : ''}}
 				>{prefooter.cta.label}</a>
 			{/if}
-			{#if prefooter.annotation}<p class="annotation wb-21 wb-15-mb max-w-600">{prefooter.annotation}</p>{/if}
+			{#if prefooter.annotation}<p class="annotation wb-15 wb-15-mb max-w-600">{@html prefooter.annotation}</p>{/if}
 		</div>
 	</div>
 </section>
 
 <style lang="scss">
+	@media screen and (max-width: 768px) {
+		.max-w-600 {
+			max-width: unset;
+			width: 100%;
+		}
+	}
 	#pre-footer {
 		min-height: 650px;
 		display: flex;
 		margin-left: var(--sidebarWidth);
 		width: calc(100% - var(--sidebarWidth));
 		position: relative;
+		overflow: hidden;
 
 		@media screen and (max-width: 1080px) {
 			min-height: 50vh;
 			border-radius: var(--radius-l);
 			margin: var(--margin);
 			width: stretch;
+			display: flex;
+		}
+		@media screen and (max-width: 768px) {
+			flex-direction: column-reverse;
 		}
 		.media {
 			width: 38%;
+			height: 100%;
 			height: stretch;
 			object-fit: cover;
 			max-height: 700px;
+
+			@media screen and (max-width: 768px) {
+				width: 100%;
+				aspect-ratio: 16/9;
+			}
 		}
 		>div {
 			padding:  calc(var(--margin)*1.5) var(--margin);
@@ -67,7 +84,24 @@
 			justify-content: space-between;
 
 			&.wide {width: 100%;}
-			&.half {width: 62%;}
+			&.half {
+				width: 62%;
+				@media screen and (max-width: 768px) {
+					width: 100%;
+
+					>div:nth-child(2) {
+						display: flex;
+
+						.btn-l {
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							margin: var(--gutter);
+							width: calc(100% - var(--gutter)*2);
+						}
+					}
+				}
+			}
 
 			h3 {
 				margin-top: 1rem;
@@ -85,8 +119,12 @@
 			a {
 				margin-top: var(--spacing-s);
 				@media screen and (max-width: 768px) {
-					width: 100%;
 					text-align: center;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					margin: var(--gutter);
+					width: calc(100% - var(--gutter) * 2);
 				}
 			}
 		}

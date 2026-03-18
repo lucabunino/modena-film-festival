@@ -9,6 +9,8 @@
     import { innerWidth } from 'svelte/reactivity/window';
     import Landing1 from '$lib/components/Landing1.svelte';
     import Landing2 from '$lib/components/Landing2.svelte';
+    import HeadSingle from '$lib/components/HeadSingle.svelte';
+    import LandingTickets from '$lib/components/LandingTickets.svelte';
 
 	const sections = [
 		{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan' },
@@ -18,19 +20,33 @@
 		{ name: 'Olfatto', slug: 'olfatto', gradient: 'gradient-y-brown-iris' }
 	];
 
+	// const prefooter = {
+	// 	subtitle: "Diventa volontaria o volontario",
+	// 	title: "Entra nello staff MFF",
+	// 	content: "Dal 15 al 19 aprile 2026 abbiamo bisogno di te per realizzare il nuovo imperdibile festival in cui Modena vive il cinema con tutti i sensi.",
+	// 	cta: {
+	// 		label: 'Scopri di più',
+	// 		href: '/staff',
+	// 	},
+	// 	// annotation: '*Lorem ipsum adisciplit esset',
+	// 	bg: 'bg-iris',
+	// 	// img: '/img/pre-footer-1.png',
+	// 	// video: '/img/staff.mp4',
+	// 	// poster: '/img/staff.webp',
+	// }
 	const prefooter = {
-		subtitle: "Diventa volontaria o volontario",
-		title: "Entra nello staff MFF",
-		content: "Dal 15 al 19 aprile 2026 abbiamo bisogno di te per realizzare il nuovo imperdibile festival in cui Modena vive il cinema con tutti i sensi.",
+		subtitle: "Abbonamenti disponibili",
+		title: "Abbonati al festival",
+		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em>* musicato da Samuel, l'evento speciale olfatto.",
 		cta: {
-			label: 'Scopri di più',
-			href: '/staff',
+			label: 'Vai a: Biglietti',
+			href: '/biglietti',
 		},
-		// annotation: '*Lorem ipsum adisciplit esset',
-		bg: 'bg-iris',
-		// img: '/img/pre-footer-1.png',
-		// video: '/img/staff.mp4',
-		// poster: '/img/staff.webp',
+		annotation: "* Gli abbonati hanno diritto a uno sconto di 5€ su questo evento.",
+		bg: 'bg-yellow',
+		// img: '/tickets/abbonamento.webp',
+		video: '/tickets/abbonamento-verticale-min.mp4',
+		poster: '/tickets/abbonamento-verticale-min.webp',
 	}
 	const news = [
 		{
@@ -47,12 +63,15 @@
 	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
 </script>
 
+<HeadSingle seo={data.seo} seoSingle={false}/>
+
 <main>
-	{#if data.landing?.layout == '1'}
+	<!-- {#if data.landing?.layout == '1'}
 		<Landing1 landing={data.landing} />
 	{:else if data.landing?.layout == '2'}
 		<Landing2 landing={data.landing} />
-	{/if}
+	{/if} -->
+	<LandingTickets />
 	<NewsWidget newses={data.widgetNewses}/>
 	<section id="sections" class="bg-white">
 		<div>

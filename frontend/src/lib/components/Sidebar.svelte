@@ -11,9 +11,9 @@
 					<path d="M23.395 46.998H0V0h23.395v46.998Zm43.605 0h-4.075V0H67v46.998ZM54.301.002l-5.428 46.986L39.38.003H23.395L32.888 47h24.61L62.925.002H54.3Z"/>
 				</g>
 			</svg>
-			<h1 class="wb-28 leading-1">Modena Film <br>Festival</h1>
+			<h1 class="wb-28 leading-1">Modena <br>Film Festival <br>15–19.4</h1>
 		</a>
-		<a href="/biglietti" class="tickets btn-m locked {shaking ? 'shaking' : ''}" onclick={(e) => {handleLockedclick(e)}}>Biglietti</a>
+		<a href="/biglietti" class="tickets btn-m">Biglietti</a>
 		<nav class="menu wb-28 leading-1_3" aria-label="Main navigation" menubar>
 			<ul>
 				<li><a aria-current={page.url.pathname.startsWith('/festival') ? 'page' : undefined} href="/festival">Festival</a></li>
@@ -26,7 +26,7 @@
 		</nav>
 		<nav class="submenu wb-18 leading-1_3" aria-label="Secondary navigation" menubar>
 			<ul>
-				<li><a aria-current={page.url.pathname.startsWith('/staff') ? 'page' : undefined} href="/staff">Entra nello staff</a></li>
+				<li><a aria-current={page.url.pathname.startsWith('/staff') ? 'page' : undefined} href="/staff">Staff</a></li>
 			</ul>
 		</nav>
 	</header>
