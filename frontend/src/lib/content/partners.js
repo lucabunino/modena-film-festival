@@ -34,6 +34,11 @@ export const partners = [
 		slug: 'main-sponsors',
 		partners: [
 			{
+				title: 'Ti Ascolto',
+				href: 'https://tiascolto.eu/',
+				logo: '/partners/ti-ascolto.png'
+			},
+			{
 				title: 'Acetaia Giusti',
 				href: 'https://giusti.com/',
 				logo: '/partners/giusti.png'
@@ -53,11 +58,6 @@ export const partners = [
 				href: 'https://www.manitou.com/',
 				logo: '/partners/manitou.png'
 			},
-			{
-				title: 'Ti Ascolto',
-				href: 'https://tiascolto.eu/',
-				logo: '/partners/ti-ascolto.png'
-			}
 		]
 	},
 	{
