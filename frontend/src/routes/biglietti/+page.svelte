@@ -93,7 +93,7 @@
 	<section id="become-supporter" title="Come funziona" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Come funziona</h2>
 		<p class="wb-24 wb-18-mb max-w-700">L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em>, l'evento speciale olfatto, che vanno acquistati separatamente.</p>
-		<p class="wb-24 wb-18-mb max-w-700">Gli abbonati hanno diritto a uno sconto di 5€ sull'evento <em>Cineconcerto Sherlock Jr.</em></p>
+		<p class="wb-24 wb-18-mb max-w-700">Gli abbonati hanno diritto a uno sconto di 5€ sull'evento <em>Cineconcerto Sherlock Jr.</em>, selezionando l'opzione di acquisto RIDOTTO ABBONAMENTO WEB. All'ingresso potrà essere verificato il possesso dell'abbonamento.</p>
 		<p class="wb-24 wb-18-mb max-w-700">Per ogni film che vuoi vedere dovrai redimere il biglietto in anticipo, direttamente dalla tua area personale Webtic. Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di redimerlo per tempo!</p>
 		<p class="wb-24 wb-18-mb max-w-700">Il tuo badge personale potrà essere ritirato durante il festival presso l'ufficio accrediti al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena. Tienilo sempre con te: ti darà diritto a sconti esclusivi presso tutti i locali convenzionati con Modena Film Festival.</p>
 		<p class="wb-24 wb-18-mb max-w-700">Sarà possibile anche acquistare singolarmente ciascun evento, a un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
