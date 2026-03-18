@@ -5,7 +5,7 @@
 	let { data } = $props()
 	let sections = $state([])
 	const formLink = "https://forms.gle/zfY5EMbdBwVQwhG67"
-	const seoSingle = { seoTitle: 'Entra nello staff'}
+	const seoSingle = { seoTitle: 'Staff'}
 </script>
 
 {#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}

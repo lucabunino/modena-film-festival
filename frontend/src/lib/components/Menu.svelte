@@ -48,6 +48,7 @@
 		<nav in:fade={{duration: 200, delay: 200}} class="menu wb-36-mb" aria-label="Main navigation" menubar>
 			<ul>
 				<li><a aria-current={page.url.pathname.startsWith('/festival') ? 'page' : undefined} href="/festival" onclick={() => {closeMenu()}}>Festival</a></li>
+				<li><a aria-current={page.url.pathname.startsWith('/programma') ? 'page' : undefined} href="/programma" onclick={() => {closeMenu()}}>Programma</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/about') ? 'page' : undefined} href="/about" onclick={() => {closeMenu()}}>About</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/partner') ? 'page' : undefined} href="/partner" onclick={() => {closeMenu()}}>Partner</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/sostienici') ? 'page' : undefined} href="/sostienici" onclick={() => {closeMenu()}}>Sostienici</a></li>

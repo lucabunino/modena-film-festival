@@ -1,11 +1,11 @@
 import seoFields from './fields/seoFields.js'
 import colorOptions from './fields/colorOptions.js'
-import { CalendarIcon, UserIcon } from '@sanity/icons'
+import { SparkleIcon } from '@sanity/icons'
 
 export default {
 	name: 'event',
 	type: 'document',
-	icon: CalendarIcon,
+	icon: SparkleIcon,
 	groups: [
 		{name: 'Info'},
 		{name: 'Style'},
@@ -65,48 +65,145 @@ export default {
 			name: 'section',
 			type: 'reference',
 			to: [{type: 'section'},],
-			validation: (Rule) => Rule.required(),
 			group: 'Info',
 		},
-		{
-			name: 'people',
-			type: 'array',
-			of: [
-				{
-					name: 'person',
-					type: 'reference',
-					to: [{ type: 'person' }],
-				},
-			],
-			group: 'Info',
-		},
+		// {
+		// 	name: 'people',
+		// 	type: 'array',
+		// 	of: [
+		// 		{
+		// 			name: 'person',
+		// 			type: 'reference',
+		// 			to: [{ type: 'person' }],
+		// 		},
+		// 	],
+		// 	group: 'Info',
+		// },
 		{
 			name: 'location',
 			type: 'reference',
 			to: [{type: 'location'},],
 			group: 'Info',
 		},
+		// {
+		// 	name: 'ctaLabel',
+		// 	title: 'Label',
+		// 	type: 'string',
+		// 	group: 'Info',
+		// 	fieldset: 'Cta',
+		// },
+		// {
+		// 	name: 'ctaHref',
+		// 	title: 'Href',
+		// 	type: 'url',
+		// 	group: 'Info',
+		// 	fieldset: 'Cta',
+		// },
+		// {
+		// 	name: 'ctaBlank',
+		// 	title: 'Blank',
+		// 	type: 'boolean',
+		// 	initialValue: false,
+		// 	group: 'Info',
+		// 	fieldset: 'Cta',
+		// },
 		{
-			name: 'ctaLabel',
-			title: 'Label',
-			type: 'string',
+			name: 'credits',
+			type: 'text',
+			rows: 4,
 			group: 'Info',
-			fieldset: 'Cta',
 		},
 		{
-			name: 'ctaHref',
-			title: 'Href',
-			type: 'url',
+			name: 'abstract',
+			type: 'array',
+			of: [
+				{
+					type: 'block',
+					styles: [
+						{ value: 'normal', title: 'Normal' },
+					],
+					lists: [
+						{title: 'Bullet', value: 'bullet'}
+					],
+					marks: {
+						decorators: [
+							{title: 'Bold', value: 'strong'},
+							{title: 'Italic', value: 'em'},
+						],
+						annotations: [
+							{
+								name: 'link',
+								type: 'object',
+								fields: [
+									{
+										name: 'href',
+										type: 'string',
+										validation: Rule =>
+										Rule.custom(href => {
+											if (!href) return true;
+											return /^(https?:\/\/|mailto:|tel:)/.test(href)
+											? true
+											: 'Must be a valid URL, mailto:, or tel: link';
+										}),
+									},
+									{
+										title: 'Open in new tab',
+										name: 'blank',
+										type: 'boolean',
+									},
+								],
+							},
+						],
+					},
+				},
+			],
 			group: 'Info',
-			fieldset: 'Cta',
 		},
 		{
-			name: 'ctaBlank',
-			title: 'Blank',
-			type: 'boolean',
-			initialValue: false,
+			name: 'program',
+			type: 'array',
+			of: [
+				{
+					type: 'block',
+					styles: [
+						{ value: 'normal', title: 'Normal' },
+					],
+					lists: [
+						{title: 'Bullet', value: 'bullet'}
+					],
+					marks: {
+						decorators: [
+							{title: 'Bold', value: 'strong'},
+							{title: 'Italic', value: 'em'},
+						],
+						annotations: [
+							{
+								name: 'link',
+								type: 'object',
+								fields: [
+									{
+										name: 'href',
+										type: 'string',
+										validation: Rule =>
+										Rule.custom(href => {
+											if (!href) return true;
+											return /^(https?:\/\/|mailto:|tel:)/.test(href)
+											? true
+											: 'Must be a valid URL, mailto:, or tel: link';
+										}),
+									},
+									{
+										title: 'Open in new tab',
+										name: 'blank',
+										type: 'boolean',
+									},
+								],
+							},
+						],
+					},
+				},
+			],
 			group: 'Info',
-			fieldset: 'Cta',
 		},
 		{
 			name: 'body',
