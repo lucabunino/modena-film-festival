@@ -24,7 +24,7 @@
 		side = e.clientX > (window.innerWidth / 2) ? 'left' : 'right';
     }
 	const seoSingle = { seoTitle: 'Biglietti'}
-	const WebticHref = "https://www.webtic.it/app/shopping/loadLocal/MO/7348"
+	const WebticHref = "https://www.webtic.it/app/shop?action=loadSubscriptions&localId=7348"
 </script>
 
 {#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
