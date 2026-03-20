@@ -42,7 +42,7 @@
 		onmouseenter={() => isHovering = true}
 		onmouseleave={() => isHovering = false}
 		>
-			<video class="bg" src="/tickets/abbonamento-min.mp4" poster="abbonamento-min.webp" muted loop autoplay playsinline></video>
+			<video class="bg" src="/tickets/abbonamento-min.mp4" poster="/tickets/abbonamento-min.webp" muted loop autoplay playsinline></video>
 			<div>
 				<h3 class="wb-cd-80 wb-cd-40-mb uppercase">Abbonamento</h3>
 				<div class="tags wb-12 uppercase">

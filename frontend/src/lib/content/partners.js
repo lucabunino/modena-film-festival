@@ -58,6 +58,11 @@ export const partners = [
 				href: 'https://www.manitou.com/',
 				logo: '/partners/manitou.png'
 			},
+			{
+				title: 'Auto Grifone',
+				href: 'https://www.autogrifone.com/',
+				logo: '/partners/autogrifone.png'
+			},
 		]
 	},
 	{
