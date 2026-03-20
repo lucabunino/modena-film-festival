@@ -66,7 +66,7 @@
 					<!-- <label class="tag black bg-white">20€</label>
 					<label class="tag black bg-white">Codice sconto 5€ con abbonamento</label> -->
 				</div>
-				<h4 class="date bolder wb-18 wb-15-mb">Con Samuel Umberto Romano<br>16 aprile alle 21:00</h4>
+				<h4 class="date bolder wb-18 wb-15-mb">Con Samuel Umberto Romano<br>Giovedì 16 aprile alle 21:00</h4>
 			</div>
 			<p class="wb-18 wb-15-mb max-w-600">Nella giornata dedicata all’udito, cinema muto e musica contemporanea si incontrano: Samuel sonorizza dal vivo Sherlock Jr. (1924) di Buster Keaton. Un dialogo potente tra immagini e suono.</p>
 		</a>
@@ -75,14 +75,15 @@
 		>
 			<img class="bg" src="/tickets/odorama.webp" alt="">
 			<div>
-				<h3 class="wb-cd-60 wb-cd-40-mb uppercase max-w-500">Speciale olfatto</h3>
+				<h3 class="wb-cd-60 wb-cd-40-mb uppercase max-w-500">Odorama. The Truman Show</h3>
 				<div class="tags wb-12 uppercase">
-					<label class="tag black bg-white">Maggiori info a breve</label>
+					<label class="tag black bg-white">A breve disponibile</label>
 					<!-- <label class="tag black bg-white">5€</label>
-					<label class="tag black bg-white">150 posti</label> -->
+					<label class="tag black bg-white">Capienza limitata</label> -->
 				</div>
-				<!-- <h4 class="date bolder wb-18 wb-15-mb">TBD</h4> -->
+				<h4 class="date bolder wb-18 wb-15-mb">Proiezione con tavoletta olfattiva<br>Domenica 19 aprile alle 19:00</h4>
 			</div>
+			<p class="wb-18 wb-15-mb max-w-600">Avete mai respirato un film? Con Odorama di Accademia del Profumo la proiezione diventa multisensoriale: fragranze accompagnano le scene e amplificano le emozioni. Il film scelto è The Truman Show di Peter Weir con Jim Carrey.</p>
 		</a>
 		{#if isHovering && mousePos.x}
 			<p class="cursor desktop-only btn-l bg-linen black" transition:slide={{duration: 200, axis: 'x'}}
