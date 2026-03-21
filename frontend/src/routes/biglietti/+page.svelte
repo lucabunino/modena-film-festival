@@ -52,7 +52,7 @@
 				<h4 class="date bolder wb-18 wb-15-mb">15–19 aprile 2026</h4>
 			</div>
 			<div class="wb-18 wb-15-mb max-w-600">
-				<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em> musicato da Samuel, l'evento speciale olfatto. <br>Riceverai anche la tote bag ufficiale e il bagde che ti permetterà di accedere agli sconti offerti dalle realtà convenzionate</p>
+				<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em> musicato da Samuel e <em>Odorama. The Truman Show</em>.</p>
 			</div>
 		</a>
 		<a class="ticket x1 rounded-l white locked {shakingItems['sherlock'] ? 'shaking' : undefined}" target="_blank" rel="noopener noreferrer"
@@ -83,7 +83,7 @@
 				</div>
 				<h4 class="date bolder wb-18 wb-15-mb">Proiezione con tavoletta olfattiva<br>Domenica 19 aprile alle 19:00</h4>
 			</div>
-			<p class="wb-18 wb-15-mb max-w-600">Avete mai respirato un film? Con Odorama di Accademia del Profumo la proiezione diventa multisensoriale: fragranze accompagnano le scene e amplificano le emozioni. Il film scelto è The Truman Show di Peter Weir con Jim Carrey.</p>
+			<p class="wb-18 wb-15-mb max-w-600">Avete mai respirato un film? Con Odorama di Accademia del Profumo la proiezione diventa multisensoriale: fragranze accompagnano le scene e amplificano le emozioni.</p>
 		</a>
 		{#if isHovering && mousePos.x}
 			<p class="cursor desktop-only btn-l bg-linen black" transition:slide={{duration: 200, axis: 'x'}}
@@ -92,11 +92,11 @@
 		{/if}
 	</section>
 	<section id="become-supporter" title="Come funziona" bind:this={sections[1]}>
-		<h2 class="section-title wb-12 wb-10-mb uppercase">Come funziona</h2>
-		<p class="wb-24 wb-18-mb max-w-700">L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em>, l'evento speciale olfatto, che vanno acquistati separatamente.</p>
-		<p class="wb-24 wb-18-mb max-w-700">Gli abbonati hanno diritto a uno sconto di 5€ sull'evento <em>Cineconcerto Sherlock Jr.</em>, selezionando l'opzione di acquisto RIDOTTO ABBONAMENTO WEB. All'ingresso potrà essere verificato il possesso dell'abbonamento.</p>
+		<h2 class="section-title wb-12 wb-10-mb uppercase leading_105">Come funziona</h2>
+		<p class="wb-24 wb-18-mb max-w-700">L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em> e <em>Odorama. The Truman Show</em>, che vanno acquistati separatamente.</p>
+		<p class="wb-24 wb-18-mb max-w-700">Riceverai anche la tote bag ufficiale e il bagde che ti permetterà di accedere agli sconti offerti dalle realtà convenzionate. Potranno essere ritirati durante il festival presso l'ufficio accrediti al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena. Tieni il badge con te: ti darà diritto a sconti esclusivi presso tutti i locali convenzionati con Modena Film Festival.</p>
+		<p class="wb-24 wb-18-mb max-w-700">Gli abbonati hanno diritto a uno sconto del 25% sull'evento <em>Cineconcerto Sherlock Jr.</em>, selezionando l'opzione di acquisto RIDOTTO ABBONAMENTO WEB. All'ingresso potrà essere verificato il possesso dell'abbonamento.</p>
 		<p class="wb-24 wb-18-mb max-w-700">Per ogni film che vuoi vedere dovrai redimere il biglietto in anticipo, direttamente dalla tua area personale Webtic. Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di redimerlo per tempo!</p>
-		<p class="wb-24 wb-18-mb max-w-700">Il tuo badge personale potrà essere ritirato durante il festival presso l'ufficio accrediti al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena. Tienilo sempre con te: ti darà diritto a sconti esclusivi presso tutti i locali convenzionati con Modena Film Festival.</p>
 		<p class="wb-24 wb-18-mb max-w-700">Sarà possibile anche acquistare singolarmente ciascun evento, a un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
 		<p class="wb-24 wb-18-mb max-w-700">L'abbonamento è strettamente personale e non cedibile. All'ingresso potranno essere effettuati controlli per verificare la titolarità dell'accredito.</p>
 	</section>
