@@ -35,8 +35,8 @@
 	<Title
 	subtitles={[
 		"Biglietti e abbonamento MFF2026 sono acquistabili online, sulla piattaforma Webtic.",
+		"L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em>, il <em>Cineconcerto Sherlock Jr.</em> e <em>Odorama. The Truman Show</em>.",
 		"Per poter accedere in sala, è richiesta la prenotazione ai singoli eventi, anche per i possessori dell'abbonamento.",
-		"Una volta selezionato un evento, sarà possibile finalizzare l'acquisto tramite carta di credito, oppure tramite abbonamento, per gli eventi che ne fanno parte."
 		]}
 	size={'l'}
 	cta={{href: WebticHref, label: 'Compra su', blank: true, webtic: true}}
@@ -109,9 +109,9 @@
 			<p>Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di acquistare i biglietti per tempo!</p>
 			<p>Presenta la prova di acquisto dell'abbonamento al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena, nei seguenti giorni e orari:
 			<ul>
-				<li>Martedì, mercoledì e giovedì dalle 15 alle 21</li>
-				<li>Venerdì e sabato dalle 10 alle 21</li>
-				<li>Domenica dalle 10 alle 18</li>
+				<li>Martedì 14, mercoledì 15 e giovedì 16 aprile dalle 15 alle 21</li>
+				<li>Venerdì 17 e sabato 18 aprile dalle 10 alle 21</li>
+				<li>Domenica 19 aprile dalle 10 alle 18</li>
 			</ul>
 			<p>Riceverai la tote bag ufficiale e il bagde, che ti darà diritto a sconti esclusivi presso tutti i locali convenzionati con Modena Film Festival.</p>
 		</div>
