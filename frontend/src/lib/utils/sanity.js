@@ -101,9 +101,12 @@ export async function getEvent(slug) {
 			...,
 			location->{
 				title,
+				subtitle,
 				adressLabel,
 				adressHref
 			},
+			formats[]-> { title, slug },
+			sense->{ title },
 			"cta": {
 				"label": ctaLabel,
 				"href": ctaHref,

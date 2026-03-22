@@ -40,22 +40,29 @@
             })
             .filter(day => day.visibleEvents.length > 0);
     });
-	const getCount = (slug) => formatCounts.find(c => c.slug === slug)?.count || 0;
 	const formatCounts = $derived(
-		data.program.formats.map(f => {
-			const slug = f.slug?.current || f.slug;
-			const count = data.program.days.reduce((acc, day) => {
-				const matches = day.events.filter(event => 
-					event.formats?.some(ef => (ef.slug?.current || ef.slug) === slug)
-				);
-				return acc + matches.length;
-			}, 0);
-			return { slug, count };
-		})
-	);
-	const totalEvents = $derived(
-		data.program.days.reduce((acc, day) => acc + day.events.length, 0)
-	);
+        data.program.formats.map(f => {
+            const slug = f.slug?.current || f.slug;
+            const uniqueIds = new Set();
+            
+            data.program.days.forEach(day => {
+                day.events.forEach(event => {
+                    const hasFormat = event.formats?.some(ef => (ef.slug?.current || ef.slug) === slug);
+                    if (hasFormat) uniqueIds.add(event._id);
+                });
+            });
+            
+            return { slug, count: uniqueIds.size };
+        })
+    );
+    const totalEvents = $derived.by(() => {
+        const uniqueTotalIds = new Set();
+        data.program.days.forEach(day => {
+            day.events.forEach(event => uniqueTotalIds.add(event._id));
+        });
+        return uniqueTotalIds.size;
+    });
+    const getCount = (slug) => formatCounts.find(c => c.slug === slug)?.count || 0;
 	
 	function eventMatchesFormat(event) {
         if (!activeFormat) return true;

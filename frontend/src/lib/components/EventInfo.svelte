@@ -2,7 +2,7 @@
     import { page } from "$app/state";
     let { event } = $props()
 	import { getBanner } from '$lib/stores/banner.svelte';
-    import { formatISO, formatLabel } from "$lib/utils/datetime";
+    import { formatEventDate, formatISO, formatLabel } from "$lib/utils/datetime";
     import { onMount } from "svelte";
 
 	let banner = getBanner()
@@ -17,7 +17,7 @@
 	<div class="rounded-m wb-21 wb-10-mb bg-linen {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}">
 		<h4 class="title wb-12 uppercase">Dove e quando?</h4>
 		{#if event.start}
-			<time datetime={formatISO(event.start, event.end)}>{formatLabel(event.start, event.end)}</time>
+			<time datetime={formatISO(event.start, event.end)}>{formatEventDate(event.start, event.end)}</time>
 		{/if}
 		{#if event.location}
 			<p>{event.location.title}</p>
@@ -77,7 +77,7 @@
 
 					@media screen and (min-width: 1081px) {
 						&:hover:not(.cta) {
-							padding-left: 1rem;
+							text-decoration: underline;
 						}
 						&[aria-current="section"]:not(.cta) {
 							color: var(--brown);
