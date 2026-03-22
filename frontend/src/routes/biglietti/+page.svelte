@@ -25,6 +25,7 @@
     }
 	const seoSingle = { seoTitle: 'Biglietti'}
 	const WebticHref = "https://www.webtic.it/app/shopping/loadLocal/MO/7348"
+	const SubscriptionHref = "https://www.webtic.it/app/shop?action=loadSubscriptions&localId=7348"
 </script>
 
 {#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
@@ -32,17 +33,21 @@
 <main class="bg-white">
 	<Navigator title="Biglietti" {sections}/>
 	<Title
-	subtitles={["L'abbonamento MFF2026 è acquistabile online sulla piattaforma Webtic, nella sezione abbonamenti.", "Dal 24 marzo potrai prenotare il tuo posto agli eventi in programma e acquistare l'ingresso agli eventi esclusi dall'abbonamento."]}
+	subtitles={[
+		"Biglietti e abbonamento MFF2026 sono acquistabili online, sulla piattaforma Webtic.",
+		"Per poter accedere in sala, è richiesta la prenotazione ai singoli eventi, anche per i possessori dell'abbonamento.",
+		"Una volta selezionato un evento, sarà possibile finalizzare l'acquisto tramite carta di credito, oppure tramite abbonamento, per gli eventi che ne fanno parte."
+		]}
 	size={'l'}
 	cta={{href: WebticHref, label: 'Compra su', blank: true, webtic: true}}
 	/>
 	<section id="buy" title="Compra" bind:this={sections[0]}>
-		<a class="ticket x2 rounded-l white" href={WebticHref} target="_blank" rel="noopener noreferrer"
+		<a class="ticket x2 rounded-l white" href={SubscriptionHref} target="_blank" rel="noopener noreferrer"
 		onmousemove={handleMouseMove}
 		onmouseenter={() => isHovering = true}
 		onmouseleave={() => isHovering = false}
 		>
-			<video class="bg" src="/tickets/abbonamento-min.mp4" poster="abbonamento-min.webp" muted loop autoplay playsinline></video>
+			<video class="bg" src="/tickets/abbonamento-min.mp4" poster="/tickets/abbonamento-min.webp" muted loop autoplay playsinline></video>
 			<div>
 				<h3 class="wb-cd-80 wb-cd-40-mb uppercase">Abbonamento</h3>
 				<div class="tags wb-12 uppercase">
@@ -52,21 +57,20 @@
 				<h4 class="date bolder wb-18 wb-15-mb">15–19 aprile 2026</h4>
 			</div>
 			<div class="wb-18 wb-15-mb max-w-600">
-				<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em> musicato da Samuel, l'evento speciale olfatto.</p>
+				<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em>, il <em>Cineconcerto Sherlock Jr.</em> e <em>Odorama. The Truman Show</em>.</p>
 			</div>
 		</a>
 		<a class="ticket x1 rounded-l white locked {shakingItems['sherlock'] ? 'shaking' : undefined}" target="_blank" rel="noopener noreferrer"
 		onclick={(e) => handleLockedclick(e, 'sherlock')}
 		>
-			<img class="bg" src="/tickets/sherlock3.webp" alt="">
+			<img class="bg" src="/tickets/sherlock.webp" alt="">
 			<div>
 				<h3 class="wb-cd-60 wb-cd-40-mb uppercase max-w-500">Cineconcerto Sherlock Jr.</h3>
 				<div class="tags wb-12 uppercase">
-					<label class="tag black bg-white">A breve disponibile</label>
-					<!-- <label class="tag black bg-white">20€</label>
-					<label class="tag black bg-white">Codice sconto 5€ con abbonamento</label> -->
+					<label class="tag black bg-white">20&#8202;€</label>
+					<label class="tag black bg-white">Codice sconto 25% con abbonamento</label>
 				</div>
-				<h4 class="date bolder wb-18 wb-15-mb">Con Samuel Umberto Romano<br>16 aprile alle 21:00</h4>
+				<h4 class="date bolder wb-18 wb-15-mb">Con Samuel Umberto Romano<br>Giovedì 16 aprile alle 21:00</h4>
 			</div>
 			<p class="wb-18 wb-15-mb max-w-600">Nella giornata dedicata all’udito, cinema muto e musica contemporanea si incontrano: Samuel sonorizza dal vivo Sherlock Jr. (1924) di Buster Keaton. Un dialogo potente tra immagini e suono.</p>
 		</a>
@@ -75,14 +79,14 @@
 		>
 			<img class="bg" src="/tickets/odorama.webp" alt="">
 			<div>
-				<h3 class="wb-cd-60 wb-cd-40-mb uppercase max-w-500">Speciale olfatto</h3>
+				<h3 class="wb-cd-60 wb-cd-40-mb uppercase max-w-500">Odorama. The Truman Show</h3>
 				<div class="tags wb-12 uppercase">
-					<label class="tag black bg-white">Maggiori info a breve</label>
-					<!-- <label class="tag black bg-white">5€</label>
-					<label class="tag black bg-white">150 posti</label> -->
+					<label class="tag black bg-white">5&#8202;€</label>
+					<label class="tag black bg-white">Capienza limitata</label>
 				</div>
-				<!-- <h4 class="date bolder wb-18 wb-15-mb">TBD</h4> -->
+				<h4 class="date bolder wb-18 wb-15-mb">Proiezione con tavoletta olfattiva<br>Domenica 19 aprile alle 19:00</h4>
 			</div>
+			<p class="wb-18 wb-15-mb max-w-600">Avete mai respirato un film? Con Odorama di Accademia del Profumo la proiezione diventa multisensoriale: fragranze accompagnano le scene e amplificano le emozioni.</p>
 		</a>
 		{#if isHovering && mousePos.x}
 			<p class="cursor desktop-only btn-l bg-linen black" transition:slide={{duration: 200, axis: 'x'}}
@@ -90,14 +94,58 @@
 			>Compra su <img class="webtic" src="/logos/webtic.webp" alt=""></p>
 		{/if}
 	</section>
-	<section id="become-supporter" title="Come funziona" bind:this={sections[1]}>
-		<h2 class="section-title wb-12 wb-10-mb uppercase">Come funziona</h2>
-		<p class="wb-24 wb-18-mb max-w-700">L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em>, l'evento speciale olfatto, che vanno acquistati separatamente.</p>
-		<p class="wb-24 wb-18-mb max-w-700">Gli abbonati hanno diritto a uno sconto di 5€ sull'evento <em>Cineconcerto Sherlock Jr.</em>, selezionando l'opzione di acquisto RIDOTTO ABBONAMENTO WEB. All'ingresso potrà essere verificato il possesso dell'abbonamento.</p>
-		<p class="wb-24 wb-18-mb max-w-700">Per ogni film che vuoi vedere dovrai redimere il biglietto in anticipo, direttamente dalla tua area personale Webtic. Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di redimerlo per tempo!</p>
-		<p class="wb-24 wb-18-mb max-w-700">Il tuo badge personale potrà essere ritirato durante il festival presso l'ufficio accrediti al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena. Tienilo sempre con te: ti darà diritto a sconti esclusivi presso tutti i locali convenzionati con Modena Film Festival.</p>
-		<p class="wb-24 wb-18-mb max-w-700">Sarà possibile anche acquistare singolarmente ciascun evento, a un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
-		<p class="wb-24 wb-18-mb max-w-700">L'abbonamento è strettamente personale e non cedibile. All'ingresso potranno essere effettuati controlli per verificare la titolarità dell'accredito.</p>
+	<section id="how-it-works" title="Come funziona" bind:this={sections[1]}>
+		<h2 class="section-title wb-12 wb-10-mb uppercase leading_105">Come funziona</h2>
+		<div class="wb-21 wb-15-mb max-w-700">
+			<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival, fatta eccezione per:</p>
+			<ul>
+				<li>Evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em></li>
+				<li><em>Cineconcerto Sherlock Jr.</em></li>
+				<li><em>Odorama. The Truman Show</em></li>
+			</ul>
+			<p>Gli abbonati hanno diritto a uno sconto del 25% sull'evento <em>Cineconcerto Sherlock Jr.</em>, selezionando l'opzione di acquisto RIDOTTO ABBONAMENTO WEB. All'ingresso potrà essere verificato il possesso dell'abbonamento.</p>
+			<p>Per ogni film che vuoi vedere, dovrai acquistare il biglietto in anticipo, direttamente dalla tua area personale Webtic. L'acquisto è possibile tramite carta di credito, oppure tramite abbonamento, per gli eventi che ne fanno parte.</p>
+			<p>È possibile anche acquistare singolarmente ciascun evento, a un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
+			<p>Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di acquistare i biglietti per tempo!</p>
+			<p>Presenta la prova di acquisto dell'abbonamento al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena, nei seguenti giorni e orari:
+			<ul>
+				<li>Martedì, mercoledì e giovedì dalle 15 alle 21</li>
+				<li>Venerdì e sabato dalle 10 alle 21</li>
+				<li>Domenica dalle 10 alle 18</li>
+			</ul>
+			<p>Riceverai la tote bag ufficiale e il bagde, che ti darà diritto a sconti esclusivi presso tutti i locali convenzionati con Modena Film Festival.</p>
+		</div>
+	</section>
+	<section id="prices" title="Prezzi" bind:this={sections[2]}>
+		<h2 class="section-title wb-12 wb-10-mb uppercase leading_105">Prezzi</h2>
+		<div class="wb-21 wb-15-mb max-w-700">
+			<p><span class="uppercase">Singole proiezioni</span><br>
+				Biglietto unico 8&#8202;€<br>
+				Biglietto unico web 8&#8202;€ + 1&#8202;€ di commissioni
+			</p>
+			<p><span class="uppercase">Cineconcerto Sherlock Jr.</span><br>
+				Intero 20&#8202;€<br>
+				Intero web 20&#8202;€ + 1&#8202;€ di commissioni<br>
+				✳ Ridotto per abbonati 15&#8202;€<br>
+				✳ Ridotto per abbonati web 15&#8202;€ + 1&#8202;€ di commissioni<br>
+			</p>
+			<p><span class="uppercase">Odorama. The Truman Show</span><br>
+				Biglietto unico 5&#8202;€
+			</p>
+			<p><span class="uppercase">Cineconcerto Grand Tour Italiano</span><br>
+				Biglietto unico 8&#8202;€
+			</p>				
+		</div>
+	</section>
+	<section id="conditions" title="Condizioni di vendita" bind:this={sections[3]}>
+		<h2 class="section-title wb-12 wb-10-mb uppercase leading_105">Condizioni di vendita</h2>
+		<div class="wb-21 wb-15-mb max-w-700">
+			<p>L’abbonamento è acquistabile online e presso le biglietterie della Sala del Leccio, del Cinema Astra e della Sala Truffaut durante i giorni del festival.</p>
+			<p>L'abbonamento è strettamente personale e non cedibile. All'ingresso potranno essere effettuati controlli per verificare la titolarità dell’accredito.</p>
+			<p>Per ogni film che vuoi vedere dovrai redimere il biglietto, direttamente dalla tua area personale Webtic o presso le biglietterie dei cinema, da 60 minuti prima di ogni proiezione. Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di redimere i biglietti per tempo!</p>
+			<p>È possibile anche acquistare singolarmente ciascun evento, a un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
+			<p>Le proiezioni e la presenza degli ospiti indicati in programma sono passibili di modifiche indipendenti dalla volontà del Festival</p>
+		</div>
 	</section>
 </main>
 <!-- <PreFooter {prefooter}/> -->
@@ -187,9 +235,19 @@
 		width: auto;
 	}
 }
-#become-supporter {
+#how-it-works,
+#conditions {
 	p + p {
 		margin-top: .6em;
+	}
+	ul {
+		margin: 1.1em 0 1.1em 2em;
+		list-style: disc;
+	}
+}
+#prices {
+	p + p {
+		margin-top: 1.2em;
 	}
 }
 </style>

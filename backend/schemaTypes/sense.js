@@ -1,9 +1,9 @@
-import { CaseIcon } from '@sanity/icons'
+import { AsteriskIcon } from '@sanity/icons'
 
 export default {
-	name: 'section',
+	name: 'sense',
 	type: 'document',
-	icon: CaseIcon,
+	icon: AsteriskIcon,
 	fields: [
 		{
 			name: 'title',

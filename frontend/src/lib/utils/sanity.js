@@ -75,9 +75,16 @@ export async function getProgram() {
             days[] {
                 date,
                 events[]-> {
-                    ... 
+                    ...,
+					location->{ title, slug },
+					formats[]-> { title, slug },
+					sense->{ title },
                 }
-            }
+            },
+			"formats": *[_type == "format" && count(*[_type == "program" && status == 'public' && ^._id in days[].events[]->formats[]._ref]) > 0] {
+				title,
+				slug
+			}
 		}`
     );
 }

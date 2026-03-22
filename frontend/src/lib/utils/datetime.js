@@ -13,6 +13,33 @@ export function formatISONextDay(dateString) {
     date.setDate(date.getDate() + 1);
     return date.toISOString();
 }
+
+export function formatEventDate(start, end) {
+    if (!start) return '';
+    const startDate = new Date(start);
+    const hasEnd = !!end;
+    const endDate = hasEnd ? new Date(end) : null;
+    const isMidnight = (date) => date.getHours() === 0 && date.getMinutes() === 0;
+    const formatBase = (date) => {
+        const shortDay = days[date.getDay()].slice(0, 3);
+        return `${shortDay} ${date.getDate()}.${date.getMonth() + 1}`;
+    };
+    const startLabel = formatBase(startDate);
+    if (!hasEnd) {
+        return `${startLabel} alle ${formatTimeItalian(startDate)}`;
+    }
+
+    if (startDate.toDateString() === endDate.toDateString()) {
+        return `${startLabel} dalle ${formatTimeItalian(startDate)} alle ${formatTimeItalian(endDate)}`;
+    }
+
+    if (isMidnight(startDate) && isMidnight(endDate)) {
+        return `Da ${startLabel} a ${formatBase(endDate)}`;
+    }
+
+    return `Da ${startLabel} alle ${formatTimeItalian(startDate)} a ${formatBase(endDate)} alle ${formatTimeItalian(endDate)}`;
+}
+
 export function formatDateHash(dateString) {
     if (!dateString) return '';
     const date = new Date(dateString);

@@ -7,25 +7,28 @@ export default {
 	type: 'document',
 	icon: SparkleIcon,
 	groups: [
-		{name: 'Info'},
+		{name: 'Event'},
 		{name: 'Style'},
+		{name: 'Homepage'},
 		{name: 'Related'},
 		{name: 'SEO'},
 	],
 	fieldsets: [
+		{name: 'Homepage'},
 		{name: 'Cta'},
 		{name: 'Tag'},
 	],
 	fields: [
 		{
 			name: 'title',
-			type: 'string',
-			group: 'Info',
+			type: 'text',
+			rows: 2,
+			group: 'Event',
 		},
 		{
 			name: 'subtitle',
 			type: 'string',
-			group: 'Info',
+			group: 'Event',
 		},
 		{
 			name: 'slug',
@@ -35,7 +38,7 @@ export default {
 				source: 'title',
 				maxLength: 96,
 			},
-			group: 'Info',
+			group: 'Event',
 		},
 		{
 			name: 'status',
@@ -48,24 +51,35 @@ export default {
 				layout: 'radio'
 			},
 			initialValue: 'public',
-			group: 'Info',
+			group: 'Event',
+		},
+		{
+			name: 'formats',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{type: 'format'},]
+				}
+			],
+			group: 'Event',
+		},
+		{
+			name: 'sense',
+			type: 'reference',
+			to: [{type: 'sense'},],
+			group: 'Event',
 		},
 		{
 			name: 'start',
 			type: 'datetime',
 			validation: (Rule) => Rule.required(),
-			group: 'Info',
+			group: 'Event',
 		},
 		{
 			name: 'end',
 			type: 'datetime',
-			group: 'Info',
-		},
-		{
-			name: 'section',
-			type: 'reference',
-			to: [{type: 'section'},],
-			group: 'Info',
+			group: 'Event',
 		},
 		// {
 		// 	name: 'people',
@@ -77,26 +91,26 @@ export default {
 		// 			to: [{ type: 'person' }],
 		// 		},
 		// 	],
-		// 	group: 'Info',
+		// 	group: 'Event',
 		// },
 		{
 			name: 'location',
 			type: 'reference',
 			to: [{type: 'location'},],
-			group: 'Info',
+			group: 'Event',
 		},
 		// {
 		// 	name: 'ctaLabel',
 		// 	title: 'Label',
 		// 	type: 'string',
-		// 	group: 'Info',
+		// 	group: 'Event',
 		// 	fieldset: 'Cta',
 		// },
 		// {
 		// 	name: 'ctaHref',
 		// 	title: 'Href',
 		// 	type: 'url',
-		// 	group: 'Info',
+		// 	group: 'Event',
 		// 	fieldset: 'Cta',
 		// },
 		// {
@@ -104,14 +118,14 @@ export default {
 		// 	title: 'Blank',
 		// 	type: 'boolean',
 		// 	initialValue: false,
-		// 	group: 'Info',
+		// 	group: 'Event',
 		// 	fieldset: 'Cta',
 		// },
 		{
 			name: 'credits',
 			type: 'text',
 			rows: 4,
-			group: 'Info',
+			group: 'Event',
 		},
 		{
 			name: 'abstract',
@@ -157,7 +171,7 @@ export default {
 					},
 				},
 			],
-			group: 'Info',
+			group: 'Event',
 		},
 		{
 			name: 'program',
@@ -203,7 +217,7 @@ export default {
 					},
 				},
 			],
-			group: 'Info',
+			group: 'Event',
 		},
 		{
 			name: 'body',
@@ -252,54 +266,58 @@ export default {
 					},
 				},
 			],
-			group: 'Info',
+			group: 'Event',
 		},
-		{
-			name: 'layout',
-			type: 'string',
-			options: {
-				list: [
-					{ title: 'Main', value: 'main' },
-					{ title: 'Secondary', value: 'secondary' },
-				],
-			},
-			initialValue: 'main',
-			group: 'Style',
-		},
-		{
-			name: 'size',
-			type: 'string',
-			options: {
-				list: [
-					{ title: 'S', value: 's' },
-					{ title: 'M', value: 'm' },
-					{ title: 'L', value: 'l' },
-				],
-			},
-			initialValue: 'm',
-			group: 'Style',
-		},
+		// {
+		// 	name: 'layout',
+		// 	type: 'string',
+		// 	options: {
+		// 		list: [
+		// 			{ title: 'Main', value: 'main' },
+		// 			{ title: 'Secondary', value: 'secondary' },
+		// 		],
+		// 	},
+		// 	initialValue: 'main',
+		// 	group: 'Style',
+		// },
+		// {
+		// 	name: 'size',
+		// 	type: 'string',
+		// 	options: {
+		// 		list: [
+		// 			{ title: 'S', value: 's' },
+		// 			{ title: 'M', value: 'm' },
+		// 			{ title: 'L', value: 'l' },
+		// 		],
+		// 	},
+		// 	initialValue: 'm',
+		// 	group: 'Style',
+		// },
 		{
 			name: 'thumbnail',
 			type: 'image',
-			group: 'Style',
+			group: 'Event',
 		},
 		{
-			name: 'cover',
+			name: 'homepageTitle',
+			title: 'Title',
+			type: 'string',
+			fieldset: 'Homepage',
+			group: 'Homepage',
+		},
+		{
+			name: 'homepageSubtitle',
+			title: 'Subtitle',
+			type: 'string',
+			fieldset: 'Homepage',
+			group: 'Homepage',
+		},
+		{
+			name: 'homepageCover',
+			title: 'Cover',
 			type: 'image',
-			group: 'Style',
-		},
-		{
-			name: 'accentColor',
-			type: 'color',
-			options: colorOptions,
-			group: 'Style',
-		},
-		{
-			name: 'typeColor',
-			type: 'color',
-			options: colorOptions,
-			group: 'Style',
+			fieldset: 'Homepage',
+			group: 'Homepage',
 		},
 		{
 			name: 'related',
@@ -314,6 +332,15 @@ export default {
 		},
 		...seoFields(),
 	],
+	orderings: [
+        {
+            title: 'Start',
+            name: 'startDateAsc',
+            by: [
+                {field: 'start', direction: 'asc'}
+            ]
+        },
+    ],
 	preview: {
         select: {
             title: 'title',

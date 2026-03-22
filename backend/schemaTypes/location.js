@@ -10,6 +10,10 @@ export default {
 			type: 'string',
 		},
 		{
+			name: 'subtitle',
+			type: 'string',
+		},
+		{
 			name: 'slug',
 			type: 'slug',
 			validation: (Rule) => Rule.required(),
@@ -27,4 +31,10 @@ export default {
 			type: 'url',
 		},
 	],
+	preview: {
+        select: {
+            title: 'title',
+            subtitle: 'subtitle',
+        },
+    },
 };

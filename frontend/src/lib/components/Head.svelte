@@ -1,11 +1,11 @@
 <script>
     let { seo } = $props()
-    import { browser } from "$app/environment";
+    import { browser, dev } from "$app/environment";
     import { page } from "$app/state";
 </script>
 
 <svelte:head>
-    {#if browser}
+    {#if !dev && browser}
 		<script defer src="https://cloud.umami.is/script.js" data-website-id="3e32a832-2bf2-438c-bbc1-f295f745e1d3"></script>
     {/if}
 
