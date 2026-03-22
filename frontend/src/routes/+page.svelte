@@ -1,5 +1,6 @@
 <script>
 	let { data } = $props()
+	$inspect(data)
 
 	import Marquee from 'svelte-fast-marquee';
     import SectionsDesktop from '$lib/components/SectionsDesktop.svelte';
@@ -11,13 +12,14 @@
     import Landing2 from '$lib/components/Landing2.svelte';
     import HeadSingle from '$lib/components/HeadSingle.svelte';
     import LandingTickets from '$lib/components/LandingTickets.svelte';
+    import { urlFor } from '$lib/utils/image';
 
 	const sections = [
-		{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan' },
-		{ name: 'Udito', slug: 'udito', gradient: 'gradient-y-brown-yellow' },
-		{ name: 'Tatto', slug: 'tatto', gradient: 'gradient-y-brown-red' },
-		{ name: 'Gusto', slug: 'gusto', gradient: 'gradient-y-brown-pink' },
-		{ name: 'Olfatto', slug: 'olfatto', gradient: 'gradient-y-brown-iris' }
+		{ name: 'Vista', slug: 'il-cieco-che-non-voleva-vedere-titanic', gradient: 'gradient-y-brown-cyan', img: '/home/1.webp', title: "Il cieco che non voleva vedere titanic" },
+		{ name: 'Udito', slug: 'cineconcerto-sherlock-jr', gradient: 'gradient-y-brown-yellow', img: '/home/3.webp', title: "Cineconcerto Sherlock Jr." },
+		{ name: 'Tatto', slug: 'thelma-e-louise', gradient: 'gradient-y-brown-red', img: '/home/5.webp', title: "Thelma e Louise" },
+		{ name: 'Gusto', slug: 'la-citta-incantata', gradient: 'gradient-y-brown-pink', img: '/home/2.webp', title: "La città incantata" },
+		{ name: 'Olfatto', slug: 'odorama-the-truman-show', gradient: 'gradient-y-brown-iris', img: '/home/4.webp', title: "Odorama. The Truman Show" }
 	];
 
 	// const prefooter = {
@@ -73,15 +75,36 @@
 	{/if} -->
 	<LandingTickets />
 	<NewsWidget newses={data.widgetNewses}/>
-	<section id="sections" class="bg-white">
+	<section id="sections" title="Il Festival" class="bg-white">
 		<div>
 			<h2 class="wb-12 wb-10-mb uppercase">Il Festival</h2>
 			<h3 class="wb-cd-60 wb-cd-40-mb uppercase">Un Festival <br>dedicato <br>ai cinque sensi</h3>
 			<SectionsMobile {sections}/>
 			<p class="wb-18 wb-15-mb">Opere che coinvolgono lo spettatore in esperienze sensoriali innovative, che riflettono sul cinema stesso come arte visiva e sonora, o che utilizzano i sensi come metafora per esplorare tematiche contemporanee.</p>
-			<a class="btn-m white bg-black hover-black hover-bg-linen" href="/festival">Leggi di più</a>
+			<a class="btn-m white bg-black hover-black hover-bg-linen" href="/programma">Vedi il programma</a>
 		</div>
 		<SectionsDesktop {sections}/>
+	</section>
+	<section id="contest" class="bg-linen" title="Film in concorso">
+		<div class="text">
+			<h2 class="wb-12 wb-10-mb uppercase">Film in concorso</h2>
+			<p class="wb-24 wb-18-mb max-w-600">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+		</div>
+		<div class="contest-wrapper">
+			<div class="contest">
+				{#each data.contest as event, i}
+				{$inspect(event)}
+					<a class="event white" href="/programma/{event.slug.current}">
+						{#if event.homepageThumbnail}
+							<img class="img" src="{urlFor(event.homepageThumbnail).height(1920)}" alt="Copertina di {event.homepageTitle}">
+						{/if}
+						{#if event.homepageTitle}<h3 class="title wb-28 wb-18-mb">{event.homepageTitle}</h3>{/if}
+						{#if event.homepageSubtitle}<h4 class="subtitle nr-28 nr-18-mb">{event.homepageSubtitle}</h4>{/if}
+						<span class="cta btn-m black bg-white hover-white hover-bg-black">Leggi di più</span>
+					</a>
+				{/each}
+			</div>
+		</div>
 	</section>
 </main>
 <PreFooter {prefooter}/>
@@ -151,6 +174,54 @@
 
 				a {
 					margin: 2rem var(--margin) 0;
+				}
+			}
+		}
+	}
+	#contest {
+		padding-bottom: 0;
+		
+		.text {
+			padding: var(--margin) var(--margin) calc(var(--margin)*2);
+			p {
+				margin-top: 1.5rem;
+			}
+		}
+		.contest-wrapper {
+			width: 100%;
+			overflow-x: scroll;
+
+			.contest {
+				display: flex;
+				width: fit-content;
+				
+				.event {
+					padding: var(--margin);
+					width: 23vw;
+					height: auto;
+					aspect-ratio: 2/3;
+					position: relative;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					
+					.img {
+						position: absolute;
+						left: 0;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					}
+					.title,
+					.subtitle {
+						z-index: 1;
+					}
+					.cta {
+						position: absolute;
+						left: var(--margin);
+						bottom: var(--margin);
+					}
 				}
 			}
 		}

@@ -313,8 +313,8 @@ export default {
 			group: 'Homepage',
 		},
 		{
-			name: 'homepageCover',
-			title: 'Cover',
+			name: 'homepageThumbnail',
+			title: 'Thumbnail',
 			type: 'image',
 			fieldset: 'Homepage',
 			group: 'Homepage',

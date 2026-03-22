@@ -47,13 +47,12 @@ onmousemove={(e) => {mouse = {x: e.clientX, y: e.clientY}; sectionEls.forEach((_
 
 <div class="sections desktop-only" use:viewport onenterViewport={() => visibleSections = true}>
 	{#each sections as section, i}
-		<a href={`/sezioni/${section.slug}`}
-		class="section {activeSectionEl !== i ? `scattered${activeSectionEl}` : ``} {activeSectionEl === i ? `active` : ``} {visibleSections ? `visible` : ``} locked {shaking[i] ? `shaking` : ``}"
+		<a href={`/programma/${section.slug}`}
+		class="section {activeSectionEl !== i ? `scattered${activeSectionEl}` : ``} {activeSectionEl === i ? `active` : ``} {visibleSections ? `visible` : ``} {shaking[i] ? `shaking` : ``}"
 		onmouseenter={() => {activeSectionEl = i}}
 		onmouseleave={() => {activeSectionEl = undefined}}
 		onfocusin={() => {activeSectionEl = i}}
 		onfocusout={() => {activeSectionEl = undefined}}
-		onclick={(e) => {handleLockedclick(e, i)}}
 		style="
 			--rotateX: {rotations[i].x}deg;
 			--rotateY: {rotations[i].y}deg;
@@ -65,8 +64,12 @@ onmousemove={(e) => {mouse = {x: e.clientX, y: e.clientY}; sectionEls.forEach((_
 				<div class="inner">
 					<div class="front rounded-m">
 						<h4 class="wb-10 uppercase">{section.name}</h4>
-						<div class={section.gradient}></div>
-						<h5 class="wb-cd-24 uppercase white bg-black">Maggiori info a breve</h5>
+						{#if section.img}
+							<img class="img" src={section.img} alt="Copertina per {section.event}">
+						{:else}
+							<div class="img {section.gradient}"></div>
+						{/if}
+						<h5 class="wb-cd-24 uppercase white bg-black">{section.title}</h5>
 					</div>
 					<div class="back rounded-m bg-white"></div>
 				</div>
@@ -178,12 +181,14 @@ onmousemove={(e) => {mouse = {x: e.clientX, y: e.clientY}; sectionEls.forEach((_
 							color: var(--white);
 							text-align: center;
 						}
-						div {
-							height: 100%;
+						.img {
+							height: stretch;
 							width: 100%;
+							object-fit: cover;
 						}
 						h5 {
 							padding: .4em .6em;
+							line-clamp: 2;
 						}
 					}
 					.back {

@@ -88,11 +88,14 @@ export async function getProgram() {
 		}`
     );
 }
-export async function getEvents() {
+export async function getContest() {
 	return await client.fetch(
-		`*[_type == "event" && status == "public" && !(_id in path('drafts.**'))] {
-			...,
-		}`
+		`*[_type == "event" && status == "public" && "in-concorso" in formats[]->slug.current && !(_id in path('drafts.**'))] | order(start asc) {
+            slug,
+			homepageTitle,
+			homepageSubtitle,
+			homepageThumbnail
+        }`
 	);
 }
 export async function getEvent(slug) {
