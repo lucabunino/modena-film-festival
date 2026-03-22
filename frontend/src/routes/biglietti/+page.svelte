@@ -60,8 +60,10 @@
 				<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em>, il <em>Cineconcerto Sherlock Jr.</em> e <em>Odorama. The Truman Show</em>.</p>
 			</div>
 		</a>
-		<a class="ticket x1 rounded-l white locked {shakingItems['sherlock'] ? 'shaking' : undefined}" target="_blank" rel="noopener noreferrer"
-		onclick={(e) => handleLockedclick(e, 'sherlock')}
+		<a class="ticket x1 rounded-l white {shakingItems['sherlock'] ? 'shaking' : undefined}" href={WebticHref} target="_blank" rel="noopener noreferrer"
+		onmousemove={handleMouseMove}
+		onmouseenter={() => isHovering = true}
+		onmouseleave={() => isHovering = false}
 		>
 			<img class="bg" src="/tickets/sherlock.webp" alt="">
 			<div>
@@ -74,8 +76,10 @@
 			</div>
 			<p class="wb-18 wb-15-mb max-w-600">Nella giornata dedicata all’udito, cinema muto e musica contemporanea si incontrano: Samuel sonorizza dal vivo Sherlock Jr. (1924) di Buster Keaton. Un dialogo potente tra immagini e suono.</p>
 		</a>
-		<a class="ticket x1 rounded-l white blurred locked {shakingItems['odorama'] ? 'shaking' : undefined}" target="_blank" rel="noopener noreferrer"
-		onclick={(e) => handleLockedclick(e, 'odorama')}
+		<a class="ticket x1 rounded-l white blurred {shakingItems['odorama'] ? 'shaking' : undefined}" href={WebticHref} target="_blank" rel="noopener noreferrer"
+		onmousemove={handleMouseMove}
+		onmouseenter={() => isHovering = true}
+		onmouseleave={() => isHovering = false}
 		>
 			<img class="bg" src="/tickets/odorama.webp" alt="">
 			<div>
