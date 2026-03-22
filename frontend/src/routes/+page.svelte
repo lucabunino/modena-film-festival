@@ -92,7 +92,6 @@
 		<div class="contest-wrapper">
 			<div class="contest">
 				{#each data.contest as event, i}
-				{$inspect(event)}
 					<a class="event white" href="/programma/{event.slug.current}">
 						{#if event.homepageThumbnail}
 							<img class="img" src="{urlFor(event.homepageThumbnail).height(1920)}" alt="Copertina di {event.homepageTitle}">
