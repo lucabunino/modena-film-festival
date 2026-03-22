@@ -1,6 +1,5 @@
 <script>
 	let { data } = $props()
-	$inspect(data)
 
 	import Marquee from 'svelte-fast-marquee';
     import SectionsDesktop from '$lib/components/SectionsDesktop.svelte';
@@ -12,7 +11,7 @@
     import Landing2 from '$lib/components/Landing2.svelte';
     import HeadSingle from '$lib/components/HeadSingle.svelte';
     import LandingTickets from '$lib/components/LandingTickets.svelte';
-    import { urlFor } from '$lib/utils/image';
+    import { urlFor } from '$lib/utils/image.js';
 
 	const sections = [
 		{ name: 'Vista', slug: 'il-cieco-che-non-voleva-vedere-titanic', gradient: 'gradient-y-brown-cyan', img: '/home/1.webp', title: "Il cieco che non voleva vedere titanic" },
@@ -105,6 +104,9 @@
 				{/each}
 			</div>
 		</div>
+	</section>
+	<section id="program" class="bg-white" title="Programma">
+		<h2 class="wb-12 wb-10-mb uppercase">Programma</h2>
 	</section>
 </main>
 <PreFooter {prefooter}/>
@@ -225,5 +227,8 @@
 				}
 			}
 		}
+	}
+	#program {
+		height: 80vh;
 	}
 </style>
