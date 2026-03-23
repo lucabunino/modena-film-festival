@@ -15,12 +15,12 @@
 		<h1 class="wb-cd-80 wb-cd-40-mb max-w-800 uppercase">{event.title}</h1>
 	{/if}
 	{#if event.subtitle}
-		<h2 class="nr-35 max-w-700">{event.subtitle}</h2>
+		<h2 class="nr-35 nr-21-mb max-w-700">{event.subtitle}</h2>
 	{/if}
-	<div class="info wb-21 max-w-700">
+	<div class="info wb-21 wb-15-mb max-w-700">
 		{#if event.credits}<p class="credits">{event.credits}</p>{/if}
 		{#each event.formats as format, i}
-			<span class="tag wb-12 uppercase bg-linen">{format.title}</span>
+			<span class="tag wb-12 wb-10-mb uppercase bg-linen">{format.title}</span>
 		{/each}
 		<time class="datetime" datetime={formatISO(event.start, event.end)}>{formatEventDate(event.start, event.end)}</time>{#if event.location}<p class="location">, presso {event.location.title}{#if event.location.subtitle} {@html ' (' + event.location.subtitle + ')'}{/if}</p>{/if}
 	</div>
@@ -42,6 +42,12 @@
 			.tag {
 				position: relative;
 				bottom: .3em;
+
+				@media screen and (max-width: 600px) {
+					display: block;
+					width: fit-content;
+					margin-bottom: .6em;
+				}
 
 				&+.tag {
 					margin-left: .3em;

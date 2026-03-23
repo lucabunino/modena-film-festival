@@ -20,7 +20,7 @@
 	<EventHero {event} />
 	<section id="content" class="max-w-700 {!event.thumbnail ? 'mt' : undefined}">
 		{#if event.program}
-			<div class="program portableText wb-21">
+			<div class="program portableText wb-21 wb-15-mb">
 				<PortableText value={event.program}
 				components={{
 					block: {
@@ -33,7 +33,7 @@
 			</div>
 		{/if}
 		{#if event.description}
-			<div class="description portableText wb-21">
+			<div class="description portableText wb-21 wb-15-mb">
 				<PortableText value={event.description}
 				components={{
 					block: {
@@ -46,7 +46,7 @@
 			</div>
 		{/if}
 		{#if event.body}
-			<div class="body portableText wb-16 max-w-700">
+			<div class="body portableText nr-18 max-w-700">
 				<PortableText value={event.body}
 				components={{
 					block: {
@@ -84,7 +84,10 @@
 				padding-top: 1rem;
 				padding-right: var(--spacing-xs);
 				margin-top: var(--spacing-xs);
-
+				
+				@media screen and (max-width: 600px) {
+					padding-right: 0;
+				}
 			}
 		}
 		#links {

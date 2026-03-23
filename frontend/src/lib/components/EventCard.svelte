@@ -52,9 +52,11 @@
 		position: relative;
 		scroll-margin-top: var(--margin);
 
-		&:hover {
-			.img {
-				border-radius: 30px;
+		@media (hover: hover) {
+			&:hover {
+				.img {
+					border-radius: 30px;
+				}
 			}
 		}
 		.tags {

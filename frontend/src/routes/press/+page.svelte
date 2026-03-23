@@ -3,113 +3,82 @@
     import Title from '$lib/components/Title.svelte';
     import { formatDateNumber, formatISO } from '$lib/utils/datetime.js';
     import { urlFor } from '$lib/utils/image.js';
+	import { enhance } from '$app/forms';
 
-	let { data } = $props()
+	let { data, form } = $props()
 	const seoSingle = { seoTitle: 'Press'}
+
+	let loading = $state(false);
 </script>
 
 {#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Title
-	title='Press (todo)'
+	title='Press'
+	subtitles={[
+		"Il Modena Film Festival è il nuovo spazio in cui Modena vive il cinema con tutti i sensi.",
+		"Per accedere al press kit del Modena Film Festival, ti invitiamo a compilare il form qui sotto."
+	]}
 	size={'m'}
 	/>
-	<section id="press">
-		<!-- {#each data.newses as news, i}
-			<a href="/news/{news.slug.current}" class="news">
-				<time class="date wb-28 wb-12-mb uppercase" datetime={formatISO(news.date)}>{formatDateNumber(news.date)}</time>
-				<div class="text max-w-500">
-					<h1 class="wb-28">{news.title}</h1>
-					{#if news.subtitle}<h2 class="nr-28">{news.subtitle}</h2>{/if}
-					{#if news.abstract}
-						<p class="abstract wb-18">{news.abstract}</p>
-					{/if}
-				</div>
-				<img class="thumbnail max-w-400" src={urlFor(news.thumbnail).width(1080)} alt="Thumbnail della news “{news.title}”">
-			</a>
-		{/each} -->
-	</section>
+	<section id="press" class="max-w-800 wb-21">
+        <form 
+            method="POST" 
+            use:enhance={() => {
+                loading = true;
+                return async ({ result }) => {
+                    loading = false;
+                    if (result.type === 'success') {
+                        window.open(result.data.url, '_blank');
+                    }
+                };
+            }}
+        >
+            <div class="fields">
+                <input type="text" name="name" placeholder="Nome" required class="bg-linen" />
+                <input type="text" name="surname" placeholder="Cognome" required class="bg-linen" />
+                <input type="email" name="email" placeholder="Email" required class="bg-linen" />
+            </div>
+
+            <button type="submit" class="btn-l bg-black white hover-bg-linen hover-black" disabled={loading}>
+                {loading ? 'Invio in corso...' : 'Vai al press kit'}
+            </button>
+
+            {#if form?.error}
+                <p class="error">{form.error}</p>
+            {/if}
+        </form>
+    </section>
 </main>
 
 <style>
-	main {
-		#newses {
-			grid-column: 1 / span 8;
+#press {
+	form {
+		.fields {
 			display: grid;
-			grid-template-columns: repeat(1, 1fr);
-			align-items: start;
-			column-gap: var(--gutter);
-
-			.news {
-				display: grid;
-				grid-template-columns: repeat(8, 1fr);
-				column-gap: var(--gutter);
-				border-top: solid 1px var(--black);
-				padding: var(--gutter) 0;
-				
-
-				&:hover {
-					.thumbnail {
-						border-radius: 30px;
-					}
-				}
-
-				.date {
-					grid-column: 1 / span 1;
-				}
-
-				.text {
-					grid-column: 2 / span 4;
-
-					.abstract {
-						margin-top: var(--gutter);
-					}
-				}
-
-				.thumbnail {
-					grid-column: 6 / span 3;
-					aspect-ratio: 16/9;
-					width: 100%;
-    				height: auto;
-					margin-left: auto;
-					transition: var(--transition-s);
-				}
-			}
-
-			@media screen and (max-width: 1080px) {
-				grid-template-columns: repeat(2, 1fr);
-
-				.news {
-					padding: 0 0 var(--spacing-s);
-					border-top: unset;
-					
-					.date {
-						grid-column: 1 / span 8;
-						grid-row: 1;
-						font-weight: 700;
-						padding-bottom: var(--gutter);
-						border-bottom: solid 1px var(--black);
-					}
-
-					.text {
-						grid-column: 1 / span 8;
-						grid-row: 3;
-					}
-
-					.thumbnail {
-						grid-column: 1 / span 8;
-						grid-row: 2;
-						margin-left: unset;
-						max-width: unset;
-						margin: var(--gutter) 0;
-					}
-				}
-			}
+			grid-template-columns: repeat(2, 1fr);
+			gap: .2em;
 
 			@media screen and (max-width: 600px) {
-				grid-template-columns: repeat(1, 1fr);
+				display: flex;
+				flex-direction: column;
+			}
+
+			input {
+				border: none;
+				padding: .5em 1em;
+			}
+
+			input[type="email"] {
+				grid-column: span 2;
 			}
 		}
+		
+		button[type="submit"] {
+			display: block;
+			margin-top: var(--spacing-xs);
+		}
 	}
+}
 </style>

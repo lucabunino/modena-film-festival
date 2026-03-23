@@ -54,6 +54,12 @@
 				<a href="https://www.comune.modena.it/" target="_blank" rel="noopener noreferrer">
 					<img src="/logos/comune-di-modena.svg" alt="Logo di longtake">
 				</a>
+				<a href="https://modenafuturacreativa.it/" target="_blank" rel="noopener noreferrer">
+					<img src="/logos/modena-media-arts.svg" alt="Logo di longtake">
+				</a>
+				<a href="https://www.regione.emilia-romagna.it/" target="_blank" rel="noopener noreferrer">
+					<img src="/logos/regione-emilia-romagna.svg" alt="Logo di longtake">
+				</a>
 			</div>
 		</div>
 	</section>
@@ -142,7 +148,7 @@
 		#project {
 			grid-column: 1 / span 5;
 			display: flex;
-			column-gap: 6rem;
+			column-gap: 4rem;
 
 			.logos {
 				display: flex;
@@ -150,7 +156,7 @@
 				margin-top: var(--spacing-xs);
 
 				img {
-					height: 5vw;
+					height: 4vw;
 					width: auto;
 				}
 			}

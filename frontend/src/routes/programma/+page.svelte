@@ -118,7 +118,7 @@
 	subtitles={["Tutte le informazioni sull’intero cartellone del festival, dai film in concorso agli eventi speciali."]}
 	size={'s'}
 	/>
-	<section id="filters" class="wb-12 uppercase">
+	<section id="filters" class="wb-12 wb-10-mb uppercase">
 		<div class="formats">
 			<span>Format: </span>
 			<a href={getFilterUrl('format', null)} class="filter btn-m { !page.url.searchParams.get('format') ? 'bg-black white' : 'bg-linen'} hover-bg-black" data-sveltekit-noscroll>Tutto ({totalEvents})</a>
@@ -143,12 +143,14 @@
 		{#each filteredDays as day, i}
 			{#if !page.url.searchParams.get('format') || (activeDay && activeDay !== 'all')}
 				<div class="day-indicator bg-linen" id={formatDateHash(day.date)}>
-					<h2 class="wb-cd-60">{formatDayName(day.date)}<br>{formatDayNumber(day.date)}</h2>
+					<h2 class="wb-cd-60 wb-cd-30-mb">{formatDayName(day.date)} <br>{formatDayNumber(day.date)}</h2>
 					{#if i + 1 < data.program.days.length}
 						{@const nextDay = data.program.days[i + 1]}
-						<a class="wb-12 uppercase" href="#{formatDateHash(nextDay.date)}" onclick={(e) => scrollToDay(e, nextDay.date)}>
-							Vai a {formatDayName(nextDay.date)}
-						</a>
+						{#if !page.url.searchParams.get('day')}
+							<a class="wb-12 wb-10-mb uppercase" href="#{formatDateHash(nextDay.date)}" onclick={(e) => scrollToDay(e, nextDay.date)}>
+								Vai a {formatDayName(nextDay.date)}
+							</a>
+						{/if}
 					{/if}
 				</div>
 			{/if}
@@ -160,7 +162,7 @@
                 Nessun evento in programma per questi filtri.
             </div>
 		{/each}
-		<div id="links">
+		<div id="links" class="desktop-only">
 			<a class="link btn-l bg-linen hover-bg-black" href="/biglietti">Biglietti</a>
 			<!-- <a class="link btn-l border-linen hover-border-black hover-bg-black" href="/biglietti">Scarica PDF ⤓</a> -->
 		</div>
@@ -176,6 +178,7 @@
 			display: flex;
 			align-items: baseline;
 			column-gap: var(--spacing-s);
+			row-gap: var(--spacing-xs);
 			padding: var(--spacing-s) 0 var(--margin);
 			border-bottom: solid 1px var(--black);
 
@@ -208,6 +211,11 @@
 					margin-right: 1em;
 				}
 			}
+
+			@media screen and (max-width: 600px) {
+				flex-direction: column;
+				border: none;
+			}
 		}
 		#program {
 			grid-column: 1 / span 8;
@@ -215,7 +223,7 @@
 			grid-template-columns: repeat(3, 1fr);
 			align-items: start;
 			column-gap: var(--gutter);
-			row-gap: 5rem;
+			row-gap: var(--spacing-s);
 
 			.day-indicator {
 				display: flex;
@@ -224,10 +232,24 @@
 				scroll-margin-top: var(--margin);
 				padding: var(--margin);
 				aspect-ratio: 16/9;
-			}
 
-			.event {
+				@media screen and (max-width: 600px) {
+					margin: calc(var(--margin)*-1);
+					/* color: var(--white) !important; */
+					background-color: var(--white) !important;
+					border-top: solid 1px var(--black);
+					border-bottom: solid 1px var(--black);
+					aspect-ratio: unset;
+					/* text-align: center; */
+					scroll-margin-top: var(--menuHeight);
+					position: sticky;
+					top: var(--menuHeight);
+					z-index: 2;
+					flex-direction: row;
+					align-items: baseline;
 
+					br { display: none; }
+				}
 			}
 
 			#links {
@@ -245,12 +267,14 @@
 				}
 			}
 
-			@media screen and (max-width: 1080px) {
-
+			@media screen and (max-width: 1280px) {
+				grid-template-columns: repeat(2, 1fr);
 			}
-
+			@media screen and (max-width: 1080px) {
+				padding-top: calc(var(--margin)*2);
+			}
 			@media screen and (max-width: 600px) {
-
+				grid-template-columns: repeat(1, 1fr);
 			}
 		}
 	}

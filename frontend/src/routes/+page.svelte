@@ -27,7 +27,7 @@
 	const prefooter = {
 		subtitle: "Abbonamenti disponibili",
 		title: "Abbonati al festival",
-		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em>* musicato da Samuel, l'evento speciale olfatto.",
+		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em>, il <em>Cineconcerto Sherlock Jr.</em>* e <em>Odorama. The Truman Show</em>.",
 		cta: {
 			label: 'Vai a: Biglietti',
 			href: '/biglietti',
@@ -132,7 +132,7 @@
 							<img class="img" src="{urlFor(event.homepageThumbnail).height(1920)}" alt="Copertina di {event.homepageTitle}">
 						{/if}
 						{#if event.homepageTitle}<h3 class="title wb-28 wb-18-mb">{event.homepageTitle}</h3>{/if}
-						{#if event.homepageSubtitle}<h4 class="subtitle nr-28 nr-18-mb">{event.homepageSubtitle}</h4>{/if}
+						{#if event.homepageSubtitle}<h4 class="subtitle nr-28 nr-21-mb">{event.homepageSubtitle}</h4>{/if}
 						<span class="cta btn-m black bg-white hover-bg-linen">Leggi di più</span>
 					</a>
 				{/each}
@@ -152,7 +152,7 @@
 		</div>
 		{#each filteredDays as day, i}
 			{#key day}
-				<p class="day-title wb-cd-170">{formatDayName(day.date)} {formatDayNumber(day.date)}</p>
+				<p class="day-title wb-cd-170 desktop-only">{formatDayName(day.date)} {formatDayNumber(day.date)}</p>
 				<div class="day-wrapper">
 					<div class="day">
 						{#each day.visibleEvents as event, j}
@@ -265,12 +265,21 @@
 				.event {
 					padding: var(--margin);
 					width: 23vw;
+					min-width: 350px;
 					height: auto;
 					aspect-ratio: 2/3;
 					position: relative;
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
+
+					@media screen and (max-width: 1280px) {
+						min-width: 300px;
+					}
+
+					@media screen and (max-width: 1080px) {
+						min-width: 250px;
+					}
 					
 					.img {
 						position: absolute;
@@ -336,11 +345,24 @@
 
 				.event-wrapper {
 					width: 26vw;
+					min-width: 350px;
+
+					@media screen and (max-width: 1280px) {
+						min-width: 300px;
+					}
+
+					@media screen and (max-width: 1080px) {
+						min-width: 250px;
+					}
 				}
 			}
 		}
 		.cta {
 			margin: var(--spacing-m) var(--margin) var(--margin);
+
+			@media screen and (max-width: 1080px) {
+				margin: var(--spacing-xs) var(--margin) var(--margin);
+			}
 		}
 	}
 </style>
