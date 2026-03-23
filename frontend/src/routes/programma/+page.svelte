@@ -4,13 +4,14 @@
     import Title from '$lib/components/Title.svelte';
     import { formatDateHash, formatDateNumber, formatDayName, formatDayNumber, formatISO, formatISONextDay } from '$lib/utils/datetime.js';
     import { urlFor } from '$lib/utils/image.js';
-	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
+    import PreFooter from '$lib/components/PreFooter.svelte';
+    import { page } from '$app/state';
 
 	let { data } = $props()
 	const seoSingle = { seoTitle: 'Programma'}
-	let activeDay = $derived($page.url.searchParams.get('day'));
-    let activeFormat = $derived($page.url.searchParams.get('format'));
+	let activeDay = $derived(page.url.searchParams.get('day'));
+    let activeFormat = $derived(page.url.searchParams.get('format'));
 
 	let filteredDays = $derived.by(() => {
         const seenEventIds = new Set();
@@ -63,7 +64,21 @@
         return uniqueTotalIds.size;
     });
     const getCount = (slug) => formatCounts.find(c => c.slug === slug)?.count || 0;
-	
+	function handleDayChange(e) {
+        const value = e.target.value;
+        const newUrl = getFilterUrl('day', value === 'all' ? null : value);
+        goto(newUrl, { noscroll: true, keepfocus: true });
+    }
+    function getFilterUrl(key, value) {
+        const params = new URLSearchParams(page.url.searchParams);
+        if (value) {
+            params.set(key, value);
+        } else {
+            params.delete(key);
+        }
+        const queryString = params.toString();
+        return queryString ? `?${queryString}` : page.url.pathname;
+    }
 	function eventMatchesFormat(event) {
         if (!activeFormat) return true;
         return event.formats?.some(f => f.slug === activeFormat);
@@ -80,41 +95,40 @@
             history.pushState(null, null, `#${id}`);
         }
     }
-	function handleDayChange(e) {
-        const value = e.target.value;
-        const newUrl = getFilterUrl('day', value === 'all' ? null : value);
-        goto(newUrl, { noscroll: true, keepfocus: true });
-    }
-    function getFilterUrl(key, value) {
-        const params = new URLSearchParams($page.url.searchParams);
-        if (value) {
-            params.set(key, value);
-        } else {
-            params.delete(key);
-        }
-        const queryString = params.toString();
-        return queryString ? `?${queryString}` : $page.url.pathname;
-    }
+
+	const prefooter = {
+		subtitle: "Abbonamenti disponibili",
+		title: "Abbonati al festival",
+		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em>* musicato da Samuel, l'evento speciale olfatto.",
+		cta: {
+			label: 'Vai a: Biglietti',
+			href: '/biglietti',
+		},
+		annotation: "* Gli abbonati hanno diritto a uno sconto di 5€ su questo evento.",
+		bg: 'bg-yellow',
+		video: '/tickets/abbonamento-verticale-min.mp4',
+		poster: '/tickets/abbonamento-verticale-min.webp',
+	}
 </script>
 
 {#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Title
-	subtitles={["At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi"]}
+	subtitles={["Tutte le informazioni sull’intero cartellone del festival, dai film in concorso agli eventi speciali."]}
 	size={'s'}
 	/>
 	<section id="filters" class="wb-12 uppercase">
 		<div class="formats">
 			<span>Format: </span>
-			<a href={getFilterUrl('format', null)} class="filter btn-m { !$page.url.searchParams.get('format') ? 'bg-black white' : 'bg-linen'} hover-bg-black" data-sveltekit-noscroll>Tutto ({totalEvents})</a>
+			<a href={getFilterUrl('format', null)} class="filter btn-m { !page.url.searchParams.get('format') ? 'bg-black white' : 'bg-linen'} hover-bg-black" data-sveltekit-noscroll>Tutto ({totalEvents})</a>
 			{#each data.program.formats as format, i}
-				<a href={getFilterUrl('format', format.slug.current)} class="filter btn-m {$page.url.searchParams.get('format') === format.slug.current ? 'bg-black white' : 'bg-linen'} hover-bg-black" data-sveltekit-noscroll>{format.title} ({getCount(format.slug.current)})</a>
+				<a href={getFilterUrl('format', format.slug.current)} class="filter btn-m {page.url.searchParams.get('format') === format.slug.current ? 'bg-black white' : 'bg-linen'} hover-bg-black" data-sveltekit-noscroll>{format.title} ({getCount(format.slug.current)})</a>
 			{/each}
 		</div>
 		<div class="days">
 			<span>Giorni: </span>
-			<select class="day filter btn-m bg-linen hover-bg-black" onchange={handleDayChange} value={$page.url.searchParams.get('day') || 'all'}>
+			<select class="day filter btn-m bg-linen hover-bg-black" onchange={handleDayChange} value={page.url.searchParams.get('day') || 'all'}>
 				<option value="all">Tutti i giorni
 				</option>
 				{#each data.program.days as day}
@@ -127,7 +141,7 @@
 	</section>
 	<section id="program">
 		{#each filteredDays as day, i}
-			{#if !$page.url.searchParams.get('format')}
+			{#if !page.url.searchParams.get('format') || (activeDay && activeDay !== 'all')}
 				<div class="day-indicator bg-linen" id={formatDateHash(day.date)}>
 					<h2 class="wb-cd-60">{formatDayName(day.date)}<br>{formatDayNumber(day.date)}</h2>
 					{#if i + 1 < data.program.days.length}
@@ -147,11 +161,12 @@
             </div>
 		{/each}
 		<div id="links">
-			<a class="link btn-l border-linen hover-border-black hover-bg-black" href="/biglietti">Biglietti</a>
-			<a class="link btn-l border-linen hover-border-black hover-bg-black" href="/biglietti">Scarica PDF ⤓</a>
+			<a class="link btn-l bg-linen hover-bg-black" href="/biglietti">Biglietti</a>
+			<!-- <a class="link btn-l border-linen hover-border-black hover-bg-black" href="/biglietti">Scarica PDF ⤓</a> -->
 		</div>
 	</section>
 </main>
+<PreFooter {prefooter}/>
 
 <style>
 	main {
@@ -226,6 +241,7 @@
 					position: sticky;
 					top: calc(100% - var(--margin) - 1.5rem - 2.35em);
 					pointer-events: all;
+					margin-bottom: var(--margin);
 				}
 			}
 

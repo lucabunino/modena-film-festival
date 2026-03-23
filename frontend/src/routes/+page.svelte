@@ -12,6 +12,9 @@
     import HeadSingle from '$lib/components/HeadSingle.svelte';
     import LandingTickets from '$lib/components/LandingTickets.svelte';
     import { urlFor } from '$lib/utils/image.js';
+    import { page } from '$app/state';
+    import EventCard from '$lib/components/EventCard.svelte';
+    import { formatDateHash, formatDayName, formatDayNumber } from '$lib/utils/datetime.js';
 
 	const sections = [
 		{ name: 'Vista', slug: 'il-cieco-che-non-voleva-vedere-titanic', gradient: 'gradient-y-brown-cyan', img: '/home/1.webp', title: "Il cieco che non voleva vedere titanic" },
@@ -21,20 +24,6 @@
 		{ name: 'Olfatto', slug: 'odorama-the-truman-show', gradient: 'gradient-y-brown-iris', img: '/home/4.webp', title: "Odorama. The Truman Show" }
 	];
 
-	// const prefooter = {
-	// 	subtitle: "Diventa volontaria o volontario",
-	// 	title: "Entra nello staff MFF",
-	// 	content: "Dal 15 al 19 aprile 2026 abbiamo bisogno di te per realizzare il nuovo imperdibile festival in cui Modena vive il cinema con tutti i sensi.",
-	// 	cta: {
-	// 		label: 'Scopri di più',
-	// 		href: '/staff',
-	// 	},
-	// 	// annotation: '*Lorem ipsum adisciplit esset',
-	// 	bg: 'bg-iris',
-	// 	// img: '/img/pre-footer-1.png',
-	// 	// video: '/img/staff.mp4',
-	// 	// poster: '/img/staff.webp',
-	// }
 	const prefooter = {
 		subtitle: "Abbonamenti disponibili",
 		title: "Abbonati al festival",
@@ -45,7 +34,6 @@
 		},
 		annotation: "* Gli abbonati hanno diritto a uno sconto di 5€ su questo evento.",
 		bg: 'bg-yellow',
-		// img: '/tickets/abbonamento.webp',
 		video: '/tickets/abbonamento-verticale-min.mp4',
 		poster: '/tickets/abbonamento-verticale-min.webp',
 	}
@@ -62,6 +50,53 @@
 	]
 	let shaking = $state(false);
 	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
+
+	const activeDay = $derived(page.url.searchParams.get('day') || (data.program?.days?.[0] ? formatDateHash(data.program.days[0].date) : null));
+    let activeFormat = $derived(page.url.searchParams.get('format'));
+	let filteredDays = $derived.by(() => {
+        const seenEventIds = new Set();
+        const isFilteringSpecificDay = activeDay && activeDay !== 'all';
+
+        return data.program.days
+            .filter(day => {
+                if (!isFilteringSpecificDay) return true;
+                return formatDateHash(day.date) === activeDay;
+            })
+            .map(day => {
+                const visibleEvents = day.events.filter(event => {
+                    const matchesFormat = !activeFormat || event.formats?.some(f => {
+                        const slugValue = typeof f.slug === 'object' ? f.slug.current : f.slug;
+                        return slugValue === activeFormat;
+                    });
+
+                    if (!matchesFormat) return false;
+                    if (isFilteringSpecificDay) return true;
+                    if (seenEventIds.has(event._id)) return false;
+                    
+                    seenEventIds.add(event._id);
+                    return true;
+                });
+
+                return { ...day, visibleEvents };
+            })
+            .filter(day => day.visibleEvents.length > 0);
+    });
+
+	function handleDayChange(e) {
+        const value = e.target.value;
+        const newUrl = getFilterUrl('day', value === 'all' ? null : value);
+        goto(newUrl, { noscroll: true, keepfocus: true });
+    }
+    function getFilterUrl(key, value) {
+        const params = new URLSearchParams(page.url.searchParams);
+        if (value) {
+            params.set(key, value);
+        } else {
+            params.delete(key);
+        }
+        const queryString = params.toString();
+        return queryString ? `?${queryString}` : page.url.pathname;
+    }
 </script>
 
 <HeadSingle seo={data.seo} seoSingle={false}/>
@@ -85,7 +120,7 @@
 		<SectionsDesktop {sections}/>
 	</section>
 	<section id="contest" class="bg-linen" title="Film in concorso">
-		<div class="text">
+		<div class="text-wrapper">
 			<h2 class="wb-12 wb-10-mb uppercase">Film in concorso</h2>
 			<p class="wb-24 wb-18-mb max-w-600">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
 		</div>
@@ -98,14 +133,38 @@
 						{/if}
 						{#if event.homepageTitle}<h3 class="title wb-28 wb-18-mb">{event.homepageTitle}</h3>{/if}
 						{#if event.homepageSubtitle}<h4 class="subtitle nr-28 nr-18-mb">{event.homepageSubtitle}</h4>{/if}
-						<span class="cta btn-m black bg-white hover-white hover-bg-black">Leggi di più</span>
+						<span class="cta btn-m black bg-white hover-bg-linen">Leggi di più</span>
 					</a>
 				{/each}
 			</div>
 		</div>
 	</section>
 	<section id="program" class="bg-white" title="Programma">
-		<h2 class="wb-12 wb-10-mb uppercase">Programma</h2>
+		<div class="text-wrapper">
+			<h2 class="wb-12 wb-10-mb uppercase">Programma</h2>
+			<p class="wb-24 wb-18-mb max-w-600">Tutte le informazioni sull’intero cartellone del festival, dai film in concorso agli eventi speciali.</p>
+			<div class="days wb-12 wb-10-mb uppercase">
+				<span>Giorni: </span>
+				{#each data.program.days as day, i}
+					<a href={getFilterUrl('day', formatDateHash(day.date))} class="filter btn-m {activeDay === formatDateHash(day.date) ? 'bg-black white' : 'bg-linen'} hover-bg-black" data-sveltekit-noscroll>{formatDayName(day.date).substring(0, 3)} {formatDayNumber(day.date)}</a>
+				{/each}
+			</div>
+		</div>
+		{#each filteredDays as day, i}
+			{#key day}
+				<p class="day-title wb-cd-170">{formatDayName(day.date)} {formatDayNumber(day.date)}</p>
+				<div class="day-wrapper">
+					<div class="day">
+						{#each day.visibleEvents as event, j}
+							<div class="event-wrapper">
+								<EventCard {event} />
+							</div>
+						{/each}
+					</div>
+				</div>
+			{/key}
+		{/each}
+		<a class="cta btn-xs uppercase" href="/programma">Vedi il programma completo →</a>
 	</section>
 </main>
 <PreFooter {prefooter}/>
@@ -182,7 +241,7 @@
 	#contest {
 		padding-bottom: 0;
 		
-		.text {
+		.text-wrapper {
 			padding: var(--margin) var(--margin) calc(var(--margin)*2);
 			p {
 				margin-top: 1.5rem;
@@ -191,6 +250,13 @@
 		.contest-wrapper {
 			width: 100%;
 			overflow-x: scroll;
+			-ms-overflow-style: none;
+			scrollbar-width: none; 
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
 
 			.contest {
 				display: flex;
@@ -228,6 +294,53 @@
 		}
 	}
 	#program {
-		height: 80vh;
+		padding-bottom: var(--margin);
+
+		.text-wrapper {
+			padding: var(--margin) var(--margin) var(--gutter);
+			p {
+				margin-top: 1.5rem;
+				margin-bottom: 1.5rem;
+			}
+		}
+		.days {
+			display: flex;
+			flex-wrap: wrap;
+			column-gap: .2em;
+			row-gap: .4em;
+			align-items: baseline;
+
+			span {
+				margin-right: 1em;
+			}
+		}
+		.day-title {
+			margin: 0 var(--margin);
+			padding: var(--margin) 0;
+			border-bottom: solid 1px var(--black);
+		}
+		.day-wrapper {
+			overflow-x: scroll;
+			-ms-overflow-style: none;
+			scrollbar-width: none; 
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			.day {
+				display: flex;
+				padding: var(--margin);
+				width: fit-content;
+				gap: var(--gutter);
+
+				.event-wrapper {
+					width: 26vw;
+				}
+			}
+		}
+		.cta {
+			margin: var(--spacing-m) var(--margin) var(--margin);
+		}
 	}
 </style>

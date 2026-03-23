@@ -53,6 +53,7 @@
 				<li><a aria-current={page.url.pathname.startsWith('/partner') ? 'page' : undefined} href="/partner" onclick={() => {closeMenu()}}>Partner</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/sostienici') ? 'page' : undefined} href="/sostienici" onclick={() => {closeMenu()}}>Sostienici</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/news') ? 'page' : undefined} href="/news" onclick={() => {closeMenu()}}>News</a></li>
+				<li><a aria-current={page.url.pathname.startsWith('/press') ? 'page' : undefined} href="/press" onclick={() => {closeMenu()}}>Press</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/contatti') ? 'page' : undefined} href="/contatti" onclick={() => {closeMenu()}}>Contatti</a></li>
 				<nav class="submenu wb-21-mb" aria-label="Secondary navigation" submenubar>
 					<ul>

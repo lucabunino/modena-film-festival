@@ -22,6 +22,7 @@
 				<li><a aria-current={page.url.pathname.startsWith('/partner') ? 'page' : undefined} href="/partner">Partner</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/sostienici') ? 'page' : undefined} href="/sostienici">Sostienici</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/news') ? 'page' : undefined} href="/news">News</a></li>
+				<li><a aria-current={page.url.pathname.startsWith('/press') ? 'page' : undefined} href="/press">Press</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/contatti') ? 'page' : undefined} href="/contatti">Contatti</a></li>
 			</ul>
 		</nav>

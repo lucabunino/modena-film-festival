@@ -107,6 +107,7 @@
 				<li><em>Cineconcerto Sherlock Jr.</em></li>
 				<li><em>Odorama. The Truman Show</em></li>
 			</ul>
+			<p>L’abbonamento è acquistabile online e presso le biglietterie della Sala del Leccio, del Cinema Astra e della Sala Truffaut durante i giorni del festival.</p>
 			<p>Gli abbonati hanno diritto a uno sconto del 25% sull'evento <em>Cineconcerto Sherlock Jr.</em>, selezionando l'opzione di acquisto RIDOTTO ABBONAMENTO WEB. All'ingresso potrà essere verificato il possesso dell'abbonamento.</p>
 			<p>Per ogni film che vuoi vedere, dovrai acquistare il biglietto in anticipo, direttamente dalla tua area personale Webtic. L'acquisto è possibile tramite carta di credito, oppure tramite abbonamento, per gli eventi che ne fanno parte.</p>
 			<p>È possibile anche acquistare singolarmente ciascun evento, a un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
@@ -117,7 +118,7 @@
 				<li>Venerdì 17 e sabato 18 aprile dalle 10 alle 21</li>
 				<li>Domenica 19 aprile dalle 10 alle 18</li>
 			</ul>
-			<p>Riceverai la tote bag ufficiale e il bagde, che ti darà diritto a sconti esclusivi presso tutti i locali convenzionati con Modena Film Festival.</p>
+			<p>Riceverai la tote bag ufficiale e il badge, che ti darà diritto a sconti esclusivi presso tutti i locali convenzionati con Modena Film Festival.</p>
 		</div>
 	</section>
 	<section id="prices" title="Prezzi" bind:this={sections[2]}>
@@ -144,9 +145,8 @@
 	<section id="conditions" title="Condizioni di vendita" bind:this={sections[3]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase leading_105">Condizioni di vendita</h2>
 		<div class="wb-21 wb-15-mb max-w-700">
-			<p>L’abbonamento è acquistabile online e presso le biglietterie della Sala del Leccio, del Cinema Astra e della Sala Truffaut durante i giorni del festival.</p>
 			<p>L'abbonamento è strettamente personale e non cedibile. All'ingresso potranno essere effettuati controlli per verificare la titolarità dell’accredito.</p>
-			<p>Per ogni film che vuoi vedere dovrai redimere il biglietto, direttamente dalla tua area personale Webtic o presso le biglietterie dei cinema, da 60 minuti prima di ogni proiezione. Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di redimere i biglietti per tempo!</p>
+			<p>Se sei titolare di abbonamento, per ogni film che vuoi vedere dovrai riscattare il biglietto, direttamente dalla tua area personale Webtic o presso le biglietterie. Nelle biglietterie dei cinema potrai riscattare il biglietto da 60 minuti prima di ogni proiezione. Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di riscattare i biglietti per tempo!</p>
 			<p>È possibile anche acquistare singolarmente ciascun evento, a un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
 			<p>Le proiezioni e la presenza degli ospiti indicati in programma sono passibili di modifiche indipendenti dalla volontà del Festival</p>
 		</div>
