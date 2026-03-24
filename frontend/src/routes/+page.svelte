@@ -24,11 +24,11 @@
 	// 	{ name: 'Olfatto', slug: 'odorama-the-truman-show', gradient: 'gradient-y-brown-iris', img: '/home/4.webp', title: "Odorama. The Truman Show" }
 	// ];
 	const sections = [
-		{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan' },
-		{ name: 'Udito', slug: 'udito', gradient: 'gradient-y-brown-yellow' },
-		{ name: 'Tatto', slug: 'tatto', gradient: 'gradient-y-brown-red' },
-		{ name: 'Gusto', slug: 'gusto', gradient: 'gradient-y-brown-pink' },
-		{ name: 'Olfatto', slug: 'olfatto', gradient: 'gradient-y-brown-iris' }
+		{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan', title: "Maggiori info a breve" },
+		{ name: 'Udito', slug: 'udito', gradient: 'gradient-y-brown-yellow', title: "Maggiori info a breve" },
+		{ name: 'Tatto', slug: 'tatto', gradient: 'gradient-y-brown-red', title: "Maggiori info a breve" },
+		{ name: 'Gusto', slug: 'gusto', gradient: 'gradient-y-brown-pink', title: "Maggiori info a breve" },
+		{ name: 'Olfatto', slug: 'olfatto', gradient: 'gradient-y-brown-iris', title: "Maggiori info a breve" }
 	];
 
 	const prefooter = {
