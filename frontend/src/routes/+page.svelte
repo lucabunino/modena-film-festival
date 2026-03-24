@@ -16,12 +16,19 @@
     import EventCard from '$lib/components/EventCard.svelte';
     import { formatDateHash, formatDayName, formatDayNumber } from '$lib/utils/datetime.js';
 
+	// const sections = [
+	// 	{ name: 'Vista', slug: 'il-cieco-che-non-voleva-vedere-titanic', gradient: 'gradient-y-brown-cyan', img: '/home/1.webp', title: "Il cieco che non voleva vedere titanic" },
+	// 	{ name: 'Udito', slug: 'cineconcerto-sherlock-jr', gradient: 'gradient-y-brown-yellow', img: '/home/3.webp', title: "Cineconcerto Sherlock Jr." },
+	// 	{ name: 'Tatto', slug: 'thelma-e-louise', gradient: 'gradient-y-brown-red', img: '/home/5.webp', title: "Thelma e Louise" },
+	// 	{ name: 'Gusto', slug: 'la-citta-incantata', gradient: 'gradient-y-brown-pink', img: '/home/2.webp', title: "La città incantata" },
+	// 	{ name: 'Olfatto', slug: 'odorama-the-truman-show', gradient: 'gradient-y-brown-iris', img: '/home/4.webp', title: "Odorama. The Truman Show" }
+	// ];
 	const sections = [
-		{ name: 'Vista', slug: 'il-cieco-che-non-voleva-vedere-titanic', gradient: 'gradient-y-brown-cyan', img: '/home/1.webp', title: "Il cieco che non voleva vedere titanic" },
-		{ name: 'Udito', slug: 'cineconcerto-sherlock-jr', gradient: 'gradient-y-brown-yellow', img: '/home/3.webp', title: "Cineconcerto Sherlock Jr." },
-		{ name: 'Tatto', slug: 'thelma-e-louise', gradient: 'gradient-y-brown-red', img: '/home/5.webp', title: "Thelma e Louise" },
-		{ name: 'Gusto', slug: 'la-citta-incantata', gradient: 'gradient-y-brown-pink', img: '/home/2.webp', title: "La città incantata" },
-		{ name: 'Olfatto', slug: 'odorama-the-truman-show', gradient: 'gradient-y-brown-iris', img: '/home/4.webp', title: "Odorama. The Truman Show" }
+		{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan' },
+		{ name: 'Udito', slug: 'udito', gradient: 'gradient-y-brown-yellow' },
+		{ name: 'Tatto', slug: 'tatto', gradient: 'gradient-y-brown-red' },
+		{ name: 'Gusto', slug: 'gusto', gradient: 'gradient-y-brown-pink' },
+		{ name: 'Olfatto', slug: 'olfatto', gradient: 'gradient-y-brown-iris' }
 	];
 
 	const prefooter = {
