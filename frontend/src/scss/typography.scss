@@ -76,6 +76,7 @@
 	&-10-mb,
 	&-12-mb,
 	&-14,
+	&-16,
 	&-18,
 	&-21,
 	&-24,
@@ -105,6 +106,7 @@
 	&-10		{ font-size: .714rem; font-weight: 700; letter-spacing: .03em; line-height: 1.2; }
 	&-12		{ font-size: .857rem; font-weight: 700; letter-spacing: .03em; line-height: 1.2; }
 	&-14		{ font-size: 1rem; letter-spacing: .01em; line-height: 1.2; }
+	&-16		{ font-size: 1.143rem; letter-spacing: 0em; line-height: 1.2; }
 	&-18		{ font-size: 1.286rem; letter-spacing: 0em; line-height: 1.15; }
 	&-21		{ font-size: 1.5rem; letter-spacing: -0.01em; line-height: 1.1; }
 	&-24		{ font-size: 1.714rem; letter-spacing: -0.01em; line-height: 1.1; }
@@ -131,6 +133,8 @@
 	&,
 	&-24,
 	&-30,
+	&-35,
+	&-40,
 	&-45,
 	&-60,
 	&-80,
@@ -148,6 +152,8 @@
 	}
 	&-24		{ font-size: 1.714rem; letter-spacing: -0.01em; line-height: .9; }
 	&-30		{ font-size: 2.143rem; letter-spacing: -0.01em; line-height: .9; }
+	&-35		{ font-size: 2.5rem; letter-spacing: -0.01em; line-height: .9; }
+	&-40		{ font-size: 2.857rem; letter-spacing: -0.01em; line-height: .9; }
 	&-45		{ font-size: 3.214rem; letter-spacing: -0.01em; line-height: .9; }
 	&-60		{ font-size: 4.286rem; letter-spacing: -0.02em; line-height: .85; }
 	&-80		{ font-size: 5.714rem;   letter-spacing: -0.03em; line-height: .85; }
@@ -167,7 +173,9 @@
 }
 .nr {
   	&,
+	&-18,
 	&-21,
+	&-24,
 	&-28,
 	&-21-mb,
 	&-35 {
@@ -176,7 +184,9 @@
 		font-weight: 400;
 		font-style: normal;
 	}
+	&-18 { font-size: 1.286rem; letter-spacing: 0em; line-height: 1.2; }
 	&-21 { font-size: 1.5rem; letter-spacing: 0em; line-height: 1.1; }
+	&-24 { font-size: 1.714rem; letter-spacing: 0em; line-height: 1.1; }
 	&-28 { font-size: 2rem; letter-spacing: 0em; line-height: 1.1; }
 	&-35 { font-size: 2.5rem; letter-spacing: -0.01em; line-height: 1.1; }
 
@@ -185,7 +195,7 @@
 	}
 }
 .bold			{ font-weight: 700; }
-.bolder			{ text-shadow: -.003em 0, 0 .003em, .003em 0, 0 -.003em, -.003em -.003em, .003em .003em, -.003em .003em, .003em -.003em; }
+.bolder			{ text-shadow: -.012em 0, 0 .012em, .012em 0, 0 -.012em, -.012em -.012em, .012em .012em, -.012em .012em, .012em -.012em; }
 .uppercase		{
 	text-transform: uppercase;
 	-moz-font-feature-settings: "lnum";

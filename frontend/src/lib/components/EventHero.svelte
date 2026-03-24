@@ -1,6 +1,7 @@
 <script>
     import Breadcrumbs from "./Breadcrumbs.svelte";
 	import { urlFor } from '$lib/utils/image.js';
+    import { formatEventDate, formatISO } from "$lib/utils/datetime";
 
     let { event } = $props()
 
@@ -8,71 +9,70 @@
 	const size = event.size
 </script>
 
-{#if event.layout === 'main'}
-	<section id="hero" class={event.layout} style="{event.cover ? `background-image: url(${urlFor(event.cover).width(2560)});` : undefined} {event.typeColor ? `color: ${event.typeColor.hex}` : undefined}">
-		<Breadcrumbs/>
-		{#if event.title}
-			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-40-mb' : size == 'm' ? 'wb-cd-80 wb-cd-40-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-800 uppercase">{event.title}</h1>
-		{/if}
-		{#if event.subtitle}
-			<h2 class="{size == 'l' ? 'nr-35' : size == 'm' ? 'nr-28' : size == 's' ? 'nr-21': undefined} max-w-700">{event.subtitle}</h2>
-		{/if}
-		{#if cta.label}
-			<a class="cta btn-l {event.typeColor ? '' : 'bg-linen'} black hover-black hover-bg-linen" style="{event.typeColor ? `background-color: ${event.typeColor.hex};` : undefined}" href={cta.href} target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}>{cta.label}</a>
-		{/if}
-	</section>
-{:else if event.layout === 'secondary'}
-	<section id="hero" class={event.layout}>
-		<Breadcrumbs/>
-		{#if event.title}
-			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-40-mb' : size == 'm' ? 'wb-cd-80 wb-cd-40-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-800 uppercase">{event.title}</h1>
-		{/if}
-		{#if event.subtitle}
-			<h2 class="{size == 'l' ? 'nr-35' : size == 'm' ? 'nr-28' : size == 's' ? 'nr-21': undefined} max-w-700">{event.subtitle}</h2>
-		{/if}
-		{#if cta.label}
-			<a class="cta btn-l bg-linen black hover-black hover-bg-linen" href={cta.href} target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}>{cta.label}</a>
-		{/if}
-		{#if event.cover}
-			<img src={urlFor(event.cover).width(1080)} alt="Immagine di copertina per l'evento “{event.title}”">
-		{/if}
-	</section>
-{/if}
+<section id="hero" class={event.layout}>
+	<Breadcrumbs/>
+	{#if event.title}
+		<h1 class="wb-cd-80 wb-cd-40-mb max-w-800 uppercase">{event.title}</h1>
+	{/if}
+	{#if event.subtitle}
+		<h2 class="nr-35 nr-21-mb max-w-700">{event.subtitle}</h2>
+	{/if}
+	<div class="info wb-21 wb-15-mb max-w-700">
+		{#if event.credits}<p class="credits">{event.credits}</p>{/if}
+		{#each event.formats as format, i}
+			<span class="tag wb-12 wb-10-mb uppercase bg-linen">{format.title}</span>
+		{/each}
+		<time class="datetime" datetime={formatISO(event.start, event.end)}>{formatEventDate(event.start, event.end)}</time>{#if event.location}<p class="location">, presso {event.location.title}{#if event.location.subtitle} {@html ' (' + event.location.subtitle + ')'}{/if}</p>{/if}
+	</div>
+	{#if event.thumbnail}
+		<img class="img _16_9 max-w-700" src={urlFor(event.thumbnail).width(1080)} alt="Immagine di copertina per l'evento “{event.title}”">
+	{/if}
+</section>
 
 <style>
 	#hero {
-		width: 100%;
-		position: relative;
-
-		&.main {
-			grid-column: 1 / span 8;
-			padding: var(--margin);
-			aspect-ratio: 16/9;
-			min-height: 600px;
-			background-size: cover;
-			
-			.cta {
-				display: block;
-				position: absolute;
-				bottom: var(--spacing-s);
-			}
-		}
-
-		&.secondary {
-			padding: var(--margin);
-			
-			.cta {
-				display: block;
-				width: fit-content;
-			}
-
-			img {
-				aspect-ratio: 16/9;
-			}
-		}
-
 		h2 {
-			margin-top: 1.1em;
+			margin-top: .6em;
+		}
+		.info {
+			margin-top: var(--spacing-s);
+			display: inline-block;
+			width: 100%;
+			
+			.tag {
+				position: relative;
+				bottom: .3em;
+
+				@media screen and (max-width: 600px) {
+					display: block;
+					width: fit-content;
+					margin-bottom: .6em;
+				}
+
+				&+.tag {
+					margin-left: .3em;
+				}
+
+				&:last-of-type {
+					margin-right: 1em;
+				}
+			}
+			.datetime {
+				display: inline;
+			}
+			.location {
+				display: inline;
+			}
+			.credits {
+				border-bottom: solid 1px var(--black);
+				margin-bottom: var(--gutter);
+				padding-bottom: .4em;
+			}
+		}
+		.img {
+			object-fit: cover;
+			width: 100%;
+			margin: var(--gutter) 0 var(--margin);
 		}
 	}
 </style>

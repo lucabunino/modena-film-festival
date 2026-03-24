@@ -1,9 +1,9 @@
-import { CaseIcon } from '@sanity/icons'
+import { EmptyIcon } from '@sanity/icons'
 
 export default {
-	name: 'section',
+	name: 'format',
 	type: 'document',
-	icon: CaseIcon,
+	icon: EmptyIcon,
 	fields: [
 		{
 			name: 'title',

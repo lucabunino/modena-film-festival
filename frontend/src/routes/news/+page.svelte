@@ -43,6 +43,13 @@
 				column-gap: var(--gutter);
 				border-top: solid 1px var(--black);
 				padding: var(--gutter) 0;
+				
+
+				&:hover {
+					.thumbnail {
+						border-radius: 30px;
+					}
+				}
 
 				.date {
 					grid-column: 1 / span 1;
@@ -62,6 +69,7 @@
 					width: 100%;
     				height: auto;
 					margin-left: auto;
+					transition: var(--transition-s);
 				}
 			}
 

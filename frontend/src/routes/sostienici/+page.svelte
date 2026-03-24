@@ -6,8 +6,8 @@
 	let sections = $state([])
 	let tiers = $derived([
 		{title: 'Amico', price: 10, isCustomPrice: false, abstract: 'Il tuo nome comparirà come Amico del Festival qui sul sito.'},
-		{title: 'Sostenitore', price: 50, isCustomPrice: false, abstract: 'Oltre alla visibilità come Amico, riceverai l’accredito del festival, che ti garantirà l’accesso a tutte  le proiezioni.'},
-		{title: 'Promotore', price: 100, isCustomPrice: true, abstract: 'Avrai tutto ciò che spetta ad Amici e Sostenitori. In più il catalogo ufficiale, la t-shirt e la totebag del festival.'},
+		{title: 'Sostenitore', price: 50, isCustomPrice: false, abstract: "Oltre alla visibilità come Amico, riceverai un accesso omaggio agli eventi incluso nell'abbonamento MFF2026 a cui vorrai partecipare, fino ad esaurimento posti."},
+		{title: 'Promotore', price: 100, isCustomPrice: true, abstract: 'Avrai tutto ciò che spetta ad Amici e Sostenitori. In più la totebag del festival.'},
 	])
 	const promoters = [
 		{name: 'Mario', surname: 'Rossi'},
@@ -26,6 +26,7 @@
 		{name: 'Paolo', surname: 'Nocetti'},
 		{name: 'Teresa', surname: 'Tinti'},
 		{name: 'Vanna', surname: 'Bortolamasi'},
+		{name: 'Giacomo', surname: 'Galuzzi'},
 	]
 	// const prefooter = {
 	// 	subtitle: "Abbonamenti",
@@ -38,7 +39,7 @@
 	const prefooter = {
 		subtitle: "Abbonamenti disponibili",
 		title: "Abbonati al festival",
-		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour</em>, il <em>Cineconcerto Sherlock Jr.</em>* musicato da Samuel, l'evento speciale Olfatto.",
+		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em>, il <em>Cineconcerto Sherlock Jr.</em>* e <em>Odorama. The Truman Show</em>.",
 		cta: {
 			label: 'Vai a: Biglietti',
 			href: '/biglietti',

@@ -68,11 +68,35 @@ export async function getNews(slug) {
 			}
 		}`, { slug });
 }
-export async function getEvents() {
+export async function getProgram() {
 	return await client.fetch(
-		`*[_type == "event" && status == "public" && !(_id in path('drafts.**'))] {
-			...,
+		`*[_type == "program" && status == 'public'] | order(edition desc) [0] {
+			title,
+            edition,
+            days[] {
+                date,
+                events[]-> {
+                    ...,
+					location->{ title, slug },
+					formats[]-> { title, slug },
+					sense->{ title },
+                }
+            },
+			"formats": *[_type == "format" && count(*[_type == "program" && status == 'public' && ^._id in days[].events[]->formats[]._ref]) > 0] {
+				title,
+				slug
+			}
 		}`
+    );
+}
+export async function getContest() {
+	return await client.fetch(
+		`*[_type == "event" && status == "public" && "in-concorso" in formats[]->slug.current && !(_id in path('drafts.**'))] | order(start asc) {
+            slug,
+			homepageTitle,
+			homepageSubtitle,
+			homepageThumbnail
+        }`
 	);
 }
 export async function getEvent(slug) {
@@ -81,9 +105,12 @@ export async function getEvent(slug) {
 			...,
 			location->{
 				title,
+				subtitle,
 				adressLabel,
 				adressHref
 			},
+			formats[]-> { title, slug },
+			sense->{ title },
 			"cta": {
 				"label": ctaLabel,
 				"href": ctaHref,

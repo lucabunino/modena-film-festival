@@ -5,7 +5,7 @@
 
 <svelte:head>
     {#if seo?.seoTitle && seoSingle?.seoTitle}
-        <title>{seo?.seoTitle} | {seoSingle.seoTitle}</title>
+        <title>{seoSingle.seoTitle} | {seo?.seoTitle} </title>
         <meta name="title" content={seoSingle.seoTitle} />
         <meta name="apple-mobile-web-app-title" content={seoSingle.seoTitle} />
         <meta property="og:title" content={seoSingle.seoTitle} />

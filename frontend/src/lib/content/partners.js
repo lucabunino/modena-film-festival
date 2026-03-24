@@ -26,6 +26,11 @@ export const partners = [
 				href: 'https://modenafuturacreativa.it/',
 				logo: '/partners/modena-media-arts.png'
 			},
+			{
+				title: 'Regione Emilia Romagna',
+				href: 'https://www.regione.emilia-romagna.it/',
+				logo: '/partners/regione-emilia-romagna.png'
+			},
 		]
 	},
 	{

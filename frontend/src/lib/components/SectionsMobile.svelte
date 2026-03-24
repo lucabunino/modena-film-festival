@@ -34,16 +34,19 @@
 </script>
 
 {#snippet Slide(section, i)}
-	<swiper-slide class="section locked {shaking[i] ? `shaking` : ``} {swiperIndex % sections.length == i ? `active` : ``} {sections.length == i+1 ? `last` : ``}">
-		<a href={`/sezioni/${section.slug}`}
-		onclick={(e) => {handleLockedclick(e, i)}}
+	<swiper-slide class="section {shaking[i] ? `shaking` : ``} {swiperIndex % sections.length == i ? `active` : ``} {sections.length == i+1 ? `last` : ``}">
+		<a href={`/programma/${section.slug}`}
 		style="--rotate: {rotations[i]}deg;">
 			<div class="outer">
 				<div class="inner">
 					<div class="front rounded-m">
 						<h4 class="wb-10-mb uppercase">{section.name}</h4>
-						<div class={section.gradient}></div>
-						<h5 class="wb-cd-24-mb uppercase white bg-black">Maggiori info a breve</h5>
+						{#if section.img}
+							<img class="img" src={section.img} alt="Copertina per {section.event}">
+						{:else}
+							<div class="img {section.gradient}"></div>
+						{/if}
+						<h5 class="wb-cd-24-mb uppercase white bg-black">{section.title}</h5>
 					</div>
 					<div class="back rounded-m bg-white"></div>
 				</div>
@@ -150,9 +153,10 @@ bind:this={swiperEl}
 								color: var(--white);
 								text-align: center;
 							}
-							div {
-								height: 100%;
+							.img {
+								height: stretch;
 								width: 100%;
+								object-fit: cover;
 							}
 							h5 {
 								padding: .4em .6em;
