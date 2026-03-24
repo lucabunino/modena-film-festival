@@ -13,7 +13,7 @@
 
 {#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
-<main class="bg-white">
+<main class="bg-linen">
 	<Title
 	title='Press'
 	subtitles={[
@@ -22,7 +22,7 @@
 	]}
 	size={'m'}
 	/>
-	<section id="press" class="max-w-800 wb-21">
+	<section id="press" class="max-w-700 wb-21">
         <form 
             method="POST" 
             use:enhance={() => {
@@ -36,12 +36,12 @@
             }}
         >
             <div class="fields">
-                <input type="text" name="name" placeholder="Nome" required class="bg-linen" />
-                <input type="text" name="surname" placeholder="Cognome" required class="bg-linen" />
-                <input type="email" name="email" placeholder="Email" required class="bg-linen" />
+                <input type="text" name="name" placeholder="Nome" required class="bg-white" />
+                <input type="text" name="surname" placeholder="Cognome" required class="bg-white" />
+                <input type="email" name="email" placeholder="Email" required class="bg-white" />
             </div>
 
-            <button type="submit" class="btn-l bg-black white hover-bg-linen hover-black" disabled={loading}>
+            <button type="submit" class="btn-l bg-black white hover-bg-white hover-black" disabled={loading}>
                 {loading ? 'Invio in corso...' : 'Vai al press kit'}
             </button>
 
@@ -53,31 +53,37 @@
 </main>
 
 <style>
-#press {
-	form {
-		.fields {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			gap: .2em;
-
-			@media screen and (max-width: 600px) {
-				display: flex;
-				flex-direction: column;
-			}
-
-			input {
-				border: none;
-				padding: .5em 1em;
-			}
-
-			input[type="email"] {
-				grid-column: span 2;
-			}
-		}
+main {
+	row-gap: 0;
+	
+	#press {
+		padding-top: var(--spacing-xs);
 		
-		button[type="submit"] {
-			display: block;
-			margin-top: var(--spacing-xs);
+		form {
+			.fields {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: .2em;
+
+				@media screen and (max-width: 600px) {
+					display: flex;
+					flex-direction: column;
+				}
+
+				input {
+					border: none;
+					padding: .5em 1em;
+				}
+
+				input[type="email"] {
+					grid-column: span 2;
+				}
+			}
+			
+			button[type="submit"] {
+				display: block;
+				margin-top: var(--spacing-xs);
+			}
 		}
 	}
 }

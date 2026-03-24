@@ -18,9 +18,9 @@
 		</div>
 	{/if}
 	{#if event.thumbnail}
-		<img class="img bg-linen" src={urlFor(event.thumbnail).width(1080)} alt="">
+		<img class="img _16_9 bg-linen" src={urlFor(event.thumbnail).width(1080)} alt="">
 	{:else}
-		<div class="img bg-brown"></div>
+		<div class="img _16_9 bg-brown"></div>
 	{/if}
 	<div class="info wb-12 uppercase">
 		<time class="datetime" datetime={formatISO(event.start, event.end)}>{formatEventDate(event.start, event.end)}</time>
@@ -68,7 +68,6 @@
 		}
 		.img {
 			width: 100%;
-			aspect-ratio: 16/9;
 			object-fit: cover;
 			transition: var(--transition-s);
 		}

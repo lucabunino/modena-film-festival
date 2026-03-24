@@ -119,7 +119,7 @@
 		</div>
 		<SectionsDesktop {sections}/>
 	</section>
-	<section id="contest" class="bg-linen" title="Film in concorso">
+	<!-- <section id="contest" class="bg-linen" title="Film in concorso">
 		<div class="text-wrapper">
 			<h2 class="wb-12 wb-10-mb uppercase">Film in concorso</h2>
 			<p class="wb-24 wb-18-mb max-w-600">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
@@ -165,7 +165,7 @@
 			{/key}
 		{/each}
 		<a class="cta btn-xs uppercase" href="/programma">Vedi il programma completo →</a>
-	</section>
+	</section> -->
 </main>
 <PreFooter {prefooter}/>
 

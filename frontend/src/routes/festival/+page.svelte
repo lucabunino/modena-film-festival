@@ -18,18 +18,22 @@
 		{title: 'Titolo sezione olfatto', sense: 'Vista', slug: 'olfatto', abstract: 'Lorem ispum adisciplit esset eiusque belli rarum caso est', bg: 'gradient-xy-linen-white'},
 	]
 	const jury = [
-		{name: 'Federico', surname: 'Fellini', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
-		{name: 'Monica', surname: 'Vitti', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
-		{name: 'Vittorio', surname: 'De Sica', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
-		{name: 'Anna', surname: 'Magnani', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
-		{name: 'Luchino', surname: 'Visconti', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
-		{name: 'Gina', surname: 'Lollobrigida', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
-		{name: 'Roberto', surname: 'Rossellini', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
-		{name: 'Marcello', surname: 'Mastroianni', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
-		{name: 'Silvana', surname: 'Mangano', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
-		{name: 'Nino', surname: 'Manfredi', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
-		{name: 'Alberto', surname: 'Sordi', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
-		{name: 'Sophia', surname: 'Loren', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
+		{name: 'Elisa', surname: 'Dondi', country: 'Italia', portrait: '/jury/elisa-dondi.webp', bio: [
+			"Elisa Dondi (Modena, 1987) vive e lavora a Roma. Nel 2015 si diploma al Centro Sperimentale di Cinematografia di Roma come sceneggiatrice con il cortometraggio La Santa che Dorme, selezionato in concorso al Festival di Cannes 2016, sezione Cinéfondation.",
+			"Per il cinema firma la sceneggiatura del film Piccolo Corpo di L. Samani, in concorso alla Semaine de la Critique, Cannes 2021 e del film Un anno di scuola di L. Samani in concorso al Festival di Venezia 2025, sezione Orizzonti.",
+			"Ha firmato diverse serie televisive tra le quali Lidia Poet di Matteo Rovere e Letizia Lamartire, ACAB di Michele Alhaique e Storia della mia famiglia di Claudio Cupellini.",
+			"Da Marzo 2023 è membro della giuria dell’European Film Accademy."
+		]},
+		{name: 'Marco', surname: 'Righi', country: 'Italia', portrait: '/jury/marco-righi.webp', bio: [
+			"Marco Righi (Reggio Emilia, 1983) vive e lavora a Reggio Emilia. Ha studiato regia e montaggio e nel 2009 ha fondato 505, studio di comunicazione specializzato in post-produzione video.",
+			"I giorni della vendemmia (2010), il suo film d'esordio, ha partecipato a oltre 40 festival internazionali, ottenendo il riconoscimento di interesse culturale del MiC e il riconoscimento d'essai dalla FICE. Nel 2022 ha scritto e diretto Il vento soffia dove vuole, acquisito dal sales agent TVCO al Marché du Film di Cannes 2023 e selezionato come unico titolo italiano in Concorso Ufficiale nella selezione principale del Karlovy Vary International Film Festival."
+		]},
+		{name: 'Marino', surname: 'Neri', country: 'Italia', portrait: '/jury/marino-neri.webp', bio: [
+			"Marino Neri (Carpi, 1979). Dopo le graphic novel Il re dei fiumi (Kappa edizioni, 2008) e La coda del lupo (Canicola, 2011), tradotti in Francia e Corea, nel 2012 vince il premio “Nuove Strade” di Napoli Comicon e del Centro Fumetto Andrea Pazienza come miglior talento emergente. Ha collaborato con vari quotidiani e riviste, da Il Sole 24 ore, a Internazionale da Le Monde a Linus e con le case editrici Il Saggiatore, La Nave di Teseo, Sellerio, Neri Pozza, Feltrinelli e Solfernino.",
+			"Del 2016 Cosmo (Coconino Press Fandango) e del 2018 L’incanto del parcheggio multipiano (Oblomov).",
+			"Nel 2019 pubblica Nuno salva la luna (Canicola) il suo primo fumetto per bambini, finalista al premio Andersen 2020 come migliore libro a fumetti. Nel 2022 pubblica La tempesta (Oblomov) edito anche in Francia per Casterman."
+		]},
+		// {name: 'Monica', surname: 'Vitti', role: 'Presidente di giuria', profession: 'Regista', country: 'Italia'},
 	]
 	const swiperParams = {
 		slidesPerView: 1.25,
@@ -122,14 +126,15 @@
 	</section> -->
 	<section id="jury" title="Giuria" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Giuria</h2>
-		<p class="wb-28 wb-18-mb max-w-800">La giuria ufficiale del Modena Film Festival sarà annunciata nelle prossime settimane.</p>
-		<!-- GIURIA DA INSERIRE, QUI O PER SINGOLA SEZIONE
-		<p class="wb-18 wb-15-mb max-w-500">Lorem ipsum</p>
+		<p class="wb-24 wb-18-mb max-w-800">Sono tre i premi che verranno assegnati.</p>
+		<p class="wb-24 wb-18-mb max-w-800">✳ <em>Premio del Pubblico</em><br>Ogni film verrà votato dagli spettatori con una valutazione da 1 a 10; i voti verranno raccolti al termine di ogni proiezione.</p>
+		<p class="wb-24 wb-18-mb max-w-800">✳ <em>Premio degli Studenti Universitari</em><br>La giuria è composta da Cesare Barbagallo, Giulia Cremonesi e Matilde Rizzello, del corso di Laurea in Lingue e Culture Europee di Unimore.</p>
+		<p class="wb-24 wb-18-mb max-w-800">✳ <em>Premio della Giuria</em><br>La giuria è composta da Elisa Dondi, Marino Neri e Marco Righi.</p>
 		<div class="jury">
 			{#each jury as juror, i}
 				<Juror {juror}/>
 			{/each}
-		</div> -->
+		</div>
 	</section>
 	<section id="regulations" title="Regolamento" bind:this={sections[2]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Regolamento</h2>
@@ -189,19 +194,20 @@
 	}
 }
 #jury {
+	p + p {
+		margin-top: .6em;
+	}
 	.jury {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		column-gap: var(--gutter);
 		row-gap: var(--spacing-s);
+		margin-top: var(--spacing-s);
 
 		@media screen and (max-width: 1440px) {
-			grid-template-columns: repeat(3, 1fr);
-		}
-		@media screen and (max-width: 768px) {
 			grid-template-columns: repeat(2, 1fr);
 		}
-		@media screen and (max-width: 392px) {
+		@media screen and (max-width: 768px) {
 			grid-template-columns: repeat(1, 1fr);
 		}
 	}

@@ -4,9 +4,9 @@
 
 <div class="juror wb-12 wb-10-mb" title="{juror.name} {juror.surname}">
 	{#if juror.portrait}
-		<img class="portrait _1_1 rounded-m" src={juror.portrait} alt="">
+		<img class="portrait _4_5 rounded-m" src={juror.portrait} alt="">
 	{:else}
-		<div class="placeholder _1_1 rounded-m gradient-xy-linen-white"></div>
+		<div class="placeholder _4_5 rounded-m gradient-xy-linen-white"></div>
 	{/if}
 	<h3 class="wb-28 wb-18-mb">{juror.name} {juror.surname}</h3>
 	{#if juror.role || juror.profession || juror.country}
@@ -21,6 +21,9 @@
 				<li>{juror.country}</li>
 			{/if}
 		</ul>
+		{#if juror.bio}
+		<p class="bio wb-14">{juror.bio}</p>
+		{/if}
 	{/if}
 </div>
 
@@ -30,6 +33,9 @@
 			margin-top: 1rem;
 		}
 		.info {
+			margin-top: .5rem;
+		}
+		.bio {
 			margin-top: 1rem;
 		}
 	}

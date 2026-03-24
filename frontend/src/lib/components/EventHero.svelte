@@ -25,7 +25,7 @@
 		<time class="datetime" datetime={formatISO(event.start, event.end)}>{formatEventDate(event.start, event.end)}</time>{#if event.location}<p class="location">, presso {event.location.title}{#if event.location.subtitle} {@html ' (' + event.location.subtitle + ')'}{/if}</p>{/if}
 	</div>
 	{#if event.thumbnail}
-		<img class="img max-w-700" src={urlFor(event.thumbnail).width(1080)} alt="Immagine di copertina per l'evento “{event.title}”">
+		<img class="img _16_9 max-w-700" src={urlFor(event.thumbnail).width(1080)} alt="Immagine di copertina per l'evento “{event.title}”">
 	{/if}
 </section>
 
@@ -70,7 +70,6 @@
 			}
 		}
 		.img {
-			aspect-ratio: 16/9;
 			object-fit: cover;
 			width: 100%;
 			margin: var(--gutter) 0 var(--margin);
