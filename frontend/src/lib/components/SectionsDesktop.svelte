@@ -47,8 +47,7 @@ onmousemove={(e) => {mouse = {x: e.clientX, y: e.clientY}; sectionEls.forEach((_
 
 <div class="sections desktop-only" use:viewport onenterViewport={() => visibleSections = true}>
 	{#each sections as section, i}
-		<!-- <a href={`/programma/${section.slug}`} -->
-		<a
+		<a href={`/programma/${section.slug}`}
 		class="section {activeSectionEl !== i ? `scattered${activeSectionEl}` : ``} {activeSectionEl === i ? `active` : ``} {visibleSections ? `visible` : ``} {shaking[i] ? `shaking` : ``}"
 		onmouseenter={() => {activeSectionEl = i}}
 		onmouseleave={() => {activeSectionEl = undefined}}

@@ -16,20 +16,20 @@
     import EventCard from '$lib/components/EventCard.svelte';
     import { formatDateHash, formatDayName, formatDayNumber } from '$lib/utils/datetime.js';
 
-	// const sections = [
-	// 	{ name: 'Vista', slug: 'il-cieco-che-non-voleva-vedere-titanic', gradient: 'gradient-y-brown-cyan', img: '/home/1.webp', title: "Il cieco che non voleva vedere titanic" },
-	// 	{ name: 'Udito', slug: 'cineconcerto-sherlock-jr', gradient: 'gradient-y-brown-yellow', img: '/home/3.webp', title: "Cineconcerto Sherlock Jr." },
-	// 	{ name: 'Tatto', slug: 'thelma-e-louise', gradient: 'gradient-y-brown-red', img: '/home/5.webp', title: "Thelma e Louise" },
-	// 	{ name: 'Gusto', slug: 'la-citta-incantata', gradient: 'gradient-y-brown-pink', img: '/home/2.webp', title: "La città incantata" },
-	// 	{ name: 'Olfatto', slug: 'odorama-the-truman-show', gradient: 'gradient-y-brown-iris', img: '/home/4.webp', title: "Odorama. The Truman Show" }
-	// ];
 	const sections = [
-		{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan', title: "Maggiori info a breve" },
-		{ name: 'Udito', slug: 'udito', gradient: 'gradient-y-brown-yellow', title: "Maggiori info a breve" },
-		{ name: 'Tatto', slug: 'tatto', gradient: 'gradient-y-brown-red', title: "Maggiori info a breve" },
-		{ name: 'Gusto', slug: 'gusto', gradient: 'gradient-y-brown-pink', title: "Maggiori info a breve" },
-		{ name: 'Olfatto', slug: 'olfatto', gradient: 'gradient-y-brown-iris', title: "Maggiori info a breve" }
+		{ name: 'Vista', slug: 'il-cieco-che-non-voleva-vedere-titanic', gradient: 'gradient-y-brown-cyan', img: '/home/1.webp', title: "Il cieco che non voleva vedere titanic" },
+		{ name: 'Udito', slug: 'cineconcerto-sherlock-jr', gradient: 'gradient-y-brown-yellow', img: '/home/3.webp', title: "Cineconcerto Sherlock Jr." },
+		{ name: 'Tatto', slug: 'thelma-e-louise', gradient: 'gradient-y-brown-red', img: '/home/5.webp', title: "Thelma e Louise" },
+		{ name: 'Gusto', slug: 'la-citta-incantata', gradient: 'gradient-y-brown-pink', img: '/home/2.webp', title: "La città incantata" },
+		{ name: 'Olfatto', slug: 'odorama-the-truman-show', gradient: 'gradient-y-brown-iris', img: '/home/4.webp', title: "Odorama. The Truman Show" }
 	];
+	// const sections = [
+	// 	{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan', title: "Maggiori info a breve" },
+	// 	{ name: 'Udito', slug: 'udito', gradient: 'gradient-y-brown-yellow', title: "Maggiori info a breve" },
+	// 	{ name: 'Tatto', slug: 'tatto', gradient: 'gradient-y-brown-red', title: "Maggiori info a breve" },
+	// 	{ name: 'Gusto', slug: 'gusto', gradient: 'gradient-y-brown-pink', title: "Maggiori info a breve" },
+	// 	{ name: 'Olfatto', slug: 'olfatto', gradient: 'gradient-y-brown-iris', title: "Maggiori info a breve" }
+	// ];
 
 	const prefooter = {
 		subtitle: "Abbonamenti disponibili",
@@ -126,10 +126,10 @@
 		</div>
 		<SectionsDesktop {sections}/>
 	</section>
-	<!-- <section id="contest" class="bg-linen" title="Film in concorso">
+	<section id="contest" class="bg-linen" title="Film in concorso">
 		<div class="text-wrapper">
 			<h2 class="wb-12 wb-10-mb uppercase">Film in concorso</h2>
-			<p class="wb-24 wb-18-mb max-w-600">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+			<p class="wb-24 wb-18-mb max-w-600">I cinque sensi rappresentano il nostro primo e più immediato contatto con la realtà: attraverso di essi facciamo esperienza di conoscenza, memoria ed emozione.</p>
 		</div>
 		<div class="contest-wrapper">
 			<div class="contest">
@@ -172,7 +172,7 @@
 			{/key}
 		{/each}
 		<a class="cta btn-xs uppercase" href="/programma">Vedi il programma completo →</a>
-	</section> -->
+	</section>
 </main>
 <PreFooter {prefooter}/>
 

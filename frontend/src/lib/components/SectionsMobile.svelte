@@ -35,8 +35,7 @@
 
 {#snippet Slide(section, i)}
 	<swiper-slide class="section {shaking[i] ? `shaking` : ``} {swiperIndex % sections.length == i ? `active` : ``} {sections.length == i+1 ? `last` : ``}">
-		<!-- <a href={`/programma/${section.slug}`} -->
-		<a 
+		<a href={`/programma/${section.slug}`}
 		style="--rotate: {rotations[i]}deg;">
 			<div class="outer">
 				<div class="inner">

@@ -17,7 +17,7 @@
 		<nav class="menu wb-28 leading-1_3" aria-label="Main navigation" menubar>
 			<ul>
 				<li><a aria-current={page.url.pathname.startsWith('/festival') ? 'page' : undefined} href="/festival">Festival</a></li>
-				<!-- <li><a aria-current={page.url.pathname.startsWith('/programma') ? 'page' : undefined} href="/programma">Programma</a></li> -->
+				<li><a aria-current={page.url.pathname.startsWith('/programma') ? 'page' : undefined} href="/programma">Programma</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/about') ? 'page' : undefined} href="/about">About</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/partner') ? 'page' : undefined} href="/partner">Partner</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/sostienici') ? 'page' : undefined} href="/sostienici">Sostienici</a></li>
