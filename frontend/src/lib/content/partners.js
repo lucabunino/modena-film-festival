@@ -49,7 +49,7 @@ export const partners = [
 				logo: '/partners/giusti.png'
 			},
 			{
-				title: 'Coop Alleanza',
+				title: 'Coop Alleanza 3.0',
 				href: 'https://www.coopalleanza3-0.it/',
 				logo: '/partners/coop.png'
 			},
