@@ -138,7 +138,8 @@
 				Biglietto unico 5&#8202;€
 			</p>
 			<p><span class="uppercase">Cineconcerto Grand Tour Italiano</span><br>
-				Biglietto unico 8&#8202;€
+				Biglietto unico 8&#8202;€<br>
+				Biglietto unico web 20&#8202;€ + 1&#8202;€ di commissioni
 			</p>				
 		</div>
 	</section>
