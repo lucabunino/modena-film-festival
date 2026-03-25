@@ -113,5 +113,22 @@ export const partners = [
 				logo: '/partners/spot.png'
 			},
 		]
+	},
+	{
+		title: 'Grazie al supporto di',
+		menuTitle: 'Grazie al supporto di',
+		slug: 'thanks',
+		partners: [
+			{
+				title: 'Juta',
+				href: 'https://www.instagram.com/juta_stereobar/',
+				logo: '/partners/juta.png'
+			},
+			{
+				title: 'Modenamoremio',
+				href: 'https://modenamoremio.it/',
+				logo: '/partners/modenamoremio.png'
+			},
+		]
 	}
 ]
