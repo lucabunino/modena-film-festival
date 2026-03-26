@@ -26,6 +26,8 @@
 	const seoSingle = { seoTitle: 'Biglietti'}
 	const WebticHref = "https://www.webtic.it/app/shopping/loadLocal/MO/7348"
 	const SubscriptionHref = "https://www.webtic.it/app/shop?action=loadSubscriptions&localId=7348"
+	const SherlockHref = "https://www.webtic.it/app/shopping/loadLocal/MO/7348"
+	const OdoramaHref = "https://www.webtic.it/app/shopping/loadEvent/MO/7348/10081730/2456"
 </script>
 
 {#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
@@ -60,7 +62,7 @@
 				<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em>, il <em>Cineconcerto Sherlock Jr.</em> e <em>Odorama. The Truman Show</em>.</p>
 			</div>
 		</a>
-		<a class="ticket x1 rounded-l white {shakingItems['sherlock'] ? 'shaking' : undefined}" href={WebticHref} target="_blank" rel="noopener noreferrer"
+		<a class="ticket x1 rounded-l white {shakingItems['sherlock'] ? 'shaking' : undefined}" href={SherlockHref} target="_blank" rel="noopener noreferrer"
 		onmousemove={handleMouseMove}
 		onmouseenter={() => isHovering = true}
 		onmouseleave={() => isHovering = false}
@@ -76,7 +78,7 @@
 			</div>
 			<p class="wb-18 wb-15-mb max-w-600">Nella giornata dedicata all’udito, cinema muto e musica contemporanea si incontrano: Samuel sonorizza dal vivo Sherlock Jr. (1924) di Buster Keaton. Un dialogo potente tra immagini e suono.</p>
 		</a>
-		<a class="ticket x1 rounded-l white blurred {shakingItems['odorama'] ? 'shaking' : undefined}" href={WebticHref} target="_blank" rel="noopener noreferrer"
+		<a class="ticket x1 rounded-l white blurred {shakingItems['odorama'] ? 'shaking' : undefined}" href={OdoramaHref} target="_blank" rel="noopener noreferrer"
 		onmousemove={handleMouseMove}
 		onmouseenter={() => isHovering = true}
 		onmouseleave={() => isHovering = false}
