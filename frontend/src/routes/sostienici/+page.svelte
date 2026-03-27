@@ -3,39 +3,19 @@
     import Navigator from "$lib/components/Navigator.svelte";
     import PreFooter from "$lib/components/PreFooter.svelte";
 	import { register } from 'swiper/element/bundle';register();
+	import { friends } from "$lib/content/friends.js";
 	let sections = $state([])
 	let tiers = $derived([
 		{title: 'Amico', price: 10, isCustomPrice: false, abstract: 'Il tuo nome comparirà come Amico del Festival qui sul sito.'},
 		{title: 'Sostenitore', price: 50, isCustomPrice: false, abstract: "Oltre alla visibilità come Amico, riceverai un accesso omaggio agli eventi incluso nell'abbonamento MFF2026 a cui vorrai partecipare, fino ad esaurimento posti."},
 		{title: 'Promotore', price: 100, isCustomPrice: true, abstract: 'Avrai tutto ciò che spetta ad Amici e Sostenitori. In più la totebag del festival.'},
 	])
-	const promoters = [
-		{name: 'Mario', surname: 'Rossi'},
-	]
-	const supporters = [
-		{name: 'Mario', surname: 'Rossi'},
-	]
-	const friends = [
-		{name: 'Anna', surname: 'Giovani'},
-		{name: 'Alessandro', surname: 'Romagnoli'},
-		{name: 'Giulietta', surname: 'Malagoli'},
-		{name: 'Irene', surname: 'Malagoli'},
-		{name: 'Laura', surname: 'Malagoli'},
-		{name: 'Marino', surname: 'Linguiti'},
-		{name: 'Nicholas', surname: 'Sighinolfi'},
-		{name: 'Paolo', surname: 'Nocetti'},
-		{name: 'Teresa', surname: 'Tinti'},
-		{name: 'Vanna', surname: 'Bortolamasi'},
-		{name: 'Giacomo', surname: 'Galuzzi'},
-	]
-	// const prefooter = {
-	// 	subtitle: "Abbonamenti",
-	// 	title: "Acquista gli abbonamenti",
-	// 	content: "Stiamo preparando biglietti singoli e abbonamento per permetterti di vivere il Modena Film Festival come preferisci: una proiezione per volta o l’intera esperienza. <br>A breve troverai qui tutte le opzioni, i prezzi e le modalità di acquisto.",
-	// 	cta: {href: '/tickets', label: 'Acquista*', locked: true},
-	// 	annotation: '*Gli abbonamenti saranno disponibili online prima dell’inizio del festival.',
-	// 	bg: 'bg-yellow',
-	// }
+	// const promoters = [
+	// 	{name: 'Mario', surname: 'Rossi'},
+	// ]
+	// const supporters = [
+	// 	{name: 'Mario', surname: 'Rossi'},
+	// ]
 	const prefooter = {
 		subtitle: "Abbonamenti disponibili",
 		title: "Abbonati al festival",
