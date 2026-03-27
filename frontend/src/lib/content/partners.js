@@ -126,7 +126,6 @@ export const partners = [
 			},
 			{
 				title: 'Modenamoremio',
-				href: 'https://modenamoremio.it/',
 				logo: '/partners/modenamoremio.png'
 			},
 		]
