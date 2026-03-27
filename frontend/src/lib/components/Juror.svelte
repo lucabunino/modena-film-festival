@@ -2,7 +2,7 @@
     let { juror } = $props()
 </script>
 
-<div class="juror wb-12 wb-10-mb" title="{juror.name} {juror.surname}">
+<div class="juror wb-14 wb-12-mb" title="{juror.name} {juror.surname}">
 	{#if juror.portrait}
 		<img class="portrait _4_5 rounded-m" src={juror.portrait} alt="">
 	{:else}
@@ -22,7 +22,11 @@
 			{/if}
 		</ul>
 		{#if juror.bio}
-		<p class="bio wb-14">{juror.bio}</p>
+			<div class="bio">
+				{#each juror.bio as p}
+				<p>{p}</p>
+				{/each}
+			</div>
 		{/if}
 	{/if}
 </div>
@@ -37,6 +41,9 @@
 		}
 		.bio {
 			margin-top: 1rem;
+			p+p {
+				margin-top: .6em;
+			}
 		}
 	}
 </style>
