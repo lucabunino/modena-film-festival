@@ -33,7 +33,7 @@
 		{#each event.formats as format, i}
 			<span class="tag wb-12 wb-10-mb uppercase bg-linen">{format.title}</span>
 		{/each}
-		<time class="datetime" datetime={formatISO(event.start, event.end)}>{formatEventDate(event.start, event.end)}</time>{#if event.location}<p class="location">, presso {event.location.title}{#if event.location.subtitle} {@html ' (' + event.location.subtitle + ')'}{/if}</p>{/if}
+		<time class="datetime" datetime={formatISO(event.start, event.end)}>{formatEventDate(event.start, event.end)}</time>{#if event.location}<p class="location"><span class="comma">{@html ', '}</span>presso {event.location.title}{#if event.location.subtitle} {@html ' (' + event.location.subtitle + ')'}{/if}</p>{/if}
 	</div>
 	{#if event.thumbnail}
 		<img class="img _16_9 max-w-700" src={urlFor(event.thumbnail).width(1080)} alt="Immagine di copertina per l'evento “{event.title}”">
@@ -69,7 +69,6 @@
 				bottom: .3em;
 
 				@media screen and (max-width: 600px) {
-					display: block;
 					width: fit-content;
 					margin-bottom: .6em;
 				}
@@ -84,9 +83,19 @@
 			}
 			.datetime {
 				display: inline;
+
+				@media screen and (max-width: 600px) {
+					display: block;
+				}
 			}
 			.location {
 				display: inline;
+
+				@media screen and (max-width: 600px) {
+					.comma {
+						display: none;
+					}
+				}
 			}
 			.credits {
 				border-bottom: solid 1px var(--black);
