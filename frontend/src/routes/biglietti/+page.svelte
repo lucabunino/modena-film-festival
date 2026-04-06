@@ -26,7 +26,7 @@
 	const seoSingle = { seoTitle: 'Biglietti'}
 	const WebticHref = "https://www.webtic.it/app/shopping/loadLocal/MO/7348"
 	const SubscriptionHref = "https://www.webtic.it/app/shop?action=loadSubscriptions&localId=7348"
-	const SherlockHref = "https://www.webtic.it/app/shopping/loadLocal/MO/7348"
+	const SherlockHref = "https://secure.webtic.it/angwt/webtic.aspx?pu=aHR0cHM6Ly93d3cud2VidGljLml0L2FwcC9zaG9wcGluZy9sb2FkTG9jYWwvTU8vNzM0OA==&rnd=0.187350648676209&lng=it&lid=7348&tpl=blue&lvs=bnVsbA==&kid=33&cc=WyJuZWNlc3NhcnkiXQ==#/event/it/33/7348/2514"
 	const OdoramaHref = "https://www.webtic.it/app/shopping/loadEvent/MO/7348/10081730/2456"
 </script>
 
@@ -78,15 +78,14 @@
 			</div>
 			<p class="wb-18 wb-15-mb max-w-600">Nella giornata dedicata all’udito, cinema muto e musica contemporanea si incontrano: Samuel sonorizza dal vivo Sherlock Jr. (1924) di Buster Keaton. Un dialogo potente tra immagini e suono.</p>
 		</a>
-		<a class="ticket x1 rounded-l white blurred {shakingItems['odorama'] ? 'shaking' : undefined}" href={OdoramaHref} target="_blank" rel="noopener noreferrer"
-		onmousemove={handleMouseMove}
-		onmouseenter={() => isHovering = true}
-		onmouseleave={() => isHovering = false}
+		<a class="ticket locked x1 rounded-l white blurred {shakingItems['odorama'] ? 'shaking' : undefined}" href={OdoramaHref} target="_blank" rel="noopener noreferrer"
+		onclick={(e) => {handleLockedclick(e, 'odorama')}}
 		>
 			<img class="bg" src="/tickets/odorama.webp" alt="">
 			<div>
 				<h3 class="wb-cd-60 wb-cd-40-mb uppercase max-w-500">Odorama. The Truman Show</h3>
 				<div class="tags wb-12 uppercase">
+					<label class="tag white bg-black">Sold out</label>
 					<label class="tag black bg-white">5&#8202;€</label>
 					<label class="tag black bg-white">Capienza limitata</label>
 				</div>

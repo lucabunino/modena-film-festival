@@ -11,7 +11,10 @@
 
 <a class="event" href="/programma/{event.slug.current}">
 	{#if event.formats}
-		<div class="tags wb-12 uppercase">
+		<div class="tags wb-12 wb-10-mb uppercase">
+			{#if event.soldOut}
+				<span class="tag white bg-black">Sold out</span>
+			{/if}
 			{#each event.formats as format, i}
 				<span class="tag bg-white">{format.title}</span>
 			{/each}

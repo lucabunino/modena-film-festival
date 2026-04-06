@@ -44,7 +44,9 @@ section {
 
 	.cta {
 		margin-top: 2rem;
-
+		&:hover {
+			filter: invert(1);
+		}
 		.webtic {
 			display: inline-block;
 			position: relative;

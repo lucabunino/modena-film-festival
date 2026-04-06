@@ -2,7 +2,10 @@
     import Breadcrumbs from "./Breadcrumbs.svelte";
 	import { urlFor } from '$lib/utils/image.js';
     import { formatEventDate, formatISO } from "$lib/utils/datetime";
-
+	
+	let shaking = $state(false)
+	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
+	
     let { event } = $props()
 
 	const cta = event.cta
@@ -17,8 +20,16 @@
 	{#if event.subtitle}
 		<h2 class="nr-35 nr-21-mb max-w-700">{event.subtitle}</h2>
 	{/if}
-	<div class="info wb-21 wb-15-mb max-w-700">
+	<div class="info wb-21 wb-15-mb max-w-700">		
+		{#if event.webticHref && !event.soldOut}
+			<a class="cta btn-l bg-linen black {shaking ? 'shaking' : undefined}" href={event.webticHref} target="_blank" rel='noopener noreferrer'
+			onclick={(e) => {cta.locked ? handleLockedclick(e) : ''}}
+			>Compra su <img class="webtic" src="/logos/webtic.webp" alt=""></a>
+		{/if}
 		{#if event.credits}<p class="credits">{event.credits}</p>{/if}
+		{#if event.soldOut}
+			<span class="tag wb-12 wb-10-mb uppercase white bg-black">Sold out</span>
+		{/if}
 		{#each event.formats as format, i}
 			<span class="tag wb-12 wb-10-mb uppercase bg-linen">{format.title}</span>
 		{/each}
@@ -33,6 +44,20 @@
 	#hero {
 		h2 {
 			margin-top: .6em;
+		}
+		.cta {
+			margin-bottom: 2rem;
+			&:hover {
+				filter: invert(1);
+			}
+			.webtic {
+				display: inline-block;
+				position: relative;
+				top: .25em;
+				height: 1.25em;
+				margin-top: -.5em;
+				width: auto;
+			}
 		}
 		.info {
 			margin-top: var(--spacing-s);

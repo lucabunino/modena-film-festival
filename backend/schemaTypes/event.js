@@ -16,6 +16,7 @@ export default {
 	fieldsets: [
 		{name: 'Homepage'},
 		{name: 'Cta'},
+		{name: 'Webtic'},
 		{name: 'Tag'},
 	],
 	fields: [
@@ -98,6 +99,19 @@ export default {
 			type: 'reference',
 			to: [{type: 'location'},],
 			group: 'Event',
+		},
+		{
+			name: 'webticHref',
+			title: 'Href',
+			type: 'url',
+			group: 'Event',
+			fieldset: 'Webtic',
+		},
+		{
+			name: 'soldOut',
+			type: 'boolean',
+			group: 'Event',
+			fieldset: 'Webtic',
 		},
 		// {
 		// 	name: 'ctaLabel',
