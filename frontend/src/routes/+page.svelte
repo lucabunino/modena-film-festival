@@ -108,7 +108,6 @@
 	const newses = [
 		{
 			title: "Cineconcerto live con Samuel",
-			subtitle: "Sherlock Jr. di Buster Keaton musicato dal vivo",
 			widgetAbstract: "Nell’evento speciale dedicato all’udito <em>Sherlock Jr.</em> di Buster Keaton e la musica contemporanea si fondono in un dialogo potente e sorprendente.",
 			widgetCta: {
 				label: "Scopri di più",
