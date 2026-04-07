@@ -81,10 +81,15 @@
 			<swiper-slide class="{innerWidth.current > 1080 ? 'bg-white' : 'bg-linen'} rounded-m border-linen">
 				<div>
 					{#if news.title}<h1 class="wb-21 wb-15-mb">{@html news.title}</h1>{/if}
-					{#if news.widgetAbstract}<p class="wb-14 wb-12-mb">{news.widgetAbstract}</p>{/if}
+					{#if news.subtitle}<h2 class="wb-21 wb-15-mb">{@html news.subtitle}</h2>{/if}
+					{#if news.widgetAbstract}<p class="wb-14 wb-12-mb">{@html news.widgetAbstract}</p>{/if}
 				</div>
 				{#if news.widgetCta.label}
-					<a class="btn-xs uppercase" href={news.widgetCta.href} target={news.widgetCta.blank ? '_blank' : '_self'} rel={news.widgetCta.blank ? 'noopener noreferrer' : ''}>{news.widgetCta.label}{news.widgetCta.blank ? ' ↗' : ''}</a>
+					{#if news.widgetCta.blank}
+						<a class="btn-xs uppercase" href={news.widgetCta.href} target="_blank" rel="noopener noreferrer">{news.widgetCta.label} ↗</a>
+					{:else}
+						<a class="btn-xs uppercase" href={news.widgetCta.href}>{news.widgetCta.label}</a>
+					{/if}
 				{:else}
 					<a class="btn-xs uppercase" href="/news/{news.slug.current}">Leggi di più</a>
 				{/if}

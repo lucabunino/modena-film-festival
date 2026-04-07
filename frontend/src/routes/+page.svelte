@@ -104,6 +104,19 @@
         const queryString = params.toString();
         return queryString ? `?${queryString}` : page.url.pathname;
     }
+
+	const newses = [
+		{
+			title: "Cineconcerto live con Samuel",
+			subtitle: "Sherlock Jr. di Buster Keaton musicato dal vivo",
+			widgetAbstract: "Nell’evento speciale dedicato all’udito <em>Sherlock Jr.</em> di Buster Keaton e la musica contemporanea si fondono in un dialogo potente e sorprendente.",
+			widgetCta: {
+				label: "Scopri di più",
+				href: "/programma/cineconcerto-sherlock-jr",
+				blank: false
+			}
+		},
+	]
 </script>
 
 <HeadSingle seo={data.seo} seoSingle={false}/>
@@ -115,7 +128,8 @@
 		<Landing2 landing={data.landing} />
 	{/if} -->
 	<LandingTickets />
-	<NewsWidget newses={data.widgetNewses}/>
+	<!-- <NewsWidget newses={data.widgetNewses}/> -->
+	<NewsWidget newses={newses}/>
 	<section id="sections" title="Il Festival" class="bg-white">
 		<div>
 			<h2 class="wb-12 wb-10-mb uppercase">Il Festival</h2>
