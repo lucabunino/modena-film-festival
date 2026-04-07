@@ -128,6 +128,10 @@ export const partners = [
 				title: 'Modenamoremio',
 				logo: '/partners/modenamoremio.png'
 			},
+			{
+				title: 'Cavezzo 2042',
+				logo: '/partners/cavezzo.png'
+			},
 		]
 	}
 ]

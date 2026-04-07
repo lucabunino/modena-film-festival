@@ -3,9 +3,9 @@ import { error } from '@sveltejs/kit';
 
 export async function load({ setHeaders }) {
     const program = await getProgram();
-    setHeaders({
-        'cache-control': 'public, max-age=3600, stale-while-revalidate=86400'
-    });
+    // setHeaders({
+    //     'cache-control': 'public, max-age=3600, stale-while-revalidate=86400'
+    // });
     if (program) {
 		return {
 			program
