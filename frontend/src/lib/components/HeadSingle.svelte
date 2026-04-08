@@ -1,42 +1,39 @@
 <script>
-    let { seo, seoSingle = undefined, hidden = false } = $props();
     import { page } from "$app/state";
+    let { seo, seoSingle = {}, hidden = false } = $props();
+
+    const finalTitle = seoSingle?.seoTitle 
+        ? `${seoSingle.seoTitle} | ${seo?.seoTitle || ''}` 
+        : (seo?.seoTitle || 'Titolo Default');
+
+    const finalDesc = seoSingle?.seoDescription || seo?.seoDescription;
+    const finalImage = seoSingle?.seoImage || seo?.seoImage;
 </script>
 
 <svelte:head>
-    {#if seo?.seoTitle && seoSingle?.seoTitle}
-        <title>{seoSingle.seoTitle} | {seo?.seoTitle} </title>
-        <meta name="title" content={seoSingle.seoTitle} />
-        <meta name="apple-mobile-web-app-title" content={seoSingle.seoTitle} />
-        <meta property="og:title" content={seoSingle.seoTitle} />
-        <meta name="twitter:title" content={seoSingle.seoTitle} />
-	{:else if seo?.seoTitle}
-		<title>{seo.seoTitle}</title>
-        <meta name="title" content={seo.seoTitle} />
-        <meta name="apple-mobile-web-app-title" content={seo.seoTitle} />
-        <meta property="og:title" content={seo.seoTitle} />
-        <meta property="og:site_name" content={seo.seoTitle} />
-        <meta name="twitter:title" content={seo.seoTitle} />
+    <title>{finalTitle}</title>
+    <meta name="title" content={finalTitle} />
+    <meta name="apple-mobile-web-app-title" content={finalTitle} />
+    <meta property="og:title" content={finalTitle} />
+    <meta name="twitter:title" content={finalTitle} />
+
+    {#if finalDesc}
+        <meta name="description" content={finalDesc} />
+        <meta property="og:description" content={finalDesc} />
+        <meta name="twitter:description" content={finalDesc} />
     {/if}
 
-    {#if seo?.seoDescription}
-        <meta name="description" content={seoSingle.seoDescription} />
-        <meta property="og:description" content={seoSingle.seoDescription} />
-        <meta name="twitter:description" content={seoSingle.seoDescription} />
+    {#if finalImage}
+        <meta property="og:image" content={finalImage} />
+        <meta name="twitter:image" content={finalImage} />
+        <meta name="twitter:card" content="summary_large_image" />
     {/if}
 
-    {#if seo?.seoImage}
-        <meta property="og:image" content={seoSingle.seoImage} />
-        <meta name="twitter:image" content={seoSingle.seoImage} />
-    {/if}
-
-    <link rel="canonical" href={page.url} />
+    <link rel="canonical" href={page.url.href} />
 
     {#if hidden}
         <meta name="robots" content="noindex, nofollow" />
-        <meta name="googlebot" content="noindex, nofollow" />
     {:else}
         <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow" />
     {/if}
 </svelte:head>
