@@ -42,13 +42,13 @@
         <meta name="twitter:description" content={displayDesc} />
     {/if}
 
-    {#if socialImageUrl}
+    <!-- {#if socialImageUrl}
         <meta property="og:image" content={socialImageUrl} />
         <meta property="og:image:secure_url" content={socialImageUrl} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:image" content={socialImageUrl} />
-    {/if}
+    {/if} -->
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
