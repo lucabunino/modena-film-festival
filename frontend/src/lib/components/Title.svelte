@@ -20,12 +20,17 @@
 		{/each}
 	{/if}
 	{#if cta}
+		{#if cta.webtic}
+		<a class="cta btn-l bg-linen black" href="https://www.webtic.it/app/shop?action=loadSubscriptions&localId=7348" target='_blank' rel='noopener noreferrer'
+		onclick={(e) => {cta.locked ? handleLockedclick(e) : ''}}
+		>Abbonamento</a>
+		{/if}
 		<a class="cta btn-l {cta.webtic ? 'bg-linen black' : 'bg-black white hover-black hover-bg-linen'} {cta.bg ? cta.bg : undefined} {cta.locked ? 'locked' : undefined} {shaking ? 'shaking' : undefined}" href={cta.href} target={cta.blank ? '_blank' : ''} rel={cta.blank ? 'noopener noreferrer' : ''}
 		onclick={(e) => {cta.locked ? handleLockedclick(e) : ''}}
 		>{cta.label}
-		{#if cta.webtic}
+		<!-- {#if cta.webtic}
 			<img class="webtic" src="/logos/webtic.webp" alt="">
-		{/if}
+		{/if} -->
 		</a>
 	{/if}
 </section>
@@ -55,6 +60,14 @@ section {
 			margin-top: -.5em;
 			width: auto;
 		}
+
+		@media screen and (max-width: 600px) {
+			width: 100%;
+			text-align: center;
+		}
+	}
+	.cta+.cta {
+		margin-top: .5rem;
 	}
 }
 </style>

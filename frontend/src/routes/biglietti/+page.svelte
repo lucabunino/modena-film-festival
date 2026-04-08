@@ -41,7 +41,7 @@
 		"Per poter accedere in sala, è richiesta la prenotazione ai singoli eventi, anche per i possessori dell'abbonamento.",
 		]}
 	size={'l'}
-	cta={{href: WebticHref, label: 'Compra su', blank: true, webtic: true}}
+	cta={{href: WebticHref, label: 'Singoli eventi', blank: true, webtic: true}}
 	/>
 	<section id="buy" title="Compra" bind:this={sections[0]}>
 		<a class="ticket x2 rounded-l white" href={SubscriptionHref} target="_blank" rel="noopener noreferrer"
