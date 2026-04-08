@@ -1,12 +1,24 @@
 <script>
-    let { seo } = $props()
+    let { seo } = $props();
     import { browser, dev } from "$app/environment";
     import { page } from "$app/state";
+    import { urlFor } from '$lib/utils/image.js';
+
+    const canonicalUrl = $derived(page.url.origin + page.url.pathname);
+
+    const rawDesc = $derived(seo?.seoDescription || '');
+    const displayDesc = $derived(rawDesc.length > 157 ? rawDesc.slice(0, 157) + '...' : rawDesc);
+
+    const socialImageUrl = $derived(
+        seo?.seoImage
+            ? urlFor(seo.seoImage).width(1200).height(630).fit('crop').quality(70).format('jpg').url()
+            : undefined
+    );
 </script>
 
 <svelte:head>
     {#if !dev && browser}
-		<script defer src="https://cloud.umami.is/script.js" data-website-id="3e32a832-2bf2-438c-bbc1-f295f745e1d3"></script>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="3e32a832-2bf2-438c-bbc1-f295f745e1d3"></script>
     {/if}
 
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -24,23 +36,24 @@
         <meta name="twitter:title" content={seo.seoTitle} />
     {/if}
 
-    {#if seo?.seoDescription}
-        <meta name="description" content={seo.seoDescription} />
-        <meta property="og:description" content={seo.seoDescription} />
-        <meta name="twitter:description" content={seo.seoDescription} />
+    {#if displayDesc}
+        <meta name="description" content={displayDesc} />
+        <meta property="og:description" content={displayDesc} />
+        <meta name="twitter:description" content={displayDesc} />
     {/if}
 
-    {#if seo?.seoImage}
-        <meta property="og:image" content={seo.seoImage} />
-        <meta name="twitter:image" content={seo.seoImage} />
+    {#if socialImageUrl}
+        <meta property="og:image" content={socialImageUrl} />
+        <meta property="og:image:secure_url" content={socialImageUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:image" content={socialImageUrl} />
     {/if}
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={page.url} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="it_IT" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={page.url} />
-
-    <link rel="canonical" href={page.url} />
-    <meta name="robots" content="index,follow" />
-    <meta name="googlebot" content="index,follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content="index, follow" />
 </svelte:head>

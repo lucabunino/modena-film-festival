@@ -1,83 +1,59 @@
 <script>
+	let { seo, seoSingle = undefined, hidden = false } = $props();
+	import { page } from "$app/state";
+	import { urlFor } from '$lib/utils/image.js';
 
-let { seo, seoSingle = undefined, hidden = false } = $props();
+	const canonicalUrl = $derived(page.url.origin + page.url.pathname);
 
-import { page } from "$app/state";
+	const displayTitle = $derived(
+		seoSingle?.seoTitle
+			? `${seoSingle.seoTitle} | ${seo?.seoTitle || ''}`
+			: (seo?.seoTitle || '')
+	);
 
+	const rawDesc = $derived(seoSingle?.seoDescription || seo?.seoDescription || '');
+	const displayDesc = $derived(rawDesc.length > 157 ? rawDesc.slice(0, 157) + '...' : rawDesc);
+
+	const seoImgObj = $derived(seoSingle?.seoImage || seo?.seoImage);
+	const socialImageUrl = $derived(
+		seoImgObj
+			? urlFor(seoImgObj).width(1200).height(630).fit('crop').quality(70).format('jpg').url()
+			: undefined
+	);
 </script>
 
-
-
 <svelte:head>
+	{#if displayTitle}
+		<title>{displayTitle}</title>
+		<meta name="title" content={displayTitle} />
+		<meta property="og:title" content={displayTitle} />
+		<meta name="twitter:title" content={displayTitle} />
+		<meta property="og:site_name" content={seo?.seoTitle} />
+	{/if}
 
-{#if seo?.seoTitle && seoSingle?.seoTitle}
+	{#if displayDesc}
+		<meta name="description" content={displayDesc} />
+		<meta property="og:description" content={displayDesc} />
+		<meta name="twitter:description" content={displayDesc} />
+	{/if}
 
-<title>{seoSingle.seoTitle} | {seo?.seoTitle} </title>
+	{#if socialImageUrl}
+		<meta property="og:image" content={socialImageUrl} />
+		<meta property="og:image:secure_url" content={socialImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta name="twitter:image" content={socialImageUrl} />
+	{/if}
 
-<meta name="title" content={seoSingle.seoTitle} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={canonicalUrl} />
+	<meta property="og:locale" content="it_IT" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<link rel="canonical" href={canonicalUrl} />
 
-<meta name="apple-mobile-web-app-title" content={seoSingle.seoTitle} />
-
-<meta property="og:title" content={seoSingle.seoTitle} />
-
-<meta name="twitter:title" content={seoSingle.seoTitle} />
-
-{:else if seo?.seoTitle}
-
-<title>{seo.seoTitle}</title>
-
-<meta name="title" content={seo.seoTitle} />
-
-<meta name="apple-mobile-web-app-title" content={seo.seoTitle} />
-
-<meta property="og:title" content={seo.seoTitle} />
-
-<meta property="og:site_name" content={seo.seoTitle} />
-
-<meta name="twitter:title" content={seo.seoTitle} />
-
-{/if}
-
-
-
-{#if seo?.seoDescription}
-
-<meta name="description" content={seoSingle.seoDescription} />
-
-<meta property="og:description" content={seoSingle.seoDescription} />
-
-<meta name="twitter:description" content={seoSingle.seoDescription} />
-
-{/if}
-
-
-
-{#if seo?.seoImage}
-
-<meta property="og:image" content={seoSingle.seoImage} />
-
-<meta name="twitter:image" content={seoSingle.seoImage} />
-
-{/if}
-
-
-
-<link rel="canonical" href={page.url} />
-
-
-
-{#if hidden}
-
-<meta name="robots" content="noindex, nofollow" />
-
-<meta name="googlebot" content="noindex, nofollow" />
-
-{:else}
-
-<meta name="robots" content="index, follow" />
-
-<meta name="googlebot" content="index, follow" />
-
-{/if}
-
+	{#if hidden}
+		<meta name="robots" content="noindex, nofollow" />
+	{:else}
+		<meta name="robots" content="index, follow" />
+	{/if}
 </svelte:head>
