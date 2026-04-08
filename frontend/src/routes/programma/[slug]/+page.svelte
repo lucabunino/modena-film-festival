@@ -12,7 +12,7 @@
 </script>
 
 {#if seoSingle}
-	<HeadSingle seo={data.seo[0]} {seoSingle} hidden={event.hidden} />
+	<HeadSingle seo={data.seo} {seoSingle} hidden={event.status == 'hidden'} />
 {/if}
 
 <main id="event" class="bg-white">

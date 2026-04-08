@@ -4,6 +4,9 @@
     import PreFooter from "$lib/components/PreFooter.svelte";
 	import { register } from 'swiper/element/bundle';register();
 	import { friends } from "$lib/content/friends.js";
+	import HeadSingle from "$lib/components/HeadSingle.svelte";
+	let { data } = $props()
+	const seoSingle = { seoTitle: 'Sostienici'}
 	let sections = $state([])
 	let tiers = $derived([
 		{title: 'Amico', price: 10, isCustomPrice: false, abstract: 'Il tuo nome comparirà come Amico del Festival qui sul sito.'},
@@ -55,6 +58,8 @@
 		}, 50);
 	})
 </script>
+
+{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Navigator title="Sostienici" {sections}/>

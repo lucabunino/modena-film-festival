@@ -1,7 +1,9 @@
 <script>
     import ContactCard from "$lib/components/ContactCard.svelte";
     import Title from "$lib/components/Title.svelte";
-	
+	import HeadSingle from "$lib/components/HeadSingle.svelte";
+	let { data } = $props()
+	const seoSingle = { seoTitle: 'Contatti'}
 	let sections = $state([])
 	const contacts = [
 		{
@@ -26,6 +28,8 @@
 		}
 	]
 </script>
+
+{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-linen">
 	<Title title='Siamo qui per te' size={'m'} subtitles={['Per informazioni, collaborazioni, accrediti o domande sul festival, puoi scriverci quando vuoi. Ti risponderemo il prima possibile.']}/>
