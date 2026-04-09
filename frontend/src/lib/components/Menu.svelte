@@ -50,6 +50,7 @@
 				<li><a aria-current={page.url.pathname.startsWith('/festival') ? 'page' : undefined} href="/festival" onclick={() => {closeMenu()}}>Festival</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/programma') ? 'page' : undefined} href="/programma" onclick={() => {closeMenu()}}>Programma</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/about') ? 'page' : undefined} href="/about" onclick={() => {closeMenu()}}>About</a></li>
+				<li><a aria-current={page.url.pathname.startsWith('/luoghi') ? 'page' : undefined} href="/luoghi" onclick={() => {closeMenu()}}>Luoghi</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/partner') ? 'page' : undefined} href="/partner" onclick={() => {closeMenu()}}>Partner</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/sostienici') ? 'page' : undefined} href="/sostienici" onclick={() => {closeMenu()}}>Sostienici</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/news') ? 'page' : undefined} href="/news" onclick={() => {closeMenu()}}>News</a></li>

@@ -19,6 +19,7 @@
 				<li><a aria-current={page.url.pathname.startsWith('/festival') ? 'page' : undefined} href="/festival">Festival</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/programma') ? 'page' : undefined} href="/programma">Programma</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/about') ? 'page' : undefined} href="/about">About</a></li>
+				<li><a aria-current={page.url.pathname.startsWith('/luoghi') ? 'page' : undefined} href="/luoghi">Luoghi</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/partner') ? 'page' : undefined} href="/partner">Partner</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/sostienici') ? 'page' : undefined} href="/sostienici">Sostienici</a></li>
 				<li><a aria-current={page.url.pathname.startsWith('/news') ? 'page' : undefined} href="/news">News</a></li>
