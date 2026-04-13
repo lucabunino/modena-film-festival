@@ -109,11 +109,11 @@
 				<li><em>Odorama. The Truman Show</em></li>
 			</ul>
 			<p>Gli abbonati hanno diritto a uno sconto del 25% sull'evento <em>Cineconcerto Sherlock Jr.</em>, selezionando l'opzione di acquisto RIDOTTO ABBONAMENTO WEB. All'ingresso potrà essere verificato il possesso dell'abbonamento.</p>
-			<p>L’abbonamento è acquistabile solamente online, mentre i singoli biglietti saranno disponibili presso le biglietterie della Sala del Leccio, del Cinema Astra e della Sala Truffaut, durante i giorni del festival.</p>
-			<p>Non ti preoccupare, se hai bisogno di aiuto, all’infopoint presso la Sala del Leccio saremo a disposizione per seguirti nei passaggi necessari, dal 14 al 19 aprile (orari qui sotto).</p>
+			<p>L’abbonamento è acquistabile solamente online, mentre i singoli biglietti saranno acquistabili anche presso le biglietterie della Sala del Leccio, del Cinema Astra e della Sala Truffaut, durante i giorni del festival.</p>
+			<p>Non ti preoccupare: se hai bisogno di aiuto, all’infopoint presso la Sala del Leccio saremo a disposizione per seguirti nei passaggi necessari, dal 14 al 19 aprile (orari qui sotto).</p>
 			<p>Per ogni film che vuoi vedere, dovrai acquistare, o riscattare in caso di abbonamento, il biglietto in anticipo, direttamente dalla tua area personale Webtic. L'acquisto singolo è possibile tramite carta di credito, oppure tramite codice abbonamento per gli eventi che ne fanno parte.</p>
 			<p>È possibile anche acquistare singolarmente ciascun evento, a un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
-			<p>Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di acquistare i biglietti per tempo! All’ingresso della sala dovrai mostrare il tuo biglietto, dallo schermo del tuo smartphone o in versione cartacea.</p>
+			<p>Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di acquistare i biglietti per tempo! All’ingresso della sala dovrai mostrare il tuo biglietto, dallo schermo del tuo smartphone o in versione cartacea, stampata autonomamente.</p>
 			<p>Presenta la prova di acquisto dell'abbonamento al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena, nei seguenti giorni e orari:
 			<ul>
 				<li>Martedì 14, mercoledì 15 e giovedì 16 aprile dalle 15 alle 21</li>
