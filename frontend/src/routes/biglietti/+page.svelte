@@ -105,7 +105,7 @@
 			<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e a tutti gli eventi del Festival, fatta eccezione per:</p>
 			<ul>
 				<li>Evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em></li>
-				<li><em>Cineconcerto Sherlock Jr. *</em></li>
+				<li><em>Cineconcerto Sherlock Jr.*</em></li>
 				<li><em>Odorama. The Truman Show</em></li>
 			</ul>
 			<p>*Gli abbonati hanno diritto a uno sconto del 25% sull'evento Cineconcerto Sherlock Jr., selezionando l'opzione di acquisto RIDOTTO ABBONAMENTO WEB. All'ingresso potrà essere verificato il possesso dell'abbonamento.</p>
@@ -114,13 +114,13 @@
 			<p>Non ti preoccupare: se hai bisogno di aiuto, all’infopoint presso la Sala del Leccio saremo a disposizione per seguirti nei passaggi necessari!</p>
 			<p>N.B. Acquistare singolarmente ciascun evento ha un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
 			<p>Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di acquistare i biglietti per tempo! All’ingresso della sala dovrai mostrare il tuo biglietto, dallo schermo del tuo smartphone o in versione cartacea.</p>
-			<p>Presenta la prova di acquisto dell'abbonamento al Cortile del Leccio, Presenta la prova di acquisto dell'abbonamento al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena, nei seguenti giorni e orari:</p>
+			<p>PPresenta la prova di acquisto dell'abbonamento al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena, nei seguenti giorni e orari:</p>
 			<ul>
 				<li>Martedì 14, mercoledì 15 e giovedì 16 aprile dalle 15 alle 21</li>
 				<li>Venerdì 17 e sabato 18 aprile dalle 10 alle 21</li>
 				<li>Domenica 19 aprile dalle 10 alle 18</li>
 			</ul>
-			<p>Riceverai la tote bag ufficiale e il badge, che ti darà diritto a sconti esclusivi presso tutti i locali convenzionati con Modena Film Festival.</p>
+			<p>Riceverai la tote bag ufficiale e il badge, che ti darà diritto a sconti esclusivi presso tutti i locali convenzionati con il Modena Film Festival.</p>
 		</div>
 	</section>
 	<section id="prices" title="Prezzi" bind:this={sections[2]}>
