@@ -114,7 +114,7 @@
 			<p>Non ti preoccupare: se hai bisogno di aiuto, all’infopoint presso la Sala del Leccio saremo a disposizione per seguirti nei passaggi necessari!</p>
 			<p>N.B. Acquistare singolarmente ciascun evento ha un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
 			<p>Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di acquistare i biglietti per tempo! All’ingresso della sala dovrai mostrare il tuo biglietto, dallo schermo del tuo smartphone o in versione cartacea.</p>
-			<p>PPresenta la prova di acquisto dell'abbonamento al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena, nei seguenti giorni e orari:</p>
+			<p>Presenta la prova di acquisto dell'abbonamento al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena, nei seguenti giorni e orari:</p>
 			<ul>
 				<li>Martedì 14, mercoledì 15 e giovedì 16 aprile dalle 15 alle 21</li>
 				<li>Venerdì 17 e sabato 18 aprile dalle 10 alle 21</li>
