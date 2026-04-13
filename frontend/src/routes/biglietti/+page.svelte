@@ -102,19 +102,24 @@
 	<section id="how-it-works" title="Come funziona" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase leading_105">Come funziona</h2>
 		<div class="wb-21 wb-15-mb max-w-700">
-			<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival, fatta eccezione per:</p>
+			<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e a tutti gli eventi del Festival, fatta eccezione per:</p>
 			<ul>
 				<li>Evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em></li>
-				<li><em>Cineconcerto Sherlock Jr.</em></li>
+				<li><em>Cineconcerto Sherlock Jr. *</em></li>
 				<li><em>Odorama. The Truman Show</em></li>
 			</ul>
-			<p>Gli abbonati hanno diritto a uno sconto del 25% sull'evento <em>Cineconcerto Sherlock Jr.</em>, selezionando l'opzione di acquisto RIDOTTO ABBONAMENTO WEB. All'ingresso potrà essere verificato il possesso dell'abbonamento.</p>
-			<p>L’abbonamento è acquistabile solamente online, mentre i singoli biglietti saranno acquistabili anche presso le biglietterie della Sala del Leccio, del Cinema Astra e della Sala Truffaut, durante i giorni del festival.</p>
-			<p>Non ti preoccupare: se hai bisogno di aiuto, all’infopoint presso la Sala del Leccio saremo a disposizione per seguirti nei passaggi necessari, dal 14 al 19 aprile (orari qui sotto).</p>
+			<p>*Gli abbonati hanno diritto a uno sconto del 25% sull'evento Cineconcerto Sherlock Jr., selezionando l'opzione di acquisto RIDOTTO ABBONAMENTO WEB. All'ingresso potrà essere verificato il possesso dell'abbonamento.</p>
+			<p>I biglietti sono acquistabili online in qualsiasi momento, accedendo alla tua area personale Webtic, o cartacei presso la biglietteria della Sala del Leccio, nei giorni e negli orari sotto riportati, e presso le casse del Cinema Astra e della Sala Truffaut, a partire 60 minuti prima di ogni proiezione.</p>
+			<p>L’abbonamento è acquistabile solamente online e, per ogni film che vuoi vedere o evento a cui vuoi assistere, fatta eccezione per quelli sopra indicati, dovrai riscattare il biglietto in anticipo direttamente dalla tua area personale Webtic, inserendo codice abbonamento e pin.</p>
+			<p>Non ti preoccupare: se hai bisogno di aiuto, all’infopoint presso la Sala del Leccio saremo a disposizione per seguirti nei passaggi necessari!</p>
+			<p>N.B. Acquistare singolarmente ciascun evento ha un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
+			<p>Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di acquistare i biglietti per tempo! All’ingresso della sala dovrai mostrare il tuo biglietto, dallo schermo del tuo smartphone o in versione cartacea.</p>
+
+
 			<p>Per ogni film che vuoi vedere, dovrai acquistare, o riscattare in caso di abbonamento, il biglietto in anticipo, direttamente dalla tua area personale Webtic. L'acquisto singolo è possibile tramite carta di credito, oppure tramite codice abbonamento per gli eventi che ne fanno parte.</p>
 			<p>È possibile anche acquistare singolarmente ciascun evento, a un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
 			<p>Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di acquistare i biglietti per tempo! All’ingresso della sala dovrai mostrare il tuo biglietto, dallo schermo del tuo smartphone o in versione cartacea, stampata autonomamente.</p>
-			<p>Presenta la prova di acquisto dell'abbonamento al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena, nei seguenti giorni e orari:
+			<p>Presenta la prova di acquisto dell'abbonamento al Cortile del Leccio, Presenta la prova di acquisto dell'abbonamento al Cortile del Leccio, in <a class="underline" href="https://share.google/15w19rJ5QGejKBXGb" target="_blank" rel="noopener noreferrer">via Francesco Selmi 67</a>, a Modena, nei seguenti giorni e orari:</p>
 			<ul>
 				<li>Martedì 14, mercoledì 15 e giovedì 16 aprile dalle 15 alle 21</li>
 				<li>Venerdì 17 e sabato 18 aprile dalle 10 alle 21</li>
