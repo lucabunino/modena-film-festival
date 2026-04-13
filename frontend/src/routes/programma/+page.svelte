@@ -125,7 +125,7 @@
 {#if data.seo}<HeadSingle seo={data.seo} seoSingle={{ seoTitle: 'Programma' }}/>{/if}
 
 <main class="bg-white">
-    <Title subtitles={["Metterei Tutte le informazioni sull’intero cartellone del festival, dai film in concorso agli eventi speciali"]} size={'s'} />
+    <Title subtitles={["Tutte le informazioni sull’intero cartellone del festival, dai film in concorso agli eventi speciali"]} size={'s'} />
     
     <section id="filters" class="wb-12 wb-10-mb uppercase">
         <div class="formats">
