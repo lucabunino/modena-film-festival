@@ -153,7 +153,7 @@
 		<h2 class="section-title wb-12 wb-10-mb uppercase leading_105">Condizioni di vendita</h2>
 		<div class="wb-21 wb-15-mb max-w-700">
 			<p>L'abbonamento è strettamente personale e non cedibile. All'ingresso potranno essere effettuati controlli per verificare la titolarità dell’accredito.</p>
-			<p>Se sei titolare di abbonamento, per ogni film che vuoi vedere dovrai riscattare il biglietto, direttamente dalla tua area personale Webtic. Nelle biglietterie dei cinema potrai acquistare il biglietto da 60 minuti prima di ogni proiezione. Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di riscattare i biglietti per tempo!</p>
+			<p>Se sei titolare di abbonamento, per ogni film che vuoi vedere dovrai riscattare, il biglietto, direttamente dalla tua area personale Webtic. Nelle biglietterie dei cinema potrai acquistare il biglietto da 60 minuti prima di ogni proiezione. Ti ricordiamo che l'ingresso in sala è soggetto alla disponibilità dei posti, quindi ti consigliamo di riscattare i biglietti per tempo!</p>
 			<p>È possibile anche acquistare singolarmente ciascun evento, a un costo unitario maggiore rispetto a quello garantito dall'abbonamento.</p>
 			<p>Le proiezioni e la presenza degli ospiti indicati in programma sono passibili di modifiche indipendenti dalla volontà del Festival</p>
 		</div>

@@ -10,7 +10,7 @@
 	let sections = $state([])
 	let tiers = $derived([
 		{title: 'Amico', price: 10, isCustomPrice: false, abstract: 'Il tuo nome comparirà come Amico del Festival qui sul sito.'},
-		{title: 'Sostenitore', price: 50, isCustomPrice: false, abstract: "Oltre alla visibilità come Amico, riceverai un accesso omaggio agli eventi incluso nell'abbonamento MFF2026 a cui vorrai partecipare, fino ad esaurimento posti."},
+		{title: 'Sostenitore', price: 50, isCustomPrice: false, abstract: "Oltre alla visibilità come Amico, riceverai un accesso omaggio agli eventi inclusi nell'abbonamento MFF2026 a cui vorrai partecipare, fino ad esaurimento posti."},
 		{title: 'Promotore', price: 100, isCustomPrice: true, abstract: 'Avrai tutto ciò che spetta ad Amici e Sostenitori. In più la totebag del festival.'},
 	])
 	// const promoters = [
