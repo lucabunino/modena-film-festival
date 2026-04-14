@@ -12,7 +12,7 @@
             title: "Cortile del Leccio e Sala del Leccio",
             address: "via Francesco Selmi 67, 41121 Modena",
             adressHref: "https://maps.app.goo.gl/Ek6N28bWAR6xFGXF6",
-            info: "Saremo presenti seguenti giorni e orari: <ul><li>– Martedì 14, mercoledì 15 e giovedì 16 aprile dalle 15 alle 21</li><li>– Venerdì 17 e sabato 18 aprile dalle 10 alle 21</li><li>– Domenica 19 aprile dalle 10 alle 18</li></ul><br>Qui troverai:<br>✳ Info point, biglietteria<br>✳ Mostra Elevation Tales di Manitou Italia<br>✳ Controllo dell'udito di Ti Ascolto<br>✳ SPOT point",
+            info: "Saremo presenti seguenti giorni e orari: <ul><li>– Martedì 14, mercoledì 15 e giovedì 16 aprile dalle 15 alle 20:30</li><li>– Venerdì 17 e sabato 18 aprile dalle 10 alle 20:30</li><li>– Domenica 19 aprile dalle 10 alle 18</li></ul><br>Qui troverai:<br>✳ Info point, biglietteria<br>✳ Mostra Elevation Tales di Manitou Italia<br>✳ Controllo dell'udito di Ti Ascolto<br>✳ SPOT point",
             position: { lat: 44.64301, lng: 10.92497 }
         },
         {
