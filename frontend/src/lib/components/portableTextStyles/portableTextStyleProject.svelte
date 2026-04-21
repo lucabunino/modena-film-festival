@@ -15,6 +15,8 @@
     <a href={value?.url} target={value?.blank ? '_blank' : undefined}>
         {@render children()}
     </a>
+{:else if style === 'h4'}
+	<h4 class="wb-24 wb-18-mb">{@render children()}</h4>
 {:else if style === 'normal'}
     <p>{@render children()}</p>
 {:else}
@@ -29,4 +31,8 @@
         margin: 1.1em 0 1.1em 2em;
 		list-style: disc;
     }
+	h4 {
+		margin-top: 2em;
+		margin-bottom: 1em;
+	}
 </style>

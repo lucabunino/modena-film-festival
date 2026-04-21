@@ -15,7 +15,7 @@
     import { page } from '$app/state';
     import EventCard from '$lib/components/EventCard.svelte';
     import { formatDateHash, formatDayName, formatDayNumber } from '$lib/utils/datetime.js';
-
+	
 	const sections = [
 		{ name: 'Vista', slug: 'il-cieco-che-non-voleva-vedere-titanic', gradient: 'gradient-y-brown-cyan', img: '/home/1.webp', title: "Il cieco che non voleva vedere titanic" },
 		{ name: 'Udito', slug: 'cineconcerto-sherlock-jr', gradient: 'gradient-y-brown-yellow', img: '/home/3.webp', title: "Cineconcerto Sherlock Jr." },
@@ -23,26 +23,19 @@
 		{ name: 'Gusto', slug: 'la-citta-incantata', gradient: 'gradient-y-brown-pink', img: '/home/2.webp', title: "La città incantata" },
 		{ name: 'Olfatto', slug: 'odorama-the-truman-show', gradient: 'gradient-y-brown-iris', img: '/home/4.webp', title: "Odorama. The Truman Show" }
 	];
-	// const sections = [
-	// 	{ name: 'Vista', slug: 'vista', gradient: 'gradient-y-brown-cyan', title: "Maggiori info a breve" },
-	// 	{ name: 'Udito', slug: 'udito', gradient: 'gradient-y-brown-yellow', title: "Maggiori info a breve" },
-	// 	{ name: 'Tatto', slug: 'tatto', gradient: 'gradient-y-brown-red', title: "Maggiori info a breve" },
-	// 	{ name: 'Gusto', slug: 'gusto', gradient: 'gradient-y-brown-pink', title: "Maggiori info a breve" },
-	// 	{ name: 'Olfatto', slug: 'olfatto', gradient: 'gradient-y-brown-iris', title: "Maggiori info a breve" }
-	// ];
 
 	const prefooter = {
-		subtitle: "Abbonamenti disponibili",
-		title: "Abbonati al festival",
-		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em>, il <em>Cineconcerto Sherlock Jr.</em>* e <em>Odorama. The Truman Show</em>.",
+		subtitle: "Diventa sponsor",
+		title: "Sponsorizza <br>il Modena Film Festival 2027",
+		content: "Unisciti alla visione del Modena Film Festival. <br>Sostenere il Festival significa legare il proprio brand alla cultura, all'innovazione e al territorio, garantendo visibilità esclusiva e accesso a un network unico di professionisti e appassionati.",
 		cta: {
-			label: 'Vai a: Biglietti',
-			href: '/biglietti',
+			label: 'Diventa sponsor',
+			href: '/partner/diventa-sponsor',
 		},
-		annotation: "* Gli abbonati hanno diritto a uno sconto di 5€ su questo evento.",
-		bg: 'bg-yellow',
-		video: '/tickets/abbonamento-verticale-min.mp4',
-		poster: '/tickets/abbonamento-verticale-min.webp',
+		// annotation: "* Gli abbonati hanno diritto a uno sconto di 5€ su questo evento.",
+		bg: 'bg-red',
+		// video: '/tickets/abbonamento-verticale-min.mp4',
+		img: '/img/_1hs1706.webp',
 	}
 	const news = [
 		{
@@ -105,30 +98,31 @@
         return queryString ? `?${queryString}` : page.url.pathname;
     }
 
-	const newses = [
-		{
-			title: "Cineconcerto live con Samuel",
-			widgetAbstract: "Nell’evento speciale dedicato all’udito <em>Sherlock Jr.</em> di Buster Keaton e la musica contemporanea si fondono in un dialogo potente e sorprendente.",
-			widgetCta: {
-				label: "Scopri di più",
-				href: "/programma/cineconcerto-sherlock-jr",
-				blank: false
-			}
-		},
-	]
+	// const newses = [
+	// 	{
+	// 		title: "Cineconcerto live con Samuel",
+	// 		widgetAbstract: "Nell’evento speciale dedicato all’udito <em>Sherlock Jr.</em> di Buster Keaton e la musica contemporanea si fondono in un dialogo potente e sorprendente.",
+	// 		widgetCta: {
+	// 			label: "Scopri di più",
+	// 			href: "/programma/cineconcerto-sherlock-jr",
+	// 			blank: false
+	// 		}
+	// 	},
+	// ]
 </script>
 
 <HeadSingle seo={data.seo} seoSingle={false}/>
 
 <main>
-	<!-- {#if data.landing?.layout == '1'}
+	{#if data.landing?.layout == '1'}
 		<Landing1 landing={data.landing} />
 	{:else if data.landing?.layout == '2'}
 		<Landing2 landing={data.landing} />
-	{/if} -->
-	<LandingTickets />
-	<!-- <NewsWidget newses={data.widgetNewses}/> -->
-	<NewsWidget newses={newses}/>
+	{/if}
+	<!-- <LandingTickets /> -->
+	{#if data.widgetNewses}
+	 	<NewsWidget newses={data.widgetNewses}/>
+	{/if}
 	<section id="sections" title="Il Festival" class="bg-white">
 		<div>
 			<h2 class="wb-12 wb-10-mb uppercase">Il Festival</h2>

@@ -6,6 +6,14 @@
 	import portableTextStylePlain from '$lib/components/portableTextStyles/portableTextStylePlain.svelte';
 
     let { event } = $props()
+
+	let canBuy = $derived.by(() => {
+        if (!event.date) return false;
+        const eventDate = new Date(event.date);
+        const now = new Date();
+        const oneHourPastEvent = eventDate.getTime() + (60 * 60 * 1000);
+        return now.getTime() >= oneHourPastEvent;
+    });
 </script>
 
 <div>
@@ -47,7 +55,7 @@
 		{/if}
 	</a>
 	<a class="cta btn-m black bg-linen hover-white hover-bg-black" href="/programma/{event.slug.current}">Leggi di più</a>
-	{#if event.webticHref && !event.soldOut}
+	{#if event.webticHref && !event.soldOut && canBuy}
 		<a class="cta buy btn-m black bg-linen" href={event.webticHref} target="_blank" rel='noopener noreferrer'
 		onclick={(e) => {cta.locked ? handleLockedclick(e) : ''}}
 		>Compra su <img class="webtic" src="/logos/webtic.webp" alt=""></a>

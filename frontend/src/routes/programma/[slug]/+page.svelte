@@ -60,10 +60,10 @@
 			</div>
 		{/if}
 	</section>
-	<div id="links">
+	<!-- <div id="links">
 		<a class="link btn-l bg-linen hover-bg-black" href="/biglietti">Biglietti</a>
-		<!-- <a class="link btn-l border-linen hover-border-black hover-bg-black" href="/biglietti">Scarica PDF ⤓</a> -->
-	</div>
+		<a class="link btn-l border-linen hover-border-black hover-bg-black" href="/biglietti">Scarica PDF ⤓</a>
+	</div> -->
 </main>
 
 <style>

@@ -32,7 +32,7 @@
 {#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-linen">
-	<Title title='Siamo qui per te' size={'m'} subtitles={['Per informazioni, collaborazioni, accrediti o domande sul festival, puoi scriverci quando vuoi. Ti risponderemo il prima possibile.']}/>
+	<Title title='Siamo qui per te' size={'m'} subtitles={['Per informazioni, collaborazioni, accrediti o domande sul Festival, puoi scriverci quando vuoi. Ti risponderemo il prima possibile.']}/>
 	<section class="contacts-grid" title="Contatti" bind:this={sections[0]}>
 		{#each contacts as contact}
 			<ContactCard {contact} />

@@ -8,7 +8,7 @@
 	let size = $derived(landing.size)
 </script>
 
-<section id="hero" class="bg-linen white" style={landing.thumbnail ? `background-image: url(${urlFor(landing.thumbnail).width(1920)})` : undefined}>
+<section id="hero" class="bg-linen white" style={landing.thumbnail ? `background-image: url(${urlFor(landing.thumbnail).width(2560)})` : undefined}>
 	<div class="top">
 		<h3 class="wb-12 uppercase">{landing.runningHead}</h3>
 		{#if landing.title}

@@ -10,6 +10,14 @@
 
 	const cta = event.cta
 	const size = event.size
+
+	const canBuy = $derived.by(() => {
+        if (!event.date) return false;
+        const eventDate = new Date(event.date);
+        const now = new Date();
+        const oneHourPastEvent = eventDate.getTime() + (60 * 60 * 1000);
+        return now.getTime() >= oneHourPastEvent;
+    });
 </script>
 
 <section id="hero" class={event.layout}>
@@ -21,7 +29,7 @@
 		<h2 class="nr-35 nr-21-mb max-w-700">{event.subtitle}</h2>
 	{/if}
 	<div class="info wb-21 wb-15-mb max-w-700">		
-		{#if event.webticHref && !event.soldOut}
+		{#if event.webticHref && !event.soldOut && canBuy}
 			<a class="cta btn-l bg-linen black {shaking ? 'shaking' : undefined}" href={event.webticHref} target="_blank" rel='noopener noreferrer'
 			onclick={(e) => {cta.locked ? handleLockedclick(e) : ''}}
 			>Compra su <img class="webtic" src="/logos/webtic.webp" alt=""></a>

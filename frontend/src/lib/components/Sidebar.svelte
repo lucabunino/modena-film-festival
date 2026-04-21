@@ -13,7 +13,7 @@
 			</svg>
 			<h1 class="wb-28 leading-1">Modena <br>Film Festival <br>15–19.4</h1>
 		</a>
-		<a href="/biglietti" class="tickets btn-m">Biglietti</a>
+		<!-- <a href="/biglietti" class="tickets btn-m">Biglietti</a> -->
 		<nav class="menu wb-28 leading-1_3" aria-label="Main navigation" menubar>
 			<ul>
 				<li><a aria-current={page.url.pathname.startsWith('/festival') ? 'page' : undefined} href="/festival">Festival</a></li>

@@ -17,7 +17,7 @@
 	<Title
 	title='Press'
 	subtitles={[
-		"La 1ª edizione del Modena Film Festival, organizzata da Crispy Cinema Club APS e longtake, si terrà a Modena dal 15 al 19 aprile 2026. Il Modena Film Festival nasce da una riflessione sul cinema come arte della percezione.",
+		"La 1ª edizione del Modena Film Festival, organizzata da Crispy Cinema Club APS e longtake, si è tenuta a Modena dal 15 al 19 aprile 2026. Il Modena Film Festival nasce da una riflessione sul cinema come arte della percezione.",
 		"Per accedere al press kit del Modena Film Festival, ti invitiamo a compilare il form qui sotto."
 	]}
 	size={'m'}

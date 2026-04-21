@@ -33,6 +33,7 @@
 				components={{
 					block: {
 						normal: PortableTextStyleProject,
+						h4: PortableTextStyleProject,
 					},
 					listItem: PortableTextStyleProject,
 					marks: {

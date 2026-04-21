@@ -1,14 +1,16 @@
 export const friends = [
 	{name: 'Anna', surname: 'Giovani'},
 	{name: 'Alessandro', surname: 'Romagnoli'},
+	{name: 'Giacomo', surname: 'Galuzzi'},
 	{name: 'Gianni Stefano', surname: 'Manicardi'},
 	{name: 'Giulietta', surname: 'Malagoli'},
 	{name: 'Irene', surname: 'Malagoli'},
 	{name: 'Laura', surname: 'Malagoli'},
+	{name: 'Lorenzo', surname: 'Sarzi Amadè'},
+	{name: 'Luca', surname: 'Cassanelli'},
 	{name: 'Marino', surname: 'Linguiti'},
 	{name: 'Nicholas', surname: 'Sighinolfi'},
 	{name: 'Paolo', surname: 'Nocetti'},
 	{name: 'Teresa', surname: 'Tinti'},
 	{name: 'Vanna', surname: 'Bortolamasi'},
-	{name: 'Giacomo', surname: 'Galuzzi'},
 ]
