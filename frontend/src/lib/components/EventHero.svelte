@@ -11,7 +11,7 @@
 	const cta = event.cta
 	const size = event.size
 
-	const canBuy = $derived.by(() => {
+	let canBuy = $derived.by(() => {
         if (!event.date) return false;
         const eventDate = new Date(event.date);
         const now = new Date();

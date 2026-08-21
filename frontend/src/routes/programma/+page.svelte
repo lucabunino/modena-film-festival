@@ -9,11 +9,9 @@
 
     let { data } = $props();
     
-    // Initialize state from URL, but keep it local to avoid re-running load()
     let activeDay = $state(page.url.searchParams.get('day') || 'all');
     let activeFormat = $state(page.url.searchParams.get('format') || null);
 
-    // Filter logic remains the same, but reacts to local state
     let filteredDays = $derived.by(() => {
         const seenEventIds = new Set();
         const isFilteringSpecificDay = activeDay && activeDay !== 'all';
@@ -42,12 +40,18 @@
             .filter(day => day.visibleEvents.length > 0);
     });
 
-    // Optimized helper to update filters without triggering Edge Functions
+	let canBuy = $derived.by(() => {
+        if (!event.date) return false;
+        const eventDate = new Date(event.date);
+        const now = new Date();
+        const oneHourPastEvent = eventDate.getTime() + (60 * 60 * 1000);
+        return now.getTime() >= oneHourPastEvent;
+    });
+
     function updateFilters(key, value) {
         if (key === 'day') activeDay = value || 'all';
         if (key === 'format') activeFormat = value;
 
-        // Update URL hash/params without re-triggering load()
         const params = new URLSearchParams(window.location.search);
         if (value && value !== 'all') {
             params.set(key, value);
@@ -59,7 +63,6 @@
         replaceState(newUrl, page.state);
     }
 
-    // Event handlers rewritten to use local state
     function handleDayChange(e) {
         updateFilters('day', e.target.value);
     }
@@ -69,7 +72,6 @@
         updateFilters('format', slug);
     }
 
-    // Format counts logic (Keep as derived, it's efficient enough on client)
     const formatCounts = $derived(
         data.program.formats.map(f => {
             const slug = f.slug?.current || f.slug;
@@ -262,12 +264,10 @@
 
 				@media screen and (max-width: 600px) {
 					margin: calc(var(--margin)*-1);
-					/* color: var(--white) !important; */
 					background-color: var(--white) !important;
 					border-top: solid 1px var(--black);
 					border-bottom: solid 1px var(--black);
 					aspect-ratio: unset;
-					/* text-align: center; */
 					scroll-margin-top: var(--menuHeight);
 					position: sticky;
 					top: var(--menuHeight);
