@@ -81,7 +81,7 @@
 	<p class="mobile-s-only wb-12 wb-10-mb">© {new Date().getFullYear()}<br>
 	Modena Film Festival<br>
 	All rights reserved<br>
-	P.IVA 13457550963
+	P.IVA 04213700364
 	</p>
 </footer>
 
