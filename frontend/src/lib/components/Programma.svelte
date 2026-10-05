@@ -289,6 +289,14 @@
 				}
 			}
 
+			.no-results {
+				margin: var(--sp-36) var(--margin);
+
+				@media (width <= #{$lg}) {
+					margin: 0 var(--margin);
+				}
+			}
+
 			#links {
 				position: absolute;
 				top: 0;
