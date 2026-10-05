@@ -99,10 +99,6 @@
 		> :global(section) {
 			grid-column: 1 / span 8;
 		}
-
-		@media (width <= #{$lg}) {
-			margin-top: calc(var(--menuHeight) + var(--sp-24));
-		}
 	}
 	#sections {
 		padding: var(--sp-144) var(--sp-96);

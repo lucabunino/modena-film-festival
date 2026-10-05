@@ -42,12 +42,8 @@
 @use '$lib/scss/breakpoints.module' as *;
 	#hero {
 		grid-column: 1 / span 8;
-		height: 100vh;
-		// desktop: not full screen, so the next section peeks in
-		@media (width > #{$lg}) {
-			height: 90vh;
-			min-height: 600px;
-		}
+		height: 90vh;
+		min-height: 600px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -104,10 +100,12 @@
 
 		@media (width <= #{$lg}) {
 			height: auto;
+			min-height: unset;
 			width: calc(100vw - var(--margin)*2);
 			border-radius: 3rem;
 			margin: var(--sp-24) var(--margin);
 			display: grid;
+			align-content: space-between;
 
 			div:nth-child(1) {
 				padding: var(--sp-36) 0 var(--margin);
