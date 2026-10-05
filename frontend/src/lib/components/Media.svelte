@@ -138,7 +138,7 @@
 			z-index: 1;
 			background-size: cover;
 			background-position: center;
-			transform: scale(1.1); // hides blurred edge artifacts from backdrop-filter
+			transform: scale(1.1);
 			filter: blur(20px);
 			opacity: 1;
 			transition: opacity var(--transition-s);
