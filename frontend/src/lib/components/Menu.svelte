@@ -176,7 +176,7 @@ header {
 			--bottomRow: calc(var(--iconSize) + var(--margin) * 2);
 			position: absolute;
 			inset: var(--menuHeight) 0 var(--bottomRow);
-			padding: var(--sp-48) var(--margin) var(--sp-24);
+			padding: var(--sp-26) var(--margin) var(--sp-24);
 			line-height: 1.2;
 			overflow-y: auto; // a long menu scrolls here, the page stays locked
 

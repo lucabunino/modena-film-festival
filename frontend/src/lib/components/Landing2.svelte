@@ -86,7 +86,7 @@
 			min-height: unset;
 			width: calc(100vw - var(--margin)*2);
 			border-radius: 3rem;
-			margin: var(--sp-24) var(--margin);
+			margin: var(--sp-32) var(--margin);
 			padding-top: 0;
 			display: flex;
 			min-height: 450px;

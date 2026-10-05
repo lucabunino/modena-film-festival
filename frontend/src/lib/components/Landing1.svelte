@@ -103,7 +103,7 @@
 			min-height: unset;
 			width: calc(100vw - var(--margin)*2);
 			border-radius: 3rem;
-			margin: var(--sp-24) var(--margin);
+			margin: var(--sp-32) var(--margin);
 			display: grid;
 			align-content: space-between;
 

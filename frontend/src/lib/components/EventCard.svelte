@@ -88,7 +88,7 @@
 				position: absolute;
 				z-index: 1;
 				inset: auto 0 0;
-				padding: var(--sp-24) var(--margin) var(--inset) var(--margin);
+				padding: var(--sp-32) var(--margin) var(--inset) var(--margin);
 				background: linear-gradient(transparent, rgba(0, 0, 0, .45));
 				transition: transform var(--transition-xs);
 

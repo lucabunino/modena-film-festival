@@ -42,7 +42,7 @@ section {
 	grid-column: 1 / span 6;
 
 	h2 {
-		margin-top: var(--sp-24);
+		margin-top: var(--sp-12);
 
 		&+h2 {
 			margin-top: .6em;

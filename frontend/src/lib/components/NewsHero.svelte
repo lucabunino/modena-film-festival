@@ -33,7 +33,7 @@
 			background-position: top;
 
 			@media (width <= #{$md}) {
-				padding: var(--sp-24) var(--margin);
+				padding: var(--sp-32) var(--margin);
 				min-height: 300px;
 				height: 40vh;
 			}

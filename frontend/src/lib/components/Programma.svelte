@@ -239,6 +239,10 @@
 				}
 			}
 
+			@media (width <= #{$lg}) {
+				padding: var(--sp-32) 0;
+				row-gap: var(--sp-32);
+			}
 			@media (width <= #{$sm}) {
 				flex-direction: column;
 				border: none;

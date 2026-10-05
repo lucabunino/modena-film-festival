@@ -63,6 +63,11 @@
 					margin-right: 1em;
 				}
 			}
+
+			@media (width <= #{$lg}) {
+				padding: var(--sp-32) 0;
+				row-gap: var(--sp-32);
+			}
 		}
 		#newses {
 			grid-column: 1 / span 8;
