@@ -62,7 +62,7 @@
 
 		@media (width <= #{$lg}) {
 			display: block;
-			padding: var(--sp-60) var(--margin) var(--sp-48);
+			padding: var(--sp-48) var(--margin) var(--sp-48);
 		}
 	}
 </style>

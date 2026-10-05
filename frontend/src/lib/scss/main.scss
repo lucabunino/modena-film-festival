@@ -79,7 +79,7 @@ main {
 	}
 	@media (width <= #{$lg}) {
 		margin-top: var(--menuHeight);
-		padding: var(--sp-60) var(--margin);
+		padding: var(--sp-48) var(--margin);
 		display: block;
 		row-gap: 0;
 

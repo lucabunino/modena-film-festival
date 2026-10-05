@@ -33,7 +33,7 @@
 			background-position: top;
 
 			@media (width <= #{$md}) {
-				padding: var(--sp-60) var(--margin);
+				padding: var(--sp-48) var(--margin);
 				min-height: 300px;
 				height: 40vh;
 			}
@@ -48,7 +48,7 @@
 			background-position: top;
 
 			@media (width <= #{$md}) {
-				padding: var(--sp-60) var(--margin);
+				padding: var(--sp-48) var(--margin);
 				min-height: 300px;
 				height: 40vh;
 			}
