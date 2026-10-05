@@ -1,0 +1,473 @@
+@use 'sass:map';
+@use 'breakpoints.module' as *;
+/* Setup */
+$colors: (
+	"white":	#FFFFFF,
+	"black":	#000000,
+	"gray":		#AAAAAA,
+	"linen":	#E9E8E3,
+	"brown":	#977D2D,
+	"pink":		#FFBEE6,
+	"yellow":	#FFF473,
+	"iris":		#85A4F7,
+	"red":		#F7604F,
+	"cyan":		#1FCBFB,
+);
+:root{
+	@each $name, $value in $colors {
+		--#{$name}: #{$value};
+	}
+	@for $i from 1 through 300 {
+		--sp-#{$i}: #{calc($i / 12)}rem;
+	}
+	--gutter: var(--sp-12);
+	--margin: var(--sp-24);
+	--transition-xs: cubic-bezier(.77,0,.175,1) 200ms;
+	--transition-s: cubic-bezier(.77,0,.175,1) 400ms;
+	--transition-m: cubic-bezier(.77,0,.175,1) 800ms;
+	--transition-l: cubic-bezier(.77,0,.175,1) 1200ms;
+	--sidebarWidth: var(--sp-222);
+	--menuHeight: clamp(calc(30px + var(--margin)*2), calc(8vw + var(--margin)*2), calc(50px + var(--margin)*2));
+	--radius-m: 1rem;
+	--radius-l: 3rem;
+
+	@media (width <= #{$lg}) {
+		--margin: var(--sp-15);
+		--sidebarWidth: 0;
+	}
+}
+:root {
+	// collapsed Sidebar keeps a strip visible for its reopen icon (desktop only; mobile has no sidebar)
+	@media (width > #{$lg}) {
+		&.sidebar-collapsed {
+			--sidebarWidth: var(--sp-36);
+		}
+	}
+}
+html {
+	-webkit-font-smoothing: antialiased;
+	font-size: clamp(12px, calc(9px + 0.2646vw), 16px);
+	line-height: 1.2;
+	color: var(--black);
+	background-color: var(--lightGray);
+	overscroll-behavior-x: none;
+	// scroll-behavior: smooth;
+}
+main {
+	// grids query this (@container main) so they gain columns when the Sidebar collapses
+	container: main / inline-size;
+	margin-left: var(--sidebarWidth);
+	width: calc(100% - var(--sidebarWidth));
+	// --sidebarWidth switches instantly; each element animates its own properties (reliable in Safari,
+	// unlike animating a registered custom property)
+	transition: margin-left var(--transition-s), width var(--transition-s);
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	padding: var(--margin) var(--margin) calc(var(--margin)*1.5);
+	column-gap: var(--margin);
+	row-gap: var(--sp-48);
+	height: fit-content;
+	>section {
+		grid-column: 1 / span 6;
+		&:not(:first-of-type) {
+			padding-top: var(--margin);
+		}
+		&:last-of-type {
+			padding-bottom: var(--sp-144);
+		}
+	}
+	@media (width <= #{$lg}) {
+		margin-top: var(--menuHeight);
+		padding: var(--sp-60) var(--margin);
+		display: block;
+		row-gap: 0;
+
+		>section {
+			grid-column: unset;
+			&:not(:first-of-type) {
+				padding-top: var(--menuHeight);
+			}
+			&:last-of-type {
+				padding-bottom: var(--sp-144);
+			}
+		}
+	}
+}
+/* Visibility */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+.mobile-s-only {
+	display: none;
+}
+.mobile-only {
+	display: none;
+}
+@media (width <= #{$lg}) {
+	.desktop-only {
+		display: none !important;
+	}
+	.mobile-only {
+		display: inherit;
+	}
+}
+@media (width <= #{$md}) {
+	.desktop-s-only {
+		display: none !important;
+	}
+	.mobile-s-only {
+		display: inherit;
+	}
+}
+/* Buttons */
+.btn {
+	&,
+	&-xxs,
+	&-xs,
+	&-s,
+	&-m,
+	&-l {
+		font-family: "Waldenburg", Helvetica, Arial, sans-serif;
+		font-optical-sizing: auto;
+		font-style: normal;
+		display: inline-block;
+		border-radius: 99em;
+		color: var(--black);
+		background-color: var(--white);
+		
+		&:hover {
+			color: var(--white);
+			background-color: var(--black);
+			
+			&:after {
+				transform: scaleX(0);
+			}
+		}
+	}
+
+	&-xs {
+		font-size: .857rem;
+		font-weight: 700;
+		letter-spacing: .03em;
+		line-height: 1.2;
+		background-color: transparent;
+		border-radius: unset;
+		display: inline-block;
+    	position: relative;
+
+		&:hover {
+			color: inherit;
+			background-color: inherit;
+
+			&:after {
+				transform: scaleX(1);
+			}
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			bottom: -.02em;
+			left: 0;
+			height: 1px;
+			width: 100%;
+			background-color: var(--black);
+			transform: scaleX(0);
+			transform-origin: left;
+			transition: var(--transition-s);
+			transition-property: transform;
+		}
+
+		@media (width <= #{$lg}) {
+			font-size: .833rem;
+		}
+	}
+
+	&-s {
+		font-weight: 500;
+		font-size: 1.5rem;
+		letter-spacing: -0.01em;
+		line-height: 1;
+		background-color: transparent;
+		border-radius: unset;
+		display: inline-block;
+    	position: relative;
+		
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: -0.1em;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background-color: var(--black);
+			transform: scaleX(1);
+			transform-origin: left;
+		}
+
+		&:hover {
+			color: inherit;
+			background-color: inherit;
+
+			&::after {
+				animation: line-wipe 1s ease forwards;
+			}
+		}
+
+		@media (width <= #{$lg}) {
+			font-size: 1.5rem;
+		}
+	}
+
+	&-m {
+		font-weight: 800;
+		font-size: .857rem;
+		letter-spacing: .03em;
+		line-height: 1;
+		text-transform: uppercase;
+		padding: .95em 2em 1em;
+
+		@media (width <= #{$lg}) {
+			font-size: .833rem;
+		}
+	}
+
+	&-l {
+		font-weight: 500;
+		font-size: 1.5rem;
+		letter-spacing: -0.01em;
+		line-height: 1;
+		padding: 1.15em 2em 1.2em;
+	}
+
+	// smallest filled button: wb-14 type, squarer corners
+	&-xxs {
+		font-size: 1rem;
+		letter-spacing: .01em;
+		line-height: 1.2;
+		border-radius: var(--sp-6);
+		padding: var(--sp-5) var(--sp-12);
+	}
+}
+@keyframes line-wipe {
+	0% {
+		transform: scaleX(1);
+		transform-origin: right;
+	}
+	40% {
+		transform: scaleX(0);
+		transform-origin: right;
+	}
+	60% {
+		transform: scaleX(0);
+		transform-origin: left;
+	}
+	100% {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+}
+
+// Tags
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: .3em;
+	row-gap: .5em;
+}
+.tag {
+	padding: .3em 1em;
+	border-radius: .2em;
+	display: inline-block;
+}
+
+// Colors
+@each $name, $value in $colors {
+	.#{$name}       { color: $value; }
+	.bg-#{$name}    { background-color: $value; }
+	.fill-#{$name}  { fill: $value; }
+	.stroke-#{$name}{ stroke: $value; }
+	.border-#{$name}{ border: solid 1px $value; }
+
+	.hover-#{$name}:hover { color: $value; }
+	.hover-bg-#{$name}:hover { background-color: $value; }
+	.hover-fill-#{$name}:hover { fill: $value; }
+	.hover-stroke-#{$name}:hover { stroke: $value; }
+	.hover-border-#{$name}:hover { border: solid 1px $value; }
+}
+// Gradients: only the combinations in use — add a [direction, from, to] entry to create a new one
+$gradient-directions: ("x": to right, "y": to bottom, "xy": 135deg);
+$gradients: (
+	("xy", "linen", "white"),
+	("y", "linen", "white"),
+	("xy", "pink", "brown"),
+	("y", "brown", "cyan"),
+	("y", "brown", "iris"),
+	("y", "brown", "pink"),
+	("y", "brown", "red"),
+	("y", "brown", "yellow"),
+);
+@each $dir, $from, $to in $gradients {
+	.gradient-#{$dir}-#{$from}-#{$to} {
+		background: linear-gradient(map.get($gradient-directions, $dir), map.get($colors, $from), map.get($colors, $to));
+	}
+}
+
+// General
+.placeholder, .portrait, .cover {
+	object-fit: cover;
+}
+._9_21	{ aspect-ratio: 9/21; }
+._9_16	{ aspect-ratio: 9/16; }
+._2_3	{ aspect-ratio: 2/3; }
+._3_4	{ aspect-ratio: 3/4; }
+._4_5	{ aspect-ratio: 4/5; }
+._1_1	{ aspect-ratio: 1/1; }
+._5_4	{ aspect-ratio: 5/4; }
+._4_3	{ aspect-ratio: 4/3; }
+._3_2	{ aspect-ratio: 3/2; }
+._16_9	{ aspect-ratio: 16/9; }
+._21_9	{ aspect-ratio: 21/9; }
+
+
+
+.rounded-m {
+	overflow: hidden;
+	border-radius: var(--radius-m);
+}
+.rounded-l {
+	overflow: hidden;
+	border-radius: var(--radius-l);
+}
+.section-title {
+	width: 100%;
+	border-top: solid 1px var(--black);
+	padding-top: var(--sp-12);
+	margin-bottom: var(--sp-48);
+
+	@media (width <= #{$lg}) {
+		padding-top: var(--sp-12);
+	}
+}
+.shadow {
+	box-shadow: 10px 5px 15px rgba(0, 0, 0, .1);
+}
+.hover-shadow:hover {
+	box-shadow: 10px 5px 15px rgba(0, 0, 0, .1);
+}
+.hover-underline {
+	display: inline-block;
+    position: relative;
+}
+.hover-underline:after {
+	content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: var(--black);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: var(--transition-s);
+    transition-property: transform;
+}
+.hover-underline.typeColor::after {
+	background-color: var(--bgColor);
+}
+.hover-underline:hover:after {
+	transform: scaleX(1);
+}
+.max-w-800 {max-width: 800px;}
+.max-w-700 {max-width: 700px;}
+.max-w-600 {max-width: 600px;}
+.max-w-500 {max-width: 500px;}
+.max-w-400 {max-width: 400px;}
+
+.locked {
+	cursor: not-allowed !important;
+}
+.locked.shaking {
+	animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+}
+.policy {
+	section {
+		h3 {
+			margin-top: 1em;
+			margin-bottom: .5em;
+		}
+		ul {
+			list-style: none;
+			padding-left: 0;
+
+			li {
+				position: relative;
+				padding-left: 1.5em;
+
+				&::before {
+					content: "—";
+					position: absolute;
+					left: 0;
+				}
+			}
+		}
+	}
+}
+.text {
+	p + p,
+	ul + p,
+	ol + p {
+		margin-top: 1.1em;
+	}
+	ul {
+		list-style: none;
+		padding-left: 0;
+
+		li {
+			position: relative;
+			padding-left: 1.5em;
+
+			&::before {
+				content: "—";
+				position: absolute;
+				left: 0;
+			}
+		}
+	}
+	a {
+		text-decoration: underline;
+	}
+}
+// same column steps as the Programma events grid, driven by the main container (so they follow the Sidebar)
+.contacts-grid {
+	grid-column: 1 / span 8;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: var(--margin);
+	row-gap: var(--margin);
+
+	@container main (width <= #{$xxl}) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	@container main (width <= #{$xl}) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@container main (width <= #{$sm}) {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+@keyframes shake {
+	10%, 90% { rotate: (1deg); }
+	20%, 80% { rotate: (-2deg); }
+	30%, 50%, 70% { rotate: (-4deg); }
+	40%, 60% { rotate: (4deg); }
+}

@@ -1,10 +1,11 @@
 <script>
+	import Media from '$lib/components/Media.svelte'
     let { juror } = $props()
 </script>
 
 <div class="juror wb-14 wb-12-mb" title="{juror.name} {juror.surname}">
 	{#if juror.portrait}
-		<img class="portrait _4_5 rounded-m" src={juror.portrait} alt="">
+		<Media class="portrait _4_5 rounded-m" src={juror.portrait} />
 	{:else}
 		<div class="placeholder _4_5 rounded-m gradient-xy-linen-white"></div>
 	{/if}
@@ -23,7 +24,7 @@
 		</ul>
 		{#if juror.bio}
 			<div class="bio">
-				{#each juror.bio as p}
+				{#each juror.bio as p (p)}
 				<p>{p}</p>
 				{/each}
 			</div>
@@ -31,16 +32,16 @@
 	{/if}
 </div>
 
-<style>
+<style lang="scss">
 	.juror {
 		h3 {
-			margin-top: 1rem;
+			margin-top: var(--sp-12);
 		}
 		.info {
-			margin-top: .5rem;
+			margin-top: var(--sp-6);
 		}
 		.bio {
-			margin-top: 1rem;
+			margin-top: var(--sp-12);
 			p+p {
 				margin-top: .6em;
 			}

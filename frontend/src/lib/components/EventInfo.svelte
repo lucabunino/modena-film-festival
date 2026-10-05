@@ -37,10 +37,11 @@
 	</div>
 </nav>
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 	nav {
 		position: absolute;
-		right: 0;
+		right: calc(var(--gutter) - var(--margin)); // pull out of main's --margin padding: panel sits --gutter from the edge
 		grid-column: 7 / span 2;
 		height: 100%;
 		width: stretch;
@@ -63,11 +64,11 @@
 			}
 
 			&.banner {
-				top: calc(var(--margin) + 200px + .3rem);
+				top: calc(var(--margin) + 200px + var(--sp-4));
 			}
 
 			.title {
-				margin-bottom: 2rem;
+				margin-bottom: var(--sp-24);
 				cursor: pointer;
 			}
 			p {
@@ -77,7 +78,7 @@
 					transition: var(--transition-s);
 					transition-property: padding;
 
-					@media screen and (min-width: 1081px) {
+					@media (width > #{$lg}) {
 						&:hover:not(.cta) {
 							text-decoration: underline;
 						}

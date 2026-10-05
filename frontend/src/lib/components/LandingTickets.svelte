@@ -1,10 +1,11 @@
 <script>
+	import Media from '$lib/components/Media.svelte'
     import { rules } from "$lib/content/rules";
     import { urlFor } from "$lib/utils/image";
 </script>
 
 <section id="hero" class="bg-linen white">
-	<video class="bg" src="/tickets/abbonamento-min.mp4" poster="/tickets/abbonamento-min.webp" muted loop autoplay playsinline></video>
+	<Media class="bg" src="/tickets/abbonamento-min.mp4" video poster="/tickets/abbonamento-min.webp" />
 	<div class="top">
 		<h3 class="wb-12 uppercase">Abbonamenti disponibili</h3>
 		<h1 class="wb-cd-120 wb-cd-40-mb max-w-600 uppercase">Abbonati al festival</h1>
@@ -14,7 +15,8 @@
 	</div>
 </section>
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 	#hero {
 		grid-column: 1 / span 8;
 		height: 100vh;
@@ -28,7 +30,7 @@
 		background-size: cover;
 		overflow: hidden;
 
-		.bg {
+		:global(.bg) {
 			position: absolute;
 			left: 0;
 			top: 0;
@@ -51,7 +53,7 @@
 			z-index: 2;
 
 			h3 {
-				margin-bottom: 1rem;
+				margin-bottom: var(--sp-12);
 			}
 
 			h2 {
@@ -68,33 +70,33 @@
 				width: 100%;
 			}
 			.cta {
-				margin-top: var(--spacing-xs);
+				margin-top: var(--sp-24);
 			}
 		}
 
-		@media screen and (max-width: 1080px) {
+		@media (width <= #{$lg}) {
 			height: auto;
 			width: calc(100vw - var(--margin)*2);
 			border-radius: 3rem;
-			margin: var(--spacing-xs) var(--margin);
+			margin: var(--sp-24) var(--margin);
 			padding-top: 0;
 			display: flex;
 			min-height: 450px;
 
 			.top {
-				padding: 3rem 0 var(--margin);
+				padding: var(--sp-36) 0 var(--margin);
 			}
 			.bottom {
 				margin-bottom: 0;
 				padding: 0;
 
 				p {
-					margin-top: var(--spacing-m);
+					margin-top: var(--sp-96);
 				}
 			}
 		}
 
-		@media screen and (max-width: 768px) {
+		@media (width <= #{$md}) {
 			text-align: center;
 
 			.top {

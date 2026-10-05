@@ -1,6 +1,6 @@
 import seoFields from './fields/seoFields.js'
 import colorOptions from './fields/colorOptions.js'
-import { EnvelopeIcon } from '@sanity/icons'
+import {EnvelopeIcon} from '@sanity/icons/Envelope'
 const relativeOrAbsoluteRegex = /^(https?:\/\/|mailto:|tel:|\/|#)/;
 
 export default {

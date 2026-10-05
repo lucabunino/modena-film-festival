@@ -8,9 +8,21 @@
 	let shaking = $state(false);
 	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
 	let activeSection = $state(false)
+
+	// publish the panel height (on mobile it's a fixed bottom bar) so other fixed UI, e.g. Alert, can sit above it
+	function publishHeight(node) {
+		const root = document.documentElement
+		const ro = new ResizeObserver(() => root.style.setProperty('--navigatorHeight', `${node.offsetHeight}px`))
+		ro.observe(node)
+		return () => {
+			ro.disconnect()
+			root.style.removeProperty('--navigatorHeight')
+		}
+	}
 	$effect(() => {
-		observeSections();
+		const disconnect = observeSections();
 		visible = true;
+		return disconnect
 	})
 	function observeSections() {
 		const observer = new IntersectionObserver(
@@ -31,7 +43,8 @@
 			}
 		);
 
-		sections.forEach(el => observer.observe(el));
+		sections.filter(Boolean).forEach(el => observer.observe(el));
+		return () => observer.disconnect()
 	}
 	function scrollIntoView(e, i) {
 		e.preventDefault()
@@ -44,12 +57,12 @@
 
 {#if sections}
 	<nav>
-		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}">
+		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}" {@attach publishHeight}>
 			{#if title}
 				<button class="title wb-12 uppercase desktop-only" onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>{title}</button>
 			{/if}
 			<ol>
-				{#each sections as section, i}
+				{#each sections as section, i (section ?? i)}
 					<li>
 						<a aria-current={activeSection == i ? 'section' : undefined} href="#{section.id}" onclick={(e) => {scrollIntoView(e, i)}}>{section.title}</a>
 					</li>
@@ -66,10 +79,11 @@
 	</nav>
 {/if}
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 	nav {
 		position: absolute;
-		right: 0;
+		right: calc(var(--gutter) - var(--margin)); // pull out of main's --margin padding: panel sits --gutter from the edge
 		grid-column: 7 / span 2;
 		height: 100%;
 		width: stretch;
@@ -91,11 +105,11 @@
 			}
 
 			&.banner {
-				top: calc(var(--margin) + 200px + .3rem);
+				top: calc(var(--margin) + 200px + var(--sp-4));
 			}
 
 			.title {
-				margin-bottom: 2rem;
+				margin-bottom: var(--sp-24);
 				cursor: pointer;
 			}
 			ol {
@@ -105,15 +119,15 @@
 						transition: var(--transition-s);
 						transition-property: padding;
 
-						@media screen and (min-width: 1081px) {
+						@media (width > #{$lg}) {
 							&:hover:not(.cta) {
-								padding-left: 1rem;
+								padding-left: var(--sp-12);
 							}
 							&[aria-current="section"]:not(.cta) {
 								color: var(--brown);
 							}
 						}
-						@media screen and (max-width: 1080px) {
+						@media (width <= #{$lg}) {
 							&:hover:not(.cta) {
 								background-color: var(--white) !important;
 							}
@@ -130,12 +144,12 @@
 				.cta {
 					width: 100%;
 					text-align: center;
-					margin-top: 2rem;
+					margin-top: var(--sp-24);
 				}
 			}
 		}
 
-		@media screen and (max-width: 1080px) {
+		@media (width <= #{$lg}) {
 			height: stretch;
 
 			div {
@@ -162,7 +176,7 @@
 
 					li {
 						a {
-							padding: 1rem var(--margin);
+							padding: var(--sp-12) var(--margin);
 							background-color: var(--linen);
 							font-size: .833rem;
 							text-transform: uppercase;

@@ -13,6 +13,8 @@ export const client = createClient({
 	apiVersion: '2026-01-29', // date of setup
 });
 
+const image = `..., asset->{_id, url, altText, metadata{dimensions, lqip, palette}}`
+
 export async function getLanding() {
 	return await client.fetch(
 		`*[_type == "landing" && status == "public" && !(_id in path('drafts.**'))][0] {
@@ -48,7 +50,7 @@ export async function getNewses() {
 			subtitle,
 			abstract,
 			date,
-			thumbnail
+			thumbnail{ ${image} }
 		}`
     );
 }
@@ -68,15 +70,18 @@ export async function getNews(slug) {
 			}
 		}`, { slug });
 }
-export async function getProgram() {
+// edition omitted → current (latest public) edition
+export async function getProgram(edition) {
 	return await client.fetch(
-		`*[_type == "program" && status == 'public'] | order(edition desc) [0] {
+		`*[_type == "program" && status == 'public' && (!defined($edition) || edition == $edition)] | order(edition desc) [0] {
 			title,
             edition,
+			intro,
             days[] {
                 date,
                 events[]-> {
                     ...,
+					thumbnail{ ${image} },
 					location->{ title, slug },
 					formats[]-> { title, slug },
 					sense->{ title },
@@ -88,23 +93,31 @@ export async function getProgram() {
 			},
 			webticHref,
 			soldOut
-		}`
+		}`, { edition: edition ?? null }
     );
 }
-export async function getContest() {
+export async function getEditions() {
 	return await client.fetch(
-		`*[_type == "event" && status == "public" && "in-concorso" in formats[]->slug.current && !(_id in path('drafts.**'))] | order(start asc) {
+		`*[_type == "program" && status == 'public' && !(_id in path('drafts.**'))] | order(edition desc).edition`
+	);
+}
+// edition given → only that edition's films (events referenced by its program)
+export async function getContest(edition) {
+	return await client.fetch(
+		`*[_type == "event" && status == "public" && "in-concorso" in formats[]->slug.current && !(_id in path('drafts.**'))
+			&& (!defined($edition) || _id in *[_type == "program" && edition == $edition][0].days[].events[]._ref)] | order(start asc) {
             slug,
 			homepageTitle,
 			homepageSubtitle,
-			homepageThumbnail
-        }`
+			homepageThumbnail{ ${image} }
+        }`, { edition: edition ?? null }
 	);
 }
 export async function getEvent(slug) {
 	return await client.fetch(
 		`*[_type == "event" && slug.current == $slug] {
 			...,
+			thumbnail{ ${image} },
 			location->{
 				title,
 				subtitle,
@@ -122,7 +135,9 @@ export async function getEvent(slug) {
 				"seoTitle": title,
 				seoDescription,
 				seoImage,
-			}
+			},
+			// latest public edition whose program lists this event
+			"edition": *[_type == "program" && status == 'public' && ^._id in days[].events[]._ref] | order(edition desc)[0].edition
 		}`, { slug });
 }
 export async function getSeo() {
@@ -131,6 +146,27 @@ export async function getSeo() {
 			seoTitle,
 			seoDescription,
 			seoImage,
+		}`
+	);
+}
+// `name`: "main" | "stage"; a menu saved before names existed counts as "main"
+export async function getMenu(name = 'main') {
+	return await client.fetch(
+		`*[_type == "menu" && !(_id in path('drafts.**')) && coalesce(name, "main") == $name][0] {
+			items[] { _key, label, href, openInNewTab, level },
+			socials[] { _key, label, href, openInNewTab },
+			showNewsletter,
+			cta { label, href, openInNewTab }
+		}`, { name }
+	);
+}
+
+// every event listed in a public program, with its edition and status (for the sitemap)
+export async function getProgramEvents() {
+	return await client.fetch(
+		`*[_type == "program" && status == 'public' && !(_id in path('drafts.**'))] | order(edition desc) {
+			edition,
+			"events": days[].events[]->{ "slug": slug.current, status, _updatedAt }
 		}`
 	);
 }

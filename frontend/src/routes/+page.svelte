@@ -9,19 +9,17 @@
     import { innerWidth } from 'svelte/reactivity/window';
     import Landing1 from '$lib/components/Landing1.svelte';
     import Landing2 from '$lib/components/Landing2.svelte';
-    import HeadSingle from '$lib/components/HeadSingle.svelte';
     import LandingTickets from '$lib/components/LandingTickets.svelte';
-    import { urlFor } from '$lib/utils/image.js';
     import { page } from '$app/state';
-    import EventCard from '$lib/components/EventCard.svelte';
-    import { formatDateHash, formatDayName, formatDayNumber } from '$lib/utils/datetime.js';
+    import ContestSlider from '$lib/components/ContestSlider.svelte';
+    import ProgramSection from '$lib/components/ProgramSection.svelte';
 	
 	const sections = [
-		{ name: 'Vista', slug: 'il-cieco-che-non-voleva-vedere-titanic', gradient: 'gradient-y-brown-cyan', img: '/home/1.webp', title: "Il cieco che non voleva vedere titanic" },
-		{ name: 'Udito', slug: 'cineconcerto-sherlock-jr', gradient: 'gradient-y-brown-yellow', img: '/home/3.webp', title: "Cineconcerto Sherlock Jr." },
-		{ name: 'Tatto', slug: 'thelma-e-louise', gradient: 'gradient-y-brown-red', img: '/home/5.webp', title: "Thelma e Louise" },
-		{ name: 'Gusto', slug: 'la-citta-incantata', gradient: 'gradient-y-brown-pink', img: '/home/2.webp', title: "La città incantata" },
-		{ name: 'Olfatto', slug: 'odorama-the-truman-show', gradient: 'gradient-y-brown-iris', img: '/home/4.webp', title: "Odorama. The Truman Show" }
+		{ name: 'Vista', slug: 'il-cieco-che-non-voleva-vedere-titanic', gradient: 'gradient-y-brown-cyan', img: '/img/mff-placeholder.webp', lqip: '/img/mff-placeholder-lqip.webp', title: "Coming soon", locked: true },
+		{ name: 'Udito', slug: 'cineconcerto-sherlock-jr', gradient: 'gradient-y-brown-yellow', img: '/img/mff-placeholder.webp', lqip: '/img/mff-placeholder-lqip.webp', title: "Coming soon", locked: true },
+		{ name: 'Tatto', slug: 'thelma-e-louise', gradient: 'gradient-y-brown-red', img: '/img/mff-placeholder.webp', lqip: '/img/mff-placeholder-lqip.webp', title: "Coming soon", locked: true },
+		{ name: 'Gusto', slug: 'la-citta-incantata', gradient: 'gradient-y-brown-pink', img: '/img/mff-placeholder.webp', lqip: '/img/mff-placeholder-lqip.webp', title: "Coming soon", locked: true },
+		{ name: 'Olfatto', slug: 'odorama-the-truman-show', gradient: 'gradient-y-brown-iris', img: '/img/mff-placeholder.webp', lqip: '/img/mff-placeholder-lqip.webp', title: "Coming soon", locked: true }
 	];
 
 	const prefooter = {
@@ -51,52 +49,6 @@
 	let shaking = $state(false);
 	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
 
-	const activeDay = $derived(page.url.searchParams.get('day') || (data.program?.days?.[0] ? formatDateHash(data.program.days[0].date) : null));
-    let activeFormat = $derived(page.url.searchParams.get('format'));
-	let filteredDays = $derived.by(() => {
-        const seenEventIds = new Set();
-        const isFilteringSpecificDay = activeDay && activeDay !== 'all';
-
-        return data.program.days
-            .filter(day => {
-                if (!isFilteringSpecificDay) return true;
-                return formatDateHash(day.date) === activeDay;
-            })
-            .map(day => {
-                const visibleEvents = day.events.filter(event => {
-                    const matchesFormat = !activeFormat || event.formats?.some(f => {
-                        const slugValue = typeof f.slug === 'object' ? f.slug.current : f.slug;
-                        return slugValue === activeFormat;
-                    });
-
-                    if (!matchesFormat) return false;
-                    if (isFilteringSpecificDay) return true;
-                    if (seenEventIds.has(event._id)) return false;
-                    
-                    seenEventIds.add(event._id);
-                    return true;
-                });
-
-                return { ...day, visibleEvents };
-            })
-            .filter(day => day.visibleEvents.length > 0);
-    });
-
-	function handleDayChange(e) {
-        const value = e.target.value;
-        const newUrl = getFilterUrl('day', value === 'all' ? null : value);
-        goto(newUrl, { noscroll: true, keepfocus: true });
-    }
-    function getFilterUrl(key, value) {
-        const params = new URLSearchParams(page.url.searchParams);
-        if (value) {
-            params.set(key, value);
-        } else {
-            params.delete(key);
-        }
-        const queryString = params.toString();
-        return queryString ? `?${queryString}` : page.url.pathname;
-    }
 
 	// const newses = [
 	// 	{
@@ -111,7 +63,6 @@
 	// ]
 </script>
 
-<HeadSingle seo={data.seo} seoSingle={false}/>
 
 <main>
 	{#if data.landing?.layout == '1'}
@@ -133,72 +84,28 @@
 		</div>
 		<SectionsDesktop {sections}/>
 	</section>
-	<section id="contest" class="bg-linen" title="Film in concorso">
-		<div class="text-wrapper">
-			<h2 class="wb-12 wb-10-mb uppercase">Film in concorso</h2>
-			<p class="wb-24 wb-18-mb max-w-600">I cinque sensi rappresentano il nostro primo e più immediato contatto con la realtà: attraverso di essi facciamo esperienza di conoscenza, memoria ed emozione.</p>
-		</div>
-		<div class="contest-wrapper">
-			<div class="contest">
-				{#each data.contest as event, i}
-					<a class="event white" href="/programma/{event.slug.current}">
-						{#if event.homepageThumbnail}
-							<img class="img" src="{urlFor(event.homepageThumbnail).height(1920)}" alt="Copertina di {event.homepageTitle}">
-						{/if}
-						{#if event.homepageTitle}<h3 class="title wb-28 wb-18-mb">{event.homepageTitle}</h3>{/if}
-						{#if event.homepageSubtitle}<h4 class="subtitle nr-28 nr-21-mb">{event.homepageSubtitle}</h4>{/if}
-						<span class="cta btn-m black bg-white hover-bg-linen">Leggi di più</span>
-					</a>
-				{/each}
-			</div>
-		</div>
-	</section>
-	<section id="program" class="bg-white" title="Programma">
-		<div class="text-wrapper">
-			<h2 class="wb-12 wb-10-mb uppercase">Programma</h2>
-			<p class="wb-24 wb-18-mb max-w-600">Tutte le informazioni sull’intero cartellone del festival, dai film in concorso agli eventi speciali.</p>
-			<div class="days wb-12 wb-10-mb uppercase">
-				<span>Giorni: </span>
-				{#each data.program.days as day, i}
-					<a href={getFilterUrl('day', formatDateHash(day.date))} class="filter btn-m {activeDay === formatDateHash(day.date) ? 'bg-black white' : 'bg-linen'} hover-bg-black" data-sveltekit-noscroll>{formatDayName(day.date).substring(0, 3)} {formatDayNumber(day.date)}</a>
-				{/each}
-			</div>
-		</div>
-		{#each filteredDays as day, i}
-			{#key day}
-				<p class="day-title wb-cd-170 desktop-only">{formatDayName(day.date)} {formatDayNumber(day.date)}</p>
-				<div class="day-wrapper">
-					<div class="day">
-						{#each day.visibleEvents as event, j}
-							<div class="event-wrapper">
-								<EventCard {event} />
-							</div>
-						{/each}
-					</div>
-				</div>
-			{/key}
-		{/each}
-		<a class="cta btn-xs uppercase" href="/programma">Vedi il programma completo →</a>
-	</section>
+	<ContestSlider contest={data.contest} />
+	<ProgramSection program={data.program} />
 </main>
 <PreFooter {prefooter}/>
 
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 	main {
 		padding: 0;
 		row-gap: 0;
 
-		section {
+		> :global(section) {
 			grid-column: 1 / span 8;
 		}
 
-		@media screen and (max-width: 1080px) {
-			margin-top: calc(var(--menuHeight) + var(--spacing-xs));
+		@media (width <= #{$lg}) {
+			margin-top: calc(var(--menuHeight) + var(--sp-24));
 		}
 	}
 	#sections {
-		padding: var(--spacing-l) var(--spacing-m);
+		padding: var(--sp-144) var(--sp-96);
 		position: relative;
 		overflow: hidden;
 
@@ -209,21 +116,21 @@
 			pointer-events: none;
 
 			h3 {
-				margin-top: 1rem;
+				margin-top: var(--sp-12);
 			}
 
 			p {
-				margin-top: 6rem;
+				margin-top: var(--sp-72);
 			}
 
 			a {
-				margin-top: 2rem;
+				margin-top: var(--sp-24);
 				pointer-events: all;
 			}
 		}
 
-		@media screen and (max-width: 1080px) {
-			padding: var(--spacing-m) 0;
+		@media (width <= #{$lg}) {
+			padding: var(--sp-96) 0;
 			width: 100%;
 			
 			>div:nth-child(1) {
@@ -243,139 +150,12 @@
 
 				p {
 					padding: 0 var(--margin);
-					margin-top: var(--spacing-s);
+					margin-top: var(--sp-48);
 				}
 
 				a {
-					margin: 2rem var(--margin) 0;
+					margin: var(--sp-24) var(--margin) 0;
 				}
-			}
-		}
-	}
-	#contest {
-		padding-bottom: 0;
-		
-		.text-wrapper {
-			padding: var(--margin) var(--margin) calc(var(--margin)*2);
-			p {
-				margin-top: 1.5rem;
-			}
-		}
-		.contest-wrapper {
-			width: 100%;
-			overflow-x: scroll;
-			-ms-overflow-style: none;
-			scrollbar-width: none; 
-
-			&::-webkit-scrollbar {
-				display: none;
-			}
-
-
-			.contest {
-				display: flex;
-				width: fit-content;
-				
-				.event {
-					padding: var(--margin);
-					width: 23vw;
-					min-width: 350px;
-					height: auto;
-					aspect-ratio: 2/3;
-					position: relative;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-
-					@media screen and (max-width: 1280px) {
-						min-width: 300px;
-					}
-
-					@media screen and (max-width: 1080px) {
-						min-width: 250px;
-					}
-					
-					.img {
-						position: absolute;
-						left: 0;
-						top: 0;
-						width: 100%;
-						height: 100%;
-						object-fit: cover;
-					}
-					.title,
-					.subtitle {
-						z-index: 1;
-					}
-					.cta {
-						position: absolute;
-						left: var(--margin);
-						bottom: var(--margin);
-					}
-				}
-			}
-		}
-	}
-	#program {
-		padding-bottom: var(--margin);
-
-		.text-wrapper {
-			padding: var(--margin) var(--margin) var(--gutter);
-			p {
-				margin-top: 1.5rem;
-				margin-bottom: 1.5rem;
-			}
-		}
-		.days {
-			display: flex;
-			flex-wrap: wrap;
-			column-gap: .2em;
-			row-gap: .4em;
-			align-items: baseline;
-
-			span {
-				margin-right: 1em;
-			}
-		}
-		.day-title {
-			margin: 0 var(--margin);
-			padding: var(--margin) 0;
-			border-bottom: solid 1px var(--black);
-		}
-		.day-wrapper {
-			overflow-x: scroll;
-			-ms-overflow-style: none;
-			scrollbar-width: none; 
-
-			&::-webkit-scrollbar {
-				display: none;
-			}
-
-			.day {
-				display: flex;
-				padding: var(--margin);
-				width: fit-content;
-				gap: var(--gutter);
-
-				.event-wrapper {
-					width: 26vw;
-					min-width: 350px;
-
-					@media screen and (max-width: 1280px) {
-						min-width: 300px;
-					}
-
-					@media screen and (max-width: 1080px) {
-						min-width: 250px;
-					}
-				}
-			}
-		}
-		.cta {
-			margin: var(--spacing-m) var(--margin) var(--margin);
-
-			@media screen and (max-width: 1080px) {
-				margin: var(--spacing-xs) var(--margin) var(--margin);
 			}
 		}
 	}

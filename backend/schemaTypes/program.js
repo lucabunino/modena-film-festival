@@ -1,4 +1,7 @@
-import { CalendarIcon, NumberIcon, SparkleIcon } from '@sanity/icons'
+import {CalendarIcon} from '@sanity/icons/Calendar'
+import {NumberIcon} from '@sanity/icons/Number'
+import {SparkleIcon} from '@sanity/icons/Sparkle'
+import body from './fields/body.js'
 
 export default {
     name: 'program',
@@ -26,6 +29,11 @@ export default {
 				layout: 'radio'
 			},
 			initialValue: 'public',
+		},
+		{
+			...body(),
+			name: 'intro',
+			description: 'Intro text on this edition\'s archive page',
 		},
         {
             name: 'days',

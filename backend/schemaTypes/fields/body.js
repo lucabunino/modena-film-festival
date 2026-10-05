@@ -1,4 +1,6 @@
-import {DownloadIcon, StopIcon, BlockElementIcon} from '@sanity/icons'
+import {DownloadIcon} from '@sanity/icons/Download'
+import {StopIcon} from '@sanity/icons/Stop'
+import {BlockElementIcon} from '@sanity/icons/BlockElement'
 
 export default function body({ group = undefined } = {}) {
 	return {

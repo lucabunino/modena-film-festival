@@ -1,6 +1,7 @@
 <script>
+	import { asset } from '$lib/utils/assets.js'
+	import Media from '$lib/components/Media.svelte'
     import Breadcrumbs from "./Breadcrumbs.svelte";
-	import { urlFor } from '$lib/utils/image.js';
     import { formatEventDate, formatISO } from "$lib/utils/datetime";
 	
 	let shaking = $state(false)
@@ -30,31 +31,32 @@
 	{/if}
 	<div class="info wb-21 wb-15-mb max-w-700">		
 		{#if event.webticHref && !event.soldOut && canBuy}
-			<a class="cta btn-l bg-linen black {shaking ? 'shaking' : undefined}" href={event.webticHref} target="_blank" rel='noopener noreferrer'
+			<a class="cta btn-l bg-linen black hover-black hover-bg-linen {shaking ? 'shaking' : undefined}" href={event.webticHref} target="_blank" rel='noopener noreferrer'
 			onclick={(e) => {cta.locked ? handleLockedclick(e) : ''}}
-			>Compra su <img class="webtic" src="/logos/webtic.webp" alt=""></a>
+			>Compra su <img class="webtic" src={asset('/logos/webtic.webp')} alt=""></a>
 		{/if}
 		{#if event.credits}<p class="credits">{event.credits}</p>{/if}
 		{#if event.soldOut}
 			<span class="tag wb-12 wb-10-mb uppercase white bg-black">Sold out</span>
 		{/if}
-		{#each event.formats as format, i}
+		{#each event.formats as format, i (format.slug.current)}
 			<span class="tag wb-12 wb-10-mb uppercase bg-linen">{format.title}</span>
 		{/each}
 		<time class="datetime" datetime={formatISO(event.start, event.end)}>{formatEventDate(event.start, event.end)}</time>{#if event.location}<p class="location"><span class="comma">{@html ', '}</span>presso {event.location.title}{#if event.location.subtitle} {@html ' (' + event.location.subtitle + ')'}{/if}</p>{/if}
 	</div>
 	{#if event.thumbnail}
-		<img class="img _16_9 max-w-700" src={urlFor(event.thumbnail).width(1080)} alt="Immagine di copertina per l'evento “{event.title}”">
+		<Media class="img _16_9 max-w-700" image={event.thumbnail} aspectRatio={16/9} alt="Immagine di copertina per l'evento “{event.title}”" sizes="(width <= 768px) 100vw, 700px" loading="eager" />
 	{/if}
 </section>
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 	#hero {
 		h2 {
 			margin-top: .6em;
 		}
 		.cta {
-			margin-bottom: 2rem;
+			margin-bottom: var(--sp-24);
 			&:hover {
 				filter: invert(1);
 			}
@@ -68,7 +70,7 @@
 			}
 		}
 		.info {
-			margin-top: var(--spacing-s);
+			margin-top: var(--sp-48);
 			display: inline-block;
 			width: 100%;
 			
@@ -76,7 +78,7 @@
 				position: relative;
 				bottom: .3em;
 
-				@media screen and (max-width: 600px) {
+				@media (width <= #{$sm}) {
 					width: fit-content;
 					margin-bottom: .6em;
 				}
@@ -92,14 +94,14 @@
 			.datetime {
 				display: inline;
 
-				@media screen and (max-width: 600px) {
+				@media (width <= #{$sm}) {
 					display: block;
 				}
 			}
 			.location {
 				display: inline;
 
-				@media screen and (max-width: 600px) {
+				@media (width <= #{$sm}) {
 					.comma {
 						display: none;
 					}
@@ -107,14 +109,14 @@
 			}
 			.credits {
 				border-bottom: solid 1px var(--black);
-				margin-bottom: var(--gutter);
+				margin-bottom: var(--sp-12);
 				padding-bottom: .4em;
 			}
 		}
-		.img {
+		:global(.img) {
 			object-fit: cover;
 			width: 100%;
-			margin: var(--gutter) 0 var(--margin);
+			margin: var(--sp-12) 0 var(--margin);
 		}
 	}
 </style>

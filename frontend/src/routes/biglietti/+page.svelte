@@ -1,9 +1,10 @@
 <script>
+	import { asset } from '$lib/utils/assets.js'
+	import Media from '$lib/components/Media.svelte'
     import Title from "$lib/components/Title.svelte";
     import Navigator from "$lib/components/Navigator.svelte";
     import PreFooter from "$lib/components/PreFooter.svelte";
 	import { register } from 'swiper/element/bundle';register();
-	import HeadSingle from "$lib/components/HeadSingle.svelte";
     import { fade, slide } from "svelte/transition";
 	let { data } = $props()
 	let shakingItems = $state({});
@@ -23,14 +24,12 @@
         mousePos = { x: e.clientX, y: e.clientY };
 		side = e.clientX > (window.innerWidth / 2) ? 'left' : 'right';
     }
-	const seoSingle = { seoTitle: 'Biglietti'}
 	const WebticHref = "https://www.webtic.it/app/shopping/loadLocal/MO/7348"
 	const SubscriptionHref = "https://www.webtic.it/app/shop?action=loadSubscriptions&localId=7348"
 	const SherlockHref = "https://secure.webtic.it/angwt/webtic.aspx?pu=aHR0cHM6Ly93d3cud2VidGljLml0L2FwcC9zaG9wcGluZy9sb2FkTG9jYWwvTU8vNzM0OA==&rnd=0.187350648676209&lng=it&lid=7348&tpl=blue&lvs=bnVsbA==&kid=33&cc=WyJuZWNlc3NhcnkiXQ==#/event/it/33/7348/2514"
 	const OdoramaHref = "https://www.webtic.it/app/shopping/loadEvent/MO/7348/10081730/2456"
 </script>
 
-{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Navigator title="Biglietti" {sections}/>
@@ -40,16 +39,16 @@
 		"L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em>, il <em>Cineconcerto Sherlock Jr.</em> e <em>Odorama. The Truman Show</em>.",
 		"Per poter accedere in sala, è richiesta la prenotazione ai singoli eventi, anche per i possessori dell'abbonamento.",
 		]}
-	size={'l'}
+	size="l"
 	cta={{href: WebticHref, label: 'Singoli eventi', blank: true, webtic: true}}
 	/>
 	<section id="buy" title="Compra" bind:this={sections[0]}>
-		<a class="ticket x2 rounded-l white" href={SubscriptionHref} target="_blank" rel="noopener noreferrer"
+		<a class="ticket x2 rounded-l white bg-linen" href={SubscriptionHref} target="_blank" rel="noopener noreferrer"
 		onmousemove={handleMouseMove}
 		onmouseenter={() => isHovering = true}
 		onmouseleave={() => isHovering = false}
 		>
-			<video class="bg" src="/tickets/abbonamento-min.mp4" poster="/tickets/abbonamento-min.webp" muted loop autoplay playsinline></video>
+			<Media class="bg" src="/tickets/abbonamento-min.mp4" video poster="/tickets/abbonamento-min.webp" />
 			<div>
 				<h3 class="wb-cd-80 wb-cd-40-mb uppercase">Abbonamento</h3>
 				<div class="tags wb-12 uppercase">
@@ -62,12 +61,12 @@
 				<p>L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em>, il <em>Cineconcerto Sherlock Jr.</em> e <em>Odorama. The Truman Show</em>.</p>
 			</div>
 		</a>
-		<a class="ticket x1 rounded-l white {shakingItems['sherlock'] ? 'shaking' : undefined}" href={SherlockHref} target="_blank" rel="noopener noreferrer"
+		<a class="ticket x1 rounded-l white bg-linen {shakingItems['sherlock'] ? 'shaking' : undefined}" href={SherlockHref} target="_blank" rel="noopener noreferrer"
 		onmousemove={handleMouseMove}
 		onmouseenter={() => isHovering = true}
 		onmouseleave={() => isHovering = false}
 		>
-			<img class="bg" src="/tickets/sherlock.webp" alt="">
+			<Media class="bg" src="/tickets/sherlock.webp" />
 			<div>
 				<h3 class="wb-cd-60 wb-cd-40-mb uppercase max-w-500">Cineconcerto Sherlock Jr.</h3>
 				<div class="tags wb-12 uppercase">
@@ -78,10 +77,10 @@
 			</div>
 			<p class="wb-18 wb-15-mb max-w-600">Nella giornata dedicata all’udito, cinema muto e musica contemporanea si incontrano: Samuel sonorizza dal vivo Sherlock Jr. (1924) di Buster Keaton. Un dialogo potente tra immagini e suono.</p>
 		</a>
-		<a class="ticket locked x1 rounded-l white blurred {shakingItems['odorama'] ? 'shaking' : undefined}" href={OdoramaHref} target="_blank" rel="noopener noreferrer"
+		<a class="ticket locked x1 rounded-l white bg-linen blurred {shakingItems['odorama'] ? 'shaking' : undefined}" href={OdoramaHref} target="_blank" rel="noopener noreferrer"
 		onclick={(e) => {handleLockedclick(e, 'odorama')}}
 		>
-			<img class="bg" src="/tickets/odorama.webp" alt="">
+			<Media class="bg" src="/tickets/odorama.webp" />
 			<div>
 				<h3 class="wb-cd-60 wb-cd-40-mb uppercase max-w-500">Odorama. The Truman Show</h3>
 				<div class="tags wb-12 uppercase">
@@ -94,9 +93,9 @@
 			<p class="wb-18 wb-15-mb max-w-600">Avete mai respirato un film? Con Odorama di Accademia del Profumo la proiezione diventa multisensoriale: fragranze accompagnano le scene e amplificano le emozioni.</p>
 		</a>
 		{#if isHovering && mousePos.x}
-			<p class="cursor desktop-only btn-l bg-linen black" transition:slide={{duration: 200, axis: 'x'}}
+			<p class="cursor desktop-only btn-l bg-linen black hover-black hover-bg-linen" transition:slide={{duration: 200, axis: 'x'}}
 			style="left: {mousePos.x}px; top: {mousePos.y}px; display: {isHovering ? 'inline-block' : 'none'}; transform: translate({side === 'left' ? '-100%' : '0%'}, -50%);"
-			>Compra su <img class="webtic" src="/logos/webtic.webp" alt=""></p>
+			>Compra su <img class="webtic" src={asset('/logos/webtic.webp')} alt=""></p>
 		{/if}
 	</section>
 	<section id="how-it-works" title="Come funziona" bind:this={sections[1]}>
@@ -161,7 +160,8 @@
 </main>
 <!-- <PreFooter {prefooter}/> -->
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 #buy {
 	grid-column: 1 / span 8;
 	display: grid;
@@ -171,7 +171,7 @@
 	
 	.ticket {
 		display: block;
-		padding: 2rem var(--gutter) 3rem;
+		padding: var(--sp-24) var(--gutter) var(--sp-36);
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -181,7 +181,7 @@
 		min-height: 450px;
 		z-index: 1;
 
-		@media screen and (max-width: 768px) {
+		@media (width <= #{$md}) {
 			min-height: 400px;
 			text-align: center;
 			align-items: center;
@@ -191,7 +191,7 @@
 			}
 		}
 		
-		.bg {
+		:global(.bg) {
 			position: absolute;
 			left: 0;
 			top: 0;
@@ -203,7 +203,7 @@
 		}
 
 		&:not(.locked):hover {
-			.bg {
+			:global(.bg) {
 				transform: scale(1.03);
 			}
 		}
@@ -211,17 +211,17 @@
 		&.x1 { 
 			grid-column: span 1;
 			
-			@media screen and (max-width: 1080px) {
+			@media (width <= #{$lg}) {
 				grid-column: span 2;
 			}
 		}
 		&.x2 { grid-column: span 2;}
 
 		h3 {
-			margin-bottom: 1rem;
+			margin-bottom: var(--sp-12);
 		}
 		h4 {
-			margin-top: 2rem;
+			margin-top: var(--sp-24);
 		}
 	}
 }
@@ -235,7 +235,7 @@
 	white-space: nowrap;
 	transition: var(--transition-s);
 	transition-property: transform;
-	margin-top: 4rem;
+	margin-top: var(--sp-48);
 
 	.webtic {
 		display: inline-block;

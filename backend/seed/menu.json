@@ -1,0 +1,128 @@
+{
+  "_id": "menu",
+  "_type": "menu",
+  "items": [
+    {
+      "_key": "item00",
+      "_type": "menuItem",
+      "label": "Festival",
+      "href": "/festival",
+      "openInNewTab": false,
+      "level": 1
+    },
+    {
+      "_key": "item01",
+      "_type": "menuItem",
+      "label": "Programma",
+      "href": "/programma",
+      "openInNewTab": false,
+      "level": 1
+    },
+    {
+      "_key": "item02",
+      "_type": "menuItem",
+      "label": "About",
+      "href": "/about",
+      "openInNewTab": false,
+      "level": 1
+    },
+    {
+      "_key": "item03",
+      "_type": "menuItem",
+      "label": "Luoghi",
+      "href": "/luoghi",
+      "openInNewTab": false,
+      "level": 1
+    },
+    {
+      "_key": "item04",
+      "_type": "menuItem",
+      "label": "Partner",
+      "href": "/partner",
+      "openInNewTab": false,
+      "level": 1
+    },
+    {
+      "_key": "item05",
+      "_type": "menuItem",
+      "label": "Sostienici",
+      "href": "/sostienici",
+      "openInNewTab": false,
+      "level": 1
+    },
+    {
+      "_key": "item06",
+      "_type": "menuItem",
+      "label": "News",
+      "href": "/news",
+      "openInNewTab": false,
+      "level": 1
+    },
+    {
+      "_key": "item07",
+      "_type": "menuItem",
+      "label": "Press",
+      "href": "/press",
+      "openInNewTab": false,
+      "level": 1
+    },
+    {
+      "_key": "item08",
+      "_type": "menuItem",
+      "label": "Contatti",
+      "href": "/contatti",
+      "openInNewTab": false,
+      "level": 1
+    },
+    {
+      "_key": "item09",
+      "_type": "menuItem",
+      "label": "Staff",
+      "href": "/staff",
+      "openInNewTab": false,
+      "level": 1
+    },
+    {
+      "_key": "item10",
+      "_type": "menuItem",
+      "label": "MFF2026",
+      "href": "/mff2026",
+      "openInNewTab": false,
+      "level": 1
+    },
+    {
+      "_key": "item11",
+      "_type": "menuItem",
+      "label": "Festival",
+      "href": "/mff2026/festival",
+      "openInNewTab": false,
+      "level": 2
+    },
+    {
+      "_key": "item12",
+      "_type": "menuItem",
+      "label": "Programma",
+      "href": "/mff2026/programma",
+      "openInNewTab": false,
+      "level": 2
+    },
+    {
+      "_key": "item13",
+      "_type": "menuItem",
+      "label": "Luoghi",
+      "href": "/mff2026/luoghi",
+      "openInNewTab": false,
+      "level": 2
+    }
+  ],
+  "socials": [
+    {
+      "_key": "social00",
+      "_type": "social",
+      "label": "Instagram",
+      "href": "https://instagram.com/modenafilmfestival",
+      "openInNewTab": true
+    }
+  ],
+  "showNewsletter": true
+}

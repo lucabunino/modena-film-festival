@@ -8,6 +8,7 @@ import format from './format'
 import sense from './sense'
 import section from './section'
 import seo from './seo'
+import menu from './menu'
 
 export const schemaTypes = [
 	landing,
@@ -19,5 +20,6 @@ export const schemaTypes = [
 	format,
 	sense,
 	section,
-	seo
+	seo,
+	menu
 ]

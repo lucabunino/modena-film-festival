@@ -9,7 +9,7 @@
 
 <nav aria-label="Breadcrumb" class="wb-12 uppercase" style={typeColor ? `--bgColor: ${typeColor.hex}` : undefined}>
     <ol>
-        {#each visibleSegments as segment, i}
+        {#each visibleSegments as segment, i (allSegments.slice(0, i + 1).join('/'))}
             <li>
                 {#if i < visibleSegments.length - 1}
                     <a class="hover-underline {typeColor ? 'typeColor' : undefined}" href={"/" + allSegments.slice(0, i + 1).join("/")}>
@@ -31,9 +31,9 @@
     </ol>
 </nav>
 
-<style>
+<style lang="scss">
     nav {
-        margin-bottom: 1rem;
+        margin-bottom: var(--sp-12);
     }
     ol {
         display: flex;

@@ -1,9 +1,7 @@
 <script>
     import ContactCard from "$lib/components/ContactCard.svelte";
     import Title from "$lib/components/Title.svelte";
-	import HeadSingle from "$lib/components/HeadSingle.svelte";
 	let { data } = $props()
-	let seoSingle = $derived(data.seoSingle)
 	let sections = $state([])
 
 	const prizes = [
@@ -38,12 +36,11 @@
     ];
 </script>
 
-{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-linen">
-	<Title title='I risultati del Modena Film Festival 2026' size={'m'} subtitles={['Per informazioni, collaborazioni, accrediti o domande sul Festival, puoi scriverci quando vuoi. Ti risponderemo il prima possibile.']}/>
+	<Title title='I risultati del Modena Film Festival 2026' size="m" subtitles={['Per informazioni, collaborazioni, accrediti o domande sul Festival, puoi scriverci quando vuoi. Ti risponderemo il prima possibile.']}/>
 	<section class="prizes" title="Risultati" bind:this={sections[0]}>
-		{#each prizes as prize}
+		{#each prizes as prize (prize)}
 			<div class="prize">
 				<div class="">
 					<div class="logo">
@@ -65,6 +62,6 @@
 	.prizes {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: var(--gutter);
+		gap: var(--sp-12) var(--gutter);
 	}
 </style>

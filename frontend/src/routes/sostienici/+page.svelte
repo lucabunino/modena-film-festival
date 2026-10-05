@@ -1,12 +1,11 @@
 <script>
+	import bp from '$lib/scss/breakpoints.module.scss'
     import Title from "$lib/components/Title.svelte";
     import Navigator from "$lib/components/Navigator.svelte";
     import PreFooter from "$lib/components/PreFooter.svelte";
 	import { register } from 'swiper/element/bundle';register();
 	import { friends } from "$lib/content/friends.js";
-	import HeadSingle from "$lib/components/HeadSingle.svelte";
 	let { data } = $props()
-	const seoSingle = { seoTitle: 'Sostienici'}
 	let sections = $state([])
 	let tiers = $derived([
 		{title: 'Amico', price: 10, isCustomPrice: false, abstract: 'Il tuo nome comparirà come Amico del Festival qui sul sito.'},
@@ -41,7 +40,7 @@
 		slidesOffsetAfter: 15,
 		freeMode: false,
 		breakpoints: {
-			1080: {
+			[parseInt(bp.lg)]: {
 				spaceBetween: 14,
 				slidesOffsetBefore: 28,
 				slidesOffsetAfter: 28,
@@ -59,14 +58,13 @@
 	})
 </script>
 
-{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Navigator title="Sostienici" {sections}/>
 	<Title
 	title='Sostieni <br>il festival!'
 	subtitles={['Scegli la tua fascia di sostegno e aiutaci a realizzare il festival!']}
-	size={'l'}
+	size="l"
 	/>
 	<section id="become-supporter" title="Diventa sostenitore" bind:this={sections[0]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Diventa sostenitore</h2>
@@ -86,7 +84,7 @@
 		slides-per-view='auto'
 		bind:this={swiperEl}
 		>
-			{#each tiers as tier, i}
+			{#each tiers as tier, i (tier)}
 				<swiper-slide class="tier bg-yellow rounded-l" title={tier.title}>
 					<div>
 						<h3 class="wb-28 wb-21-mb">{tier.title}</h3>
@@ -107,7 +105,7 @@
 	<!-- <section id="promoters" title="Promotori" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 uppercase">Promotori</h2>
 		<div class="promoters">
-			{#each promoters as promoter, i}
+			{#each promoters as promoter, i (promoter)}
 				<h3 class="promoter wb-28">{promoter.name} {promoter.surname}</h3>
 			{/each}
 		</div>
@@ -115,7 +113,7 @@
 	<section id="supporters" title="Sostenitori" bind:this={sections[2]}>
 		<h2 class="section-title wb-12 uppercase">Sostenitori</h2>
 		<div class="supporters">
-			{#each supporters as supporter, i}
+			{#each supporters as supporter, i (supporter)}
 				<h3 class="supporter wb-28">{supporter.name} {supporter.surname}</h3>
 			{/each}
 		</div>
@@ -123,7 +121,7 @@
 	<section id="friends" title="Amici" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 uppercase">Amici</h2>
 		<div class="friends">
-			{#each friends as friend, i}
+			{#each friends as friend, i (friend)}
 				<h3 class="friend wb-28 wb-18-mb">{friend.name} {friend.surname}</h3>
 			{/each}
 		</div>
@@ -131,20 +129,21 @@
 </main>
 <!-- <PreFooter {prefooter}/> -->
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 .mobile-only {
 	display: none;
 }
-@media screen and (max-width: 1080px) {
+@media (width <= #{$lg}) {
 	.mobile-only {
 		display: inherit;
 	}
 }
 #become-supporter {
-	margin-top: -4rem;
+	margin-top: calc(var(--sp-48) * -1);
 
 	.bank-info {
-		margin-top: var(--spacing-xs);
+		margin-top: var(--sp-24);
 	}
 }
 #tiers {
@@ -160,7 +159,7 @@
 		}
 
 		.tier {
-			padding: 3rem var(--gutter) var(--gutter);
+			padding: var(--sp-36) var(--gutter) var(--sp-12);
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
@@ -168,20 +167,20 @@
 			min-width: 500px;
 			min-height: 360px;
 
-			@media screen and (max-width: 1080px) {
+			@media (width <= #{$lg}) {
 				min-width: unset;
 				width: 75vw;
-				padding: 3rem var(--margin) var(--margin);
+				padding: var(--sp-36) var(--margin) var(--margin);
 			}
 
 			p {
-				margin-top: 2rem;
+				margin-top: var(--sp-24);
 			}
 			.btns {
 				display: flex;
 				flex-wrap: wrap;
 				align-items: baseline;
-				column-gap: var(--spacing-xs);
+				column-gap: var(--sp-24);
 
 				a {
 					width: fit-content;
@@ -194,13 +193,13 @@
 .supporters, 
 .friends {
 	column-count: 3;
-	column-gap: 2rem;
+	column-gap: var(--sp-24);
 
-	@media screen and (max-width: 1512px) {
+	@media (width <= #{$xxl}) {
 		column-count: 2;
 	}
 
-	@media screen and (max-width: 768px) {
+	@media (width <= #{$md}) {
 		column-count: 1;
 	}
 }

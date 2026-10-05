@@ -1,120 +1,218 @@
 <script>
+	import { slide } from "svelte/transition";
     import { page } from "$app/state";
-	let shaking = $state(false);
-	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600);}
+	import SocialRow from "$lib/components/SocialRow.svelte";
+	import Marquee from "svelte-fast-marquee";
+	import { buildMenu, isCurrent } from "$lib/utils/menu.js";
+	let { menu } = $props();
+	const groups = $derived(buildMenu(menu?.items, page.url.pathname));
+	function current(href) {
+		return page.url.pathname === href ? "page" : isCurrent(href, page.url.pathname) ? "true" : undefined;
+	}
+
+	// Opened and closed only by the icon in its top-right corner; collapsed, a strip stays visible to reopen it
+	let collapsed = $state(false)
+	function toggle(e) {
+		e.stopPropagation() // don't let the strip click below reopen it right away
+		collapsed = !collapsed
+	}
+	// collapsed: a click anywhere on the strip reopens it (the icon stays the keyboard route)
+	function reopen() {
+		if (collapsed) collapsed = false
+	}
+	// --sidebarWidth (and so the content offset) is driven from <html>
+	$effect(() => {
+		document.documentElement.classList.toggle("sidebar-collapsed", collapsed)
+		return () => document.documentElement.classList.remove("sidebar-collapsed")
+	})
 </script>
-<aside class="desktop-only">
-	<header>
+
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
+<aside class="desktop-only {collapsed ? 'collapsed' : ''}" onclick={reopen}>
+	<button type="button" class="collapse" aria-label={collapsed ? "Apri il menu" : "Chiudi il menu"} aria-expanded={!collapsed} onclick={toggle}>
+		<svg width="18" height="13" viewBox="0 0 18 13" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+			<path d="M2.92823 6.408L9.33623 -3.40949e-07L12.9122 -1.84637e-07L7.53623 5.136L17.1362 5.136L17.1362 7.68L7.53623 7.68L12.9362 12.84L9.36023 12.84L2.92823 6.408ZM0.000228882 -7.49038e-07L2.08823 -6.57769e-07L2.08823 12.84L0.000228321 12.84L0.000228882 -7.49038e-07Z"/>
+		</svg>
+	</button>
+	<!-- collapsed strip: horizontal marquee (patterns/marquee/simple) rotated -90deg into the strip -->
+	<div class="marquee" aria-hidden="true">
+		<div class="rotator">
+			<Marquee speed={15} gap="var(--sp-24)" autoFill={true}>
+				<span class="item wb-24">
+					Modena Film Festival
+					<svg viewBox="0 0 67 47" xmlns="http://www.w3.org/2000/svg"><path d="M23.395 46.998H0V0h23.395v46.998Zm43.605 0h-4.075V0H67v46.998ZM54.301.002l-5.428 46.986L39.38.003H23.395L32.888 47h24.61L62.925.002H54.3Z"/></svg>
+				</span>
+			</Marquee>
+		</div>
+	</div>
+	<header inert={collapsed}>
 		<a href="/" class="logo" aria-label="Modena Film Festival">
 			<svg width="67" height="47" viewBox="0 0 67 47" xmlns="http://www.w3.org/2000/svg">
 				<g clip-path="url(#a)">
 					<path d="M23.395 46.998H0V0h23.395v46.998Zm43.605 0h-4.075V0H67v46.998ZM54.301.002l-5.428 46.986L39.38.003H23.395L32.888 47h24.61L62.925.002H54.3Z"/>
 				</g>
 			</svg>
-			<h1 class="wb-28 leading-1">Modena <br>Film Festival <br>15–19.4</h1>
+			<h1 class="wb-24 leading-1">Modena <br>Film Festival</h1>
 		</a>
-		<!-- <a href="/biglietti" class="tickets btn-m">Biglietti</a> -->
-		<nav class="menu wb-28 leading-1_3" aria-label="Main navigation" menubar>
+		{#if menu?.cta?.href}
+			<a href={menu.cta.href} class="tickets btn-m" target={menu.cta.openInNewTab ? "_blank" : undefined} rel={menu.cta.openInNewTab ? "noopener noreferrer" : undefined}>{menu.cta.label}</a>
+		{/if}
+		<nav class="menu wb-24 leading-1_3" aria-label="Main navigation">
 			<ul>
-				<li><a aria-current={page.url.pathname.startsWith('/festival') ? 'page' : undefined} href="/festival">Festival</a></li>
-				<li><a aria-current={page.url.pathname.startsWith('/programma') ? 'page' : undefined} href="/programma">Programma</a></li>
-				<li><a aria-current={page.url.pathname.startsWith('/about') ? 'page' : undefined} href="/about">About</a></li>
-				<li><a aria-current={page.url.pathname.startsWith('/luoghi') ? 'page' : undefined} href="/luoghi">Luoghi</a></li>
-				<li><a aria-current={page.url.pathname.startsWith('/partner') ? 'page' : undefined} href="/partner">Partner</a></li>
-				<li><a aria-current={page.url.pathname.startsWith('/sostienici') ? 'page' : undefined} href="/sostienici">Sostienici</a></li>
-				<li><a aria-current={page.url.pathname.startsWith('/news') ? 'page' : undefined} href="/news">News</a></li>
-				<li><a aria-current={page.url.pathname.startsWith('/press') ? 'page' : undefined} href="/press">Press</a></li>
-				<li><a aria-current={page.url.pathname.startsWith('/contatti') ? 'page' : undefined} href="/contatti">Contatti</a></li>
-			</ul>
-		</nav>
-		<nav class="submenu wb-18 leading-1_3" aria-label="Secondary navigation" menubar>
-			<ul>
-				<li><a aria-current={page.url.pathname.startsWith('/staff') ? 'page' : undefined} href="/staff">Staff</a></li>
+				{#each groups as item (item._key)}
+					<li>
+						<a aria-current={current(item.href) ?? (item.open ? "true" : undefined)} href={item.href} target={item.openInNewTab ? "_blank" : undefined} rel={item.openInNewTab ? "noopener noreferrer" : undefined}>{item.label}</a>
+						{#if item.open && item.children.length}
+							<ul class="children wb-18" transition:slide={{ duration: 300 }}>
+								{#each item.children as child (child._key)}
+									<li><a aria-current={current(child.href)} href={child.href} target={child.openInNewTab ? "_blank" : undefined} rel={child.openInNewTab ? "noopener noreferrer" : undefined}>{child.label}</a></li>
+								{/each}
+							</ul>
+						{/if}
+					</li>
+				{/each}
 			</ul>
 		</nav>
 	</header>
-	<section class="meta">
-		<section class="social wb-18" aria-label="Social media">
-			<ul class="leading-1">
-			<li>
-				<a href="https://instagram.com/modenafilmfestival" target="_blank" rel="noopener" aria-label="Instagram">
-					<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"/></svg> Instagram
-				</a>
-			</li>
-			<!-- <li>
-				<a href="https://facebook.com/modenafilmfestival" target="_blank" rel="noopener" aria-label="Facebook">
-					<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg> Facebook
-				</a>
-			</li> -->
-			</ul>
-		</section>
+	<section class="meta wb-14" inert={collapsed}>
+		<SocialRow socials={menu?.socials} showNewsletter={menu?.showNewsletter} />
 		<footer>
 			<p>© {new Date().getFullYear()}<br>
 			Modena Film Festival<br>
-			All rights reserved<br>
-			P.IVA 04213700364
-			</p>
+			All rights reserved</p>
 		</footer>
 	</section>
 </aside>
 
-<style>
+<style lang="scss">
 aside {
 	position: fixed;
-	left: 0;
+	z-index: 5;
 	top: 0;
-	width: var(--sidebarWidth);
+	left: 0;
+	width: var(--sp-222);
 	height: 100vh;
-	background-color: var(--brown);
+	// slides in lockstep with the content (same timing as main/footer margins): offset = how much of --sidebarWidth is gone
+	transform: translateX(calc(var(--sidebarWidth) - var(--sp-222)));
+	transition: transform var(--transition-s);
 	padding: var(--margin) var(--gutter);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	gap: 4rem;
+	gap: var(--sp-36);
 	overflow: scroll;
+	user-select: none;
+	background-color: var(--brown);
+
+	// toggle top-aligned with the logo, --gutter from the right edge: on hover while open, always while collapsed
+	.collapse {
+		position: absolute;
+		top: var(--margin);
+		right: var(--gutter);
+		z-index: 2; // above the marquee and its fade
+		opacity: 0;
+
+		svg {
+			display: block;
+		}
+	}
+	&:hover .collapse,
+	&.collapsed .collapse,
+	.collapse:focus-visible {
+		opacity: 1;
+	}
+	.collapse:hover svg {
+		fill: var(--white);
+	}
+
+	// collapsed strip: full-height marquee; a brown-to-transparent fade keeps the toggle area clear
+	.marquee {
+		position: absolute;
+		inset: 0 0 0 auto;
+		width: var(--sp-36);
+		overflow: hidden;
+		background-color: var(--brown);
+		display: none;
+
+		&::before {
+			content: "";
+			position: absolute;
+			z-index: 1;
+			inset: 0 0 auto;
+			height: calc(var(--margin) * 2 + 13px + var(--sp-48));
+			background: linear-gradient(var(--brown) 50%, transparent);
+		}
+		// pivot at the bottom-left corner: width becomes the strip height, reading bottom to top
+		// the library box is overflow-x: hidden, so the wheel would scroll it sideways (rotated); ignore the pointer
+		// (clicks land on .marquee and still reopen the sidebar)
+		.rotator {
+			pointer-events: none;
+			position: absolute;
+			left: 0;
+			top: 100%;
+			width: 100vh;
+			height: var(--sp-36);
+			display: flex;
+			align-items: center;
+			transform-origin: top left;
+			rotate: -90deg;
+		}
+		.item {
+			display: flex;
+			align-items: center;
+			gap: var(--sp-24);
+			white-space: nowrap;
+
+			svg {
+				width: auto;
+				height: .9em;
+			}
+		}
+	}
+	&.collapsed {
+		cursor: pointer;
+		overflow: hidden; // nothing to scroll in the strip
+
+		.collapse svg {
+			rotate: 180deg; // arrow points right: "open"
+		}
+		.marquee {
+			display: block;
+		}
+	}
 
 	header {
 		h1 {
-			margin-top: 1rem;
+			margin-top: var(--sp-12);
 		}
 		.tickets {
-			margin-top: 1rem;
+			margin-top: var(--sp-12);
+		}
+		.menu {
+			margin-top: var(--sp-36);
+		}
+		.children {
+			padding-left: var(--sp-24);
+			margin: var(--sp-2) 0 var(--sp-8);
 		}
 		[aria-current] {
 			color: var(--white);
 		}
-		.menu {
-			margin-top: 4rem;
-		}
-		.submenu {
-			margin-top: .5rem;
-		}
 	}
-}
-.meta {
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
+	.meta {
+		display: flex;
+		flex-direction: column;
+		gap: var(--sp-12);
+	}
+	svg {
+		fill: var(--black);
+	}
+	a:hover:not(.logo) {
+		color: var(--white);
 
-	.social {
-		ul {
-			display: flex;
-			flex-direction: column;
-			gap: .3em;
-		}
-		a {
-			display: flex;
-			gap: .3em;
+		svg {
+			fill: var(--white);
 		}
 	}
-}
-svg {
-	fill: var(--black);
-}
-a:hover:not(.logo) {
-	color: var(--white);
-}
-a:hover:not(.logo) svg {
-	fill: var(--white);
 }
 </style>

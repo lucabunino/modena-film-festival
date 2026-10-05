@@ -12,6 +12,14 @@ async function sendEmail(mailOptions) {
     });
 }
 
+export async function load() {
+	return {
+		seoSingle: {
+			seoTitle: "Press",
+		}
+	};
+}
+
 export const actions = {
     default: async ({ request }) => {
         try {

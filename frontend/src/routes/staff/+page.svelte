@@ -1,19 +1,16 @@
 <script>
     import Navigator from "$lib/components/Navigator.svelte";
     import Title from "$lib/components/Title.svelte";
-	import HeadSingle from "$lib/components/HeadSingle.svelte";
 	let { data } = $props()
 	let sections = $state([])
 	const formLink = "https://forms.gle/zfY5EMbdBwVQwhG67"
-	const seoSingle = { seoTitle: 'Staff'}
 </script>
 
-{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Navigator title="Staff" {sections}/>
 	<Title
-	size={'m'}
+	size="m"
 	title="Entra nello staff della prima edizione del Modena Film Festival"
 	subtitles={[
 		'Cinque giorni di film, incontri, performance, suoni, luci, profumi, conversazioni e luoghi che si trasformano: un’esperienza pensata per chi ama il cinema d’autore, per chi cerca nuove visioni e per chi vuole semplicemente lasciarsi sorprendere.',
@@ -55,6 +52,6 @@
 	</section>
 </main>
 
-<style>
+<style lang="scss">
 
 </style>

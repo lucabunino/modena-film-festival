@@ -1,15 +1,17 @@
 import { getProgram } from '$lib/utils/sanity';
 import { error } from '@sveltejs/kit';
+import { editionSlug } from '$lib/utils/edition.js';
 
-export async function load({ setHeaders }) {
-    const program = await getProgram();
-    // setHeaders({
-    //     'cache-control': 'public, max-age=3600, stale-while-revalidate=86400'
-    // });
-    if (program) {
+export async function load() {
+	const program = await getProgram();
+	if (program) {
 		return {
-			program
+			program,
+			canonical: `/${editionSlug(program.edition)}/programma`,
+			seoSingle: {
+				seoTitle: "Programma",
+			}
 		};
 	}
-  throw error(404, 'Not found');
+	throw error(404, 'Not found');
 }

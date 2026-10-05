@@ -5,7 +5,7 @@
 </script>
 
 <main class="policy wb-15 wb-12-mb bg-white">
-	<Title title="Privacy Policy" size={'s'}/>
+	<Title title="Privacy Policy" size="s"/>
 	<Navigator title="Privacy Policy" {sections}/>
 	<section>
 		<div class="max-w-600">

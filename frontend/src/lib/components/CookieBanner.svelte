@@ -35,11 +35,12 @@
 	</div>
 {/if}
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 #cookie-banner {
 	position: fixed;
 	top: var(--margin);
-	right: var(--margin);
+	right: var(--gutter);
 	z-index: 5;
 	padding: var(--margin) var(--gutter);
 	min-height: 200px;
@@ -58,7 +59,7 @@
 		transform: translateX(0);
 	}
 
-	@media screen and (max-width: 1080px) {
+	@media (width <= #{$lg}) {
 		top: unset;
 		left: 0;
 		right: 0;
@@ -75,7 +76,7 @@
 		}
 
 		button {
-			margin-top: var(--spacing-xs);
+			margin-top: var(--sp-24);
 		}
 	}
 }

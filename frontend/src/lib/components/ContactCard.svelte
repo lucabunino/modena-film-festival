@@ -14,20 +14,21 @@
 	{/if}
 </div>
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 	.contact-card {
-		padding: 3rem var(--gutter) var(--gutter);
+		padding: var(--sp-36) var(--gutter) var(--sp-12);
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		min-height: 250px;
 
-		@media screen and (max-width: 1080px) {
-			padding: 3rem var(--margin) var(--margin);
+		@media (width <= #{$lg}) {
+			padding: var(--sp-36) var(--margin) var(--margin);
 		}
 
 		h3 {
-			margin-top: 1rem;
+			margin-top: var(--sp-12);
 		}
 
 		a {

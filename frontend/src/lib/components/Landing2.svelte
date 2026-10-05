@@ -21,22 +21,28 @@
 			<p class="wb-18 wb-15-mb max-w-600">{landing.abstract}</p>
 		{/if}
 		{#if cta.label}
-			<a class="cta btn-l {landing.typeColor ? '' : 'bg-linen'} black hover-white hover-bg-black" style="{landing.typeColor ? `background-color: ${landing.typeColor.hex};` : undefined}" href={cta.href} target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}>{cta.label}</a>
+			<a class="cta btn-l {landing.typeColor ? '' : 'bg-linen'} black hover-white hover-bg-black" style={landing.typeColor ? `--ctaBg: ${landing.typeColor.hex}` : undefined} href={cta.href} target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}>{cta.label}</a>
 		{/if}
 	</div>
 </section>
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 	#hero {
 		grid-column: 1 / span 8;
 		height: 100vh;
+		// desktop: not full screen, so the next section peeks in
+		@media (width > #{$lg}) {
+			height: 90vh;
+			min-height: 600px;
+		}
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: flex-start;
 		position: relative;
 		padding: var(--margin);
-		background-position: center;
+		background-position: top;
 		background-size: cover;
 
 		.thumbnail {
@@ -53,7 +59,7 @@
 			z-index: 2;
 
 			h3 {
-				margin-bottom: 1rem;
+				margin-bottom: var(--sp-12);
 			}
 
 			h2 {
@@ -70,33 +76,38 @@
 				width: 100%;
 			}
 			.cta {
-				margin-top: var(--spacing-xs);
+				margin-top: var(--sp-24);
+
+				// Sanity typeColor; only at rest, so hover-bg-black still wins on hover
+				&[style*="--ctaBg"]:not(:hover) {
+					background-color: var(--ctaBg);
+				}
 			}
 		}
 
-		@media screen and (max-width: 1080px) {
+		@media (width <= #{$lg}) {
 			height: auto;
 			width: calc(100vw - var(--margin)*2);
 			border-radius: 3rem;
-			margin: var(--spacing-xs) var(--margin);
+			margin: var(--sp-24) var(--margin);
 			padding-top: 0;
 			display: flex;
 			min-height: 450px;
 
 			.top {
-				padding: 3rem 0 var(--margin);
+				padding: var(--sp-36) 0 var(--margin);
 			}
 			.bottom {
 				margin-bottom: 0;
 				padding: 0;
 
 				p {
-					margin-top: var(--spacing-m);
+					margin-top: var(--sp-96);
 				}
 			}
 		}
 
-		@media screen and (max-width: 768px) {
+		@media (width <= #{$md}) {
 			text-align: center;
 
 			.top {

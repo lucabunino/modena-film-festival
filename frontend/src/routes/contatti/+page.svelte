@@ -1,9 +1,7 @@
 <script>
     import ContactCard from "$lib/components/ContactCard.svelte";
     import Title from "$lib/components/Title.svelte";
-	import HeadSingle from "$lib/components/HeadSingle.svelte";
 	let { data } = $props()
-	const seoSingle = { seoTitle: 'Contatti'}
 	let sections = $state([])
 	const contacts = [
 		{
@@ -29,12 +27,11 @@
 	]
 </script>
 
-{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-linen">
-	<Title title='Siamo qui per te' size={'m'} subtitles={['Per informazioni, collaborazioni, accrediti o domande sul Festival, puoi scriverci quando vuoi. Ti risponderemo il prima possibile.']}/>
+	<Title title='Siamo qui per te' size="m" subtitles={['Per informazioni, collaborazioni, accrediti o domande sul Festival, puoi scriverci quando vuoi. Ti risponderemo il prima possibile.']}/>
 	<section class="contacts-grid" title="Contatti" bind:this={sections[0]}>
-		{#each contacts as contact}
+		{#each contacts as contact (contact.slug)}
 			<ContactCard {contact} />
 		{/each}
 	</section>

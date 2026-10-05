@@ -1,5 +1,7 @@
 <script>
-	let email = $state()
+	import { asset } from '$lib/utils/assets.js'
+	import { getNewsletter } from '$lib/stores/newsletter.svelte.js'
+	const newsletter = getNewsletter()
 </script>
 
 <footer aria-label="Footer">
@@ -19,24 +21,21 @@
 			</li>
 		</ul>
 	</section>
-	<!-- <section id="newsletter" aria-labelledby="newsletter-title">
+	<section id="newsletter" aria-labelledby="newsletter-title">
 		<h3 id="newsletter-title" class="title wb-12 wb-10-mb uppercase">Newsletter</h3>
 		<p class="wb-cd-60 wb-cd-40-mb uppercase">Vuoi rimanere aggiornato?</p>
-		<p class="wb-14 wb-15-mb">Iscriviti per ricevere aggioramentii su programma, ospiti, eventi e iniziative del Modena Film Festival.</p>
-		<form action="/newsletter" method="post" aria-label="Iscriviti alla newsletter">
-			<input class="wb-21 wb-10-mb-s bg-linen" type="email" name="email" id="email" placeholder="Inserisci la tua email" required bind:value={email}>
-			<button class="btn-m" type="submit" class:email>Iscriviti</button>
-		</form>
-	</section> -->
+		<p class="wb-14 wb-15-mb">Iscriviti per ricevere aggiornamenti su programma, ospiti, eventi e iniziative del Modena Film Festival.</p>
+		<button class="subscribe btn-l bg-linen black hover-white hover-bg-black" type="button" onclick={() => newsletter.setOpen(true)}>Iscriviti alla newsletter</button>
+	</section>
 	<section id="project" aria-labelledby="project-title" class="wb-12 wb-10-mb">
 		<div>
 			<h3 id="project-title">Un progetto organizzato da</h3>
 			<div class="logos">
 				<a href="https://www.instagram.com/crispycinemaclub/" target="_blank" rel="noopener noreferrer">
-					<img src="/logos/crispy.svg" alt="Logo di Crispy Cinema Club APS">
+					<img src={asset('/logos/crispy.svg')} alt="Logo di Crispy Cinema Club APS">
 				</a>
 				<a href="https://www.longtake.it/" target="_blank" rel="noopener noreferrer">
-					<img src="/logos/longtake.svg" alt="Logo di longtake">
+					<img src={asset('/logos/longtake.svg')} alt="Logo di longtake">
 				</a>
 			</div>
 		</div>
@@ -44,7 +43,7 @@
 			<h3 id="newsletter-title">Sostenuto da</h3>
 			<div class="logos">
 				<a href="https://www.fondazionedimodena.it/" target="_blank" rel="noopener noreferrer">
-					<img src="/logos/fondazione-di-modena.svg" alt="Logo di longtake">
+					<img src={asset('/logos/fondazione-di-modena.svg')} alt="Logo di longtake">
 				</a>
 			</div>
 		</div>
@@ -52,13 +51,13 @@
 			<h3 id="newsletter-title">Con il patrocinio di</h3>
 			<div class="logos">
 				<a href="https://www.comune.modena.it/" target="_blank" rel="noopener noreferrer">
-					<img src="/logos/comune-di-modena.svg" alt="Logo di longtake">
+					<img src={asset('/logos/comune-di-modena.svg')} alt="Logo di longtake">
 				</a>
 				<a href="https://modenafuturacreativa.it/" target="_blank" rel="noopener noreferrer">
-					<img src="/logos/modena-media-arts.svg" alt="Logo di longtake">
+					<img src={asset('/logos/modena-media-arts.svg')} alt="Logo di longtake">
 				</a>
 				<a href="https://www.regione.emilia-romagna.it/" target="_blank" rel="noopener noreferrer">
-					<img src="/logos/regione-emilia-romagna.svg" alt="Logo di longtake">
+					<img src={asset('/logos/regione-emilia-romagna.svg')} alt="Logo di longtake">
 				</a>
 			</div>
 		</div>
@@ -80,12 +79,11 @@
 	</section>
 	<p class="mobile-s-only wb-12 wb-10-mb">© {new Date().getFullYear()}<br>
 	Modena Film Festival<br>
-	All rights reserved<br>
-	P.IVA 04213700364
-	</p>
+	All rights reserved</p>
 </footer>
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 	footer {
 		margin-left: var(--sidebarWidth);
 		width: calc(100% - var(--sidebarWidth));
@@ -93,8 +91,9 @@
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
 		column-gap: var(--gutter);
-		row-gap: var(--spacing-s);
+		row-gap: var(--sp-48);
 		position: relative;
+		z-index: 4; // above the fixed Alert (3)
 		background-color: var(--white);
 
 		#contacts {
@@ -102,14 +101,14 @@
 
 			p:not(.title) {
 				max-width: 500px;
-				margin-top: 1.5rem;
+				margin-top: var(--sp-18);
 			}
 			ul {
-				margin-top: 1.2rem;
+				margin-top: var(--sp-14);
 				.email {
 					display: block;
 					width: fit-content;
-					margin-top: .3rem;
+					margin-top: var(--sp-4);
 				}
 			}
 		}
@@ -118,42 +117,23 @@
 			grid-column: 6 / span 3;
 
 			p {
-				margin-top: 1.5rem;
+				margin-top: var(--sp-18);
 			}
 
-			form {
-				position: relative;
-				padding: 1.5rem 0;
-
-				input[type="email"] {
-					border: none;
-					padding: 1.5rem var(--margin);
-					width: 100%;
-				}
-
-				button[type="submit"] {
-					position: absolute;
-					right: var(--gutter);
-					top: 50%;
-					transform: translateY(-50%);
-					visibility: hidden;
-
-					&.email {
-						visibility: visible;
-					}
-				}
+			.subscribe {
+				margin-top: var(--sp-24);
 			}
 		}
 
 		#project {
 			grid-column: 1 / span 5;
 			display: flex;
-			column-gap: 4rem;
+			column-gap: var(--sp-48);
 
 			.logos {
 				display: flex;
 				column-gap: var(--margin);
-				margin-top: var(--spacing-xs);
+				margin-top: var(--sp-24);
 
 				img {
 					height: 4vw;
@@ -183,13 +163,13 @@
 			}
 		}
 
-		@media screen and (max-width: 1080px) {
+		@media (width <= #{$lg}) {
 			background-color: var(--brown);
 			z-index: 4;
 			position: relative;
 		}
 
-		@media screen and (max-width: 768px) {
+		@media (width <= #{$md}) {
 			grid-template-columns: repeat(1, 1fr);
 
 			#contacts {
@@ -198,21 +178,15 @@
 
 			#newsletter {
 				grid-column: 1 / span 1;
-
-				form {
-					input[type="email"] {
-						text-transform: uppercase;
-					}
-				}
 			}
 
 			#project {
 				grid-column: 1 / span 1;
 				flex-direction: column;
-				row-gap: var(--spacing-xs);
+				row-gap: var(--sp-24);
 
 				.logos {
-					margin-top: 1rem;
+					margin-top: var(--sp-12);
 
 					img {
 						height: 15vw;
@@ -223,7 +197,7 @@
 
 			#credits {
 				grid-column: 1 / span 1;
-				row-gap: var(--spacing-xs);
+				row-gap: var(--sp-24);
 			}
 		}
 	}

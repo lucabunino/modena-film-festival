@@ -3,11 +3,11 @@ import { error } from '@sveltejs/kit';
 
 export async function load({params}) {
 	const news = await getNews(params.slug);
-	if (news) {
+	if (news?.length) {
 		return {
 			news,
 			seoSingle: news[0].seo,
-			hidden: news[0].seo?.status == 'hidden'
+			hidden: news[0].status == 'hidden'
 		};
 	}
   throw error(404, 'Not found');

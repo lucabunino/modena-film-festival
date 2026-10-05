@@ -3,9 +3,7 @@
     import Navigator from "$lib/components/Navigator.svelte";
     import Partner from "$lib/components/Partner.svelte";
     import Person from "$lib/components/Person.svelte";
-	import HeadSingle from "$lib/components/HeadSingle.svelte";
 	let { data } = $props()
-	const seoSingle = { seoTitle: 'About'}
 	let sections = $state([])
 	const partners = [
 		{title: 'Crispy', href: 'https://www.instagram.com/crispycinemaclub/', cover: '/img/crispy.webp', logo: '/logos/crispy-white.svg'},
@@ -22,17 +20,16 @@
 	]
 </script>
 
-{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-white">
 	<Navigator title="About" {sections}/>
 	<Title
 	title='Siamo quelli <br>che il cinema lo vivono'
-	size={'m'}
+	size="m"
 	subtitles={['Lo studiano, lo discutono, lo amano senza misura. E che da questo amore hanno creato un progetto vicino, inclusivo, fatto per tutti.']}
 	/>
 	<section id="partners">
-		{#each partners as partner, i}
+		{#each partners as partner, i (partner.title)}
 			<Partner {partner}/>
 		{/each}
 	</section>
@@ -45,23 +42,24 @@
 	<section id="chart" title="Organigramma" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Organigramma</h2>
 		<div class="chart">
-			{#each people as person}
+			{#each people as person (person)}
 				<Person {person}/>
 			{/each}
 		</div>
 	</section>
 </main>
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 #partners {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: var(--gutter);
-	margin-top: -4rem;
+	gap: var(--sp-12) var(--gutter);
+	margin-top: calc(var(--sp-48) * -1);
 
-	@media screen and (max-width: 516px) {
+	@media (width <= #{$xs}) {
 		grid-template-columns: repeat(1, 1fr);
-		margin-top: -2rem;
+		margin-top: calc(var(--sp-24) * -1);
 	}
 }
 #who-we-are {
@@ -73,16 +71,16 @@
 	.chart {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		row-gap: var(--spacing-s);
+		row-gap: var(--sp-48);
 		column-gap: var(--gutter);
 
-		@media screen and (max-width: 1512px) {
+		@container main (width <= #{$xl}) {
 			grid-template-columns: repeat(3, 1fr);
 		}
-		@media screen and (max-width: 516px) {
+		@media (width <= #{$xs}) {
 			grid-template-columns: repeat(2, 1fr);
 		}
-		@media screen and (max-width: 374px) {
+		@media (width <= #{$xxs}) {
 			grid-template-columns: repeat(1, 1fr);
 		}
 	}

@@ -21,7 +21,7 @@
     {@render children()}
 {/if}
 
-<style>
+<style lang="scss">
     :global(#event .portableText p + p) {
         margin-top: 1.1em;
     }

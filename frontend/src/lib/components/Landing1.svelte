@@ -38,10 +38,16 @@
     {/if}
 </section>
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 	#hero {
 		grid-column: 1 / span 8;
 		height: 100vh;
+		// desktop: not full screen, so the next section peeks in
+		@media (width > #{$lg}) {
+			height: 90vh;
+			min-height: 600px;
+		}
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -52,7 +58,7 @@
 			content: "";
 			position: absolute;
 			inset: 0;
-			background: url("/hero/bg.svg") repeat-x left center;
+			background: url("$lib/assets/media/hero/bg.svg") repeat-x left top;
 			background-size: auto 100%;
 			pointer-events: none;
 			z-index: 0;
@@ -61,7 +67,7 @@
 			content: "";
 			position: absolute;
 			inset: 0;
-			background: url("/hero/fg.svg") repeat-x left center;
+			background: url("$lib/assets/media/hero/fg.svg") repeat-x left top;
 			background-size: auto 100%;
 			pointer-events: none;
 			z-index: 1;
@@ -73,11 +79,11 @@
 			overflow: hidden;
 
 			h1 {
-				margin-top: 1rem;
+				margin-top: var(--sp-12);
 			}
 
 			p {
-				margin-top: 1rem;
+				margin-top: var(--sp-12);
 				width: 100%;
 				max-width: 600px;
 			}
@@ -96,30 +102,30 @@
 			z-index: 2;
 		}
 
-		@media screen and (max-width: 1080px) {
+		@media (width <= #{$lg}) {
 			height: auto;
 			width: calc(100vw - var(--margin)*2);
 			border-radius: 3rem;
-			margin: var(--spacing-xs) var(--margin);
+			margin: var(--sp-24) var(--margin);
 			display: grid;
 
 			div:nth-child(1) {
-				padding: 3rem 0 var(--margin);
+				padding: var(--sp-36) 0 var(--margin);
 
 				h2 {
 					margin: 0 var(--margin);
 				}
 
 				h1 {
-					margin: var(--spacing-xs) var(--margin) 0;
+					margin: var(--sp-24) var(--margin) 0;
 				}
 
 				p {
-					margin: var(--spacing-m) var(--margin) 0;
+					margin: var(--sp-96) var(--margin) 0;
 					width: stretch;
 				}
 				.marquee {
-					margin: 1rem 0 0;
+					margin: var(--sp-12) 0 0;
 					max-width: unset;
 				}
 			}

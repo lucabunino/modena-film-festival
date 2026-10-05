@@ -18,7 +18,8 @@
 	</section>
 {/if}
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 	#hero {
 		width: 100%;
 		position: relative;
@@ -26,13 +27,13 @@
 		&.imgTall {
 			grid-column: 1 / span 8;
 			padding: var(--margin);
-			min-height: 600px;
-			height: 80vh;
+			min-height: 400px;
+			height: 65vh;
 			background-size: cover;
-			background-position: center;
+			background-position: top;
 
-			@media screen and (max-width: 768px) {
-				padding: 5rem var(--margin);
+			@media (width <= #{$md}) {
+				padding: var(--sp-60) var(--margin);
 				min-height: 300px;
 				height: 40vh;
 			}
@@ -41,13 +42,13 @@
 		&.imgShort {
 			grid-column: 1 / span 8;
 			padding: var(--margin);
-			min-height: 300px;
+			min-height: 400px;
 			height: 50vh;
 			background-size: cover;
-			background-position: center;
+			background-position: top;
 
-			@media screen and (max-width: 768px) {
-				padding: 5rem var(--margin);
+			@media (width <= #{$md}) {
+				padding: var(--sp-60) var(--margin);
 				min-height: 300px;
 				height: 40vh;
 			}

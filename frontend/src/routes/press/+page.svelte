@@ -1,17 +1,15 @@
 <script>
-    import HeadSingle from '$lib/components/HeadSingle.svelte';
     import Title from '$lib/components/Title.svelte';
     import { formatDateNumber, formatISO } from '$lib/utils/datetime.js';
     import { urlFor } from '$lib/utils/image.js';
 	import { enhance } from '$app/forms';
+	import { fromAction } from 'svelte/attachments'
 
 	let { data, form } = $props()
-	const seoSingle = { seoTitle: 'Press'}
 
 	let loading = $state(false);
 </script>
 
-{#if seoSingle}<HeadSingle seo={data.seo} {seoSingle}/>{/if}
 
 <main class="bg-linen">
 	<Title
@@ -20,12 +18,12 @@
 		"La 1ª edizione del Modena Film Festival, organizzata da Crispy Cinema Club APS e longtake, si è tenuta a Modena dal 15 al 19 aprile 2026. Il Modena Film Festival nasce da una riflessione sul cinema come arte della percezione.",
 		"Per accedere al press kit del Modena Film Festival, ti invitiamo a compilare il form qui sotto."
 	]}
-	size={'m'}
+	size="m"
 	/>
 	<section id="press" class="max-w-700 wb-21">
         <form 
             method="POST" 
-            use:enhance={() => {
+            {@attach fromAction(enhance, () => () => {
                 loading = true;
                 return async ({ result }) => {
                     loading = false;
@@ -33,7 +31,7 @@
                         window.open(result.data.url, '_blank');
                     }
                 };
-            }}
+            })}
         >
             <div class="fields">
                 <input type="text" name="name" placeholder="Nome" required class="bg-white" />
@@ -52,12 +50,13 @@
     </section>
 </main>
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 main {
 	row-gap: 0;
 	
 	#press {
-		padding-top: var(--spacing-xs);
+		padding-top: var(--sp-24);
 		
 		form {
 			.fields {
@@ -65,7 +64,7 @@ main {
 				grid-template-columns: repeat(2, 1fr);
 				gap: .2em;
 
-				@media screen and (max-width: 600px) {
+				@media (width <= #{$sm}) {
 					display: flex;
 					flex-direction: column;
 				}
@@ -82,7 +81,7 @@ main {
 			
 			button[type="submit"] {
 				display: block;
-				margin-top: var(--spacing-xs);
+				margin-top: var(--sp-24);
 			}
 		}
 	}

@@ -5,7 +5,7 @@
 </script>
 
 <main class="policy wb-15 wb-12-mb bg-white">
-	<Title title="Cookie Policy" size={'s'}/>
+	<Title title="Cookie Policy" size="s"/>
 	<Navigator title="Cookie Policy" {sections}/>
 	<section>
 		<div class="max-w-600">

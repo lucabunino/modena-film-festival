@@ -1,5 +1,5 @@
 import colorOptions from './fields/colorOptions.js'
-import { HeartIcon } from '@sanity/icons'
+import {HeartIcon} from '@sanity/icons/Heart'
 const relativeOrAbsoluteRegex = /^(https?:\/\/|mailto:|tel:|\/|#)/;
 
 export default {

@@ -1,11 +1,13 @@
 <script>
+	import bp from '$lib/scss/breakpoints.module.scss'
     let { newses } = $props()
 	import { register } from 'swiper/element/bundle';register();
 	let visible = $state(false)
 	let swiperEl = $state(undefined)
 	let swiperIndex = $state(0)
 	import { getBanner } from '$lib/stores/banner.svelte';
-    import { innerWidth } from 'svelte/reactivity/window';
+    import { getResponsive } from '$lib/stores/responsive.svelte.js';
+    const responsive = getResponsive()
 	let banner = getBanner()
 
 	// Lifecycle
@@ -29,14 +31,14 @@
 				slidesOffsetAfter: 15,
 				loop: false,
 			},
-			768: {
+			[parseInt(bp.md)]: {
 				slidesPerView: newses.length > 1 ? 2.25 : 1,
 				spaceBetween: 10,
 				slidesOffsetBefore: 15,
 				slidesOffsetAfter: 15,
 				loop: false,
 			},
-			1080: {
+			[parseInt(bp.lg)]: {
 				slidesPerView: 1,
 				spaceBetween: 30,
 				slidesOffsetBefore: 0,
@@ -77,8 +79,8 @@
 	onswiperrealindexchange={() => {onSwiperRealIndexChange()}}
 	bind:this={swiperEl}
 	>
-		{#each newses as news, i}
-			<swiper-slide class="{innerWidth.current > 1080 ? 'bg-white' : 'bg-linen'} rounded-m border-linen">
+		{#each newses as news, i (news.slug.current)}
+			<swiper-slide class="{responsive.overLg ? 'bg-white' : 'bg-linen'} rounded-m border-linen">
 				<div>
 					{#if news.title}<h1 class="wb-21 wb-15-mb">{@html news.title}</h1>{/if}
 					{#if news.widgetAbstract}<p class="wb-14 wb-12-mb">{@html news.widgetAbstract}</p>{/if}
@@ -94,7 +96,7 @@
 				{/if}
 				{#if newses.length > 1}
 					<div class="pagination">
-						{#each newses as news, i}
+						{#each newses as news, i (news.slug.current)}
 							<button aria-label="bullet" class="circle {swiperIndex == i ? 'active' : ''}" onclick={() => {handleClick(i)}}></button>
 						{/each}
 					</div>
@@ -104,7 +106,8 @@
 	</swiper-container>
 </section>
 
-<style>
+<style lang="scss">
+@use '$lib/scss/breakpoints.module' as *;
 	#news-widget {
 		position: absolute;
 		top: 0;
@@ -131,7 +134,7 @@
 			}
 
 			&.banner {
-				top: calc(var(--margin) + 200px + .3rem);
+				top: calc(var(--margin) + 200px + var(--sp-4));
 			}
 
 			swiper-slide {
@@ -146,11 +149,11 @@
 				}
 
 				p {
-					margin-top: 1rem;
+					margin-top: var(--sp-12);
 				}
 				a {
 					display: block;
-					margin-top: 3rem;
+					margin-top: var(--sp-36);
 					width: fit-content;
 				}
 				
@@ -159,7 +162,7 @@
 					position: absolute;
 					right: var(--gutter);
 					bottom: var(--margin);
-					gap: .2rem;
+					gap: var(--sp-2);
 
 					.circle {
 						border: solid 1px var(--black);
@@ -175,7 +178,7 @@
 			}
 		}
 
-		@media screen and (max-width: 1080px) {
+		@media (width <= #{$lg}) {
 			position: relative;
 			width: 100vw;
 			height: auto;

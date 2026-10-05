@@ -1,4 +1,4 @@
-import { EmptyIcon } from '@sanity/icons'
+import {EmptyIcon} from '@sanity/icons/Empty'
 
 export default {
 	name: 'format',

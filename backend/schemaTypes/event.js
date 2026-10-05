@@ -1,6 +1,6 @@
 import seoFields from './fields/seoFields.js'
 import colorOptions from './fields/colorOptions.js'
-import { SparkleIcon } from '@sanity/icons'
+import {SparkleIcon} from '@sanity/icons/Sparkle'
 
 export default {
 	name: 'event',
