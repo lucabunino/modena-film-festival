@@ -44,7 +44,7 @@
 		</button>
 	</section>
 	{#if open}
-		<nav in:fade={{duration: 200, delay: 200}} class="menu wb-36-mb" aria-label="Main navigation">
+		<nav in:fade={{duration: 200, delay: 200}} class="menu wb-32-mb" aria-label="Main navigation">
 			<ul>
 				{#each groups as item (item._key)}
 					<li>
@@ -192,21 +192,21 @@ header {
 			// active item (or the parent of the open section): indented --sp-24, with a 6px bar
 			// at --margin from the left (the menu's text line), cap-height tall and top-aligned to the capitals of its first line
 			[aria-current] {
-				--barShift: var(--sp-24); // from the text start back to the --margin line
+				--barShift: var(--sp-36); // from the text start back to the --margin line
 				display: block;
-				padding-left: var(--sp-24);
+				padding-left: var(--sp-36);
 
 				&::before {
 					content: "";
 					display: inline-block;
 					vertical-align: baseline; // sits on the baseline, so its top meets the cap line
-					width: 6px;
+					width: 12px;
 					height: .7em; // fallback for browsers without the cap unit
 					height: 1cap;
 					background-color: currentColor;
 					// pull back to the --margin line, then return the same amount: the text doesn't move
 					margin-left: calc(var(--barShift) * -1);
-					margin-right: calc(var(--barShift) - 6px);
+					margin-right: calc(var(--barShift) - 12px);
 				}
 			}
 		}
