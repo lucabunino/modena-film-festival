@@ -45,8 +45,11 @@
 		height: var(--heroTall);
 		min-height: 600px;
 
-		&.full {
-			height: var(--heroFull);
+		// desktop only: on mobile the hero keeps its own height (auto, below)
+		@media (width > #{$lg}) {
+			&.full {
+				height: var(--heroFull);
+			}
 		}
 		display: flex;
 		flex-direction: column;
