@@ -23,7 +23,6 @@
 	{#if !dev}
 		<script defer src="https://cloud.umami.is/script.js" data-website-id="3e32a832-2bf2-438c-bbc1-f295f745e1d3"></script>
 		<script defer src="https://umami.lucabunino.com/script.js" data-website-id="4a7c8451-b2c5-49e2-9bb4-cc0ef2508129"></script>
-		<script defer src="https://umami.lucabunino.com/recorder.js" data-website-id="4a7c8451-b2c5-49e2-9bb4-cc0ef2508129"></script>
 	{/if}
 	{#if displayTitle}
 		<title>{displayTitle}</title>
