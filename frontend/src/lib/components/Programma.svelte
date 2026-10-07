@@ -4,7 +4,6 @@
     import { formatDateHash, formatDayName, formatDayNumber } from '$lib/utils/datetime.js';
     import { replaceState } from '$app/navigation'; // Use replaceState for shallow updates
     import { page } from '$app/state';
-    import PreFooter from '$lib/components/PreFooter.svelte';
 
     let { data } = $props();
     
@@ -108,24 +107,11 @@
         }
     }
 
-	const prefooter = {
-		subtitle: "Abbonamenti disponibili",
-		title: "Abbonati al festival",
-		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura, il <em>Cineconcerto Sherlock Jr.</em>* musicato da Samuel, l'evento speciale olfatto.",
-		cta: {
-			label: 'Vai a: Biglietti',
-			href: '/biglietti',
-		},
-		annotation: "* Gli abbonati hanno diritto a uno sconto di 5€ su questo evento.",
-		bg: 'bg-yellow',
-		video: '/tickets/abbonamento-verticale-min.mp4',
-		poster: '/tickets/abbonamento-verticale-min.webp',
-	}
 </script>
 
 
 <main class="bg-white">
-    <Title subtitles={["Tutte le informazioni sull’intero cartellone del festival, dai film in concorso agli eventi speciali"]} size="s" />
+    <Title subtitles={["Tutte le informazioni sull’intero cartellone del Festival, dai film in concorso agli eventi speciali"]} size="s" />
     
     <section id="filters" class="wb-12 wb-10-mb uppercase">
         <div class="formats">
@@ -195,7 +181,6 @@
 		{/each}
 	</section>
 </main>
-<PreFooter {prefooter}/>
 
 <style lang="scss">
 @use '$lib/scss/breakpoints.module' as *;

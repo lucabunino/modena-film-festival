@@ -1,19 +1,19 @@
 import { getNewses, getEditions, getProgramEvents } from '$lib/utils/sanity';
+import { resolveEditorial } from '$lib/server/editorial.js';
 import { resolveMenu } from '$lib/server/menu.js';
-import { editionPages } from '$lib/components/editions/index.js';
-import { editionSlug } from '$lib/utils/edition.js';
+import { isPublic } from '$lib/utils/edition.js';
 
 const base = 'https://www.modenafilmfestival.it';
 
 // pages reached from the footer or other pages rather than the menu
 const alwaysListed = ['/', '/festival/regolamento', '/partner/diventa-sponsor', '/privacy', '/cookies'];
 // top-level pages whose canonical is their current edition copy (listed below with the edition)
-const canonicalElsewhere = new Set(['/festival', '/programma', '/luoghi']);
+const canonicalElsewhere = new Set(['/festival', '/programma', '/luoghi', '/vincitori']);
 
 const day = (date) => new Date(date).toISOString().split('T')[0];
 
 export async function GET() {
-	const [menu, editions, programs, newses] = await Promise.all([resolveMenu(), getEditions(), getProgramEvents(), getNewses()]);
+	const [menu, editions, programs, newses, editorial] = await Promise.all([resolveMenu(), getEditions(), getProgramEvents(), getNewses(), resolveEditorial()]);
 
 	/** @type {Map<string, {priority: number, lastmod?: string}>} path → entry; first entry for a path wins */
 	const urls = new Map();
@@ -30,23 +30,29 @@ export async function GET() {
 		add(path, item.level === 2 ? 0.6 : 0.8);
 	}
 
-	for (const path of alwaysListed) add(path, 0.5);
-
-	// editions: landing, programma and the hardcoded per-edition pages
-	for (const edition of editions ?? []) {
-		const slug = editionSlug(edition);
-		add(`/${slug}`, 0.8);
-		add(`/${slug}/programma`, 0.8);
-		for (const page of ['festival', 'luoghi', 'partner']) {
-			if (editionPages[edition]?.[page]) add(`/${slug}/${page}`, 0.7);
-		}
-		if (editionPages[edition]?.regolamento) add(`/${slug}/festival/regolamento`, 0.5);
+	for (const path of alwaysListed) {
+		// a placeholder (no Current edition for the Regolamento) is noindex
+		if (path === '/festival/regolamento' && !editorial?.rules) continue;
+		add(path, 0.5);
 	}
 
-	// events: canonical URL under their latest edition (programs are newest first, so the first one wins)
+	// editions: each archive page unless hidden (hidden pages exist but stay out of search engines)
+	for (const edition of editions ?? []) {
+		const slug = edition.slug;
+		if (isPublic(edition)) add(`/${slug}`, 0.8);
+		if (isPublic(edition, 'program')) add(`/${slug}/programma`, 0.8);
+		if (isPublic(edition, 'festival')) add(`/${slug}/festival`, 0.7);
+		if (isPublic(edition, 'locations')) add(`/${slug}/luoghi`, 0.7);
+		if (isPublic(edition, 'partners')) add(`/${slug}/partner`, 0.7);
+		if (isPublic(edition, 'rules')) add(`/${slug}/festival/regolamento`, 0.5);
+		if (isPublic(edition, 'winners')) add(`/${slug}/vincitori`, 0.7);
+	}
+
+	// events: canonical URL under their latest edition (editions are newest first, so the first one wins)
 	for (const program of programs ?? []) {
+		if (program.programStatus !== 'public') continue;
 		for (const event of program.events ?? []) {
-			if (event?.slug && event.status !== 'hidden') add(`/${editionSlug(program.edition)}/programma/${event.slug}`, 0.6, day(event._updatedAt));
+			if (event?.slug && event.status !== 'hidden') add(`/${program.slug}/programma/${event.slug}`, 0.6, day(event._updatedAt));
 		}
 	}
 

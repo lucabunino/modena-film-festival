@@ -1,12 +1,15 @@
-import { editionSlug } from '$lib/utils/edition.js';
+import { getEdition } from '$lib/utils/sanity';
+import { resolveEditorial } from '$lib/server/editorial.js';
+import { archiveCanonical, placeholderPage } from '$lib/server/edition.js';
 
-export async function load({ parent }) {
-	const { editions } = await parent();
+export async function load({ setHeaders }) {
+	const editorial = await resolveEditorial();
+	const content = editorial?.festival && (await getEdition(editorial.festival.slug));
+	const seoSingle = { seoTitle: "Festival" };
+	if (!content) return { ...placeholderPage(setHeaders), seoSingle };
 	return {
-		edition: editions[0],
-		canonical: `/${editionSlug(editions[0])}/festival`,
-		seoSingle: {
-			seoTitle: "Festival",
-		}
+		content,
+		canonical: archiveCanonical(editorial.festival, 'festival', '/festival'),
+		seoSingle
 	};
 }

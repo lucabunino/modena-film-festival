@@ -1,4 +1,5 @@
 import {UserIcon} from '@sanity/icons/User'
+import body from './fields/body.js'
 
 export default {
 	name: 'person',
@@ -29,11 +30,15 @@ export default {
 		{
 			name: 'portrait',
 			type: 'image',
+			options: {hotspot: true},
 		},
 		{
-			name: 'occupation',
+			name: 'country',
 			type: 'string',
-			hidden: ({ parent }) => parent?.isAuthor !== true,
+		},
+		{
+			...body(),
+			name: 'bio',
 		},
 	],
 	orderings: [

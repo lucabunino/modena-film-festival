@@ -6,7 +6,7 @@
     let cta = $derived(landing.cta || {});
 </script>
 
-<section id="hero" class="bg-pink">
+<section id="hero" class="bg-pink {landing.layout?.endsWith('-full') ? 'full' : ''}">
     <div>
         <h2 class="wb-12 uppercase">{landing.runningHead}</h2>
         <div class="mobile-only">
@@ -42,8 +42,12 @@
 @use '$lib/scss/breakpoints.module' as *;
 	#hero {
 		grid-column: 1 / span 8;
-		height: 90vh;
+		height: var(--heroTall);
 		min-height: 600px;
+
+		&.full {
+			height: var(--heroFull);
+		}
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;

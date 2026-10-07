@@ -1,17 +1,15 @@
 import { getProgram } from '$lib/utils/sanity';
-import { error } from '@sveltejs/kit';
-import { editionSlug } from '$lib/utils/edition.js';
+import { resolveEditorial } from '$lib/server/editorial.js';
+import { archiveCanonical, placeholderPage } from '$lib/server/edition.js';
 
-export async function load() {
-	const program = await getProgram();
-	if (program) {
-		return {
-			program,
-			canonical: `/${editionSlug(program.edition)}/programma`,
-			seoSingle: {
-				seoTitle: "Programma",
-			}
-		};
-	}
-	throw error(404, 'Not found');
+export async function load({ setHeaders }) {
+	const editorial = await resolveEditorial();
+	const program = editorial?.program && (await getProgram(editorial.program.slug));
+	const seoSingle = { seoTitle: "Programma" };
+	if (!program?.days?.length) return { ...placeholderPage(setHeaders), seoSingle };
+	return {
+		program,
+		canonical: archiveCanonical(editorial.program, 'program', '/programma'),
+		seoSingle
+	};
 }

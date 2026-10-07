@@ -1,9 +1,9 @@
-import {EmptyIcon} from '@sanity/icons/Empty'
+import {TagIcon} from '@sanity/icons/Tag'
 
 export default {
 	name: 'format',
 	type: 'document',
-	icon: EmptyIcon,
+	icon: TagIcon,
 	fields: [
 		{
 			name: 'title',

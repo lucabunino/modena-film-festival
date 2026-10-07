@@ -43,8 +43,8 @@
 				}}/>
 			</div>
 		{/if}
-		{#if event.body}
-			<div class="body portableText nr-18 max-w-700">
+		{#if event.body?.length}
+			<div class="body portableText te-18 max-w-700">
 				<PortableText value={event.body}
 				components={{
 					listItem: portableTextListItem,

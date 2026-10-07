@@ -1,4 +1,6 @@
 import seoFields from './fields/seoFields.js'
+import eventBody from './fields/eventBody.js'
+import shortText from './fields/shortText.js'
 import colorOptions from './fields/colorOptions.js'
 import {SparkleIcon} from '@sanity/icons/Sparkle'
 
@@ -9,12 +11,10 @@ export default {
 	groups: [
 		{name: 'Event'},
 		{name: 'Style'},
-		{name: 'Homepage'},
 		{name: 'Related'},
 		{name: 'SEO'},
 	],
 	fieldsets: [
-		{name: 'Homepage'},
 		{name: 'Cta'},
 		{name: 'Webtic'},
 		{name: 'Tag'},
@@ -136,58 +136,6 @@ export default {
 		// 	fieldset: 'Cta',
 		// },
 		{
-			name: 'credits',
-			type: 'text',
-			rows: 4,
-			group: 'Event',
-		},
-		{
-			name: 'abstract',
-			type: 'array',
-			of: [
-				{
-					type: 'block',
-					styles: [
-						{ value: 'normal', title: 'Normal' },
-					],
-					lists: [
-						{title: 'Bullet', value: 'bullet'}
-					],
-					marks: {
-						decorators: [
-							{title: 'Bold', value: 'strong'},
-							{title: 'Italic', value: 'em'},
-						],
-						annotations: [
-							{
-								name: 'link',
-								type: 'object',
-								fields: [
-									{
-										name: 'href',
-										type: 'string',
-										validation: Rule =>
-										Rule.custom(href => {
-											if (!href) return true;
-											return /^(https?:\/\/|mailto:|tel:)/.test(href)
-											? true
-											: 'Must be a valid URL, mailto:, or tel: link';
-										}),
-									},
-									{
-										title: 'Open in new tab',
-										name: 'blank',
-										type: 'boolean',
-									},
-								],
-							},
-						],
-					},
-				},
-			],
-			group: 'Event',
-		},
-		{
 			name: 'program',
 			type: 'array',
 			of: [
@@ -233,6 +181,7 @@ export default {
 			],
 			group: 'Event',
 		},
+		shortText({group: 'Event'}),
 		{
 			name: 'description',
 			type: 'array',
@@ -280,52 +229,39 @@ export default {
 			group: 'Event',
 		},
 		{
-			name: 'body',
-			type: 'array',
-			of: [
-				{
-					type: 'block',
-					styles: [
-						{ value: 'h2', title: 'H2' },
-						{ value: 'h3', title: 'H3' },
-						{ value: 'h4', title: 'H4' },
-						{ value: 'normal', title: 'Normal' },
-					],
-					lists: [
-						{title: 'Bullet', value: 'bullet'}
-					],
-					marks: {
-						decorators: [
-							{title: 'Bold', value: 'strong'},
-							{title: 'Italic', value: 'em'},
-						],
-						annotations: [
-							{
-								name: 'link',
-								type: 'object',
-								fields: [
-									{
-										name: 'href',
-										type: 'string',
-										validation: Rule =>
-										Rule.custom(href => {
-											if (!href) return true;
-											return /^(https?:\/\/|mailto:|tel:)/.test(href)
-											? true
-											: 'Must be a valid URL, mailto:, or tel: link';
-										}),
-									},
-									{
-										title: 'Open in new tab',
-										name: 'blank',
-										type: 'boolean',
-									},
-								],
-							},
-						],
-					},
-				},
-			],
+			name: 'movie',
+			type: 'reference',
+			to: [{type: 'movie'}],
+			description: 'Film screened at this event: the page shows its thumbnail, credits and body',
+			group: 'Event',
+		},
+		{
+			name: 'customContent',
+			title: 'Custom thumbnail, credits and body',
+			type: 'boolean',
+			description: 'Use this event\'s own instead of the movie\'s',
+			initialValue: false,
+			hidden: ({document}) => !document?.movie,
+			group: 'Event',
+		},
+		{
+			name: 'credits',
+			type: 'text',
+			rows: 4,
+			description: 'Empty: the movie\'s',
+			hidden: ({document}) => Boolean(document?.movie) && document?.customContent !== true,
+			group: 'Event',
+		},
+		{
+			...eventBody({group: 'Event'}),
+			description: 'Empty: the movie\'s',
+			hidden: ({document}) => Boolean(document?.movie) && document?.customContent !== true,
+		},
+		{
+			name: 'thumbnail',
+			type: 'image',
+			description: 'Empty: the movie\'s',
+			hidden: ({document}) => Boolean(document?.movie) && document?.customContent !== true,
 			group: 'Event',
 		},
 		// {
@@ -354,32 +290,6 @@ export default {
 		// 	group: 'Style',
 		// },
 		{
-			name: 'thumbnail',
-			type: 'image',
-			group: 'Event',
-		},
-		{
-			name: 'homepageTitle',
-			title: 'Title',
-			type: 'string',
-			fieldset: 'Homepage',
-			group: 'Homepage',
-		},
-		{
-			name: 'homepageSubtitle',
-			title: 'Subtitle',
-			type: 'string',
-			fieldset: 'Homepage',
-			group: 'Homepage',
-		},
-		{
-			name: 'homepageThumbnail',
-			title: 'Thumbnail',
-			type: 'image',
-			fieldset: 'Homepage',
-			group: 'Homepage',
-		},
-		{
 			name: 'related',
 			type: 'array',
 			of: [
@@ -406,14 +316,19 @@ export default {
             title: 'title',
             subtitle: 'subtitle',
             media: 'thumbnail',
+            movie: 'movie._ref',
+            customContent: 'customContent',
+            movieThumbnail: 'movie.thumbnail',
         },
         prepare(selection) {
-            const {title, subtitle, media} = selection
+            const {title, subtitle, media, movie, customContent, movieThumbnail} = selection
+            const own = !movie || customContent === true
 
             return {
                 title: title,
                 subtitle: subtitle,
-                media: media,
+                // same rule as the site: the event's own thumbnail only without a movie or with custom content
+                media: media?.asset && own ? media : movieThumbnail || media,
             }
         }
     }

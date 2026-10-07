@@ -6,11 +6,21 @@ import location from './location'
 import person from './person'
 import format from './format'
 import sense from './sense'
-import section from './section'
+import edition from './edition'
+import editorial from './editorial'
+import organization from './organization'
+import movie from './movie'
+import language from './language'
+import country from './country'
+import jury from './jury'
+import prefooter from './prefooter'
+import about from './about'
 import seo from './seo'
 import menu from './menu'
 
 export const schemaTypes = [
+	editorial,
+	edition,
 	landing,
 	news,
 	program,
@@ -19,7 +29,13 @@ export const schemaTypes = [
 	person,
 	format,
 	sense,
-	section,
+	organization,
+	movie,
+	language,
+	country,
+	jury,
+	prefooter,
+	about,
 	seo,
 	menu
 ]

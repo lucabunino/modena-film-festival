@@ -10,7 +10,8 @@
 	{#if contact.email}
 		<a class="btn-l {bg ? 'bg-white' : 'bg-linen'} hover-white hover-bg-black" href="mailto:{contact.email}">{contact.email}</a>
 	{:else if contact.cta}
-		<a href={contact.cta.href} class="btn-l {bg ? 'bg-white' : 'bg-linen'} hover-white hover-bg-black" target="_blank" rel="noopener noreferrer">{contact.cta.label}</a>
+		<!-- cta.blank: false for internal links (same tab); external by default -->
+		<a href={contact.cta.href} class="btn-l {bg ? 'bg-white' : 'bg-linen'} hover-white hover-bg-black" target={contact.cta.blank === false ? undefined : '_blank'} rel={contact.cta.blank === false ? undefined : 'noopener noreferrer'}>{contact.cta.label}</a>
 	{/if}
 </div>
 

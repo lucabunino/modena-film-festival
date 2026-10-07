@@ -2,7 +2,6 @@
 	import bp from '$lib/scss/breakpoints.module.scss'
     import Title from "$lib/components/Title.svelte";
     import Navigator from "$lib/components/Navigator.svelte";
-    import PreFooter from "$lib/components/PreFooter.svelte";
 	import { register } from 'swiper/element/bundle';register();
 	import { friends } from "$lib/content/friends.js";
 	let { data } = $props()
@@ -18,19 +17,6 @@
 	// const supporters = [
 	// 	{name: 'Mario', surname: 'Rossi'},
 	// ]
-	const prefooter = {
-		subtitle: "Abbonamenti disponibili",
-		title: "Abbonati al festival",
-		content: "L'abbonamento MFF2026 consente l'accesso a tutte le proiezioni e gli eventi del Festival. Non include l'evento di pre-apertura <em>Cineconcerto Grand Tour Italiano</em>, il <em>Cineconcerto Sherlock Jr.</em>* e <em>Odorama. The Truman Show</em>.",
-		cta: {
-			label: 'Vai a: Biglietti',
-			href: '/biglietti',
-		},
-		annotation: "* Gli abbonati hanno diritto a uno sconto di 5€ su questo evento.",
-		bg: 'bg-yellow',
-		video: '/tickets/abbonamento-verticale-min.mp4',
-		poster: '/tickets/abbonamento-verticale-min.webp',
-	}
 	let swiperEl = $state(undefined)
 	let swiperIndex = $state(0)
 	let visible = $state(false)
@@ -62,8 +48,8 @@
 <main class="bg-white">
 	<Navigator title="Sostienici" {sections}/>
 	<Title
-	title='Sostieni <br>il festival!'
-	subtitles={['Scegli la tua fascia di sostegno e aiutaci a realizzare il festival!']}
+	title='Sostieni <br>il Festival!'
+	subtitles={['Scegli la tua fascia di sostegno e aiutaci a realizzare il Festival!']}
 	size="l"
 	/>
 	<section id="become-supporter" title="Diventa sostenitore" bind:this={sections[0]}>
@@ -88,7 +74,7 @@
 				<swiper-slide class="tier bg-yellow rounded-l" title={tier.title}>
 					<div>
 						<h3 class="wb-28 wb-21-mb">{tier.title}</h3>
-						<h4 class="nr-28 nr-21-mb">{#if tier.isCustomPrice}{@html 'A partire da '}{/if}{tier.price}€</h4>
+						<h4 class="te-28 te-21-mb">{#if tier.isCustomPrice}{@html 'A partire da '}{/if}{tier.price}€</h4>
 						<p class="wb-18 wb-15-mb max-w-400">{tier.abstract}</p>
 					</div>
 					<div class="btns">
@@ -127,7 +113,6 @@
 		</div>
 	</section>
 </main>
-<!-- <PreFooter {prefooter}/> -->
 
 <style lang="scss">
 @use '$lib/scss/breakpoints.module' as *;

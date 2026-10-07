@@ -30,6 +30,11 @@ export default {
 			name: 'adressHref',
 			type: 'url',
 		},
+		{
+			name: 'position',
+			type: 'geopoint',
+			description: 'Marker on the Luoghi map',
+		},
 	],
 	preview: {
         select: {

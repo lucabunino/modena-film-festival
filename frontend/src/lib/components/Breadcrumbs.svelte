@@ -2,6 +2,11 @@
     import { page } from "$app/state";
     let { showSingle = true, typeColor = undefined } = $props();
     let allSegments = $derived(page.url.pathname.split('/').filter(Boolean));
+    // an edition's slug segment reads as its title (2026 → MFF26)
+    const label = (segment) =>
+        page.params.edition && segment === page.params.edition && page.data.edition?.title
+            ? page.data.edition.title
+            : segment.replace(/-/g, " ");
     let visibleSegments = $derived.by(() => {
         return showSingle ? allSegments : allSegments.slice(0, -1);
     });
@@ -13,16 +18,16 @@
             <li>
                 {#if i < visibleSegments.length - 1}
                     <a class="hover-underline {typeColor ? 'typeColor' : undefined}" href={"/" + allSegments.slice(0, i + 1).join("/")}>
-                        {segment.replace(/-/g, " ")}
+                        {label(segment)}
                     </a><span class="divider">/</span>
                 {:else}
                     {#if showSingle}
                         <span aria-current="page">
-                            {segment.replace(/-/g, " ")}
+                            {label(segment)}
                         </span>
                     {:else}
                         <a class="hover-underline {typeColor ? 'typeColor' : undefined}" href={"/" + allSegments.slice(0, i + 1).join("/")}>
-                            {segment.replace(/-/g, " ")}
+                            {label(segment)}
                         </a>
                     {/if}
                 {/if}

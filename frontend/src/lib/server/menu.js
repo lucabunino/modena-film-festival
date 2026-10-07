@@ -1,20 +1,28 @@
-import { env } from '$env/dynamic/private';
-import { dev } from '$app/environment';
 import { getMenu } from '$lib/utils/sanity';
+import { siteChain } from '$lib/server/site.js';
 
-const CHAIN = ['dev', 'stage', 'main'];
-
-/**
- * The menu document this deployment shows (used by the layout and the sitemap).
- * MENU overrides; local dev → "dev"; stage branch deploy (Vercel sets VERCEL_GIT_COMMIT_REF) → "stage"; else "main".
- * A missing menu falls back down the chain (dev → stage → main), so the navigation is never empty.
- */
+/** The menu document this deployment shows (used by the layout and the sitemap): see siteChain() */
 export async function resolveMenu() {
-	const preferred = env.MENU || (dev ? 'dev' : env.VERCEL_GIT_COMMIT_REF === 'stage' ? 'stage' : 'main');
-	const chain = [...new Set([preferred, ...CHAIN.slice(CHAIN.indexOf(preferred) + 1)])];
-	for (const name of chain) {
+	for (const name of siteChain()) {
 		const menu = await getMenu(name);
-		if (menu) return menu;
+		if (menu) return { ...menu, items: resolveSubpageHrefs(menu.items ?? []) };
 	}
 	return null;
+}
+
+/**
+ * A level 2 item's href may be relative to its level 1 parent: "regolamento" under "/festival" → "/festival/regolamento".
+ * Full paths, URLs, mailto: and tel: are left as they are.
+ */
+function resolveSubpageHrefs(items) {
+	let parent;
+	return items.map((item) => {
+		if (item.level !== 2) {
+			parent = item.href;
+			return item;
+		}
+		const relative = item.href && !/^(https?:\/\/|mailto:|tel:|\/|#)/.test(item.href);
+		if (!relative || !parent?.startsWith('/')) return item;
+		return { ...item, href: `${parent.replace(/\/+$/, '')}/${item.href.replace(/^\/+/, '')}` };
+	});
 }

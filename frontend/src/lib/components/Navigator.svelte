@@ -3,22 +3,25 @@
     let { title, sections, cta, bg } = $props()
 	import { getBanner } from '$lib/stores/banner.svelte';
     import { onMount } from "svelte";
+    import { getResponsive } from "$lib/stores/responsive.svelte.js";
+    import { getNavigator } from "$lib/stores/navigator.svelte.js";
 	let banner = getBanner()
 	let visible = $state(false)
 	let shaking = $state(false);
 	function handleLockedclick(e) {e.preventDefault(); if (shaking) return; shaking = true; setTimeout(() => (shaking = false), 600); }
 	let activeSection = $state(false)
+	let panel = $state()
+	const responsive = getResponsive()
 
-	// publish the panel height (on mobile it's a fixed bottom bar) so other fixed UI, e.g. Alert, can sit above it
-	function publishHeight(node) {
-		const root = document.documentElement
-		const ro = new ResizeObserver(() => root.style.setProperty('--navigatorHeight', `${node.offsetHeight}px`))
-		ro.observe(node)
-		return () => {
-			ro.disconnect()
-			root.style.removeProperty('--navigatorHeight')
-		}
-	}
+	// mobile: the bar scrolls sideways so the current section's link is the first on the left
+	$effect(() => {
+		if (!responsive.underLg || activeSection === false || !panel) return
+		const link = panel.querySelectorAll('li a')[activeSection]
+		if (link) panel.scrollTo({ left: link.offsetLeft, behavior: 'smooth' })
+	})
+
+	// the Alert stacks below the panel on desktop: register its height (see stores/navigator)
+	const navigatorPanel = getNavigator()
 	$effect(() => {
 		const disconnect = observeSections();
 		visible = true;
@@ -57,7 +60,7 @@
 
 {#if sections}
 	<nav>
-		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}" {@attach publishHeight}>
+		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}" bind:this={panel} {@attach navigatorPanel.track}>
 			{#if title}
 				<button class="title wb-12 uppercase desktop-only" onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>{title}</button>
 			{/if}
@@ -94,7 +97,9 @@
 			padding: var(--margin);
 			position: sticky;
 			top: var(--margin);
-			margin: var(--margin) 0;
+			// no top margin: the panel starts where it sticks (main's padding = --margin), so it never moves
+			// and the Alert can stack below it in plain CSS
+			margin: 0 0 var(--margin);
 			pointer-events: all;
 			transform: translateX(150%);
 			transition: var(--transition-m);
@@ -149,12 +154,22 @@
 			}
 		}
 
+		// mobile: a bar stuck to the bottom of the screen while the page content scrolls by; at the end of the
+		// content it stays there (sticky inside the full-height nav), so it never covers the footer
 		@media (width <= #{$lg}) {
-			height: stretch;
+			top: 0;
+			bottom: -1px; // overlap the footer by 1px: no hairline gap from sub-pixel rounding when the bar settles
+			left: 0;
+			right: 0;
+			height: auto;
+			width: auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
 
 			div {
 				margin: 0;
-				position: fixed;
+				position: sticky;
 				bottom: 0;
 				top: unset !important;
 				width: 100%;

@@ -28,6 +28,10 @@ $colors: (
 	--transition-l: cubic-bezier(.77,0,.175,1) 1200ms;
 	--sidebarWidth: var(--sp-222);
 	--menuHeight: clamp(calc(30px + var(--margin)*2), calc(8vw + var(--margin)*2), calc(50px + var(--margin)*2));
+	// hero heights, one scale for landings and news (Full: whole screen, Tall: landing default / news "Img tall")
+	--heroFull: 100svh;
+	--heroTall: 85vh;
+	--heroShort: 50vh;
 	--radius-m: 1rem;
 	--radius-l: 3rem;
 
@@ -375,7 +379,7 @@ $gradients: (
     left: 0;
     height: 1px;
     width: 100%;
-    background-color: var(--black);
+    background-color: currentColor; // same colour as the text (e.g. white breadcrumbs over an image)
     transform: scaleX(0);
     transform-origin: left;
     transition: var(--transition-s);
@@ -451,18 +455,22 @@ $gradients: (
 .contacts-grid {
 	grid-column: 1 / span 8;
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	// boxes between 32rem and 36rem: one more per row each time another 32rem box (+ 2rem gap) fits,
+	// the rest of the row stays empty (14" laptop: 2 boxes + empty space with the Sidebar open, 3 collapsed).
+	// Not auto-fill: with a fixed max, auto-fill counts columns by the max, not the min.
+	grid-template-columns: repeat(1, minmax(0, 36rem));
+	justify-content: start;
 	column-gap: var(--margin);
 	row-gap: var(--margin);
 
-	@container main (width <= #{$xxl}) {
-		grid-template-columns: repeat(3, 1fr);
+	@container main (width >= 66rem) {
+		grid-template-columns: repeat(2, minmax(0, 36rem));
 	}
-	@container main (width <= #{$xl}) {
-		grid-template-columns: repeat(2, 1fr);
+	@container main (width >= 100rem) {
+		grid-template-columns: repeat(3, minmax(0, 36rem));
 	}
-	@container main (width <= #{$sm}) {
-		grid-template-columns: repeat(1, 1fr);
+	@container main (width >= 134rem) {
+		grid-template-columns: repeat(4, minmax(0, 36rem));
 	}
 }
 @keyframes shake {

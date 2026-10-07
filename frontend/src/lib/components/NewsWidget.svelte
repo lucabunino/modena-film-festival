@@ -117,6 +117,8 @@
 		z-index: 4;
 		pointer-events: none;
 		grid-column: unset;
+		// not the global main > section top padding: the slider's own margin puts it level with the cookie banner
+		padding-top: 0;
 
 		swiper-container {
 			position: sticky;

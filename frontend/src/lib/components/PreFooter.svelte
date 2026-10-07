@@ -1,6 +1,15 @@
 <script>
 	import Media from '$lib/components/Media.svelte'
-	let {prefooter} = $props()
+	import RichText from '$lib/components/RichText.svelte'
+
+	// prefooter: a CMS prefooter (see backend schemaTypes/prefooter.js), chosen by page path in the root layout
+	let { prefooter } = $props()
+
+	const hasMedia = $derived(
+		(prefooter.mediaType === 'image' && prefooter.image) || (prefooter.mediaType === 'video' && prefooter.video)
+	)
+	const cta = $derived(prefooter.cta ?? {})
+
 	let shaking = $state(false);
 	function handleLockedclick(e) {
 		e.preventDefault()
@@ -10,25 +19,28 @@
 	}
 </script>
 
-<section id="pre-footer" class={prefooter.bg}>
-	{#if prefooter.img}
-		<Media class="media" src={prefooter.img} />
-	{:else if prefooter.video}
-		<Media class="media" src={prefooter.video} video poster={prefooter.poster} />
+<section id="pre-footer" class="bg-{prefooter.color || 'linen'}">
+	{#if prefooter.mediaType === 'image' && prefooter.image}
+		<Media class="media" image={prefooter.image} sizes="(width <= 768px) 100vw, 40vw" />
+	{:else if prefooter.mediaType === 'video' && prefooter.video}
+		<Media class="media" media={{ type: 'video', video: prefooter.video, videoPoster: prefooter.poster }} />
 	{/if}
-	<div class={prefooter.img || prefooter.video ? 'half' : 'wide'}>
+	<div class={hasMedia ? 'half' : 'wide'}>
 		<div>
 			{#if prefooter.subtitle}<h2 class="wb-12 wb-10-mb uppercase">{prefooter.subtitle}</h2>{/if}
-			{#if prefooter.title}<h3 class="wb-cd-120 wb-cd-40-mb uppercase max-w-800">{@html prefooter.title}</h3>{/if}
-			{#if prefooter.content}<p class="content wb-21 wb-15-mb max-w-600">{@html prefooter.content}</p>{/if}
+			{#if prefooter.title}
+				<h3 class="title wb-cd-120 wb-cd-40-mb uppercase max-w-800">{prefooter.title}</h3>
+			{/if}
+			{#if prefooter.content?.length}<div class="content wb-21 wb-15-mb max-w-600"><RichText value={prefooter.content} /></div>{/if}
 		</div>
 		<div>
-			{#if prefooter.cta.label && prefooter.cta.href}
-				<a class="btn-l hover-black hover-bg-linen {prefooter.cta.locked ? 'locked' : ''} {shaking ? 'shaking' : ''}" href={prefooter.cta.href}
-				onclick={(e) => {prefooter.cta.locked ? handleLockedclick(e) : ''}}
-				>{prefooter.cta.label}</a>
+			{#if cta.label && cta.href}
+				<a class="btn-l hover-black hover-bg-linen {cta.locked ? 'locked' : ''} {shaking ? 'shaking' : ''}" href={cta.href}
+				target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}
+				onclick={(e) => {cta.locked ? handleLockedclick(e) : ''}}
+				>{cta.label}</a>
 			{/if}
-			{#if prefooter.annotation}<p class="annotation wb-15 wb-15-mb max-w-600">{@html prefooter.annotation}</p>{/if}
+			{#if prefooter.annotation?.length}<div class="annotation wb-15 wb-15-mb max-w-600"><RichText value={prefooter.annotation} /></div>{/if}
 		</div>
 	</div>
 </section>
@@ -42,6 +54,11 @@
 		}
 	}
 	#pre-footer {
+		// title: one line per row in the CMS
+		.title {
+			white-space: pre-line;
+		}
+
 		min-height: 650px;
 		display: flex;
 		margin-left: var(--sidebarWidth);

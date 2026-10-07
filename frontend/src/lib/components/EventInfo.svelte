@@ -5,7 +5,11 @@
     import { formatEventDate, formatISO, formatLabel } from "$lib/utils/datetime";
     import { onMount } from "svelte";
 
+	import { getNavigator } from '$lib/stores/navigator.svelte.js';
+
 	let banner = getBanner()
+	// stacked like the Navigator: the Alert sits below it (see stores/navigator)
+	const navigatorPanel = getNavigator()
 	let visible = $state(false)
 
 	$effect(() => {
@@ -13,8 +17,10 @@
 	})
 </script>
 
+<!-- not on an edition archive's event pages: where and when only matter for the current program -->
+{#if !page.params.edition}
 <nav class="desktop-only">
-	<div class="rounded-m wb-18 wb-10-mb bg-linen {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}">
+	<div class="rounded-m wb-18 wb-10-mb bg-linen {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}" {@attach navigatorPanel.track}>
 		<h4 class="title wb-12 uppercase">Dove e quando?</h4>
 		{#if event.start}
 			<time datetime={formatISO(event.start, event.end)}>{formatEventDate(event.start, event.end)}</time>
@@ -36,6 +42,7 @@
 		{/if}
 	</div>
 </nav>
+{/if}
 
 <style lang="scss">
 @use '$lib/scss/breakpoints.module' as *;
@@ -53,7 +60,7 @@
 			padding: var(--margin);
 			position: sticky;
 			top: var(--margin);
-			margin: var(--margin) 0;
+			margin: 0 0 var(--margin); // starts where it sticks, like the Navigator (the Alert stacks below it)
 			pointer-events: all;
 			transform: translateX(150%);
 			transition: var(--transition-m);

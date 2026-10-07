@@ -1,6 +1,11 @@
 <script>
 	import RegolamentoPage from '$lib/components/RegolamentoPage.svelte'
-	import { rules } from '$lib/content/rules.js'
+	import Placeholder from '$lib/components/Placeholder.svelte'
+	let { data } = $props()
 </script>
 
-<RegolamentoPage {rules} title="Regolamento<br>Modena Film Festival" />
+{#if data.placeholder}
+	<Placeholder title="Regolamento<br>Modena Film Festival" message="Il regolamento della prossima edizione sarà disponibile a breve." />
+{:else}
+	<RegolamentoPage rules={data.rules} title="Regolamento<br>Modena Film Festival" />
+{/if}

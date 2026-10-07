@@ -1,10 +1,10 @@
-import {EarthGlobeIcon} from '@sanity/icons/EarthGlobe'
+import {SearchIcon} from '@sanity/icons/Search'
 
 export default {
   name: 'seo',
   title: 'SEO',
   type: 'document',
-  icon: EarthGlobeIcon,
+  icon: SearchIcon,
   fieldsets: [
 
   ],

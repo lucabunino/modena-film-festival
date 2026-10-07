@@ -27,7 +27,7 @@
 		<h1 class="wb-cd-80 wb-cd-40-mb max-w-800 uppercase">{event.title}</h1>
 	{/if}
 	{#if event.subtitle}
-		<h2 class="nr-35 nr-21-mb max-w-700">{event.subtitle}</h2>
+		<h2 class="te-35 te-21-mb max-w-700">{event.subtitle}</h2>
 	{/if}
 	<div class="info wb-21 wb-15-mb max-w-700">		
 		{#if event.webticHref && !event.soldOut && canBuy}

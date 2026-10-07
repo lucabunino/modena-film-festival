@@ -1,4 +1,4 @@
-import {CalendarIcon} from '@sanity/icons/Calendar'
+import {ArchiveIcon} from '@sanity/icons/Archive'
 import {NumberIcon} from '@sanity/icons/Number'
 import {SparkleIcon} from '@sanity/icons/Sparkle'
 import body from './fields/body.js'
@@ -6,7 +6,7 @@ import body from './fields/body.js'
 export default {
     name: 'program',
     type: 'document',
-    icon: CalendarIcon,
+    icon: ArchiveIcon,
     fields: [
         {
             name: 'title',

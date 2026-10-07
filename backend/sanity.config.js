@@ -7,6 +7,9 @@ import {media} from 'sanity-plugin-media'
 import {myStructure} from './structure'
 
 
+// edited only through their desk item, never created, duplicated or deleted
+const singletons = ['about']
+
 export default defineConfig({
 	name: 'default',
 	title: 'Modena Film Festival',
@@ -23,10 +26,16 @@ export default defineConfig({
 
 	schema: {
 		types: schemaTypes,
+		// singleton: only reachable through the desk item, never created from the + menu
+		templates: (templates) => templates.filter(({schemaType}) => !singletons.includes(schemaType)),
 	},
 
 	document: {
-		badges: [StatusBadge]
+		badges: [StatusBadge],
+		actions: (actions, {schemaType}) =>
+			singletons.includes(schemaType)
+				? actions.filter(({action}) => !['duplicate', 'delete', 'unpublish'].includes(action))
+				: actions,
 	},
 })
 

@@ -1,7 +1,8 @@
 <script>
     import Navigator from "$lib/components/Navigator.svelte";
     import Title from "$lib/components/Title.svelte";
-    // rules: current list (lib/content) or a frozen edition copy (lib/components/editions/<year>)
+    import RichText from "$lib/components/RichText.svelte";
+    // rules: an Edition's Regolamento ([{_key, title, body}])
     let { rules, title } = $props()
 	let sections = $state([])
 </script>
@@ -9,12 +10,11 @@
 <main class="bg-white">
 	<Navigator title="Regolamento" {sections} cta={{label: 'Candida il tuo film', href: 'https://filmfreeway.com/festivals/93026?utm_campaign=Modena+Film+Festival&utm_medium=External&utm_source=Submission+Button', blank: true}}/>
 	<Title {title} size="m"/>
-	{#each rules as rule, i (rule.title)}
+	{#each rules as rule, i (rule._key)}
 		<section id={i} title={rule.title} bind:this={sections[i]} class="rule">
 			<h2 class="section-title wb-12 wb-10-mb uppercase">{rule.title}</h2>
-			{#each rule.content as p, j (p)}
-				<div class="content wb-18 wb-15-mb max-w-800">{@html p}</div>
-			{/each}
+			<!-- one div.content per paragraph, heading and list -->
+			<RichText value={rule.body} wrap="content wb-18 wb-15-mb max-w-800" h3="wb-28" link="hover-brown" />
 		</section>
 	{/each}
 </main>
@@ -25,7 +25,7 @@ main {
 	display: grid;
 	grid-template-columns: repeat(8, 1fr);
 	min-height: 80vh;
-	.content {
+	:global(.content) {
 		line-height: 1.2;
 		&:not(:first-of-type) {
 			margin-top: .6em;

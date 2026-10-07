@@ -1,12 +1,13 @@
+import shortText from './fields/shortText.js'
 import seoFields from './fields/seoFields.js'
 import colorOptions from './fields/colorOptions.js'
-import {EnvelopeIcon} from '@sanity/icons/Envelope'
+import {DocumentTextIcon} from '@sanity/icons/DocumentText'
 const relativeOrAbsoluteRegex = /^(https?:\/\/|mailto:|tel:|\/|#)/;
 
 export default {
 	name: 'news',
 	type: 'document',
-	icon: EnvelopeIcon,
+	icon: DocumentTextIcon,
 	groups: [
 		{name: 'News'},
 		{name: 'Widget'},
@@ -129,12 +130,7 @@ export default {
 			group: 'Widget',
 			fieldset: 'Widget',
 		},
-		{
-			name: 'abstract',
-			type: 'text',
-			group: 'News',
-			rows: 3,
-		},
+		shortText({group: 'News'}),
 		{
 			name: 'body',
 			type: 'array',
@@ -192,6 +188,7 @@ export default {
 					{ title: 'Img tall', value: 'imgTall' },
 					{ title: 'Img short', value: 'imgShort' },
 					{ title: 'No img', value: 'noImg' },
+					{ title: 'Img framed', value: 'imgFramed' },
 				],
 			},
 			initialValue: 'main',

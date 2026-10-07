@@ -27,6 +27,8 @@
 		loading = 'lazy',
 		// false: show immediately, no fade-in (e.g. partner logos)
 		reveal = true,
+		// false: no dominant-colour fill behind the image (e.g. transparent logos)
+		background = true,
 		overlay = undefined,
 	} = $props()
 
@@ -74,7 +76,7 @@
 <div
 	class="media-container {className}"
 	style:aspect-ratio={finalRatio}
-	style:background-color={palette}
+	style:background-color={background ? palette : undefined}
 	{@attach observeEntry}
 >
 	{#if lqip}

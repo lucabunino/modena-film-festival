@@ -45,7 +45,9 @@
 				<div class="inner">
 					<div class="front rounded-m">
 						<h4 class="wb-10-mb uppercase">{section.name}</h4>
-						{#if section.img}
+						{#if section.image}
+							<Media class="img" image={section.image} alt="Copertina per {section.event}" sizes="(max-width: 768px) 80vw, 25vw" />
+						{:else if section.img}
 							<Media class="img" src={section.img} lqip={section.lqip} alt="Copertina per {section.event}" />
 						{:else}
 							<div class="img {section.gradient}"></div>

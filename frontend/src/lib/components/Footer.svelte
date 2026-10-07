@@ -1,13 +1,16 @@
 <script>
 	import { asset } from '$lib/utils/assets.js'
 	import { getNewsletter } from '$lib/stores/newsletter.svelte.js'
+	import { page } from '$app/state'
 	const newsletter = getNewsletter()
+	// the menu's "Show newsletter" switch also hides the footer's newsletter block
+	const showNewsletter = $derived(page.data.menu?.showNewsletter !== false)
 </script>
 
 <footer aria-label="Footer">
 	<section id="contacts" aria-labelledby="contact-title">
 		<h3 id="contact-title" class="title wb-12 wb-10-mb uppercase">Contattaci</h3>
-		<p class="wb-14 wb-15-mb">Per informazioni sul festival, accreditamenti o altro</p>
+		<p class="wb-14 wb-15-mb">Per informazioni sul Festival, accreditamenti o altro</p>
 		<ul class="contact-list" aria-label="Indirizzi email di contatto">
 			<!-- <li>
 				<a class="email btn-m bg-linen hover-bg-black" href="mailto:press@modenafilmfestival.it">
@@ -21,12 +24,14 @@
 			</li>
 		</ul>
 	</section>
+	{#if showNewsletter}
 	<section id="newsletter" aria-labelledby="newsletter-title">
 		<h3 id="newsletter-title" class="title wb-12 wb-10-mb uppercase">Newsletter</h3>
 		<p class="wb-cd-60 wb-cd-40-mb uppercase">Vuoi rimanere aggiornato?</p>
 		<p class="wb-14 wb-15-mb">Iscriviti per ricevere aggiornamenti su programma, ospiti, eventi e iniziative del Modena Film Festival.</p>
 		<button class="subscribe btn-l bg-linen black hover-white hover-bg-black" type="button" onclick={() => newsletter.setOpen(true)}>Iscriviti alla newsletter</button>
 	</section>
+	{/if}
 	<section id="project" aria-labelledby="project-title" class="wb-12 wb-10-mb">
 		<div>
 			<h3 id="project-title">Un progetto organizzato da</h3>

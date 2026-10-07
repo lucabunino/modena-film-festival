@@ -5,6 +5,8 @@
     import Sidebar from '$lib/components/Sidebar.svelte';
     import Menu from '$lib/components/Menu.svelte';
     import Footer from '$lib/components/Footer.svelte';
+    import PreFooter from '$lib/components/PreFooter.svelte';
+    import { prefooterFor } from '$lib/utils/prefooter.js';
     import Head from '$lib/components/Head.svelte';
     import CookieBanner from "$lib/components/CookieBanner.svelte";
     import NewsletterModal from "$lib/components/NewsletterModal.svelte";
@@ -18,6 +20,8 @@
     import { onMount } from "svelte";
 	let { data, children } = $props();
 	const responsive = getResponsive()
+	// the prefooter whose paths include this page (edited in the CMS)
+	const prefooter = $derived(prefooterFor(data.prefooters, page.url.pathname))
 	let scrollY = $state(undefined)
 
     const transitionIn = (node, params) => {
@@ -37,6 +41,7 @@
 {#key page.url.pathname}
 	<div id="wrapper" in:transitionIn out:transitionOut>
 		{@render children()}
+		{#if prefooter && !page.error}<PreFooter {prefooter} />{/if}
 		{#if !page.error}<Footer/>{/if}
 	</div>
 {/key}

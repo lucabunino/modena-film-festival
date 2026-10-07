@@ -9,15 +9,6 @@
 		{title: 'Crispy', href: 'https://www.instagram.com/crispycinemaclub/', cover: '/img/crispy.webp', logo: '/logos/crispy-white.svg'},
 		{title: 'Longtake', href: 'https://www.longtake.it/', cover: '/img/longtake.webp', logo: '/logos/longtake-white.svg'},
 	]
-	const people = [
-		{name: 'Gabriele', surname: 'Malagoli', initials: 'GM', role: 'Direttore artistico'},
-		{name: 'Massimo', surname: 'Bondioli', initials: 'MB', role: 'Direttore organizzativo'},
-		{name: 'Alice', surname: 'Morelli', initials: 'AM', role: 'Direttrice marketing e partnership'},
-		{name: 'Martina', surname: 'Dell’Utri', initials: 'MD', role: 'Organizzatrice di Produzione e Print Traffic'},
-		{name: 'Giulia', surname: 'Benedetti', initials: 'GB', role: 'Direttore creativo e designer grafico'},
-		{name: 'Luca', surname: 'Bunino', initials: 'LB', role: 'Direttore creativo e designer grafico'},
-		{name: 'Andrea', surname: 'Chimento', initials: 'AC', role: 'Ideatore'},
-	]
 </script>
 
 
@@ -37,13 +28,13 @@
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Chi siamo</h2>
 		<p class="wb-21 wb-18-mb max-w-700">Il Modena Film Festival è un progetto ideato da Crispy Cinema Club e realizzato in collaborazione con Longtake, due realtà diverse ma complementari, unite dalla stessa visione: rendere il cinema un luogo vivo, accessibile e condiviso.</p>
 		<p class="wb-21 wb-18-mb max-w-700">Da un lato Crispy Cinema Club, che porta energia, comunità e un modo diretto e contemporaneo di avvicinarsi ai film.<br>Dall’altro Longtake, che da anni coltiva un approccio critico, approfondito e curioso verso il cinema d’autore.</p>
-		<p class="wb-21 wb-18-mb max-w-700">Insieme abbiamo immaginato un festival che unisce queste due anime: pop e curata, sensibile e rigorosa, attenta allo sguardo del pubblico e al lavoro degli autori. Un progetto costruito da persone che il cinema lo vivono ogni giorno, per farlo vivere anche a chi lo incontra qui, a Modena.</p>
+		<p class="wb-21 wb-18-mb max-w-700">Insieme abbiamo immaginato un Festival che unisce queste due anime: pop e curata, sensibile e rigorosa, attenta allo sguardo del pubblico e al lavoro degli autori. Un progetto costruito da persone che il cinema lo vivono ogni giorno, per farlo vivere anche a chi lo incontra qui, a Modena.</p>
 	</section>
 	<section id="chart" title="Organigramma" bind:this={sections[1]}>
 		<h2 class="section-title wb-12 wb-10-mb uppercase">Organigramma</h2>
 		<div class="chart">
-			{#each people as person (person)}
-				<Person {person}/>
+			{#each data.team as member (member._key)}
+				<Person {member}/>
 			{/each}
 		</div>
 	</section>

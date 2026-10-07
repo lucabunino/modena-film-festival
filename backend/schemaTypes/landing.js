@@ -1,11 +1,11 @@
 import colorOptions from './fields/colorOptions.js'
-import {HeartIcon} from '@sanity/icons/Heart'
+import {PresentationIcon} from '@sanity/icons/Presentation'
 const relativeOrAbsoluteRegex = /^(https?:\/\/|mailto:|tel:|\/|#)/;
 
 export default {
     name: 'landing',
     type: 'document',
-    icon: HeartIcon,
+    icon: PresentationIcon,
     groups: [
         {name: 'Landing'},
         {name: 'Style'},
@@ -81,8 +81,10 @@ export default {
             type: 'string',
             options: {
                 list: [
-                    { title: 'Layout 1', value: '1' },
-                    { title: 'Layout 2', value: '2' },
+                    { title: 'Layout 1 (tall)', value: '1' },
+                    { title: 'Layout 1 (full)', value: '1-full' },
+                    { title: 'Layout 2 (tall)', value: '2' },
+                    { title: 'Layout 2 (full)', value: '2-full' },
                 ],
             },
             initialValue: '1',

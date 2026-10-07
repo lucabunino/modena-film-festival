@@ -1,5 +1,5 @@
 import {MenuIcon} from '@sanity/icons/Menu'
-import {link, linkFields} from './fields/link.js'
+import {link, linkFields, HREF_PATTERN} from './fields/link.js'
 
 export default {
 	name: 'menu',
@@ -30,7 +30,19 @@ export default {
 						},
 						...linkFields.map((field) =>
 							field.name === 'href'
-								? {...field, validation: (Rule) => field.validation(Rule).required()}
+								? {
+										...field,
+										description:
+											'Level 1: full path or URL (e.g. /festival). Level 2: also just the last part (e.g. regolamento → /festival/regolamento)',
+										// level 2 may be relative to its level 1 parent: a bare segment, no leading /
+										validation: (Rule) =>
+											Rule.required().custom((href, {parent}) => {
+												if (!href) return true
+												if (HREF_PATTERN.test(href)) return true
+												if (parent?.level === 2 && /^[a-z0-9][a-z0-9/_-]*$/i.test(href)) return true
+												return 'Must be a URL, mailto:, tel:, an internal path starting with /, or (level 2) a path segment'
+											}),
+									}
 								: field,
 						),
 						{
@@ -83,9 +95,9 @@ export default {
 		},
 		{
 			name: 'showNewsletter',
-			title: 'Show newsletter button',
+			title: 'Show newsletter',
 			type: 'boolean',
-			description: 'Shown after the socials; opens the newsletter signup',
+			description: 'The newsletter button after the socials and the newsletter block in the footer; both open the signup',
 			initialValue: true,
 		},
 		{

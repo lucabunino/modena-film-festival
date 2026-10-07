@@ -2,6 +2,7 @@
 	import { page } from '$app/state'
 	import { eventHref } from '$lib/utils/edition.js'
 	import Media from '$lib/components/Media.svelte'
+	// contest: an Edition's films in competition ([{_id, title, director, poster, thumbnail, event: {slug}}])
 	let { contest } = $props()
 </script>
 
@@ -12,13 +13,13 @@
 	</div>
 	<div class="contest-wrapper">
 		<div class="contest">
-			{#each contest as event (event.slug.current)}
-				<a class="event white" href={eventHref(event.slug.current, page.params.edition)}>
-					{#if event.homepageThumbnail}
-						<Media class="img" image={event.homepageThumbnail} alt="Copertina di {event.homepageTitle}" sizes="(width <= 1024px) 100vw, 50vw" />
+			{#each contest as movie (movie._id)}
+				<a class="event white" href={movie.event ? eventHref(movie.event.slug, page.params.edition) : undefined}>
+					{#if movie.poster}
+						<Media class="img" image={movie.poster} alt="Locandina di {movie.title}" sizes="(width <= 1024px) 100vw, 50vw" />
 					{/if}
-					{#if event.homepageTitle}<h3 class="title wb-28 wb-18-mb">{event.homepageTitle}</h3>{/if}
-					{#if event.homepageSubtitle}<h4 class="subtitle nr-28 nr-21-mb">{event.homepageSubtitle}</h4>{/if}
+					{#if movie.title}<h3 class="title wb-28 wb-18-mb">{movie.title}</h3>{/if}
+					{#if movie.director}<h4 class="subtitle te-28 te-21-mb">di {movie.director}</h4>{/if}
 					<span class="cta btn-m black bg-white hover-black hover-bg-linen">Leggi di più</span>
 				</a>
 			{/each}

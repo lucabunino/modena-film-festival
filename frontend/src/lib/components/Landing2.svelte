@@ -1,5 +1,4 @@
 <script>
-    import { rules } from "$lib/content/rules";
     import { urlFor } from "$lib/utils/image";
     import Marquee from "svelte-fast-marquee";
 
@@ -8,13 +7,13 @@
 	let size = $derived(landing.size)
 </script>
 
-<section id="hero" class="bg-linen white" style={landing.thumbnail ? `background-image: url(${urlFor(landing.thumbnail).width(2560)})` : undefined}>
+<section id="hero" class="bg-linen white {landing.layout?.endsWith('-full') ? 'full' : ''}" style={landing.thumbnail ? `background-image: url(${urlFor(landing.thumbnail).width(2560)})` : undefined}>
 	<div class="top">
 		<h3 class="wb-12 uppercase">{landing.runningHead}</h3>
 		{#if landing.title}
 			<h1 class="{size == 'l' ? 'wb-cd-120 wb-cd-40-mb' : size == 'm' ? 'wb-cd-80 wb-cd-40-mb' : size == 's' ? 'wb-cd-60 wb-cd-24-mb': undefined} max-w-700 uppercase">{landing.title}</h1>
 		{/if}
-		{#if landing.subtitle}<h2 class="nr-35 nr-21-mb">{landing.subtitle}</h2>{/if}
+		{#if landing.subtitle}<h2 class="te-35 te-21-mb">{landing.subtitle}</h2>{/if}
 	</div>
 	<div class="bottom">
 		{#if landing.abstract}
@@ -30,8 +29,12 @@
 @use '$lib/scss/breakpoints.module' as *;
 	#hero {
 		grid-column: 1 / span 8;
-		height: 90vh;
+		height: var(--heroTall);
 		min-height: 600px;
+
+		&.full {
+			height: var(--heroFull);
+		}
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;

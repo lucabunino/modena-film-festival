@@ -24,13 +24,17 @@
 			{:else}
 				<div class="img _3_2 bg-brown"></div>
 			{/if}
-			{#if event.formats}
+			{#if event.formats || event.awards?.length}
 				<div class="tags wb-12 wb-10-mb uppercase">
 					{#if event.soldOut}
 						<span class="tag white bg-black">Sold out</span>
 					{/if}
-					{#each event.formats as format, i (format.slug.current)}
+					{#each event.formats ?? [] as format (format.slug.current)}
 						<span class="tag bg-white">{format.title}</span>
+					{/each}
+					<!-- prizes the screened film won in this edition, in the prize's colour -->
+					{#each event.awards ?? [] as award (award._key)}
+						<span class="tag award bg-{award.color || 'linen'}">✳ {award.title}</span>
 					{/each}
 				</div>
 			{/if}
@@ -41,7 +45,7 @@
 					{#if event.location}<p class="location">{event.location.title}</p>{/if}
 				</div>
 				<h2 class="title wb-24 wb-21-mb bold">{event.title}</h2>
-				{#if event.subtitle}<h3 class="subtitle nr-24">{event.subtitle}</h3>{/if}
+				{#if event.subtitle}<h3 class="subtitle te-24">{event.subtitle}</h3>{/if}
 			</div>
 		</div>
 	</a>
@@ -88,7 +92,7 @@
 				position: absolute;
 				z-index: 1;
 				inset: auto 0 0;
-				padding: var(--sp-32) var(--margin) var(--inset) var(--margin);
+				padding: var(--sp-32) var(--margin) var(--margin) var(--margin); // bottom = side margin (test)
 				background: linear-gradient(transparent, rgba(0, 0, 0, .45));
 				transition: transform var(--transition-xs);
 

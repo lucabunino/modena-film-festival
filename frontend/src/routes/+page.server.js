@@ -1,18 +1,20 @@
-import { getLanding, getWidgetNewses, getContest, getProgram } from '$lib/utils/sanity';
+import { getContest, getProgram } from '$lib/utils/sanity';
+import { resolveEditorial } from '$lib/server/editorial.js';
 import { error } from '@sveltejs/kit';
 
 export async function load() {
-	const landing = await getLanding();
-	const widgetNewses = await getWidgetNewses();
-	const contest = await getContest()
-	const program = await getProgram()
-	if (landing, widgetNewses, contest) {
-		return {
-			landing,
-			widgetNewses,
-			contest,
-			program
-		};
-	}
-  throw error(404, 'Not found');
+	const editorial = await resolveEditorial();
+	if (!editorial) throw error(404, 'Not found');
+	// Film in concorso and program each follow their own Editorial edition; none → that block is hidden
+	const [contest, program] = await Promise.all([
+		editorial.competition ? getContest(editorial.competition.slug) : [],
+		editorial.program ? getProgram(editorial.program.slug) : null
+	]);
+	return {
+		landing: editorial.landing,
+		newsWidget: editorial.newsWidget ?? [],
+		specialEvents: editorial.specialEvents ?? [],
+		contest,
+		program
+	};
 }

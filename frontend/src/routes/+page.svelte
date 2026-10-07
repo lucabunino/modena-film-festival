@@ -4,7 +4,6 @@
 	import Marquee from 'svelte-fast-marquee';
     import SectionsDesktop from '$lib/components/SectionsDesktop.svelte';
     import SectionsMobile from '$lib/components/SectionsMobile.svelte';
-    import PreFooter from '$lib/components/PreFooter.svelte';
     import NewsWidget from '$lib/components/NewsWidget.svelte';
     import { innerWidth } from 'svelte/reactivity/window';
     import Landing1 from '$lib/components/Landing1.svelte';
@@ -14,27 +13,24 @@
     import ContestSlider from '$lib/components/ContestSlider.svelte';
     import ProgramSection from '$lib/components/ProgramSection.svelte';
 	
-	const sections = [
-		{ name: 'Vista', slug: 'il-cieco-che-non-voleva-vedere-titanic', gradient: 'gradient-y-brown-cyan', img: '/img/mff-placeholder.webp', lqip: '/img/mff-placeholder-lqip.webp', title: "Coming soon", locked: true },
-		{ name: 'Udito', slug: 'cineconcerto-sherlock-jr', gradient: 'gradient-y-brown-yellow', img: '/img/mff-placeholder.webp', lqip: '/img/mff-placeholder-lqip.webp', title: "Coming soon", locked: true },
-		{ name: 'Tatto', slug: 'thelma-e-louise', gradient: 'gradient-y-brown-red', img: '/img/mff-placeholder.webp', lqip: '/img/mff-placeholder-lqip.webp', title: "Coming soon", locked: true },
-		{ name: 'Gusto', slug: 'la-citta-incantata', gradient: 'gradient-y-brown-pink', img: '/img/mff-placeholder.webp', lqip: '/img/mff-placeholder-lqip.webp', title: "Coming soon", locked: true },
-		{ name: 'Olfatto', slug: 'odorama-the-truman-show', gradient: 'gradient-y-brown-iris', img: '/img/mff-placeholder.webp', lqip: '/img/mff-placeholder-lqip.webp', title: "Coming soon", locked: true }
-	];
+	// the Editorial's special events, one card per sense; a hidden event is a locked card with its own coming-soon image
+	const gradients = ['gradient-y-brown-cyan', 'gradient-y-brown-yellow', 'gradient-y-brown-red', 'gradient-y-brown-pink', 'gradient-y-brown-iris'];
+	const sections = $derived(data.specialEvents.map((event, i) => {
+		const locked = event.status === 'hidden';
+		return {
+			name: event.sense,
+			slug: event.slug,
+			gradient: gradients[i % gradients.length],
+			image: event.image,
+			// no image: generic placeholder photo while locked, sense gradient once public
+			img: locked && !event.image ? '/img/mff-placeholder.webp' : undefined,
+			lqip: locked && !event.image ? '/img/mff-placeholder-lqip.webp' : undefined,
+			title: locked ? 'Coming soon' : event.title,
+			event: event.title,
+			locked,
+		};
+	}));
 
-	const prefooter = {
-		subtitle: "Diventa sponsor",
-		title: "Sponsorizza <br>il Modena Film Festival 2027",
-		content: "Unisciti alla visione del Modena Film Festival. <br>Sostenere il Festival significa legare il proprio brand alla cultura, all'innovazione e al territorio, garantendo visibilità esclusiva e accesso a un network unico di professionisti e appassionati.",
-		cta: {
-			label: 'Diventa sponsor',
-			href: '/partner/diventa-sponsor',
-		},
-		// annotation: "* Gli abbonati hanno diritto a uno sconto di 5€ su questo evento.",
-		bg: 'bg-red',
-		// video: '/tickets/abbonamento-verticale-min.mp4',
-		img: '/img/_1hs1706.webp',
-	}
 	const news = [
 		{
 			title: 'Open Call<br>Modena Film Festival 2026', subtitle: '',
@@ -65,29 +61,37 @@
 
 
 <main>
-	{#if data.landing?.layout == '1'}
+	<!-- landing layout: '1' / '2' (tall) or '1-full' / '2-full' (whole screen) -->
+	{#if data.landing?.layout?.startsWith('1')}
 		<Landing1 landing={data.landing} />
-	{:else if data.landing?.layout == '2'}
+	{:else if data.landing?.layout?.startsWith('2')}
 		<Landing2 landing={data.landing} />
 	{/if}
 	<!-- <LandingTickets /> -->
-	{#if data.widgetNewses}
-	 	<NewsWidget newses={data.widgetNewses}/>
+	{#if data.newsWidget.length}
+	 	<NewsWidget newses={data.newsWidget}/>
 	{/if}
+	{#if sections.length}
 	<section id="sections" title="Il Festival" class="bg-white">
 		<div>
 			<h2 class="wb-12 wb-10-mb uppercase">Il Festival</h2>
 			<h3 class="wb-cd-60 wb-cd-40-mb uppercase">Un Festival <br>dedicato <br>ai cinque sensi</h3>
 			<SectionsMobile {sections}/>
 			<p class="wb-18 wb-15-mb">Opere che coinvolgono lo spettatore in esperienze sensoriali innovative, che riflettono sul cinema stesso come arte visiva e sonora, o che utilizzano i sensi come metafora per esplorare tematiche contemporanee.</p>
-			<a class="btn-m white bg-black hover-black hover-bg-linen" href="/programma">Vedi il programma</a>
+			{#if data.program?.days?.length}
+				<a class="btn-m white bg-black hover-black hover-bg-linen" href="/programma">Vedi il programma</a>
+			{/if}
 		</div>
 		<SectionsDesktop {sections}/>
 	</section>
-	<ContestSlider contest={data.contest} />
-	<ProgramSection program={data.program} />
+	{/if}
+	{#if data.contest?.length}
+		<ContestSlider contest={data.contest} />
+	{/if}
+	{#if data.program?.days?.length}
+		<ProgramSection program={data.program} />
+	{/if}
 </main>
-<PreFooter {prefooter}/>
 
 
 <style lang="scss">

@@ -42,7 +42,7 @@
 <section id="program" class="bg-white" title="Programma">
 	<div class="text-wrapper">
 		<h2 class="wb-12 wb-10-mb uppercase">Programma</h2>
-		<p class="wb-24 wb-18-mb max-w-600">Tutte le informazioni sull’intero cartellone del festival, dai film in concorso agli eventi speciali.</p>
+		<p class="wb-24 wb-18-mb max-w-600">Tutte le informazioni sull’intero cartellone del Festival, dai film in concorso agli eventi speciali.</p>
 		<div class="days wb-12 wb-10-mb uppercase">
 			<span>Giorni: </span>
 			{#each program.days as day (day.date)}

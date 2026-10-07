@@ -1,20 +1,23 @@
 <script>
 	import Media from '$lib/components/Media.svelte'
     import Breadcrumbs from "./Breadcrumbs.svelte";
-    let { person } = $props()
+    // member: an About team member ({role, person})
+    let { member } = $props()
+	const person = $derived(member.person ?? {})
+	const initials = $derived(`${person.name?.[0] ?? ''}${person.surname?.[0] ?? ''}`.toUpperCase())
 </script>
 
 <div class="person">
 	{#if person.portrait}
-		<Media class="_2_3 rounded-m" src={person.portrait} alt="Ritratto di {person.portrait}" />
+		<Media class="_2_3 rounded-m" image={person.portrait} aspectRatio={2 / 3} alt="Ritratto di {person.name} {person.surname}" sizes="(max-width: 1024px) 50vw, 25vw" />
 	{:else}
 		<div class="placeholder _1_1 rounded-m gradient-xy-linen-white">
-			<span class="initials wb-40">{person.initials}</span>
+			<span class="initials wb-40">{initials}</span>
 		</div>
 	{/if}
 	<h3 class="wb-24 wb-18-mb">{person.name} {person.surname}</h3>
-	{#if person.role}
-		<p class="role wb-12 wb-10-mb">{person.role}</p>
+	{#if member.role}
+		<p class="role wb-12 wb-10-mb">{member.role}</p>
 	{/if}
 </div>
 

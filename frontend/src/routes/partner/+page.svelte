@@ -1,6 +1,11 @@
 <script>
 	import PartnerPage from '$lib/components/PartnerPage.svelte'
-	import { partners } from '$lib/content/partners.js'
+	import Placeholder from '$lib/components/Placeholder.svelte'
+	let { data } = $props()
 </script>
 
-<PartnerPage {partners} />
+{#if data.placeholder}
+	<Placeholder title="Partner" message="I partner della prossima edizione saranno disponibili a breve." />
+{:else}
+	<PartnerPage partners={data.partnerGroups} />
+{/if}

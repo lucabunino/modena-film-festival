@@ -3,7 +3,6 @@
 	import Media from '$lib/components/Media.svelte'
     import Title from "$lib/components/Title.svelte";
     import Navigator from "$lib/components/Navigator.svelte";
-    import PreFooter from "$lib/components/PreFooter.svelte";
 	import { register } from 'swiper/element/bundle';register();
     import { fade, slide } from "svelte/transition";
 	let { data } = $props()
@@ -158,7 +157,6 @@
 		</div>
 	</section>
 </main>
-<!-- <PreFooter {prefooter}/> -->
 
 <style lang="scss">
 @use '$lib/scss/breakpoints.module' as *;

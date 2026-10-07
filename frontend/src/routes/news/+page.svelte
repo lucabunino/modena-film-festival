@@ -1,4 +1,5 @@
 <script>
+	import RichText from '$lib/components/RichText.svelte'
 	import Media from '$lib/components/Media.svelte'
     import Title from '$lib/components/Title.svelte';
     import { formatDateNumber, formatISO } from '$lib/utils/datetime.js';
@@ -31,9 +32,14 @@
 				<time class="date wb-28 wb-12-mb uppercase" datetime={formatISO(news.date)}>{formatDateNumber(news.date)}</time>
 				<div class="text max-w-500">
 					<h1 class="wb-28">{news.title}</h1>
-					{#if news.subtitle}<h2 class="nr-28">{news.subtitle}</h2>{/if}
+					{#if news.subtitle}<h2 class="te-28">{news.subtitle}</h2>{/if}
 					{#if news.abstract}
-						<p class="abstract wb-16">{news.abstract}</p>
+						<!-- plain text until the abstract migration (seed/news-abstracts.js), rich text after -->
+						{#if typeof news.abstract === 'string'}
+							<p class="abstract wb-16">{news.abstract}</p>
+						{:else}
+							<div class="abstract wb-16"><RichText value={news.abstract} /></div>
+						{/if}
 					{/if}
 				</div>
 				<Media class="thumbnail max-w-400" image={news.thumbnail} aspectRatio={16/9} alt="Thumbnail della news “{news.title}”" sizes="(width <= 1024px) 100vw, 40vw" />

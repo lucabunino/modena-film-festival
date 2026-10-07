@@ -1,6 +1,5 @@
 <script>
 	import Media from '$lib/components/Media.svelte'
-    import { rules } from "$lib/content/rules";
     import { urlFor } from "$lib/utils/image";
 </script>
 
@@ -8,7 +7,7 @@
 	<Media class="bg" src="/tickets/abbonamento-min.mp4" video poster="/tickets/abbonamento-min.webp" />
 	<div class="top">
 		<h3 class="wb-12 uppercase">Abbonamenti disponibili</h3>
-		<h1 class="wb-cd-120 wb-cd-40-mb max-w-600 uppercase">Abbonati al festival</h1>
+		<h1 class="wb-cd-120 wb-cd-40-mb max-w-600 uppercase">Abbonati al Festival</h1>
 	</div>
 	<div class="bottom">
 		<a class="cta btn-l black hover-black hover-bg-linen" href="/biglietti">Vai a: Biglietti</a>

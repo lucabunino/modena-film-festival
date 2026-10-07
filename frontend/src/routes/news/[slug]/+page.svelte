@@ -1,4 +1,5 @@
 <script>
+	import RichText from '$lib/components/RichText.svelte'
     import NewsHero from '$lib/components/NewsHero.svelte';
     import { formatDateNumber, formatISO } from '$lib/utils/datetime.js';
 	import {PortableText} from '@portabletext/svelte'
@@ -14,7 +15,12 @@
 	<NewsHero {news} />
 	<section id="content">
 		{#if news.abstract}
-			<p class="wb-24 wb-18-mb max-w-700">{news.abstract}</p>
+			<!-- plain text until the abstract migration (seed/news-abstracts.js), rich text after -->
+			{#if typeof news.abstract === 'string'}
+				<p class="wb-24 wb-18-mb max-w-700">{news.abstract}</p>
+			{:else}
+				<RichText value={news.abstract} block="wb-24 wb-18-mb max-w-700" />
+			{/if}
 		{/if}
 		{#if cta.label}
 			<a class="cta btn-l bg-linen black hover-white hover-bg-black" href={cta.href} target={cta.blank ? '_blank' : undefined} rel={cta.blank ? 'noopener noreferrer' : undefined}>{cta.label}</a>
@@ -23,7 +29,7 @@
 			<time class="date wb-12 uppercase" datetime={formatISO(news.date)}>{formatDateNumber(news.date)}</time>
 		{/if}
 		{#if news.body}
-			<div class="body portableText nr-21 max-w-700">
+			<div class="body portableText te-21 max-w-700">
 				<PortableText value={news.body}
 				components={{
 					block: {

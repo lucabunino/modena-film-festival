@@ -7,7 +7,7 @@
 		{
 			title: "Info",
 			slug: "info",
-			abstract: "Per informazioni sul festival, accreditamenti o altro",
+			abstract: "Per informazioni sul Festival, accreditamenti o altro",
 			email: "info@modenafilmfestival.it"
 		},
 		{
