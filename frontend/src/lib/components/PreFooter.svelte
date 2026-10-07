@@ -76,16 +76,18 @@
 		@media (width <= #{$md}) {
 			flex-direction: column-reverse;
 		}
+		// the media fills its box whatever its own shape: Media sets the CMS image's ratio inline, overridden here
 		:global(.media) {
 			width: 38%;
 			height: 100%;
 			height: stretch;
+			aspect-ratio: auto !important;
 			object-fit: cover;
 			max-height: 700px;
 
 			@media (width <= #{$md}) {
 				width: 100%;
-				aspect-ratio: 16/9;
+				aspect-ratio: 16/9 !important;
 			}
 		}
 		>div {
