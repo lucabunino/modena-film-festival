@@ -102,8 +102,9 @@
 					position: absolute;
 					inset: 0;
 					z-index: -1;
-					backdrop-filter: blur(4px);
+					// prefixed first: the CSS minifier keeps only the last of the two
 					-webkit-backdrop-filter: blur(4px);
+					backdrop-filter: blur(4px);
 					-webkit-mask-image: linear-gradient(transparent, black 70%);
 					mask-image: linear-gradient(transparent, black 70%);
 				}

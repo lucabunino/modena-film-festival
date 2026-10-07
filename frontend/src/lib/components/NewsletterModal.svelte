@@ -56,8 +56,9 @@
 		position: fixed;
 		inset: 0;
 		z-index: 10;
-		backdrop-filter: blur(10px);
+		// prefixed first: the CSS minifier keeps only the last of the two
 		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
 	}
 	.modal {
 		position: fixed;
