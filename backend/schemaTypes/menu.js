@@ -101,10 +101,10 @@ export default {
 			initialValue: true,
 		},
 		{
-			name: 'showCta',
-			title: 'Show button',
+			name: 'showTicketsButton',
+			title: 'Show tickets button',
 			type: 'boolean',
-			description: 'The highlighted button below (e.g. Biglietti), in the sidebar and in the mobile menu',
+			description: 'The Biglietti button (set below) in the sidebar and in the mobile menu',
 			initialValue: true,
 		},
 		{

@@ -100,6 +100,7 @@
 			min-height: unset;
 			width: calc(100vw - var(--margin)*2);
 			border-radius: 3rem;
+			overflow: hidden; // clip the image (a Media layer, not a CSS background) to the rounded corners
 			margin: var(--sp-32) var(--margin);
 			padding-top: 0;
 			display: flex;

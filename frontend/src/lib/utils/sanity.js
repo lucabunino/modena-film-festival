@@ -305,7 +305,7 @@ export async function getMenu(name = 'main') {
 			items[] { _key, label, href, openInNewTab, level },
 			socials[] { _key, label, href, openInNewTab },
 			showNewsletter,
-			showCta,
+			showTicketsButton,
 			cta { label, href, openInNewTab }
 		}`, { name }
 	);

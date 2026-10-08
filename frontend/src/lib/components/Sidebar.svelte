@@ -54,7 +54,7 @@
 			</svg>
 			<h1 class="wb-24 leading-1">Modena <br>Film Festival</h1>
 		</a>
-		{#if menu?.cta?.href && menu.showCta !== false}
+		{#if menu?.cta?.href && menu.showTicketsButton !== false}
 			<a href={menu.cta.href} class="tickets btn-m" target={menu.cta.openInNewTab ? "_blank" : undefined} rel={menu.cta.openInNewTab ? "noopener noreferrer" : undefined}>{menu.cta.label}</a>
 		{/if}
 		<nav class="menu wb-24 leading-1_3" aria-label="Main navigation">
