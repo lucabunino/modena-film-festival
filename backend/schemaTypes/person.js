@@ -1,5 +1,5 @@
 import {UserIcon} from '@sanity/icons/User'
-import body from './fields/body.js'
+import shortText from './fields/shortText.js'
 
 export default {
 	name: 'person',
@@ -34,12 +34,10 @@ export default {
 		},
 		{
 			name: 'country',
-			type: 'string',
+			type: 'reference',
+			to: [{type: 'country'}],
 		},
-		{
-			...body(),
-			name: 'bio',
-		},
+		shortText({name: 'bio'}),
 	],
 	orderings: [
 		{

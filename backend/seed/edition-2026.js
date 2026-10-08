@@ -183,7 +183,7 @@ for (const person of jury) {
 		name: person.name,
 		surname: person.surname,
 		slug: {_type: 'slug', current: slugify(`${person.name}-${person.surname}`)},
-		country: person.country,
+		country: {_type: 'reference', _ref: `country-${slugify(person.country)}`},
 		portrait: await image(person.portrait),
 		bio: paragraphs(person.bio),
 	})

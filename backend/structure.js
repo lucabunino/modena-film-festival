@@ -37,6 +37,7 @@ export const myStructure = (S) =>
 				.title('About')
 				.icon(InfoOutlineIcon)
 				.child(S.document().schemaType('about').documentId('about')),
+			list(S, 'menu', 'Menus', MenuIcon),
 			S.divider(),
 			list(S, 'landing', 'Landings', PresentationIcon),
 			list(S, 'prefooter', 'Prefooters', InsertBelowIcon),
@@ -61,7 +62,6 @@ export const myStructure = (S) =>
 			S.divider(),
 
 			// Settings
-			list(S, 'menu', 'Menus', MenuIcon),
 			list(S, 'seo', 'SEO', SearchIcon),
 
 			// Media tags/folders

@@ -169,7 +169,7 @@ export async function getEdition(slug) {
 			jurors[] {
 				_key,
 				role,
-				person->{ name, surname, country, bio, portrait{ ${image} } }
+				person->{ name, surname, "country": country->title, bio, portrait{ ${image} } }
 			},
 			winners[] {
 				_key,
