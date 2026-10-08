@@ -11,7 +11,6 @@ import {TagIcon} from '@sanity/icons/Tag'
 import {AsteriskIcon} from '@sanity/icons/Asterisk'
 import {CaseIcon} from '@sanity/icons/Case'
 import {DashboardIcon} from '@sanity/icons/Dashboard'
-import {ArchiveIcon} from '@sanity/icons/Archive'
 import {MenuIcon} from '@sanity/icons/Menu'
 import {TranslateIcon} from '@sanity/icons/Translate'
 import {EarthGlobeIcon} from '@sanity/icons/EarthGlobe'
@@ -25,7 +24,7 @@ function list(S, type, title, icon, ordering) {
 	return S.listItem().id(type).title(title).icon(icon).schemaType(type).child(documents)
 }
 
-const listed = ['editorial', 'about', 'edition', 'organization', 'movie', 'language', 'country', 'jury', 'prefooter', 'landing', 'news', 'program', 'event', 'location', 'person', 'format', 'sense', 'menu', 'seo']
+const listed = ['editorial', 'about', 'edition', 'organization', 'movie', 'language', 'country', 'jury', 'prefooter', 'landing', 'news', 'event', 'location', 'person', 'format', 'sense', 'menu', 'seo']
 
 export const myStructure = (S) =>
 	S.list()
@@ -46,7 +45,6 @@ export const myStructure = (S) =>
 
 			// Festival
 			list(S, 'edition', 'Editions', SparklesIcon, [{field: 'year', direction: 'desc'}]),
-			list(S, 'program', 'Programs (to be deleted)', ArchiveIcon, [{field: 'edition', direction: 'desc'}]),
 			list(S, 'event', 'Events', SparkleIcon, [{field: 'start', direction: 'desc'}]),
 			list(S, 'movie', 'Movies', DocumentVideoIcon, [{field: 'title', direction: 'asc'}]),
 			list(S, 'jury', 'Juries', UsersIcon, [{field: 'title', direction: 'asc'}]),
