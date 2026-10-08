@@ -16,6 +16,7 @@ export const client = createClient({
 const image = `..., asset->{_id, url, altText, metadata{dimensions, lqip, palette}}`
 
 const landing = `...,
+	thumbnail{ ${image} },
 	"cta": {
 		"label": ctaLabel,
 		"href": ctaHref,
@@ -28,7 +29,7 @@ const editionRef = `year, title, "slug": slug.current, status, festivalStatus, p
 
 const published = `!(_id in path('drafts.**'))`
 
-const prefooterFields = `_id, subtitle, title, content, cta, annotation, color, mediaType,
+const prefooterFields = `_id, subtitle, title, size, content, cta, annotation, color, mediaType,
 	image{ ${image} }, video{ asset->{ url } }, poster{ ${image} }`
 
 // an event shows its own thumbnail, credits and body when it has no movie or its customContent is on;
@@ -269,7 +270,11 @@ export async function getEvent(slug) {
 				seoImage,
 			},
 			// latest edition whose program lists this event
-			"edition": *[_type == "edition" && ${published} && ^._id in days[].events[]._ref] | order(year desc)[0] { ${editionRef} }
+			"edition": *[_type == "edition" && ${published} && ^._id in days[].events[]._ref] | order(year desc)[0] {
+				${editionRef},
+				// prizes this edition gave to the film the event screens (chips on the event page)
+				"awards": winners[movie._ref == ^.^.movie._ref]{ _key, title, color }
+			}
 		}`, { slug });
 }
 // the About singleton: Organigramma (team members with their role)

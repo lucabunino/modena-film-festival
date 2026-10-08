@@ -39,8 +39,12 @@
 		{#if event.soldOut}
 			<span class="tag wb-12 wb-10-mb uppercase white bg-black">Sold out</span>
 		{/if}
-		{#each event.formats as format, i (format.slug.current)}
+		{#each event.formats ?? [] as format (format.slug.current)}
 			<span class="tag wb-12 wb-10-mb uppercase bg-linen">{format.title}</span>
+		{/each}
+		<!-- prizes the screened film won in this edition, in the prize's colour (as on the program cards) -->
+		{#each event.edition?.awards ?? [] as award (award._key)}
+			<span class="tag award wb-12 wb-10-mb uppercase bg-{award.color || 'linen'}">✳ {award.title}</span>
 		{/each}
 		<time class="datetime" datetime={formatISO(event.start, event.end)}>{formatEventDate(event.start, event.end)}</time>{#if event.location}<p class="location"><span class="comma">{@html ', '}</span>presso {event.location.title}{#if event.location.subtitle} {@html ' (' + event.location.subtitle + ')'}{/if}</p>{/if}
 	</div>

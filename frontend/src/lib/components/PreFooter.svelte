@@ -9,6 +9,9 @@
 		(prefooter.mediaType === 'image' && prefooter.image) || (prefooter.mediaType === 'video' && prefooter.video)
 	)
 	const cta = $derived(prefooter.cta ?? {})
+	// title size, the same scale as landings and news (L by default)
+	const titleSizes = { l: 'wb-cd-120 wb-cd-40-mb', m: 'wb-cd-80 wb-cd-40-mb', s: 'wb-cd-60 wb-cd-24-mb' }
+	const titleSize = $derived(titleSizes[prefooter.size] ?? titleSizes.l)
 
 	let shaking = $state(false);
 	function handleLockedclick(e) {
@@ -29,7 +32,7 @@
 		<div>
 			{#if prefooter.subtitle}<h2 class="wb-12 wb-10-mb uppercase">{prefooter.subtitle}</h2>{/if}
 			{#if prefooter.title}
-				<h3 class="title wb-cd-120 wb-cd-40-mb uppercase max-w-800">{prefooter.title}</h3>
+				<h3 class="title {titleSize} uppercase max-w-800">{prefooter.title}</h3>
 			{/if}
 			{#if prefooter.content?.length}<div class="content wb-21 wb-15-mb max-w-600"><RichText value={prefooter.content} /></div>{/if}
 		</div>
@@ -77,13 +80,14 @@
 			flex-direction: column-reverse;
 		}
 		// the media fills its box whatever its own shape: Media sets the CMS image's ratio inline, overridden here
+		// desktop: a column as tall as the whole band (stretched by the flex row, no height cap)
 		:global(.media) {
 			width: 38%;
-			height: 100%;
-			height: stretch;
+			flex: none;
+			align-self: stretch;
+			height: auto;
 			aspect-ratio: auto !important;
 			object-fit: cover;
-			max-height: 700px;
 
 			@media (width <= #{$md}) {
 				width: 100%;
@@ -103,6 +107,11 @@
 			flex-direction: column;
 			gap: var(--sp-36);
 			justify-content: space-between;
+
+			// phones: the button is absolutely positioned (on the image), so the gap would only add empty space
+			@media (width <= #{$md}) {
+				gap: 0;
+			}
 
 			&.wide {width: 100%;}
 			&.half {

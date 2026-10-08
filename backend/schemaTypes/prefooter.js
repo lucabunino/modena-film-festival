@@ -62,6 +62,22 @@ export default {
 			description: 'Small print under the button (e.g. * Gli abbonati hanno diritto…)',
 		},
 		{
+			name: 'size',
+			type: 'string',
+			group: 'style',
+			description: 'Title size',
+			options: {
+				list: [
+					{title: 'S', value: 's'},
+					{title: 'M', value: 'm'},
+					{title: 'L', value: 'l'},
+				],
+				layout: 'radio',
+				direction: 'horizontal',
+			},
+			initialValue: 'l',
+		},
+		{
 			name: 'color',
 			title: 'Background',
 			type: 'string',

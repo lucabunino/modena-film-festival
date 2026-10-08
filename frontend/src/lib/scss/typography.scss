@@ -15,18 +15,36 @@
   font-style: italic;
   font-display: block;
 }
+// Waldenburg bold (700), to restore once the licence is bought:
+// @font-face {
+//   font-family: "Waldenburg";
+//   src: url("$lib/assets/fonts/KMR-Waldenburg-Fett.woff2") format("woff2"),
+//        url("$lib/assets/fonts/KMR-Waldenburg-Fett.woff") format("woff");
+//   font-weight: 700;
+//   font-style: normal;
+//   font-display: block;
+// }
+// @font-face {
+//   font-family: "Waldenburg";
+//   src: url("$lib/assets/fonts/KMR-Waldenburg-FettKursiv.woff2") format("woff2"),
+//        url("$lib/assets/fonts/KMR-Waldenburg-FettKursiv.woff") format("woff");
+//   font-weight: 700;
+//   font-style: italic;
+//   font-display: block;
+// }
+// temporarily, the bold (small uppercase labels, wb-10 / wb-12) is TeX Gyre Heros, under the Waldenburg name
 @font-face {
   font-family: "Waldenburg";
-  src: url("$lib/assets/fonts/KMR-Waldenburg-Fett.woff2") format("woff2"),
-       url("$lib/assets/fonts/KMR-Waldenburg-Fett.woff") format("woff");
+  src: url("$lib/assets/fonts/TeXGyreHeros-Bold.woff2") format("woff2"),
+       url("$lib/assets/fonts/TeXGyreHeros-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: block;
 }
 @font-face {
   font-family: "Waldenburg";
-  src: url("$lib/assets/fonts/KMR-Waldenburg-FettKursiv.woff2") format("woff2"),
-       url("$lib/assets/fonts/KMR-Waldenburg-FettKursiv.woff") format("woff");
+  src: url("$lib/assets/fonts/TeXGyreHeros-BoldItalic.woff2") format("woff2"),
+       url("$lib/assets/fonts/TeXGyreHeros-BoldItalic.woff") format("woff");
   font-weight: 700;
   font-style: italic;
   font-display: block;

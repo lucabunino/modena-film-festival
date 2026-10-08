@@ -1,5 +1,5 @@
 <script>
-    import { urlFor } from "$lib/utils/image";
+    import Media from "$lib/components/Media.svelte";
     import Marquee from "svelte-fast-marquee";
 
 	let { landing } = $props()
@@ -7,7 +7,11 @@
 	let size = $derived(landing.size)
 </script>
 
-<section id="hero" class="bg-linen white {landing.layout?.endsWith('-full') ? 'full' : ''}" style={landing.thumbnail ? `background-image: url(${urlFor(landing.thumbnail).width(2560)})` : undefined}>
+<section id="hero" class="bg-linen white {landing.layout?.endsWith('-full') ? 'full' : ''}">
+	<!-- the image reveals like all media (fade, blurred preview while loading) -->
+	{#if landing.thumbnail}
+		<Media class="thumbnail" image={landing.thumbnail} alt="" sizes="100vw" loading="eager" />
+	{/if}
 	<div class="top">
 		<h3 class="wb-12 uppercase">{landing.runningHead}</h3>
 		{#if landing.title}
@@ -47,14 +51,18 @@
 		background-position: top;
 		background-size: cover;
 
-		.thumbnail {
+		// the landing image behind the text (Media's box, so :global), anchored at the top like the old background
+		:global(.thumbnail) {
 			position: absolute;
 			left: 0;
 			top: 0;
 			width: 100%;
 			height: 100%;
-			object-fit: cover;
-			object-position: center;
+			z-index: 0;
+
+			:global(img) {
+				object-position: top;
+			}
 		}
 		.top {
 			width: stretch;
