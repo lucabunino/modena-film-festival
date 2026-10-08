@@ -4,8 +4,10 @@
 	and "Scopri il film" appears at the bottom-left corner of the visible image. Touch screens show the cards open.
 -->
 <script>
+	import { editionLabel } from '$lib/utils/edition.js'
 	import Media from '$lib/components/Media.svelte'
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte'
+	import Title from '$lib/components/Title.svelte'
 
 	// edition: {year, slug, winners}; current: the top-level /vincitori (event links stay outside the archive)
 	let { edition, current = false } = $props()
@@ -27,17 +29,31 @@
 </script>
 
 <main id="winners">
-	<div class="crumbs white">
+	<!-- desktop: breadcrumbs over the first poster; mobile: the page title (breadcrumbs included) -->
+	<div class="crumbs desktop-only">
 		<Breadcrumbs />
+	</div>
+	<div class="heading mobile-only">
+		<Title title="I film vincitori<br>del {editionLabel(edition)}" size="m" />
 	</div>
 	<ul class="movies">
 		{#each movies as { movie, awards } (movie._id)}
 			<li class="movie">
-				{#if movie.poster}
-					<Media class="poster" image={movie.poster} aspectRatio={2 / 3} alt="Locandina di {movie.title}" sizes="67vh" />
-				{:else}
-					<div class="poster bg-linen"></div>
-				{/if}
+				<div class="visual">
+					{#if movie.poster}
+						<Media class="poster" image={movie.poster} aspectRatio={2 / 3} alt="Locandina di {movie.title}" sizes="(width <= 1024px) 100vw, 67vh" />
+					{:else}
+						<div class="poster bg-linen"></div>
+					{/if}
+					<!-- mobile: the horizontal thumbnail instead (the hidden image isn't loaded: lazy + display none) -->
+					{#if movie.thumbnail}
+						<Media class="thumbnail" image={movie.thumbnail} aspectRatio={16 / 9} alt="Immagine di {movie.title}" sizes="100vw" />
+					{/if}
+					<!-- mobile: the CTA sits on the image (desktop has it in the panel, shown on hover) -->
+					{#if eventHref(movie)}
+						<a class="cta-image btn-m bg-white black hover-white hover-bg-black" href={eventHref(movie)}>Scopri il film</a>
+					{/if}
+				</div>
 				<div class="panel">
 					{#if eventHref(movie)}
 						<a class="cta btn-m bg-white black hover-white hover-bg-black" href={eventHref(movie)}>Scopri il film</a>
@@ -88,6 +104,7 @@
 		.crumbs {
 			position: absolute;
 			z-index: 3;
+			color: var(--white); // over the first poster (black on mobile, below)
 			top: var(--margin);
 			left: var(--margin);
 			pointer-events: none;
@@ -123,9 +140,17 @@
 		overflow: hidden;
 		scroll-snap-align: start;
 
+		.visual {
+			position: relative;
+			height: 100%;
+		}
 		:global(.poster) {
 			width: 100%;
 			height: 100%;
+		}
+		.cta-image,
+		:global(.thumbnail) {
+			display: none;
 		}
 	}
 	// bar at the bottom of the poster; grows upwards when the cards open
@@ -218,10 +243,84 @@
 			}
 		}
 	}
+	// phones, tablets: films stacked vertically: title, director and prizes, then a rounded horizontal thumbnail
+	// (CTA on it), then the award cards (always open); a page title above
 	@media (width <= #{$lg}) {
+		#winners {
+			padding: var(--sp-32) var(--margin) var(--sp-96);
+
+			.heading {
+				display: block;
+				margin-bottom: var(--sp-36);
+			}
+		}
+		.movies {
+			flex-direction: column;
+			height: auto;
+			overflow: visible;
+			gap: var(--sp-48);
+			margin-top: var(--sp-12);
+		}
+		// order: title, director and prizes; then the image (CTA on it); then the award cards
 		.movie {
-			// a slice of the next film shows at the edge, so it reads as scrollable
-			max-width: 95vw;
+			height: auto;
+			aspect-ratio: auto;
+			overflow: visible;
+			display: flex;
+			flex-direction: column;
+
+			.visual {
+				order: 2;
+				height: auto;
+				border-radius: var(--radius-m);
+				overflow: hidden;
+			}
+			:global(.poster) {
+				display: none;
+			}
+			:global(.thumbnail) {
+				display: block;
+				width: 100%;
+			}
+			.cta-image {
+				display: inline-block;
+				position: absolute;
+				z-index: 2;
+				left: var(--gutter);
+				bottom: var(--gutter);
+			}
+		}
+		.panel {
+			// its parts join the film's column, so they can sit before and after the image
+			display: contents;
+			position: static;
+			background: none;
+
+			.cta {
+				display: none;
+			}
+			.head {
+				order: 1;
+				padding: 0 0 var(--sp-14);
+			}
+			.cards {
+				order: 3;
+				margin-top: var(--sp-6); // same as between the award cards
+				grid-template-rows: 1fr;
+
+				// award title above its description
+				.card {
+					display: block;
+
+					.description {
+						margin-top: var(--sp-6);
+					}
+				}
+
+				ul {
+					padding: 0;
+				}
+			}
 		}
 	}
 </style>

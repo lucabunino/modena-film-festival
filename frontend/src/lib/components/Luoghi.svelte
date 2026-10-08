@@ -5,8 +5,8 @@
 
     import RichText from '$lib/components/RichText.svelte';
 
-    // year: shown in the title of an archive page; omitted on the current-edition /luoghi
-    let { locations: locationsData, year = undefined } = $props();
+    // label: the edition's title (e.g. MFF26) on an archive page; omitted on the current-edition /luoghi
+    let { locations: locationsData, label = undefined } = $props();
 
     // locations: the Edition's Luoghi; their order gives the marker numbers
     const locations = $derived(
@@ -68,7 +68,7 @@
 
 
 <main class="bg-white">
-    <Title title={year ? `I luoghi del Modena <br>Film Festival ${year}` : 'I luoghi del Modena <br>Film Festival'} size="m" />
+    <Title title={label ? `I luoghi<br>del ${label}` : 'I luoghi del Modena <br>Film Festival'} size="m" />
     
     <section id="locations" class="wb-21">
         <div class="locations">

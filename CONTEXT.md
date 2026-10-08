@@ -5,9 +5,9 @@ Modena Film Festival website — SvelteKit frontend + Sanity v3 backend, aligned
 ## Glossary
 
 ### Edition
-One yearly instance of the festival (2026 = the first). Identified by its four-digit year. Has a title chosen by hand (e.g. MFF2026), which may change; its year does not. Addressed by its year: /2026, /2026/programma (no "archive" prefix).
+One yearly instance of the festival (2026 = the first). Identified by its four-digit year. Has a title chosen by hand (e.g. MFF26), shown wherever the Edition is named, which may change; its year does not. Addressed by a slug chosen by hand, by convention its year: /2026, /2026/programma (no "archive" prefix).
 Everything that changes year by year (its Festival texts, Program, Jury, Regolamento, Luoghi, Partners) belongs to its Edition.
-_Avoid_: MFF26 (short-year form), year, season
+_Avoid_: year, season
 
 ### Program
 The day-by-day schedule of one Edition: its days and the events on each. Part of an Edition, not a thing of its own.
