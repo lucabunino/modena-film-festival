@@ -455,10 +455,10 @@ $gradients: (
 .contacts-grid {
 	grid-column: 1 / span 8;
 	display: grid;
-	// boxes between 32rem and 36rem: one more per row each time another 32rem box (+ 2rem gap) fits,
+	// boxes between 32rem and 36rem from two per row: one more each time another 32rem box (+ 2rem gap) fits,
 	// the rest of the row stays empty (14" laptop: 2 boxes + empty space with the Sidebar open, 3 collapsed).
 	// Not auto-fill: with a fixed max, auto-fill counts columns by the max, not the min.
-	grid-template-columns: repeat(1, minmax(0, 36rem));
+	grid-template-columns: 1fr; // one per row (phones, tablets): full width
 	justify-content: start;
 	column-gap: var(--margin);
 	row-gap: var(--margin);

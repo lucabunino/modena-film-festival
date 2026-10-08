@@ -98,7 +98,7 @@
 		column-gap: var(--gutter);
 		row-gap: var(--sp-48);
 		position: relative;
-		z-index: 4; // above the fixed Alert (3)
+		z-index: 4; // the fixed Alert shares 4 but comes later in the page, so it stays above the footer
 		background-color: var(--white);
 
 		#contacts {

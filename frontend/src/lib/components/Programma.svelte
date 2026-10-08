@@ -266,7 +266,7 @@
 					scroll-margin-top: var(--menuHeight);
 					position: sticky;
 					top: var(--menuHeight);
-					z-index: 2;
+					z-index: 5; // above the fixed Alert (4), below the mobile menu (6): the stuck day header covers the Alert
 					flex-direction: row;
 					align-items: baseline;
 

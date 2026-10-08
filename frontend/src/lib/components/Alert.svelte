@@ -43,7 +43,7 @@
 	onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), toggle())}
 >
 	<div class="text">
-		<p class="uppercase">{title}</p>
+		<p class="title uppercase">{title}</p>
 		<div class="more">
 			<p>{message}</p>
 		</div>
@@ -88,7 +88,7 @@
 	.alert {
 		--square: calc(1rem * 1.2 + var(--gutter) * 2); // one wb-14 line + padding
 		position: fixed;
-		z-index: 5; // above the footer (4), like the cookie banner
+		z-index: 4; // same as the footer but later in the page, so above it; below the Programma sticky day headers (5)
 		right: var(--gutter);
 		top: calc(var(--margin) + var(--navigatorStack, 0px));
 
@@ -154,10 +154,26 @@
 		}
 
 		@media (width <= #{$lg}) {
+			// smaller icon box, so the Programma day header stuck under the header covers it entirely
+			--square: 2.75rem;
+
 			width: min(clamp(300px, 25vw, 400px), calc(100% - var(--gutter) * 2));
 			// mobile: top right corner below the header, its first line level with the breadcrumbs
 			// (they sit main's --sp-32 below the header; the alert's own top padding is --sp-12)
 			top: calc(var(--menuHeight) + var(--sp-32) - var(--sp-12));
+
+			// title like the breadcrumbs (wb-12)
+			.title {
+				font-size: .857rem;
+				font-weight: 700;
+				letter-spacing: .03em;
+				line-height: 1.2;
+			}
+
+			&.minified:not(.open) {
+				// height = one hidden title line (.857rem × 1.2) + padding: make it as tall as it is wide
+				padding-block: calc((var(--square) - .857rem * 1.2) / 2);
+			}
 
 			&.banner {
 				top: calc(var(--menuHeight) + var(--sp-32) - var(--sp-12));

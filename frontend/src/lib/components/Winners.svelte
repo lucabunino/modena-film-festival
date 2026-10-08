@@ -220,7 +220,8 @@
 	}
 	@media (width <= #{$lg}) {
 		.movie {
-			max-width: 100vw;
+			// a slice of the next film shows at the edge, so it reads as scrollable
+			max-width: 95vw;
 		}
 	}
 </style>

@@ -62,7 +62,7 @@
 		</nav>
 		<section in:fade={{duration: 200, delay: 200}} class="social" aria-label="Social media">
 			<SocialRow socials={menu?.socials} onnavigate={closeMenu} />
-			{#if menu?.cta?.href}
+			{#if menu?.cta?.href && menu.showCta !== false}
 				<a href={menu.cta.href} class="tickets btn-m" target={menu.cta.openInNewTab ? '_blank' : undefined} rel={menu.cta.openInNewTab ? 'noopener noreferrer' : undefined} onclick={() => {closeMenu()}}>{menu.cta.label}</a>
 			{/if}
 		</section>

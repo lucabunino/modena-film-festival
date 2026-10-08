@@ -101,6 +101,13 @@ export default {
 			initialValue: true,
 		},
 		{
+			name: 'showCta',
+			title: 'Show button',
+			type: 'boolean',
+			description: 'The highlighted button below (e.g. Biglietti), in the sidebar and in the mobile menu',
+			initialValue: true,
+		},
+		{
 			...link('cta'),
 			title: 'Button',
 			description: 'Optional highlighted button (e.g. Biglietti). Leave empty to hide it',
