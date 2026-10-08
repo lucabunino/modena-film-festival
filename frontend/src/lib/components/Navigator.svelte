@@ -59,7 +59,7 @@
 </script>
 
 {#if sections}
-	<nav>
+	<nav class="navigator">
 		<div class="rounded-m wb-21 wb-10-mb {bg ? bg : 'bg-linen'} {visible ? 'visible' : ''} {banner.show ? 'banner' : ''}" bind:this={panel} {@attach navigatorPanel.track}>
 			{#if title}
 				<button class="title wb-12 uppercase desktop-only" onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>{title}</button>

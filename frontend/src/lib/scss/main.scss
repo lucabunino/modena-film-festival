@@ -57,6 +57,18 @@ html {
 	overscroll-behavior-x: none;
 	// scroll-behavior: smooth;
 }
+// a page's main and its prefooter (root layout); positioning box of the mobile Navigator bar
+.page {
+	position: relative;
+	// contains its children's margins (the mobile prefooter's bottom margin), so it ends right at the footer
+	display: flow-root;
+}
+// mobile: with a Navigator, room under the prefooter for its bar (one link: padding + text), where it settles
+@media (width <= #{$lg}) {
+	.page:has(.navigator) #pre-footer {
+		margin-bottom: calc(var(--margin) + var(--sp-12) * 2 + .833rem); // link padding + one line (line-height 1)
+	}
+}
 main {
 	// grids query this (@container main) so they gain columns when the Sidebar collapses
 	container: main / inline-size;
@@ -86,6 +98,8 @@ main {
 		padding: var(--sp-32) var(--margin);
 		display: block;
 		row-gap: 0;
+		// not the positioning box on mobile: the Navigator's bar box spans .page (main + prefooter) instead
+		position: static;
 
 		>section {
 			grid-column: unset;

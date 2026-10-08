@@ -40,8 +40,11 @@
 <Menu menu={data.menu} />
 {#key page.url.pathname}
 	<div id="wrapper" in:transitionIn out:transitionOut>
-		{@render children()}
-		{#if prefooter && !page.error}<PreFooter {prefooter} />{/if}
+		<!-- the page and its prefooter: on mobile the Navigator bar stays stuck through both (see main.scss) -->
+		<div class="page">
+			{@render children()}
+			{#if prefooter && !page.error}<PreFooter {prefooter} />{/if}
+		</div>
 		{#if !page.error}<Footer/>{/if}
 	</div>
 {/key}
