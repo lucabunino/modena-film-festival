@@ -1,4 +1,5 @@
 import { fail } from '@sveltejs/kit';
+import { checkBotId } from 'botid/server';
 import { EMAIL } from "$env/static/private";
 import transporter from '$lib/utils/emailSetup.server.js';
 
@@ -22,6 +23,11 @@ export async function load() {
 
 export const actions = {
     default: async ({ request }) => {
+        const verification = await checkBotId();
+        if (verification.isBot) {
+            return fail(403, { error: 'Richiesta bloccata. Riprova più tardi.' });
+        }
+
         try {
             const formData = await request.formData();
             const name = formData.get('name');
